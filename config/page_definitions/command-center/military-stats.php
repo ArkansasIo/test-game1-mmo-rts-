@@ -197,5 +197,6 @@ return array (
     'features' => 'config/page_features/command-center/military-stats.php',
     'design' => 'config/page_design_specs/command-center/military-stats.php',
     'systems' => 'config/page_systems/command-center/military-stats.php',
+    'module' => 'includes/page_modules/command-center/military-stats.php',
   ),
 );

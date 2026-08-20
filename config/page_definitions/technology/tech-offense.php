@@ -184,5 +184,6 @@ return array (
     'features' => 'config/page_features/technology/tech-offense.php',
     'design' => 'config/page_design_specs/technology/tech-offense.php',
     'systems' => 'config/page_systems/technology/tech-offense.php',
+    'module' => 'includes/page_modules/technology/tech-offense.php',
   ),
 );

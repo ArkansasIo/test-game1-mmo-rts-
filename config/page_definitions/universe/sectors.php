@@ -153,5 +153,6 @@ return array (
     'features' => 'config/page_features/universe/sectors.php',
     'design' => 'config/page_design_specs/universe/sectors.php',
     'systems' => 'config/page_systems/universe/sectors.php',
+    'module' => 'includes/page_modules/universe/sectors.php',
   ),
 );

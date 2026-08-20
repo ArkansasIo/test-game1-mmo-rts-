@@ -233,5 +233,6 @@ return array (
     'features' => 'config/page_features/planets/planet-bonuses.php',
     'design' => 'config/page_design_specs/planets/planet-bonuses.php',
     'systems' => 'config/page_systems/planets/planet-bonuses.php',
+    'module' => 'includes/page_modules/planets/planet-bonuses.php',
   ),
 );

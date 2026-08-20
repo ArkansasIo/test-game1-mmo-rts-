@@ -153,5 +153,6 @@ return array (
     'features' => 'config/page_features/universe/galaxies.php',
     'design' => 'config/page_design_specs/universe/galaxies.php',
     'systems' => 'config/page_systems/universe/galaxies.php',
+    'module' => 'includes/page_modules/universe/galaxies.php',
   ),
 );

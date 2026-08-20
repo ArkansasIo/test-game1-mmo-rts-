@@ -1,6 +1,6 @@
 <?php
 return array (
-  'generated_at' => '2026-08-20T08:18:24+00:00',
+  'generated_at' => '2026-08-20T08:27:18+00:00',
   'page_count' => 43,
   'routes' => 
   array (
@@ -211,6 +211,7 @@ return array (
         'features' => 'config/page_features/command-center/dashboard.php',
         'design' => 'config/page_design_specs/command-center/dashboard.php',
         'systems' => 'config/page_systems/command-center/dashboard.php',
+        'module' => 'includes/page_modules/command-center/dashboard.php',
       ),
     ),
     'account-info' => 
@@ -395,6 +396,7 @@ return array (
         'features' => 'config/page_features/command-center/account-info.php',
         'design' => 'config/page_design_specs/command-center/account-info.php',
         'systems' => 'config/page_systems/command-center/account-info.php',
+        'module' => 'includes/page_modules/command-center/account-info.php',
       ),
     ),
     'resources' => 
@@ -564,6 +566,7 @@ return array (
         'features' => 'config/page_features/command-center/resources.php',
         'design' => 'config/page_design_specs/command-center/resources.php',
         'systems' => 'config/page_systems/command-center/resources.php',
+        'module' => 'includes/page_modules/command-center/resources.php',
       ),
     ),
     'income' => 
@@ -758,6 +761,7 @@ return array (
         'features' => 'config/page_features/command-center/income.php',
         'design' => 'config/page_design_specs/command-center/income.php',
         'systems' => 'config/page_systems/command-center/income.php',
+        'module' => 'includes/page_modules/command-center/income.php',
       ),
     ),
     'military-stats' => 
@@ -959,6 +963,7 @@ return array (
         'features' => 'config/page_features/command-center/military-stats.php',
         'design' => 'config/page_design_specs/command-center/military-stats.php',
         'systems' => 'config/page_systems/command-center/military-stats.php',
+        'module' => 'includes/page_modules/command-center/military-stats.php',
       ),
     ),
     'targets' => 
@@ -1242,6 +1247,7 @@ return array (
         'features' => 'config/page_features/attack/targets.php',
         'design' => 'config/page_design_specs/attack/targets.php',
         'systems' => 'config/page_systems/attack/targets.php',
+        'module' => 'includes/page_modules/attack/targets.php',
       ),
     ),
     'spy' => 
@@ -1477,6 +1483,7 @@ return array (
         'features' => 'config/page_features/attack/spy.php',
         'design' => 'config/page_design_specs/attack/spy.php',
         'systems' => 'config/page_systems/attack/spy.php',
+        'module' => 'includes/page_modules/attack/spy.php',
       ),
     ),
     'sabotage' => 
@@ -1711,6 +1718,7 @@ return array (
         'features' => 'config/page_features/attack/sabotage.php',
         'design' => 'config/page_design_specs/attack/sabotage.php',
         'systems' => 'config/page_systems/attack/sabotage.php',
+        'module' => 'includes/page_modules/attack/sabotage.php',
       ),
     ),
     'attack-log' => 
@@ -1906,6 +1914,7 @@ return array (
         'features' => 'config/page_features/attack/attack-log.php',
         'design' => 'config/page_design_specs/attack/attack-log.php',
         'systems' => 'config/page_systems/attack/attack-log.php',
+        'module' => 'includes/page_modules/attack/attack-log.php',
       ),
     ),
     'weapons' => 
@@ -2096,6 +2105,7 @@ return array (
         'features' => 'config/page_features/armory/weapons.php',
         'design' => 'config/page_design_specs/armory/weapons.php',
         'systems' => 'config/page_systems/armory/weapons.php',
+        'module' => 'includes/page_modules/armory/weapons.php',
       ),
     ),
     'weapon-market' => 
@@ -2304,6 +2314,7 @@ return array (
         'features' => 'config/page_features/armory/weapon-market.php',
         'design' => 'config/page_design_specs/armory/weapon-market.php',
         'systems' => 'config/page_systems/armory/weapon-market.php',
+        'module' => 'includes/page_modules/armory/weapon-market.php',
       ),
     ),
     'repair' => 
@@ -2474,6 +2485,7 @@ return array (
         'features' => 'config/page_features/armory/repair.php',
         'design' => 'config/page_design_specs/armory/repair.php',
         'systems' => 'config/page_systems/armory/repair.php',
+        'module' => 'includes/page_modules/armory/repair.php',
       ),
     ),
     'units' => 
@@ -2670,6 +2682,7 @@ return array (
         'features' => 'config/page_features/training/units.php',
         'design' => 'config/page_design_specs/training/units.php',
         'systems' => 'config/page_systems/training/units.php',
+        'module' => 'includes/page_modules/training/units.php',
       ),
     ),
     'miners' => 
@@ -2866,6 +2879,7 @@ return array (
         'features' => 'config/page_features/training/miners.php',
         'design' => 'config/page_design_specs/training/miners.php',
         'systems' => 'config/page_systems/training/miners.php',
+        'module' => 'includes/page_modules/training/miners.php',
       ),
     ),
     'super-units' => 
@@ -3063,6 +3077,7 @@ return array (
         'features' => 'config/page_features/training/super-units.php',
         'design' => 'config/page_design_specs/training/super-units.php',
         'systems' => 'config/page_systems/training/super-units.php',
+        'module' => 'includes/page_modules/training/super-units.php',
       ),
     ),
     'unit-production' => 
@@ -3236,6 +3251,7 @@ return array (
         'features' => 'config/page_features/training/unit-production.php',
         'design' => 'config/page_design_specs/training/unit-production.php',
         'systems' => 'config/page_systems/training/unit-production.php',
+        'module' => 'includes/page_modules/training/unit-production.php',
       ),
     ),
     'technology' => 
@@ -3427,6 +3443,7 @@ return array (
         'features' => 'config/page_features/technology/technology.php',
         'design' => 'config/page_design_specs/technology/technology.php',
         'systems' => 'config/page_systems/technology/technology.php',
+        'module' => 'includes/page_modules/technology/technology.php',
       ),
     ),
     'tech-offense' => 
@@ -3615,6 +3632,7 @@ return array (
         'features' => 'config/page_features/technology/tech-offense.php',
         'design' => 'config/page_design_specs/technology/tech-offense.php',
         'systems' => 'config/page_systems/technology/tech-offense.php',
+        'module' => 'includes/page_modules/technology/tech-offense.php',
       ),
     ),
     'tech-defense' => 
@@ -3803,6 +3821,7 @@ return array (
         'features' => 'config/page_features/technology/tech-defense.php',
         'design' => 'config/page_design_specs/technology/tech-defense.php',
         'systems' => 'config/page_systems/technology/tech-defense.php',
+        'module' => 'includes/page_modules/technology/tech-defense.php',
       ),
     ),
     'tech-covert' => 
@@ -3991,6 +4010,7 @@ return array (
         'features' => 'config/page_features/technology/tech-covert.php',
         'design' => 'config/page_design_specs/technology/tech-covert.php',
         'systems' => 'config/page_systems/technology/tech-covert.php',
+        'module' => 'includes/page_modules/technology/tech-covert.php',
       ),
     ),
     'tech-anti-covert' => 
@@ -4179,6 +4199,7 @@ return array (
         'features' => 'config/page_features/technology/tech-anti-covert.php',
         'design' => 'config/page_design_specs/technology/tech-anti-covert.php',
         'systems' => 'config/page_systems/technology/tech-anti-covert.php',
+        'module' => 'includes/page_modules/technology/tech-anti-covert.php',
       ),
     ),
     'spy-log' => 
@@ -4373,6 +4394,7 @@ return array (
         'features' => 'config/page_features/intelligence/spy-log.php',
         'design' => 'config/page_design_specs/intelligence/spy-log.php',
         'systems' => 'config/page_systems/intelligence/spy-log.php',
+        'module' => 'includes/page_modules/intelligence/spy-log.php',
       ),
     ),
     'enemy-intelligence' => 
@@ -4564,6 +4586,7 @@ return array (
         'features' => 'config/page_features/intelligence/enemy-intelligence.php',
         'design' => 'config/page_design_specs/intelligence/enemy-intelligence.php',
         'systems' => 'config/page_systems/intelligence/enemy-intelligence.php',
+        'module' => 'includes/page_modules/intelligence/enemy-intelligence.php',
       ),
     ),
     'resource-exchange' => 
@@ -4772,6 +4795,7 @@ return array (
         'features' => 'config/page_features/market/resource-exchange.php',
         'design' => 'config/page_design_specs/market/resource-exchange.php',
         'systems' => 'config/page_systems/market/resource-exchange.php',
+        'module' => 'includes/page_modules/market/resource-exchange.php',
       ),
     ),
     'mercenary-market' => 
@@ -4979,6 +5003,7 @@ return array (
         'features' => 'config/page_features/market/mercenary-market.php',
         'design' => 'config/page_design_specs/market/mercenary-market.php',
         'systems' => 'config/page_systems/market/mercenary-market.php',
+        'module' => 'includes/page_modules/market/mercenary-market.php',
       ),
     ),
     'rankings' => 
@@ -5171,6 +5196,7 @@ return array (
         'features' => 'config/page_features/social/rankings.php',
         'design' => 'config/page_design_specs/social/rankings.php',
         'systems' => 'config/page_systems/social/rankings.php',
+        'module' => 'includes/page_modules/social/rankings.php',
       ),
     ),
     'alliances' => 
@@ -5406,6 +5432,7 @@ return array (
         'features' => 'config/page_features/social/alliances.php',
         'design' => 'config/page_design_specs/social/alliances.php',
         'systems' => 'config/page_systems/social/alliances.php',
+        'module' => 'includes/page_modules/social/alliances.php',
       ),
     ),
     'messages' => 
@@ -5627,6 +5654,7 @@ return array (
         'features' => 'config/page_features/social/messages.php',
         'design' => 'config/page_design_specs/social/messages.php',
         'systems' => 'config/page_systems/social/messages.php',
+        'module' => 'includes/page_modules/social/messages.php',
       ),
     ),
     'planet-list' => 
@@ -5868,6 +5896,7 @@ return array (
         'features' => 'config/page_features/planets/planet-list.php',
         'design' => 'config/page_design_specs/planets/planet-list.php',
         'systems' => 'config/page_systems/planets/planet-list.php',
+        'module' => 'includes/page_modules/planets/planet-list.php',
       ),
     ),
     'planet-bonuses' => 
@@ -6105,6 +6134,7 @@ return array (
         'features' => 'config/page_features/planets/planet-bonuses.php',
         'design' => 'config/page_design_specs/planets/planet-bonuses.php',
         'systems' => 'config/page_systems/planets/planet-bonuses.php',
+        'module' => 'includes/page_modules/planets/planet-bonuses.php',
       ),
     ),
     'planet-defenses' => 
@@ -6343,6 +6373,7 @@ return array (
         'features' => 'config/page_features/planets/planet-defenses.php',
         'design' => 'config/page_design_specs/planets/planet-defenses.php',
         'systems' => 'config/page_systems/planets/planet-defenses.php',
+        'module' => 'includes/page_modules/planets/planet-defenses.php',
       ),
     ),
     'ship' => 
@@ -6546,6 +6577,7 @@ return array (
         'features' => 'config/page_features/mothership/ship.php',
         'design' => 'config/page_design_specs/mothership/ship.php',
         'systems' => 'config/page_systems/mothership/ship.php',
+        'module' => 'includes/page_modules/mothership/ship.php',
       ),
     ),
     'modules' => 
@@ -6747,6 +6779,7 @@ return array (
         'features' => 'config/page_features/mothership/modules.php',
         'design' => 'config/page_design_specs/mothership/modules.php',
         'systems' => 'config/page_systems/mothership/modules.php',
+        'module' => 'includes/page_modules/mothership/modules.php',
       ),
     ),
     'exploration' => 
@@ -6922,6 +6955,7 @@ return array (
         'features' => 'config/page_features/mothership/exploration.php',
         'design' => 'config/page_design_specs/mothership/exploration.php',
         'systems' => 'config/page_systems/mothership/exploration.php',
+        'module' => 'includes/page_modules/mothership/exploration.php',
       ),
     ),
     'race' => 
@@ -7149,6 +7183,7 @@ return array (
         'features' => 'config/page_features/account/race.php',
         'design' => 'config/page_design_specs/account/race.php',
         'systems' => 'config/page_systems/account/race.php',
+        'module' => 'includes/page_modules/account/race.php',
       ),
     ),
     'vacation' => 
@@ -7376,6 +7411,7 @@ return array (
         'features' => 'config/page_features/account/vacation.php',
         'design' => 'config/page_design_specs/account/vacation.php',
         'systems' => 'config/page_systems/account/vacation.php',
+        'module' => 'includes/page_modules/account/vacation.php',
       ),
     ),
     'ascension' => 
@@ -7587,6 +7623,7 @@ return array (
         'features' => 'config/page_features/account/ascension.php',
         'design' => 'config/page_design_specs/account/ascension.php',
         'systems' => 'config/page_systems/account/ascension.php',
+        'module' => 'includes/page_modules/account/ascension.php',
       ),
     ),
     'galaxies' => 
@@ -7744,6 +7781,7 @@ return array (
         'features' => 'config/page_features/universe/galaxies.php',
         'design' => 'config/page_design_specs/universe/galaxies.php',
         'systems' => 'config/page_systems/universe/galaxies.php',
+        'module' => 'includes/page_modules/universe/galaxies.php',
       ),
     ),
     'sectors' => 
@@ -7901,6 +7939,7 @@ return array (
         'features' => 'config/page_features/universe/sectors.php',
         'design' => 'config/page_design_specs/universe/sectors.php',
         'systems' => 'config/page_systems/universe/sectors.php',
+        'module' => 'includes/page_modules/universe/sectors.php',
       ),
     ),
     'solar-systems' => 
@@ -8093,6 +8132,7 @@ return array (
         'features' => 'config/page_features/universe/solar-systems.php',
         'design' => 'config/page_design_specs/universe/solar-systems.php',
         'systems' => 'config/page_systems/universe/solar-systems.php',
+        'module' => 'includes/page_modules/universe/solar-systems.php',
       ),
     ),
     'universe-planets' => 
@@ -8296,6 +8336,7 @@ return array (
         'features' => 'config/page_features/universe/universe-planets.php',
         'design' => 'config/page_design_specs/universe/universe-planets.php',
         'systems' => 'config/page_systems/universe/universe-planets.php',
+        'module' => 'includes/page_modules/universe/universe-planets.php',
       ),
     ),
     'moons' => 
@@ -8493,6 +8534,7 @@ return array (
         'features' => 'config/page_features/universe/moons.php',
         'design' => 'config/page_design_specs/universe/moons.php',
         'systems' => 'config/page_systems/universe/moons.php',
+        'module' => 'includes/page_modules/universe/moons.php',
       ),
     ),
     'coordinates' => 
@@ -8666,6 +8708,7 @@ return array (
         'features' => 'config/page_features/universe/coordinates.php',
         'design' => 'config/page_design_specs/universe/coordinates.php',
         'systems' => 'config/page_systems/universe/coordinates.php',
+        'module' => 'includes/page_modules/universe/coordinates.php',
       ),
     ),
   ),

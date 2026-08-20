@@ -166,5 +166,6 @@ return array (
     'features' => 'config/page_features/armory/repair.php',
     'design' => 'config/page_design_specs/armory/repair.php',
     'systems' => 'config/page_systems/armory/repair.php',
+    'module' => 'includes/page_modules/armory/repair.php',
   ),
 );

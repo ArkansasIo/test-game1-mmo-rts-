@@ -197,5 +197,6 @@ return array (
     'features' => 'config/page_features/mothership/modules.php',
     'design' => 'config/page_design_specs/mothership/modules.php',
     'systems' => 'config/page_systems/mothership/modules.php',
+    'module' => 'includes/page_modules/mothership/modules.php',
   ),
 );

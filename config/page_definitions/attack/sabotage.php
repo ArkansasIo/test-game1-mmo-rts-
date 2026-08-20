@@ -230,5 +230,6 @@ return array (
     'features' => 'config/page_features/attack/sabotage.php',
     'design' => 'config/page_design_specs/attack/sabotage.php',
     'systems' => 'config/page_systems/attack/sabotage.php',
+    'module' => 'includes/page_modules/attack/sabotage.php',
   ),
 );

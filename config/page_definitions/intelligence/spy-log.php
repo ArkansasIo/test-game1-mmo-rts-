@@ -190,5 +190,6 @@ return array (
     'features' => 'config/page_features/intelligence/spy-log.php',
     'design' => 'config/page_design_specs/intelligence/spy-log.php',
     'systems' => 'config/page_systems/intelligence/spy-log.php',
+    'module' => 'includes/page_modules/intelligence/spy-log.php',
   ),
 );

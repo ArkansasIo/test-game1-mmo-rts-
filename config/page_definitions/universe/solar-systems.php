@@ -188,5 +188,6 @@ return array (
     'features' => 'config/page_features/universe/solar-systems.php',
     'design' => 'config/page_design_specs/universe/solar-systems.php',
     'systems' => 'config/page_systems/universe/solar-systems.php',
+    'module' => 'includes/page_modules/universe/solar-systems.php',
   ),
 );

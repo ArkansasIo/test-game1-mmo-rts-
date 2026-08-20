@@ -207,5 +207,6 @@ return array (
     'features' => 'config/page_features/account/ascension.php',
     'design' => 'config/page_design_specs/account/ascension.php',
     'systems' => 'config/page_systems/account/ascension.php',
+    'module' => 'includes/page_modules/account/ascension.php',
   ),
 );

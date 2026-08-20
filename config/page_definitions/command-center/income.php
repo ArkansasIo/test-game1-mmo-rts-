@@ -190,5 +190,6 @@ return array (
     'features' => 'config/page_features/command-center/income.php',
     'design' => 'config/page_design_specs/command-center/income.php',
     'systems' => 'config/page_systems/command-center/income.php',
+    'module' => 'includes/page_modules/command-center/income.php',
   ),
 );

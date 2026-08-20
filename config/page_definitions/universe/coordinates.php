@@ -169,5 +169,6 @@ return array (
     'features' => 'config/page_features/universe/coordinates.php',
     'design' => 'config/page_design_specs/universe/coordinates.php',
     'systems' => 'config/page_systems/universe/coordinates.php',
+    'module' => 'includes/page_modules/universe/coordinates.php',
   ),
 );

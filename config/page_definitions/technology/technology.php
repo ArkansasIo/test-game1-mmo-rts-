@@ -187,5 +187,6 @@ return array (
     'features' => 'config/page_features/technology/technology.php',
     'design' => 'config/page_design_specs/technology/technology.php',
     'systems' => 'config/page_systems/technology/technology.php',
+    'module' => 'includes/page_modules/technology/technology.php',
   ),
 );

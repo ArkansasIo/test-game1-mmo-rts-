@@ -30,8 +30,12 @@ try {
         case 'weapon_buy': $service->buyWeapon((int)$user['id'],(int)$_POST['weapon_type_id'],(int)$_POST['quantity']); $_SESSION['flash']='Weapon purchased.'; break;
         case 'weapon_repair': $service->repairWeapons((int)$user['id'],(int)$_POST['weapon_id']); $_SESSION['flash']='Weapons repaired.'; break;
         case 'mothership_upgrade': $cost=$service->upgradeMothership((int)$user['id'],(string)$_POST['module']); $_SESSION['flash']='Mothership upgraded for '.number_format($cost).' Naquadah.'; break;
-        case 'combat': $result=$service->resolveCombat((int)$user['id'],(int)$_POST['target_id'],(string)($_POST['combat_type']??'attack'),(int)$_POST['turns']); $_SESSION['flash']='Battle resolved: '.($result['winner_id']===(int)$user['id']?'victory':'defeat').'.'; break;
-        case 'covert': $result=$service->covertMission((int)$user['id'],(int)$_POST['target_id'],(string)$_POST['mission_type'],(int)$_POST['agents']); $_SESSION['flash']=$result['result']; break;
+        case 'combat':
+        case 'combat:raid': $combatType=$action==='combat:raid'?'raid':(string)($_POST['combat_type']??'attack'); $result=$service->resolveCombat((int)$user['id'],(int)$_POST['target_id'],$combatType,(int)$_POST['turns']); $_SESSION['flash']='Battle resolved: '.($result['winner_id']===(int)$user['id']?'victory':'defeat').'.'; break;
+        case 'covert':
+        case 'covert:recon':
+        case 'covert:spy':
+        case 'covert:sabotage': $missionType=$action==='covert:recon'?'recon':($action==='covert:spy'?'spy':($action==='covert:sabotage'?'sabotage':(string)$_POST['mission_type'])); $result=$service->covertMission((int)$user['id'],(int)$_POST['target_id'],$missionType,(int)$_POST['agents']); $_SESSION['flash']=$result['result']; break;
         case 'explore': (new WorldService())->explore((int)$user['id'],trim((string)$_POST['name']),trim((string)$_POST['planet_type'])); $_SESSION['flash']='Planet exploration completed.'; break;
         case 'colonize_planet': $colonyId=(new WorldService())->colonizePlanet((int)$user['id'],(int)$_POST['planet_id'],trim((string)$_POST['colony_name'])); $_SESSION['flash']='Colony established #'.$colonyId.'.'; break;
         case 'planet_defense': (new WorldService())->upgradePlanetDefense((int)$user['id'],(int)$_POST['planet_id'],(string)$_POST['defense_type']); $_SESSION['flash']='Planet defense upgraded.'; break;

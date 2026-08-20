@@ -217,5 +217,6 @@ return array (
     'features' => 'config/page_features/social/messages.php',
     'design' => 'config/page_design_specs/social/messages.php',
     'systems' => 'config/page_systems/social/messages.php',
+    'module' => 'includes/page_modules/social/messages.php',
   ),
 );

@@ -192,5 +192,6 @@ return array (
     'features' => 'config/page_features/training/miners.php',
     'design' => 'config/page_design_specs/training/miners.php',
     'systems' => 'config/page_systems/training/miners.php',
+    'module' => 'includes/page_modules/training/miners.php',
   ),
 );

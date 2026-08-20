@@ -223,5 +223,6 @@ return array (
     'features' => 'config/page_features/account/race.php',
     'design' => 'config/page_design_specs/account/race.php',
     'systems' => 'config/page_systems/account/race.php',
+    'module' => 'includes/page_modules/account/race.php',
   ),
 );

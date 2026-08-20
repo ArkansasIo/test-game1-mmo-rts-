@@ -237,5 +237,6 @@ return array (
     'features' => 'config/page_features/planets/planet-list.php',
     'design' => 'config/page_design_specs/planets/planet-list.php',
     'systems' => 'config/page_systems/planets/planet-list.php',
+    'module' => 'includes/page_modules/planets/planet-list.php',
   ),
 );

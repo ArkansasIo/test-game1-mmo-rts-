@@ -231,5 +231,6 @@ return array (
     'features' => 'config/page_features/social/alliances.php',
     'design' => 'config/page_design_specs/social/alliances.php',
     'systems' => 'config/page_systems/social/alliances.php',
+    'module' => 'includes/page_modules/social/alliances.php',
   ),
 );

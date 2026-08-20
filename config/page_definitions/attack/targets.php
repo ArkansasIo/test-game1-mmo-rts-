@@ -279,5 +279,6 @@ return array (
     'features' => 'config/page_features/attack/targets.php',
     'design' => 'config/page_design_specs/attack/targets.php',
     'systems' => 'config/page_systems/attack/targets.php',
+    'module' => 'includes/page_modules/attack/targets.php',
   ),
 );

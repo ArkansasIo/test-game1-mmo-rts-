@@ -184,5 +184,6 @@ return array (
     'features' => 'config/page_features/technology/tech-covert.php',
     'design' => 'config/page_design_specs/technology/tech-covert.php',
     'systems' => 'config/page_systems/technology/tech-covert.php',
+    'module' => 'includes/page_modules/technology/tech-covert.php',
   ),
 );

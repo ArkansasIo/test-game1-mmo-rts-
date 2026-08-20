@@ -187,5 +187,6 @@ return array (
     'features' => 'config/page_features/intelligence/enemy-intelligence.php',
     'design' => 'config/page_design_specs/intelligence/enemy-intelligence.php',
     'systems' => 'config/page_systems/intelligence/enemy-intelligence.php',
+    'module' => 'includes/page_modules/intelligence/enemy-intelligence.php',
   ),
 );

@@ -199,5 +199,6 @@ return array (
     'features' => 'config/page_features/universe/universe-planets.php',
     'design' => 'config/page_design_specs/universe/universe-planets.php',
     'systems' => 'config/page_systems/universe/universe-planets.php',
+    'module' => 'includes/page_modules/universe/universe-planets.php',
   ),
 );

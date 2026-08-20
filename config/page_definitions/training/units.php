@@ -192,5 +192,6 @@ return array (
     'features' => 'config/page_features/training/units.php',
     'design' => 'config/page_design_specs/training/units.php',
     'systems' => 'config/page_systems/training/units.php',
+    'module' => 'includes/page_modules/training/units.php',
   ),
 );

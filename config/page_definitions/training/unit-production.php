@@ -169,5 +169,6 @@ return array (
     'features' => 'config/page_features/training/unit-production.php',
     'design' => 'config/page_design_specs/training/unit-production.php',
     'systems' => 'config/page_systems/training/unit-production.php',
+    'module' => 'includes/page_modules/training/unit-production.php',
   ),
 );

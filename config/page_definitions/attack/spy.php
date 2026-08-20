@@ -231,5 +231,6 @@ return array (
     'features' => 'config/page_features/attack/spy.php',
     'design' => 'config/page_design_specs/attack/spy.php',
     'systems' => 'config/page_systems/attack/spy.php',
+    'module' => 'includes/page_modules/attack/spy.php',
   ),
 );

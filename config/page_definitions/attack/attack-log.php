@@ -191,5 +191,6 @@ return array (
     'features' => 'config/page_features/attack/attack-log.php',
     'design' => 'config/page_design_specs/attack/attack-log.php',
     'systems' => 'config/page_systems/attack/attack-log.php',
+    'module' => 'includes/page_modules/attack/attack-log.php',
   ),
 );

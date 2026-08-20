@@ -223,5 +223,6 @@ return array (
     'features' => 'config/page_features/account/vacation.php',
     'design' => 'config/page_design_specs/account/vacation.php',
     'systems' => 'config/page_systems/account/vacation.php',
+    'module' => 'includes/page_modules/account/vacation.php',
   ),
 );

@@ -165,5 +165,6 @@ return array (
     'features' => 'config/page_features/command-center/resources.php',
     'design' => 'config/page_design_specs/command-center/resources.php',
     'systems' => 'config/page_systems/command-center/resources.php',
+    'module' => 'includes/page_modules/command-center/resources.php',
   ),
 );

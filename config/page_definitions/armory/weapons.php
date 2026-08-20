@@ -186,5 +186,6 @@ return array (
     'features' => 'config/page_features/armory/weapons.php',
     'design' => 'config/page_design_specs/armory/weapons.php',
     'systems' => 'config/page_systems/armory/weapons.php',
+    'module' => 'includes/page_modules/armory/weapons.php',
   ),
 );

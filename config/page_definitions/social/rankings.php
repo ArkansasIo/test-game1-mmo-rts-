@@ -188,5 +188,6 @@ return array (
     'features' => 'config/page_features/social/rankings.php',
     'design' => 'config/page_design_specs/social/rankings.php',
     'systems' => 'config/page_systems/social/rankings.php',
+    'module' => 'includes/page_modules/social/rankings.php',
   ),
 );

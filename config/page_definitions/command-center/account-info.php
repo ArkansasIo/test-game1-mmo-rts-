@@ -180,5 +180,6 @@ return array (
     'features' => 'config/page_features/command-center/account-info.php',
     'design' => 'config/page_design_specs/command-center/account-info.php',
     'systems' => 'config/page_systems/command-center/account-info.php',
+    'module' => 'includes/page_modules/command-center/account-info.php',
   ),
 );

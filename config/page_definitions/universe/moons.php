@@ -193,5 +193,6 @@ return array (
     'features' => 'config/page_features/universe/moons.php',
     'design' => 'config/page_design_specs/universe/moons.php',
     'systems' => 'config/page_systems/universe/moons.php',
+    'module' => 'includes/page_modules/universe/moons.php',
   ),
 );

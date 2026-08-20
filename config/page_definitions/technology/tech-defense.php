@@ -184,5 +184,6 @@ return array (
     'features' => 'config/page_features/technology/tech-defense.php',
     'design' => 'config/page_design_specs/technology/tech-defense.php',
     'systems' => 'config/page_systems/technology/tech-defense.php',
+    'module' => 'includes/page_modules/technology/tech-defense.php',
   ),
 );

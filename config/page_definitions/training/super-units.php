@@ -193,5 +193,6 @@ return array (
     'features' => 'config/page_features/training/super-units.php',
     'design' => 'config/page_design_specs/training/super-units.php',
     'systems' => 'config/page_systems/training/super-units.php',
+    'module' => 'includes/page_modules/training/super-units.php',
   ),
 );

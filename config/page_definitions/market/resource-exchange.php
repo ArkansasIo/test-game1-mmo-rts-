@@ -204,5 +204,6 @@ return array (
     'features' => 'config/page_features/market/resource-exchange.php',
     'design' => 'config/page_design_specs/market/resource-exchange.php',
     'systems' => 'config/page_systems/market/resource-exchange.php',
+    'module' => 'includes/page_modules/market/resource-exchange.php',
   ),
 );

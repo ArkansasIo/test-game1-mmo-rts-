@@ -234,5 +234,6 @@ return array (
     'features' => 'config/page_features/planets/planet-defenses.php',
     'design' => 'config/page_design_specs/planets/planet-defenses.php',
     'systems' => 'config/page_systems/planets/planet-defenses.php',
+    'module' => 'includes/page_modules/planets/planet-defenses.php',
   ),
 );

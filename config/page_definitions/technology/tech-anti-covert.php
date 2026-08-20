@@ -184,5 +184,6 @@ return array (
     'features' => 'config/page_features/technology/tech-anti-covert.php',
     'design' => 'config/page_design_specs/technology/tech-anti-covert.php',
     'systems' => 'config/page_systems/technology/tech-anti-covert.php',
+    'module' => 'includes/page_modules/technology/tech-anti-covert.php',
   ),
 );

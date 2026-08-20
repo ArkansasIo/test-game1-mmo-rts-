@@ -12,7 +12,8 @@ config/
 ├── page_logic/<menu>/<route>.php
 ├── page_features/<menu>/<route>.php
 ├── page_design_specs/<menu>/<route>.php
-└── page_systems/<menu>/<route>.php
+├── page_systems/<menu>/<route>.php
+└── ../includes/page_modules/<menu>/<route>.php
 ```
 
 The grouped PHP entrypoint is located at `pages/<menu>/subpages/<route>.php`. It loads the route definition and delegates to the root front controller. The route definition records the separate contract file paths as well as the combined metadata snapshot.
@@ -25,6 +26,7 @@ The grouped PHP entrypoint is located at `pages/<menu>/subpages/<route>.php`. It
 | `page_features` | User-visible capabilities and controls that belong to the page’s function. |
 | `page_design_specs` | Template family, sections, components, responsive behavior, and white/black visual structure. |
 | `page_systems` | Services, database reads, database writes, and authorized server actions. |
+| `page_modules` | Executable per-page functions for logic access, feature access, design access, system access, action enumeration, intent validation, and preview view models. |
 | `page_definitions` | Combined route contract used by entrypoints, manifests, and future renderers. |
 
 ## Functional examples
@@ -35,7 +37,9 @@ Technology pages use the technology-tree contract, Training pages use the popula
 
 ## Security boundary
 
-The dedicated page files do not bypass the server-authoritative architecture. They are route entrypoints and metadata boundaries. All state changes remain in `actions/game.php`, where authentication, CSRF validation, RBAC, ownership, cooldown, resource validation, and transactions are enforced before service execution.
+The dedicated page files do not bypass the server-authoritative architecture. They are route entrypoints and metadata boundaries. All state changes remain in `actions/game.php`, where authentication, CSRF validation, RBAC, ownership, cooldown, resource validation, and transactions are enforced before service execution. The controller now accepts the explicit `combat:raid`, `covert:recon`, `covert:spy`, and `covert:sabotage` aliases and maps them to the existing transactional combat and covert services.
+
+Each generated module exposes a route-specific function family such as `<prefix>_logic()`, `<prefix>_features()`, `<prefix>_design()`, `<prefix>_systems()`, `<prefix>_actions()`, `<prefix>_validate_intent()`, and `<prefix>_preview()`. The preview and validation functions are safe to call without a database transaction; they describe and validate intent but do not mutate player state.
 
 ## Generation and validation
 
@@ -47,6 +51,6 @@ php tools/generate_page_tree.php
 php tools/validate_contracts.php
 ```
 
-The current generated coverage is **12 menu groups**, **43 registered page routes**, **43 page definitions**, **43 logic files**, **43 feature files**, **43 design specification files**, and **43 systems files**. `config/page_contracts.php` provides a global route index for server-side tooling and future renderers.
+The current generated coverage is **12 menu groups**, **43 registered page routes**, **43 page definitions**, **43 logic files**, **43 feature files**, **43 design specification files**, **43 systems files**, and **43 executable page modules**. `tests/page_module_smoke.php` loads every module and simulates combat, spy, and sabotage intent; it verifies valid requests, rejects invalid target IDs, and performs no database mutations. `config/page_contracts.php` provides a global route index for server-side tooling and future renderers.
 
 The verified public game interface remains `game.php`. The dedicated contract files are available to the PHP application without changing the working left-side navigation or the legacy `modular-pages-preview.php` compatibility redirect.

@@ -171,5 +171,6 @@ return array (
     'features' => 'config/page_features/mothership/exploration.php',
     'design' => 'config/page_design_specs/mothership/exploration.php',
     'systems' => 'config/page_systems/mothership/exploration.php',
+    'module' => 'includes/page_modules/mothership/exploration.php',
   ),
 );

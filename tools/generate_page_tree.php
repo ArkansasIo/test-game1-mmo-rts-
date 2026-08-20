@@ -12,6 +12,7 @@ $logicRoot = $root . '/config/page_logic';
 $featuresRoot = $root . '/config/page_features';
 $designRoot = $root . '/config/page_design_specs';
 $systemsRoot = $root . '/config/page_systems';
+$moduleRoot = $root . '/includes/page_modules';
 
 $nestedEntry = <<<'PHP'
 <?php
@@ -36,7 +37,8 @@ foreach ($registry as $groupKey => $group) {
     $featuresDir = $featuresRoot . '/' . $groupKey;
     $designDir = $designRoot . '/' . $groupKey;
     $systemsDir = $systemsRoot . '/' . $groupKey;
-    foreach ([$dir, $subdir, $definitionDir, $logicDir, $featuresDir, $designDir, $systemsDir] as $path) {
+    $moduleDir = $moduleRoot . '/' . $groupKey;
+    foreach ([$dir, $subdir, $definitionDir, $logicDir, $featuresDir, $designDir, $systemsDir, $moduleDir] as $path) {
         if (!is_dir($path)) mkdir($path, 0775, true);
     }
 
@@ -50,6 +52,14 @@ foreach ($registry as $groupKey => $group) {
         $title = $definition['title'] ?? ucwords(str_replace('-', ' ', $route));
         $layout = $definition['layout'] ?? 'generic';
         $profile = $catalog['profiles'][$layout] ?? ['logic'=>['purpose'=>$title,'workflow'=>['load state','validate intent','render result'],'validation'=>['authenticated commander'],'calculations'=>[],'mutations'=>[]],'features'=>[$title],'design'=>['template'=>'generic-page','sections'=>['overview','controls','activity'],'components'=>['panel','status-badge'],'responsive'=>'stacked mobile layout'],'systems'=>['services'=>['PageService'],'reads'=>$definition['tables'] ?? [],'writes'=>[],'actions'=>$definition['actions'] ?? []]];
+        $modulePath = $moduleDir . '/' . $route . '.php';
+        $prefix = 'stargatewars_' . preg_replace('/[^a-z0-9]+/', '_', strtolower($groupKey . '_' . $route));
+        $logicPath = $root . '/config/page_logic/' . $groupKey . '/' . $route . '.php';
+        $featuresPath = $root . '/config/page_features/' . $groupKey . '/' . $route . '.php';
+        $designPath = $root . '/config/page_design_specs/' . $groupKey . '/' . $route . '.php';
+        $systemsPath = $root . '/config/page_systems/' . $groupKey . '/' . $route . '.php';
+        $moduleCode = "<?php\ndeclare(strict_types=1);\n\nfunction {$prefix}_logic(): array { return require " . var_export($logicPath, true) . "; }\nfunction {$prefix}_features(): array { return require " . var_export($featuresPath, true) . "; }\nfunction {$prefix}_design(): array { return require " . var_export($designPath, true) . "; }\nfunction {$prefix}_systems(): array { return require " . var_export($systemsPath, true) . "; }\nfunction {$prefix}_actions(): array { return {$prefix}_systems()['actions'] ?? []; }\nfunction {$prefix}_validate_intent(array \$input): array {\n    \$errors = [];\n    \$action = (string)(\$input['action'] ?? '');\n    if (\$action === '' || !in_array(\$action, {$prefix}_actions(), true)) { \$errors['action'] = 'Action is not permitted for this page.'; }\n    if (in_array(\$action, ['combat','combat:raid','covert:recon','covert:spy','covert:sabotage'], true) && (int)(\$input['target_id'] ?? 0) <= 0) { \$errors['target_id'] = 'A valid target is required.'; }\n    if (in_array(\$action, ['deposit','withdraw','train','upgrade_up','technology','weapon_buy','weapon_repair'], true) && (int)(\$input['amount'] ?? \$input['quantity'] ?? 0) < 0) { \$errors['amount'] = 'The requested amount must not be negative.'; }\n    return ['valid' => \$errors === [], 'errors' => \$errors, 'action' => \$action];\n}\nfunction {$prefix}_preview(array \$context = []): array {\n    return ['route' => " . var_export($route, true) . ", 'title' => " . var_export($title, true) . ", 'logic' => {$prefix}_logic(), 'features' => {$prefix}_features(), 'design' => {$prefix}_design(), 'systems' => {$prefix}_systems(), 'context' => \$context];\n}\n";
+        file_put_contents($modulePath, $moduleCode);
         foreach ([
             $logicDir . '/' . $route . '.php' => $profile['logic'],
             $featuresDir . '/' . $route . '.php' => $profile['features'],
@@ -78,6 +88,7 @@ foreach ($registry as $groupKey => $group) {
                 'features' => 'config/page_features/' . $groupKey . '/' . $route . '.php',
                 'design' => 'config/page_design_specs/' . $groupKey . '/' . $route . '.php',
                 'systems' => 'config/page_systems/' . $groupKey . '/' . $route . '.php',
+                'module' => 'includes/page_modules/' . $groupKey . '/' . $route . '.php',
             ],
         ];
         $definitionFile = $definitionDir . '/' . $route . '.php';
@@ -85,9 +96,10 @@ foreach ($registry as $groupKey => $group) {
 
         $manifestPages[] = ['route'=>$route, 'title'=>$title, 'layout'=>$layout, 'definition'=>'config/page_definitions/' . $groupKey . '/' . $route . '.php', 'actions'=>$definition['actions'] ?? [], 'tables'=>$definition['tables'] ?? []];
         $definitionPath = $root . '/config/page_definitions/' . $groupKey . '/' . $route . '.php';
-        $content = "<?php\ndeclare(strict_types=1);\n\$route = " . var_export($route, true) . "; \$group = " . var_export($groupKey, true) . "; \$label = " . var_export($title, true) . "; \$pageDefinition = require " . var_export($definitionPath, true) . "; require __DIR__ . '/../../_nested_entry.php';\n";
+        $modulePath = $root . '/includes/page_modules/' . $groupKey . '/' . $route . '.php';
+        $content = "<?php\ndeclare(strict_types=1);\n\$route = " . var_export($route, true) . "; \$group = " . var_export($groupKey, true) . "; \$label = " . var_export($title, true) . "; \$pageDefinition = require " . var_export($definitionPath, true) . "; \$pageModule = require " . var_export($modulePath, true) . "; require __DIR__ . '/../../_nested_entry.php';\n";
         file_put_contents($subdir . '/' . $route . '.php', $content);
-        $legacy = "<?php\ndeclare(strict_types=1);\n\$route = " . var_export($route, true) . "; \$group = " . var_export($groupKey, true) . "; \$label = " . var_export($title, true) . "; \$pageDefinition = require " . var_export($definitionPath, true) . "; require __DIR__ . '/_nested_entry.php';\n";
+        $legacy = "<?php\ndeclare(strict_types=1);\n\$route = " . var_export($route, true) . "; \$group = " . var_export($groupKey, true) . "; \$label = " . var_export($title, true) . "; \$pageDefinition = require " . var_export($definitionPath, true) . "; \$pageModule = require " . var_export($modulePath, true) . "; require __DIR__ . '/_nested_entry.php';\n";
         file_put_contents($pagesRoot . '/' . $route . '.php', $legacy);
         $all[$route] = ['group'=>$groupKey,'title'=>$title,'layout'=>$layout,'definition'=>'config/page_definitions/' . $groupKey . '/' . $route . '.php'];
         $contractsAll[$route] = $pageDefinitionData;

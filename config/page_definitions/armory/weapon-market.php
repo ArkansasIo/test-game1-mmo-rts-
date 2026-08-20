@@ -204,5 +204,6 @@ return array (
     'features' => 'config/page_features/armory/weapon-market.php',
     'design' => 'config/page_design_specs/armory/weapon-market.php',
     'systems' => 'config/page_systems/armory/weapon-market.php',
+    'module' => 'includes/page_modules/armory/weapon-market.php',
   ),
 );

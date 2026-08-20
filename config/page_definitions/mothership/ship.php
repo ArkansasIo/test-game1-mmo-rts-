@@ -199,5 +199,6 @@ return array (
     'features' => 'config/page_features/mothership/ship.php',
     'design' => 'config/page_design_specs/mothership/ship.php',
     'systems' => 'config/page_systems/mothership/ship.php',
+    'module' => 'includes/page_modules/mothership/ship.php',
   ),
 );

@@ -203,5 +203,6 @@ return array (
     'features' => 'config/page_features/market/mercenary-market.php',
     'design' => 'config/page_design_specs/market/mercenary-market.php',
     'systems' => 'config/page_systems/market/mercenary-market.php',
+    'module' => 'includes/page_modules/market/mercenary-market.php',
   ),
 );
