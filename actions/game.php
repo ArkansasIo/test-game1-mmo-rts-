@@ -5,6 +5,7 @@ require_auth();
 require_once __DIR__ . '/../includes/services/GameService.php';
 require_once __DIR__ . '/../includes/services/WeaponMarketService.php';
 require_once __DIR__ . '/../includes/services/ResourceMarketService.php';
+require_once __DIR__ . '/../includes/services/MercenaryMarketService.php';
 require_once __DIR__ . '/../includes/services/WorldService.php';
 require_once __DIR__ . '/../includes/services/OGameService.php';
 require_once __DIR__ . '/../includes/services/MMORPGService.php';
@@ -73,7 +74,7 @@ try {
         case 'message_read': if(isset($_POST['report_id'])){ (new SpyLogService(db()))->markRead((int)$user['id'],(int)$_POST['report_id']); $_SESSION['flash']='Intelligence report marked read.'; } else { (new WorldService())->markMessageRead((int)$user['id'],(int)$_POST['message_id']); $_SESSION['flash']='Message marked read.'; } break;
         case 'blacklist': (new SocialService(db()))->blacklist((int)$user['id'],(int)$_POST['blocked_player_id'],(string)($_POST['reason']??'')); $_SESSION['flash']='Player blacklisted.'; break;
         case 'system_map': (new WorldService())->getSystemMap((int)$_POST['system_id']); $_SESSION['flash']='Solar system map loaded.'; break;
-        case 'mercenary_buy': (new WorldService())->buyMercenary((int)$user['id'],(int)$_POST['mercenary_type_id'],(int)$_POST['quantity']); $_SESSION['flash']='Mercenaries recruited.'; break;
+        case 'mercenary_buy': $mercenary=(new MercenaryMarketService(db()))->buy((int)$user['id'],(int)$_POST['mercenary_type_id'],(int)$_POST['quantity'],(int)($_POST['duration_days']??1)); $_SESSION['flash']='Recruited '.number_format($mercenary['quantity']).' '.$mercenary['name'].' for '.number_format($mercenary['cost']).' Naquadah.'; break;
         case 'vacation': (new WorldService())->activateVacation((int)$user['id'],(int)$_POST['days']); $_SESSION['flash']='Vacation mode activated.'; break;
         case 'refresh_rankings': (new WorldService())->refreshRanking(); $_SESSION['flash']='Rankings refreshed.'; break;
         case 'ascend': (new WorldService())->ascend((int)$user['id'],trim((string)$_POST['ascended_race'])); $_SESSION['flash']='Ascension completed.'; break;
