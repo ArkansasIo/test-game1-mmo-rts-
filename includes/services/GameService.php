@@ -116,7 +116,18 @@ final class GameService {
     }
     public function readReport(int $playerId,string $kind,int $reportId): void {
         if($playerId<1||$reportId<1||!in_array($kind,['battle','intelligence'],true))throw new InvalidArgumentException('Invalid report read request');
-        $this->pdo->beginTransaction();try{$updated=$kind==='battle'?$this->pdo->prepare('UPDATE battle_reports SET seen_at=NOW() WHERE id=? AND recipient_id=?'):$this->pdo->prepare('UPDATE intelligence_reports SET seen_at=NOW() WHERE id=? AND player_id=?');$updated->execute([$reportId,$playerId]);if($updated->rowCount()<1&&$kind==='battle')throw new RuntimeException('Report unavailable or ownership check failed');$this->event($playerId,'report_read',$kind,$reportId,['classification'=>$kind==='intelligence'?'CLASSIFIED':'STANDARD']);$this->pdo->commit();}catch(Throwable $e){if($this->pdo->inTransaction())$this->pdo->rollBack();throw $e;}
+        $this->pdo->beginTransaction();
+        try {
+            $table=$kind==='battle'?'battle_reports':'intelligence_reports';
+            $ownerColumn=$kind==='battle'?'recipient_id':'player_id';
+            $check=$this->pdo->prepare("SELECT id,seen_at FROM {$table} WHERE id=? AND {$ownerColumn}=? FOR UPDATE");
+            $check->execute([$reportId,$playerId]);
+            $report=$check->fetch(PDO::FETCH_ASSOC);
+            if(!$report)throw new RuntimeException('Report unavailable or ownership check failed');
+            $this->pdo->prepare("UPDATE {$table} SET seen_at=NOW() WHERE id=? AND {$ownerColumn}=?")->execute([$reportId,$playerId]);
+            $this->event($playerId,'report_read',$kind,$reportId,['classification'=>$kind==='intelligence'?'CLASSIFIED':'STANDARD','was_unread'=>$report['seen_at']===null]);
+            $this->pdo->commit();
+        } catch(Throwable $e) { if($this->pdo->inTransaction())$this->pdo->rollBack(); throw $e; }
     }
     public function covertStats(int $playerId): array {
         if ($playerId < 1) throw new InvalidArgumentException('Invalid covert-state request');
