@@ -11,6 +11,7 @@ return array (
       'route' => 'dashboard',
       'title' => 'Command Center',
       'layout' => 'dashboard',
+      'definition' => 'config/page_definitions/command-center/dashboard.php',
       'actions' => 
       array (
         0 => 'process_turns',
@@ -28,6 +29,7 @@ return array (
       'route' => 'account-info',
       'title' => 'Account Information',
       'layout' => 'details',
+      'definition' => 'config/page_definitions/command-center/account-info.php',
       'actions' => 
       array (
       ),
@@ -44,6 +46,7 @@ return array (
       'route' => 'resources',
       'title' => 'Resources & Vault',
       'layout' => 'economy',
+      'definition' => 'config/page_definitions/command-center/resources.php',
       'actions' => 
       array (
         0 => 'deposit',
@@ -60,6 +63,7 @@ return array (
       'route' => 'income',
       'title' => 'Income Breakdown',
       'layout' => 'breakdown',
+      'definition' => 'config/page_definitions/command-center/income.php',
       'actions' => 
       array (
       ),
@@ -76,6 +80,7 @@ return array (
       'route' => 'military-stats',
       'title' => 'Military Statistics',
       'layout' => 'stats',
+      'definition' => 'config/page_definitions/command-center/military-stats.php',
       'actions' => 
       array (
       ),

@@ -11,6 +11,7 @@ return array (
       'route' => 'rankings',
       'title' => 'Rankings',
       'layout' => 'rankings',
+      'definition' => 'config/page_definitions/social/rankings.php',
       'actions' => 
       array (
         0 => 'refresh_rankings',
@@ -26,6 +27,7 @@ return array (
       'route' => 'alliances',
       'title' => 'Alliances',
       'layout' => 'social',
+      'definition' => 'config/page_definitions/social/alliances.php',
       'actions' => 
       array (
         0 => 'alliance_create',
@@ -42,6 +44,7 @@ return array (
       'route' => 'messages',
       'title' => 'Messages',
       'layout' => 'messages',
+      'definition' => 'config/page_definitions/social/messages.php',
       'actions' => 
       array (
         0 => 'message',

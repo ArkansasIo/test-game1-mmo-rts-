@@ -11,6 +11,7 @@ return array (
       'route' => 'planet-list',
       'title' => 'Planet List',
       'layout' => 'planets',
+      'definition' => 'config/page_definitions/planets/planet-list.php',
       'actions' => 
       array (
         0 => 'explore',
@@ -27,6 +28,7 @@ return array (
       'route' => 'planet-bonuses',
       'title' => 'Planet Bonuses',
       'layout' => 'planets',
+      'definition' => 'config/page_definitions/planets/planet-bonuses.php',
       'actions' => 
       array (
       ),
@@ -40,6 +42,7 @@ return array (
       'route' => 'planet-defenses',
       'title' => 'Planet Defenses',
       'layout' => 'planets',
+      'definition' => 'config/page_definitions/planets/planet-defenses.php',
       'actions' => 
       array (
         0 => 'planet_defense',

@@ -11,6 +11,7 @@ return array (
       'route' => 'technology',
       'title' => 'Technology Tree',
       'layout' => 'technology',
+      'definition' => 'config/page_definitions/technology/technology.php',
       'actions' => 
       array (
         0 => 'technology',
@@ -26,6 +27,7 @@ return array (
       'route' => 'tech-offense',
       'title' => 'Offense Technology',
       'layout' => 'technology',
+      'definition' => 'config/page_definitions/technology/tech-offense.php',
       'actions' => 
       array (
         0 => 'technology',
@@ -41,6 +43,7 @@ return array (
       'route' => 'tech-defense',
       'title' => 'Defense Technology',
       'layout' => 'technology',
+      'definition' => 'config/page_definitions/technology/tech-defense.php',
       'actions' => 
       array (
         0 => 'technology',
@@ -56,6 +59,7 @@ return array (
       'route' => 'tech-covert',
       'title' => 'Covert Technology',
       'layout' => 'technology',
+      'definition' => 'config/page_definitions/technology/tech-covert.php',
       'actions' => 
       array (
         0 => 'technology',
@@ -71,6 +75,7 @@ return array (
       'route' => 'tech-anti-covert',
       'title' => 'Anti-Covert Technology',
       'layout' => 'technology',
+      'definition' => 'config/page_definitions/technology/tech-anti-covert.php',
       'actions' => 
       array (
         0 => 'technology',

@@ -11,6 +11,7 @@ return array (
       'route' => 'targets',
       'title' => 'Target Selection',
       'layout' => 'targets',
+      'definition' => 'config/page_definitions/attack/targets.php',
       'actions' => 
       array (
         0 => 'combat',
@@ -30,6 +31,7 @@ return array (
       'route' => 'spy',
       'title' => 'Spy Operations',
       'layout' => 'covert',
+      'definition' => 'config/page_definitions/attack/spy.php',
       'actions' => 
       array (
         0 => 'covert',
@@ -46,6 +48,7 @@ return array (
       'route' => 'sabotage',
       'title' => 'Sabotage Operations',
       'layout' => 'covert',
+      'definition' => 'config/page_definitions/attack/sabotage.php',
       'actions' => 
       array (
         0 => 'covert',
@@ -61,6 +64,7 @@ return array (
       'route' => 'attack-log',
       'title' => 'Attack Log & Reports',
       'layout' => 'reports',
+      'definition' => 'config/page_definitions/attack/attack-log.php',
       'actions' => 
       array (
         0 => 'message_read',

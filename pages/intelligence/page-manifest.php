@@ -11,6 +11,7 @@ return array (
       'route' => 'spy-log',
       'title' => 'Spy Log',
       'layout' => 'reports',
+      'definition' => 'config/page_definitions/intelligence/spy-log.php',
       'actions' => 
       array (
         0 => 'message_read',
@@ -26,6 +27,7 @@ return array (
       'route' => 'enemy-intelligence',
       'title' => 'Enemy Intelligence',
       'layout' => 'reports',
+      'definition' => 'config/page_definitions/intelligence/enemy-intelligence.php',
       'actions' => 
       array (
       ),

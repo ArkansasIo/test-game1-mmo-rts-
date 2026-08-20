@@ -11,6 +11,7 @@ return array (
       'route' => 'resource-exchange',
       'title' => 'Resource Exchange',
       'layout' => 'market',
+      'definition' => 'config/page_definitions/market/resource-exchange.php',
       'actions' => 
       array (
         0 => 'market_list',
@@ -27,6 +28,7 @@ return array (
       'route' => 'mercenary-market',
       'title' => 'Mercenary Market',
       'layout' => 'market',
+      'definition' => 'config/page_definitions/market/mercenary-market.php',
       'actions' => 
       array (
         0 => 'mercenary_buy',

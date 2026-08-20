@@ -11,6 +11,7 @@ return array (
       'route' => 'race',
       'title' => 'Race Selection',
       'layout' => 'account',
+      'definition' => 'config/page_definitions/account/race.php',
       'actions' => 
       array (
         0 => 'change_race',
@@ -26,6 +27,7 @@ return array (
       'route' => 'vacation',
       'title' => 'Vacation Mode',
       'layout' => 'account',
+      'definition' => 'config/page_definitions/account/vacation.php',
       'actions' => 
       array (
         0 => 'vacation',
@@ -41,6 +43,7 @@ return array (
       'route' => 'ascension',
       'title' => 'Ascension',
       'layout' => 'progression',
+      'definition' => 'config/page_definitions/account/ascension.php',
       'actions' => 
       array (
         0 => 'ascend',

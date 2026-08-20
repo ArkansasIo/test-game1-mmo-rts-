@@ -11,6 +11,7 @@ return array (
       'route' => 'ship',
       'title' => 'Mothership',
       'layout' => 'ship',
+      'definition' => 'config/page_definitions/mothership/ship.php',
       'actions' => 
       array (
         0 => 'mothership_upgrade',
@@ -25,6 +26,7 @@ return array (
       'route' => 'modules',
       'title' => 'Mothership Modules',
       'layout' => 'ship',
+      'definition' => 'config/page_definitions/mothership/modules.php',
       'actions' => 
       array (
         0 => 'mothership_upgrade',
@@ -39,6 +41,7 @@ return array (
       'route' => 'exploration',
       'title' => 'Exploration',
       'layout' => 'exploration',
+      'definition' => 'config/page_definitions/mothership/exploration.php',
       'actions' => 
       array (
         0 => 'explore',

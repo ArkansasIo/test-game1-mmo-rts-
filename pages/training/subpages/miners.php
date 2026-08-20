@@ -1,3 +1,3 @@
 <?php
 declare(strict_types=1);
-$route = 'miners'; $group = 'training'; $label = 'Miners & Lifers'; require __DIR__ . '/../../_nested_entry.php';
+$route = 'miners'; $group = 'training'; $label = 'Miners & Lifers'; $pageDefinition = require '/home/ubuntu/stargatewars/config/page_definitions/training/miners.php'; require __DIR__ . '/../../_nested_entry.php';

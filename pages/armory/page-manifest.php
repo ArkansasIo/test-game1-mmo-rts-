@@ -11,6 +11,7 @@ return array (
       'route' => 'weapons',
       'title' => 'Weapon Inventory',
       'layout' => 'inventory',
+      'definition' => 'config/page_definitions/armory/weapons.php',
       'actions' => 
       array (
         0 => 'weapon_buy',
@@ -26,6 +27,7 @@ return array (
       'route' => 'weapon-market',
       'title' => 'Weapon Market',
       'layout' => 'market',
+      'definition' => 'config/page_definitions/armory/weapon-market.php',
       'actions' => 
       array (
         0 => 'market_list',
@@ -42,6 +44,7 @@ return array (
       'route' => 'repair',
       'title' => 'Weapon Repair',
       'layout' => 'repair',
+      'definition' => 'config/page_definitions/armory/repair.php',
       'actions' => 
       array (
         0 => 'weapon_repair',

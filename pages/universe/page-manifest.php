@@ -11,6 +11,7 @@ return array (
       'route' => 'galaxies',
       'title' => 'Galaxy Map',
       'layout' => 'galaxies',
+      'definition' => 'config/page_definitions/universe/galaxies.php',
       'actions' => 
       array (
         0 => 'universe_galaxies',
@@ -26,6 +27,7 @@ return array (
       'route' => 'sectors',
       'title' => 'Sector Map',
       'layout' => 'sectors',
+      'definition' => 'config/page_definitions/universe/sectors.php',
       'actions' => 
       array (
         0 => 'universe_sectors',
@@ -41,6 +43,7 @@ return array (
       'route' => 'solar-systems',
       'title' => 'Solar Systems',
       'layout' => 'solar-systems',
+      'definition' => 'config/page_definitions/universe/solar-systems.php',
       'actions' => 
       array (
         0 => 'system_map',
@@ -57,6 +60,7 @@ return array (
       'route' => 'universe-planets',
       'title' => 'Universe Planets',
       'layout' => 'universe-planets',
+      'definition' => 'config/page_definitions/universe/universe-planets.php',
       'actions' => 
       array (
         0 => 'planet_details',
@@ -73,6 +77,7 @@ return array (
       'route' => 'moons',
       'title' => 'Moon Registry',
       'layout' => 'moons',
+      'definition' => 'config/page_definitions/universe/moons.php',
       'actions' => 
       array (
         0 => 'moon_details',
@@ -89,6 +94,7 @@ return array (
       'route' => 'coordinates',
       'title' => 'Coordinate Search',
       'layout' => 'coordinates',
+      'definition' => 'config/page_definitions/universe/coordinates.php',
       'actions' => 
       array (
         0 => 'coordinate_lookup',

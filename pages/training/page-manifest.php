@@ -11,6 +11,7 @@ return array (
       'route' => 'units',
       'title' => 'Unit Training',
       'layout' => 'training',
+      'definition' => 'config/page_definitions/training/units.php',
       'actions' => 
       array (
         0 => 'train',
@@ -25,6 +26,7 @@ return array (
       'route' => 'miners',
       'title' => 'Miners & Lifers',
       'layout' => 'training',
+      'definition' => 'config/page_definitions/training/miners.php',
       'actions' => 
       array (
         0 => 'train',
@@ -39,6 +41,7 @@ return array (
       'route' => 'super-units',
       'title' => 'Super Units',
       'layout' => 'training',
+      'definition' => 'config/page_definitions/training/super-units.php',
       'actions' => 
       array (
         0 => 'train',
@@ -54,6 +57,7 @@ return array (
       'route' => 'unit-production',
       'title' => 'Unit Production',
       'layout' => 'upgrade',
+      'definition' => 'config/page_definitions/training/unit-production.php',
       'actions' => 
       array (
         0 => 'upgrade_up',
