@@ -10,6 +10,7 @@ require_once __DIR__ . '/../includes/services/RankingsService.php';
 require_once __DIR__ . '/../includes/services/AllianceService.php';
 require_once __DIR__ . '/../includes/services/MessagingService.php';
 require_once __DIR__ . '/../includes/services/PlanetService.php';
+require_once __DIR__ . '/../includes/services/PlanetDefenseService.php';
 require_once __DIR__ . '/../includes/services/WorldService.php';
 require_once __DIR__ . '/../includes/services/OGameService.php';
 require_once __DIR__ . '/../includes/services/MMORPGService.php';
@@ -69,7 +70,7 @@ try {
         case 'covert:sabotage': $missionType=$action==='covert:recon'?'recon':($action==='covert:spy'?'spy':($action==='covert:sabotage'?'sabotage':(string)$_POST['mission_type'])); $result=$service->covertMission((int)$user['id'],(int)$_POST['target_id'],$missionType,(int)$_POST['agents']); $_SESSION['flash']=$result['result']; break;
         case 'explore': $exploration=(new PlanetService(db()))->explore((int)$user['id'],(string)$_POST['name'],(string)$_POST['planet_type']); $_SESSION['planet_exploration']=$exploration; $_SESSION['flash']='Planet exploration completed #'.$exploration['exploration_id'].'.'; break;
         case 'colonize_planet': $colony=(new PlanetService(db()))->colonize((int)$user['id'],(int)$_POST['planet_id'],(string)$_POST['colony_name']); $_SESSION['planet_colonization']=$colony; $_SESSION['flash']='Colony established #'.$colony['colony_id'].'.'; break;
-        case 'planet_defense': $defense=(new PlanetService(db()))->upgradeDefense((int)$user['id'],(int)$_POST['planet_id'],(string)$_POST['defense_type']); $_SESSION['planet_defense']=$defense; $_SESSION['flash']='Planet defense upgraded to level '.$defense['level_after'].'.'; break;
+        case 'planet_defense': $defense=(new PlanetDefenseService(db()))->upgrade((int)$user['id'],(int)$_POST['planet_id'],(string)$_POST['defense_type']); $_SESSION['planet_defense']=$defense; $_SESSION['flash']='Planet defense queued at level '.$defense['level_after'].'.'; break;
         case 'alliance_create': $allianceId=(new AllianceService(db()))->create((int)$user['id'],(string)$_POST['name'],(string)$_POST['tag'],(string)($_POST['description']??'')); $_SESSION['flash']='Alliance created #'.$allianceId.'.'; break;
         case 'alliance_join': $membership=(new AllianceService(db()))->join((int)$user['id'],(int)$_POST['alliance_id']); $_SESSION['flash']='Joined alliance '.$membership['name'].' ('.$membership['member_count'].'/'.$membership['capacity'].').'; break;
         case 'message': $messageId=(new MessagingService(db()))->send((int)$user['id'],(int)$_POST['recipient_id'],(string)$_POST['subject'],(string)$_POST['body']); $_SESSION['flash']='Message sent #'.$messageId.'.'; break;
