@@ -55,6 +55,7 @@ try {
     require_once __DIR__ . '/includes/services/SpyLogService.php';
     require_once __DIR__ . '/includes/services/EnemyIntelligenceService.php';
     require_once __DIR__ . '/includes/services/EconomyService.php';
+    require_once __DIR__ . '/includes/services/PlanetBonusService.php';
     $livePlayerId = (int)($_SESSION['user_id'] ?? 1);
     $liveGameService = new GameService(db());
     $liveMilitary = $liveGameService->militaryStats($livePlayerId);
@@ -76,6 +77,7 @@ try {
     $liveSpyLog = (new SpyLogService(db()))->snapshot($livePlayerId);
     $liveEnemyIntelligence = (new EnemyIntelligenceService(db()))->snapshot($livePlayerId);
     $liveIncome = (new EconomyService(db()))->incomeBreakdown($livePlayerId);
+    $livePlanetBonuses = (new PlanetBonusService(db()))->snapshot($livePlayerId);
     $resourceStmt = db()->prepare('SELECT metal,crystal,naquadah,energy,dark_matter,food,water,population,banked_naquadah FROM player_resources WHERE player_id=?');
     $resourceStmt->execute([$livePlayerId]);
     $liveResources = $resourceStmt->fetch(PDO::FETCH_ASSOC) ?: null;
@@ -104,6 +106,7 @@ $state = [
     'spy_log'=>$liveSpyLog ?: ['missions'=>[],'reports'=>[],'mission_count'=>0,'report_count'=>0,'unread'=>0,'formula'=>'report visibility = recipient ownership + classification + read status','states'=>['loading','ready','empty','success','error']],
     'enemy_intelligence'=>$liveEnemyIntelligence ?: ['targets'=>[],'target_count'=>0,'classified_count'=>0,'formula'=>'intelligence confidence = observation quality × freshness × counter-intelligence adjustment','states'=>['loading','ready','empty','protected','error']],
     'income'=>$liveIncome ?: ['state'=>'empty','base_production'=>0,'race_name'=>'Unknown','race_modifier'=>1,'government_name'=>'Unassigned','government_modifier'=>1,'technology_modifier'=>1,'gross_output'=>0,'upkeep'=>['food'=>0,'water'=>0,'energy'=>0],'upkeep_total'=>0,'net_settlement'=>0,'colony_count'=>0,'colonies'=>[],'formula'=>'settlement = (base production × race modifier × government modifier × technology) − upkeep'],
+    'planet_bonuses'=>$livePlanetBonuses ?: ['state'=>'empty','colonies'=>[],'formula'=>'planet bonus = biome modifier + building bonus + morale adjustment','applied_formula'=>'applied production = base production × (1 + total bonus / 100)','states'=>['ready','empty','error']],
     'csrf'=>function_exists('csrf_field') ? csrf_field() : '',
     'feedback'=>['state'=>(string)($_SESSION['feedback_state']??'ready'),'message'=>(string)($_SESSION['error']??$_SESSION['flash']??'')],
     'colony'=>['name'=>'Asteria Prime','coordinate'=>'1:1:1:3','population'=>100,'capacity'=>210,'morale'=>92,'food'=>975,'water'=>980,'food_rate'=>25,'water_rate'=>20],
