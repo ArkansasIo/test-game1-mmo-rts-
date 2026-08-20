@@ -3,6 +3,7 @@ declare(strict_types=1);
 require_once __DIR__ . '/../config/auth.php';
 require_auth();
 require_once __DIR__ . '/../includes/services/GameService.php';
+require_once __DIR__ . '/../includes/services/WeaponMarketService.php';
 require_once __DIR__ . '/../includes/services/WorldService.php';
 require_once __DIR__ . '/../includes/services/OGameService.php';
 require_once __DIR__ . '/../includes/services/MMORPGService.php';
@@ -11,6 +12,7 @@ require_once __DIR__ . '/../includes/services/EconomyService.php';
 require_once __DIR__ . '/../includes/services/FactionService.php';
 require_once __DIR__ . '/../includes/services/SocialService.php';
 require_once __DIR__ . '/../includes/services/ProgressionService.php';
+require_once __DIR__ . '/../includes/services/DefenseTechnologyService.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') { http_response_code(405); exit('POST required'); }
 verify_csrf();
@@ -39,7 +41,7 @@ try {
         case 'reform_government': (new FactionService(db()))->reformGovernment((int)$user['id'],(int)$_POST['government_id']); $_SESSION['flash']='Government reformed.'; break;
         case 'train': $service->train((int)$user['id'],(string)$_POST['type'],(int)$_POST['quantity']); $_SESSION['flash']='Training completed.'; break;
         case 'upgrade_up': $cost=$service->upgradeUnitProduction((int)$user['id']); $_SESSION['flash']='Unit Production upgraded for '.number_format($cost).' Naquadah.'; break;
-        case 'technology': $cost=$service->buyTechnology((int)$user['id'],(string)$_POST['technology_key']); $_SESSION['flash']='Technology upgraded for '.number_format($cost).' Naquadah.'; break;
+        case 'technology': $technologyKey=(string)$_POST['technology_key']; $categoryStmt=db()->prepare('SELECT category FROM technologies WHERE technology_key=?'); $categoryStmt->execute([$technologyKey]); $category=(string)$categoryStmt->fetchColumn(); if($category==='defense'){ $research=(new DefenseTechnologyService(db()))->upgrade((int)$user['id'],$technologyKey); $_SESSION['flash']='Defense research queued to level '.$research['level_after'].' for '.number_format($research['cost']).' Naquadah.'; } else { $cost=$service->buyTechnology((int)$user['id'],$technologyKey); $_SESSION['flash']='Technology upgraded for '.number_format($cost).' Naquadah.'; } break;
         case 'weapon_buy': $service->buyWeapon((int)$user['id'],(int)$_POST['weapon_type_id'],(int)$_POST['quantity']); $_SESSION['flash']='Weapon purchased.'; break;
         case 'weapon_repair': $service->repairWeapons((int)$user['id'],(int)$_POST['weapon_id']); $_SESSION['flash']='Weapons repaired.'; break;
         case 'mothership_upgrade': $cost=$service->upgradeMothership((int)$user['id'],(string)$_POST['module']); $_SESSION['flash']='Mothership upgraded for '.number_format($cost).' Naquadah.'; break;
@@ -55,8 +57,8 @@ try {
         case 'alliance_create': (new WorldService())->createAlliance((int)$user['id'],trim((string)$_POST['name']),trim((string)$_POST['tag']),trim((string)$_POST['description'])); $_SESSION['flash']='Alliance created.'; break;
         case 'alliance_join': (new WorldService())->joinAlliance((int)$user['id'],(int)$_POST['alliance_id']); $_SESSION['flash']='Joined alliance.'; break;
         case 'message': (new WorldService())->sendMessage((int)$user['id'],(int)$_POST['recipient_id'],trim((string)$_POST['subject']),trim((string)$_POST['body'])); $_SESSION['flash']='Message sent.'; break;
-        case 'market_list': (new WorldService())->listMarketOrder((int)$user['id'],(string)$_POST['resource_type'],(int)$_POST['quantity'],(int)$_POST['unit_price']); $_SESSION['flash']='Market order listed.'; break;
-        case 'market_buy': (new WorldService())->buyMarketOrder((int)$user['id'],(int)$_POST['order_id'],(int)$_POST['quantity']); $_SESSION['flash']='Market order purchased.'; break;
+        case 'market_list': $orderId=(new WeaponMarketService(db()))->listWeaponOrder((int)$user['id'],(int)$_POST['weapon_type_id'],(int)$_POST['quantity'],(int)$_POST['unit_price'],(int)($_POST['expiry_hours']??72)); $_SESSION['flash']='Weapon market order listed #'.$orderId.'.'; break;
+        case 'market_buy': $trade=(new WeaponMarketService(db()))->buyWeaponOrder((int)$user['id'],(int)$_POST['order_id'],(int)$_POST['quantity']); $_SESSION['flash']='Purchased '.number_format($trade['quantity']).' '.$trade['weapon_name'].' for '.number_format($trade['gross_amount']).' Naquadah; fee '.number_format($trade['fee_amount']).'.'; break;
         case 'message_read': (new WorldService())->markMessageRead((int)$user['id'],(int)$_POST['message_id']); $_SESSION['flash']='Message marked read.'; break;
         case 'blacklist': (new SocialService(db()))->blacklist((int)$user['id'],(int)$_POST['blocked_player_id'],(string)($_POST['reason']??'')); $_SESSION['flash']='Player blacklisted.'; break;
         case 'system_map': (new WorldService())->getSystemMap((int)$_POST['system_id']); $_SESSION['flash']='Solar system map loaded.'; break;
