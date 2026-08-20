@@ -21,6 +21,7 @@ try {
         case 'read_income_breakdown': $result=(new EconomyService(db()))->incomeBreakdown((int)$user['id']); $_SESSION['income_breakdown']=$result; $_SESSION['flash']='Income breakdown refreshed.'; break;
         case 'read_colony_comparison': $result=(new EconomyService(db()))->colonyComparison((int)$user['id']); $_SESSION['colony_comparison']=$result; $_SESSION['flash']='Colony comparison refreshed for '.count($result).' colonies.'; break;
         case 'progression_advance': $progress=(new ProgressionService(db()))->advance((int)$user['id'],trim((string)$_POST['entity_category']),trim((string)$_POST['entity_key'])); $_SESSION['flash']='Progression advanced to Tier '.$progress['tier_after'].' / Level '.$progress['level_after'].'.'; break;
+        case 'read_military_stats': $_SESSION['military_stats']=$service->militaryStats((int)$user['id']); $_SESSION['flash']='Military statistics refreshed.'; break;
         case 'set_defcon': $service->setDefcon((int)$user['id'],(int)$_POST['level']); $_SESSION['flash']='DefCon status updated.'; break;
         case 'deposit': $service->deposit((int)$user['id'],(int)$_POST['amount']); $_SESSION['flash']='Naquadah deposited.'; break;
         case 'withdraw': $service->withdraw((int)$user['id'],(int)$_POST['amount']); $_SESSION['flash']='Naquadah withdrawn.'; break;
