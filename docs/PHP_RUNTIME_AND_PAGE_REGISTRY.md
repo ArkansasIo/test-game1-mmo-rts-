@@ -17,11 +17,11 @@ php -v
 php -m | grep -E 'PDO|pdo_mysql|mbstring|xml|curl'
 ```
 
-From the project root, lint the preview and registry files:
+From the project root, lint the game interface and registry files:
 
 ```bash
 cd /home/ubuntu/stargatewars
-php -l modular-pages-preview.php
+php -l game.php
 php -l config/page_designs.php
 ```
 
@@ -32,7 +32,7 @@ cd /home/ubuntu/stargatewars
 php -S 127.0.0.1:8093
 ```
 
-Open `http://127.0.0.1:8093/modular-pages-preview.php`. The preview is intentionally self-contained and does not require the MySQL connection. To run the authenticated game pages, configure the PDO credentials in the project configuration, import the SQL files, and browse to `http://127.0.0.1:8093/index.php?page=dashboard`.
+Open `http://127.0.0.1:8093/game.php`. The game interface is intentionally self-contained and does not require the MySQL connection. To run the authenticated game pages, configure the PDO credentials in the project configuration, import the SQL files, and browse to `http://127.0.0.1:8093/index.php?page=dashboard`.
 
 For a persistent sandbox process, use a process supervisor or terminal session. A simple development-only command is:
 
@@ -45,7 +45,7 @@ The Python static server previously used on port 8092 cannot execute PHP; it ser
 
 ## Registry loading flow
 
-`modular-pages-preview.php` loads `config/page_registry.php`, optionally merges `config/ogame_page_registry.php`, serializes the registry with safe JSON hex encoding, and injects the result into the browser-side navigation. The authenticated `index.php` controller loads `config/page_designs.php` for routes that use the reusable module workspace fallback.
+`game.php` loads `config/page_registry.php`, optionally merges `config/ogame_page_registry.php`, serializes the registry with safe JSON hex encoding, and injects the result into the browser-side navigation. The authenticated `index.php` controller loads `config/page_designs.php` for routes that use the reusable module workspace fallback.
 
 ## Economy module family
 

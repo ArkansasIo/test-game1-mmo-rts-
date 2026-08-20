@@ -48,7 +48,7 @@ php -S 0.0.0.0:8094
 Main preview:
 
 ```text
-/modular-pages-preview.php
+/game.php
 ```
 
-The preview is a game-like browser shell, while `index.php?page=dashboard` is the authenticated production-style Command Center route.
+The game interface is a game-like browser shell, while `index.php?page=dashboard` is the authenticated production-style Command Center route.
