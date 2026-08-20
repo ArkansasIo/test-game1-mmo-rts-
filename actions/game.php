@@ -7,6 +7,7 @@ require_once __DIR__ . '/../includes/services/WorldService.php';
 require_once __DIR__ . '/../includes/services/OGameService.php';
 require_once __DIR__ . '/../includes/services/MMORPGService.php';
 require_once __DIR__ . '/../includes/services/GameFeatureService.php';
+require_once __DIR__ . '/../includes/services/EconomyService.php';
 require_once __DIR__ . '/../includes/services/FactionService.php';
 require_once __DIR__ . '/../includes/services/SocialService.php';
 require_once __DIR__ . '/../includes/services/ProgressionService.php';
@@ -17,6 +18,8 @@ $user=current_user(); $service=new GameService(); $action=(string)($_POST['actio
 try {
     switch ($action) {
         case 'process_turns': $result=$service->processTurns((int)$user['id']); $_SESSION['flash']='Processed '.$result['turns'].' turns and generated '.number_format($result['income']).' Naquadah.'; break;
+        case 'read_income_breakdown': $result=(new EconomyService(db()))->incomeBreakdown((int)$user['id']); $_SESSION['income_breakdown']=$result; $_SESSION['flash']='Income breakdown refreshed.'; break;
+        case 'read_colony_comparison': $result=(new EconomyService(db()))->colonyComparison((int)$user['id']); $_SESSION['colony_comparison']=$result; $_SESSION['flash']='Colony comparison refreshed for '.count($result).' colonies.'; break;
         case 'progression_advance': $progress=(new ProgressionService(db()))->advance((int)$user['id'],trim((string)$_POST['entity_category']),trim((string)$_POST['entity_key'])); $_SESSION['flash']='Progression advanced to Tier '.$progress['tier_after'].' / Level '.$progress['level_after'].'.'; break;
         case 'set_defcon': $service->setDefcon((int)$user['id'],(int)$_POST['level']); $_SESSION['flash']='DefCon status updated.'; break;
         case 'deposit': $service->deposit((int)$user['id'],(int)$_POST['amount']); $_SESSION['flash']='Naquadah deposited.'; break;

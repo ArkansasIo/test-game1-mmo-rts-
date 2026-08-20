@@ -33,4 +33,41 @@ final class EconomyService {
             $this->pdo->commit();return ['colony_id'=>$colonyId,'food_before'=>$food,'food_after'=>$foodAfter,'water_before'=>$water,'water_after'=>$waterAfter,'population_before'=>(int)$c['population'],'population_after'=>$populationAfter,'growth'=>$populationAfter-(int)$c['population'],'shortage'=>$shortage,'morale'=>$morale];
         } catch(Throwable $e){if($this->pdo->inTransaction())$this->pdo->rollBack();throw $e;}
     }
+    public function incomeBreakdown(int $playerId): array {
+        if ($playerId < 1) throw new InvalidArgumentException('Invalid player income request');
+        $s = $this->pdo->prepare('SELECT p.id,r.name race_name,r.income_modifier race_modifier,g.name government_name,g.economy_modifier government_modifier FROM players p JOIN races r ON r.id=p.race_id LEFT JOIN government_types g ON g.id=p.government_id WHERE p.id=?');
+        $s->execute([$playerId]);
+        $identity = $s->fetch(PDO::FETCH_ASSOC);
+        if (!$identity) throw new RuntimeException('Player not found');
+        $r = $this->pdo->prepare('SELECT * FROM player_resources WHERE player_id=?');
+        $r->execute([$playerId]);
+        $resources = $r->fetch(PDO::FETCH_ASSOC) ?: [];
+        $base = ((int)($resources['untrained_units'] ?? 0) * 20) + (((int)($resources['miners'] ?? 0) + (int)($resources['lifers'] ?? 0)) * 80);
+        $technology = 1.0;
+        $t = $this->pdo->prepare("SELECT COALESCE(SUM(pt.level * t.effect_value),0) FROM player_technologies pt LEFT JOIN technologies t ON t.technology_key=pt.technology_key WHERE pt.player_id=? AND pt.category='economy'");
+        $t->execute([$playerId]);
+        $technology += ((float)$t->fetchColumn() / 100.0);
+        $race = (float)($identity['race_modifier'] ?? 1.0);
+        $government = (float)($identity['government_modifier'] ?? 1.0);
+        $gross = $base * $race * $government * $technology;
+        $food = (int)($resources['food'] ?? 0);
+        $water = (int)($resources['water'] ?? 0);
+        $energy = (int)($resources['energy'] ?? 0);
+        $upkeep = ['food'=>min($food, (int)($resources['population'] ?? 0) * 0.25), 'water'=>min($water, (int)($resources['population'] ?? 0) * 0.20), 'energy'=>min($energy, (int)ceil(($resources['population'] ?? 0) * 0.05))];
+        $upkeepTotal = array_sum($upkeep);
+        return ['base_production'=>$base,'race_name'=>$identity['race_name'],'race_modifier'=>$race,'government_name'=>$identity['government_name'] ?? 'Unassigned','government_modifier'=>$government,'technology_modifier'=>$technology,'gross_output'=>(int)round($gross),'upkeep'=>$upkeep,'upkeep_total'=>$upkeepTotal,'net_settlement'=>(int)round($gross-$upkeepTotal),'formula'=>'settlement = (base production × race modifier × government modifier × technology) − upkeep'];
+    }
+    public function colonyComparison(int $playerId): array {
+        if ($playerId < 1) throw new InvalidArgumentException('Invalid colony comparison request');
+        $s = $this->pdo->prepare('SELECT c.id,c.name,c.coordinate,c.population,c.population_capacity,c.food_stock,c.water_stock,c.morale,c.food_rate,c.water_rate,COALESCE(up.biome, c.planet_type) biome FROM colonies c LEFT JOIN player_colonies pc ON pc.player_id=c.player_id LEFT JOIN universe_planets up ON up.id=pc.planet_id WHERE c.player_id=? ORDER BY c.id');
+        $s->execute([$playerId]);
+        $rows = [];
+        foreach ($s->fetchAll(PDO::FETCH_ASSOC) as $colony) {
+            $population = (int)$colony['population'];
+            $foodUse = (int)ceil($population * (float)($colony['food_rate'] ?? 0.25));
+            $waterUse = (int)ceil($population * (float)($colony['water_rate'] ?? 0.20));
+            $rows[] = ['id'=>(int)$colony['id'],'name'=>$colony['name'],'coordinate'=>$colony['coordinate'],'biome'=>$colony['biome'],'population'=>$population,'capacity'=>(int)$colony['population_capacity'],'morale'=>(float)$colony['morale'],'food_efficiency'=>$foodUse>0?round(min(1,(int)$colony['food_stock']/$foodUse)*100):100,'water_efficiency'=>$waterUse>0?round(min(1,(int)$colony['water_stock']/$waterUse)*100):100,'life_support_efficiency'=>($foodUse+$waterUse)>0?round(min(1,((int)$colony['food_stock']+(int)$colony['water_stock'])/($foodUse+$waterUse))*100):100];
+        }
+        return $rows;
+    }
 }
