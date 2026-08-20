@@ -67,7 +67,7 @@ final class GameService {
     public function upgradeMothership(int $playerId,string $module):int{$allowed=['hull_level','volley_bays','shield_bays','fleet_hangars','weapons_power','shields_power','exploration_level'];if(!in_array($module,$allowed,true))throw new InvalidArgumentException('Invalid mothership module');$this->pdo->beginTransaction();try{$s=$this->pdo->prepare('SELECT * FROM motherships WHERE player_id=? FOR UPDATE');$s->execute([$playerId]);$ship=$s->fetch();if(!$ship)throw new RuntimeException('Mothership not found');$current=(int)$ship[$module];$cost=25000+($current*10000);$r=$this->resources($playerId,true);if((int)$r['naquadah']<$cost)throw new RuntimeException('Not enough Naquadah');$this->pdo->prepare('UPDATE player_resources SET naquadah=naquadah-? WHERE player_id=?')->execute([$cost,$playerId]);$this->pdo->prepare("UPDATE motherships SET {$module}={$module}+1 WHERE player_id=?")->execute([$playerId]);$this->event($playerId,'mothership_upgraded','mothership',$ship['id'],['module'=>$module,'cost'=>$cost]);$this->pdo->commit();return $cost;}catch(Throwable $e){$this->pdo->rollBack();throw $e;}}
     public function militaryStats(int $playerId): array {
         if ($playerId < 1) throw new InvalidArgumentException('Invalid military statistics request');
-        $s=$this->pdo->prepare('SELECT p.defcon_level,r.name race_name,r.attack_modifier race_attack,r.defense_modifier race_defense,r.covert_modifier race_covert,g.name government_name,g.military_modifier government_military,g.defense_modifier government_defense,g.covert_modifier government_covert FROM players p JOIN races r ON r.id=p.race_id LEFT JOIN government_types g ON g.id=p.government_id WHERE p.id=?');
+        $s=$this->pdo->prepare('SELECT p.defcon_level,p.protected_until,p.vacation_until,ps.protected_until AS state_protected_until,ps.vacation_until AS state_vacation_until,r.name race_name,r.attack_modifier race_attack,r.defense_modifier race_defense,r.covert_modifier race_covert,g.name government_name,g.military_modifier government_military,g.defense_modifier government_defense,g.covert_modifier government_covert FROM players p JOIN races r ON r.id=p.race_id LEFT JOIN government_types g ON g.id=p.government_id LEFT JOIN protection_states ps ON ps.player_id=p.id WHERE p.id=?');
         $s->execute([$playerId]);$identity=$s->fetch(PDO::FETCH_ASSOC);if(!$identity)throw new RuntimeException('Player not found');
         $s=$this->pdo->prepare('SELECT * FROM player_resources WHERE player_id=?');$s->execute([$playerId]);$resources=$s->fetch(PDO::FETCH_ASSOC)?:[];
         $s=$this->pdo->prepare('SELECT * FROM player_unit_stats WHERE player_id=?');$s->execute([$playerId]);$units=$s->fetch(PDO::FETCH_ASSOC)?:[];
@@ -81,7 +81,9 @@ final class GameService {
         $anti=(int)round($antiCovertBase*(float)($identity['race_covert']??1)*(float)($identity['government_covert']??1));
         $turns=(int)($resources['attack_turns']??0);$readiness=min(100,(int)round($turns/48*100));
         $cooldown=$this->pdo->prepare("SELECT available_at FROM player_cooldowns WHERE player_id=? AND cooldown_key='defcon_change'");$cooldown->execute([$playerId]);$availableAt=$cooldown->fetchColumn();$cooldownState=self::defconCooldownState($availableAt===false?null:(string)$availableAt);
-        return ['attack_power'=>$attack,'defense_power'=>$defense,'covert_power'=>$covert,'anti_covert_power'=>$anti,'attack_base'=>$attackBase,'defense_base'=>$defenseBase,'covert_base'=>$covertBase,'anti_covert_base'=>$antiCovertBase,'attack_turns'=>$turns,'readiness'=>$readiness,'defcon_level'=>(int)($identity['defcon_level']??0),'cooldown_state'=>$cooldownState['state'],'cooldown_remaining_seconds'=>$cooldownState['remaining_seconds'],'race_name'=>$identity['race_name'],'government_name'=>$identity['government_name']??'Unassigned','formula'=>'power = units × base power × technology × race × government × planet bonus'];
+        $now=new DateTimeImmutable('now');
+        $protectedState=(($identity['protected_until']??null)&&new DateTimeImmutable((string)$identity['protected_until'])>$now)||(($identity['vacation_until']??null)&&new DateTimeImmutable((string)$identity['vacation_until'])>$now)||(($identity['state_protected_until']??null)&&new DateTimeImmutable((string)$identity['state_protected_until'])>$now)||(($identity['state_vacation_until']??null)&&new DateTimeImmutable((string)$identity['state_vacation_until'])>$now)?'protected':'ready';
+        return ['attack_power'=>$attack,'defense_power'=>$defense,'covert_power'=>$covert,'anti_covert_power'=>$anti,'attack_base'=>$attackBase,'defense_base'=>$defenseBase,'covert_base'=>$covertBase,'anti_covert_base'=>$antiCovertBase,'attack_turns'=>$turns,'readiness'=>$readiness,'defcon_level'=>(int)($identity['defcon_level']??0),'cooldown_state'=>$cooldownState['state'],'cooldown_remaining_seconds'=>$cooldownState['remaining_seconds'],'protection_state'=>$protectedState,'race_name'=>$identity['race_name'],'government_name'=>$identity['government_name']??'Unassigned','formula'=>'power = units × base power × technology × race × government × planet bonus'];
     }
     public function targetBoard(int $playerId): array {
         if ($playerId < 1) throw new InvalidArgumentException('Invalid target-board request');
@@ -141,9 +143,11 @@ final class GameService {
             : ['state'=>'ready','available_at'=>null,'remaining_seconds'=>0];
     }
     public function setDefcon(int $playerId,int $level):void {
-        $level=max(0,min(4,$level));
+        if($playerId<1)throw new InvalidArgumentException('Invalid commander');
+        if($level<0||$level>4)throw new InvalidArgumentException('DefCon level must be between 0 and 4');
         $this->pdo->beginTransaction();
         try {
+            $player=$this->pdo->prepare('SELECT id FROM players WHERE id=? FOR UPDATE');$player->execute([$playerId]);if(!$player->fetch())throw new RuntimeException('Player not found');
             $cooldown=$this->pdo->prepare("SELECT available_at FROM player_cooldowns WHERE player_id=? AND cooldown_key='defcon_change' FOR UPDATE");
             $cooldown->execute([$playerId]);
             $state=self::defconCooldownState($cooldown->fetchColumn());
