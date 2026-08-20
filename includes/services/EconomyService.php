@@ -35,27 +35,28 @@ final class EconomyService {
     }
     public function incomeBreakdown(int $playerId): array {
         if ($playerId < 1) throw new InvalidArgumentException('Invalid player income request');
-        $s = $this->pdo->prepare('SELECT p.id,r.name race_name,r.income_modifier race_modifier,g.name government_name,g.economy_modifier government_modifier FROM players p JOIN races r ON r.id=p.race_id LEFT JOIN government_types g ON g.id=p.government_id WHERE p.id=?');
+        $s = $this->pdo->prepare('SELECT p.id,p.protected_until,p.vacation_until,r.name AS race_name,r.income_modifier AS race_modifier,g.name AS government_name,g.economy_modifier AS government_modifier FROM players p JOIN races r ON r.id=p.race_id LEFT JOIN government_types g ON g.id=p.government_id WHERE p.id=?');
         $s->execute([$playerId]);
         $identity = $s->fetch(PDO::FETCH_ASSOC);
         if (!$identity) throw new RuntimeException('Player not found');
         $r = $this->pdo->prepare('SELECT * FROM player_resources WHERE player_id=?');
         $r->execute([$playerId]);
-        $resources = $r->fetch(PDO::FETCH_ASSOC) ?: [];
-        $base = ((int)($resources['untrained_units'] ?? 0) * 20) + (((int)($resources['miners'] ?? 0) + (int)($resources['lifers'] ?? 0)) * 80);
-        $technology = 1.0;
+        $resources = $r->fetch(PDO::FETCH_ASSOC);
+        if (!$resources) return ['state'=>'empty','colonies'=>[],'formula'=>'settlement = (base production × race modifier × government modifier × technology) − upkeep'];
         $t = $this->pdo->prepare("SELECT COALESCE(SUM(pt.level * t.effect_value),0) FROM player_technologies pt LEFT JOIN technologies t ON t.technology_key=pt.technology_key WHERE pt.player_id=? AND pt.category='economy'");
         $t->execute([$playerId]);
-        $technology += ((float)$t->fetchColumn() / 100.0);
+        $technology = 1.0 + ((float)$t->fetchColumn() / 100.0);
         $race = (float)($identity['race_modifier'] ?? 1.0);
         $government = (float)($identity['government_modifier'] ?? 1.0);
-        $gross = $base * $race * $government * $technology;
-        $food = (int)($resources['food'] ?? 0);
-        $water = (int)($resources['water'] ?? 0);
-        $energy = (int)($resources['energy'] ?? 0);
-        $upkeep = ['food'=>min($food, (int)($resources['population'] ?? 0) * 0.25), 'water'=>min($water, (int)($resources['population'] ?? 0) * 0.20), 'energy'=>min($energy, (int)ceil(($resources['population'] ?? 0) * 0.05))];
-        $upkeepTotal = array_sum($upkeep);
-        return ['base_production'=>$base,'race_name'=>$identity['race_name'],'race_modifier'=>$race,'government_name'=>$identity['government_name'] ?? 'Unassigned','government_modifier'=>$government,'technology_modifier'=>$technology,'gross_output'=>(int)round($gross),'upkeep'=>$upkeep,'upkeep_total'=>$upkeepTotal,'net_settlement'=>(int)round($gross-$upkeepTotal),'formula'=>'settlement = (base production × race modifier × government modifier × technology) − upkeep'];
+        $base = ((int)($resources['untrained_units'] ?? 0) * 20) + (((int)($resources['miners'] ?? 0) + (int)($resources['lifers'] ?? 0)) * 80);
+        $food = (int)($resources['food'] ?? 0); $water = (int)($resources['water'] ?? 0); $energy = (int)($resources['energy'] ?? 0); $population = (int)($resources['population'] ?? 0);
+        $upkeep = ['food'=>min($food, (int)ceil($population * 0.25)), 'water'=>min($water, (int)ceil($population * 0.20)), 'energy'=>min($energy, (int)ceil($population * 0.05))];
+        $upkeepTotal = array_sum($upkeep); $gross = $base * $race * $government * $technology;
+        $coloniesStmt = $this->pdo->prepare('SELECT pc.id,pc.colony_name,pc.planet_id,pc.moon_id,pc.is_homeworld,pc.population,pc.food,pc.water,pc.morale,pc.colony_level,up.name AS planet_name,up.coordinate_label,up.planet_class,up.biome,up.habitability,up.metal_modifier,up.crystal_modifier,up.food_modifier,up.water_modifier,up.energy_modifier FROM player_colonies pc LEFT JOIN universe_planets up ON up.id=pc.planet_id WHERE pc.player_id=? ORDER BY pc.is_homeworld DESC,pc.id ASC');
+        $coloniesStmt->execute([$playerId]);
+        $colonies=[]; foreach ($coloniesStmt->fetchAll(PDO::FETCH_ASSOC) as $colony) { $colonies[]=['id'=>(int)$colony['id'],'name'=>$colony['colony_name'],'planet_id'=>(int)($colony['planet_id']??0),'planet_name'=>$colony['planet_name'],'coordinate'=>$colony['coordinate_label'],'planet_class'=>$colony['planet_class'],'biome'=>$colony['biome'],'habitability'=>(float)($colony['habitability']??0),'population'=>(int)$colony['population'],'food'=>(int)$colony['food'],'water'=>(int)$colony['water'],'morale'=>(float)$colony['morale'],'colony_level'=>(int)$colony['colony_level'],'modifiers'=>['metal'=>(float)($colony['metal_modifier']??1),'crystal'=>(float)($colony['crystal_modifier']??1),'food'=>(float)($colony['food_modifier']??1),'water'=>(float)($colony['water_modifier']??1),'energy'=>(float)($colony['energy_modifier']??1)]]; }
+        $now=new DateTimeImmutable('now'); $protected=($identity['protected_until'] && new DateTimeImmutable($identity['protected_until'])>$now) || ($identity['vacation_until'] && new DateTimeImmutable($identity['vacation_until'])>$now);
+        return ['state'=>$protected?'protected':($colonies?'ready':'empty'),'base_production'=>$base,'race_name'=>$identity['race_name'],'race_modifier'=>$race,'government_name'=>$identity['government_name'] ?? 'Unassigned','government_modifier'=>$government,'technology_modifier'=>$technology,'gross_output'=>(int)round($gross),'upkeep'=>$upkeep,'upkeep_total'=>$upkeepTotal,'net_settlement'=>(int)round($gross-$upkeepTotal),'colony_count'=>count($colonies),'colonies'=>$colonies,'formula'=>'settlement = (base production × race modifier × government modifier × technology) − upkeep'];
     }
     public function colonyComparison(int $playerId): array {
         if ($playerId < 1) throw new InvalidArgumentException('Invalid colony comparison request');
