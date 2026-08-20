@@ -27,6 +27,8 @@ try {
         case 'covert_preview': $_SESSION['covert_preview']=$service->covertPreview((int)$user['id'],(int)$_POST['target_id'],(int)$_POST['agents'],(string)($_POST['mission_type']??'spy')); $_SESSION['flash']='Covert detection preview refreshed.'; break;
         case 'sabotage_preview': $_SESSION['sabotage_preview']=$service->covertPreview((int)$user['id'],(int)$_POST['target_id'],(int)$_POST['agents'],'sabotage'); $_SESSION['flash']='Sabotage damage preview refreshed.'; break;
         case 'read_report': $service->readReport((int)$user['id'],(string)($_POST['report_kind']??'battle'),(int)$_POST['report_id']); $_SESSION['flash']='Report opened and ownership verified.'; break;
+        case 'read_weapon_inventory': $_SESSION['weapons']=$service->weaponInventory((int)$user['id']); $_SESSION['flash']='Weapon inventory refreshed.'; break;
+        case 'inspect_durability': $_SESSION['weapons']=$service->weaponInventory((int)$user['id']); $_SESSION['flash']='Weapon durability inspected.'; break;
         case 'message_read': $service->readReport((int)$user['id'],(string)($_POST['report_kind']??'battle'),(int)$_POST['report_id']); $_SESSION['flash']='Report marked read.'; break;
         case 'combat_preview': $_SESSION['combat_preview']=$service->combatPreview((int)$user['id'],(int)$_POST['target_id'],(string)($_POST['combat_type']??'attack'),(int)($_POST['turns']??1)); $_SESSION['flash']='Combat preview refreshed.'; break;
         case 'set_defcon': $service->setDefcon((int)$user['id'],(int)$_POST['level']); $_SESSION['flash']='DefCon status updated.'; break;
