@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Route stress validation</title>
+<style>
+*{box-sizing:border-box}.slide-container{width:1280px;min-height:720px;background:radial-gradient(circle at 15% 0,#123c59 0,#071726 42%,#06111d 100%);color:#e8fbff;font-family:Arial,Helvetica,sans-serif;border:8px solid #000;padding:42px 54px 0}.eyebrow{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:#53e7ff;font-weight:800}.title{font-size:45px;font-weight:900;letter-spacing:-.05em;margin-top:12px}.sub{color:#8aa9b8;font-size:16px;margin-top:10px;max-width:850px}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}.metric{border:2px solid #1f5067;background:linear-gradient(135deg,#102c42,#081927);padding:18px;min-height:142px;box-shadow:10px 8px 0 #2468ff}.metric-label{color:#ffd166;font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}.metric-value{font-size:40px;font-weight:900;color:#53e7ff;margin-top:14px}.metric-note{color:#8aa9b8;font-size:13px;margin-top:6px}.lower{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}.panel{border:2px solid #1f5067;background:#0b2031;padding:18px;min-height:216px}.panel-title{color:#ffd166;font-size:14px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}.row{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid #1f5067;font-size:17px}.row small{display:block;color:#8aa9b8;font-size:12px;margin-top:4px}.status{color:#9ff3c8;font-weight:900}.bar-row{display:grid;grid-template-columns:100px 1fr 80px;gap:12px;align-items:center;margin:18px 0}.bar{height:12px;background:#183447;border:1px solid #4f8095}.bar i{display:block;height:100%;background:#53e7ff}.bar-label{color:#d7f7ff;font-size:13px}.bar-value{text-align:right;color:#ffd166;font-weight:900}.foot{margin-top:15px;color:#8aa9b8;font-size:13px;letter-spacing:.04em}
+</style>
+</head>
+<body>
+<div class="slide-container">
+  <div class="eyebrow">09 / VALIDATION SYSTEM</div>
+  <div class="title">43 routes under bounded concurrent load</div>
+  <div class="sub">A repeatable local-runtime harness exercised central routes and nested PHP entrypoints without mutating player state.</div>
+  <div class="metrics">
+    <div class="metric"><div class="metric-label">Routes</div><div class="metric-value">43</div><div class="metric-note">Every registered panel</div></div>
+    <div class="metric"><div class="metric-label">Requests</div><div class="metric-value">258</div><div class="metric-note">3 rounds × 2 surfaces</div></div>
+    <div class="metric"><div class="metric-label">Success rate</div><div class="metric-value">100%</div><div class="metric-note">258 / 258 accepted</div></div>
+    <div class="metric"><div class="metric-label">Batch size</div><div class="metric-value">24</div><div class="metric-note">Concurrent handles per batch</div></div>
+  </div>
+  <div class="lower">
+    <div class="panel"><div class="panel-title">HTTP surface coverage</div><div class="row"><div>Central route requests<small>index.php?page=route</small></div><div class="status">129 × 200</div></div><div class="row"><div>Nested PHP entrypoints<small>pages/group/subpages/route.php</small></div><div class="status">129 × 302</div></div><div class="row"><div>Failed requests<small>Timeouts, transport errors, unexpected status</small></div><div class="status">0</div></div><div class="foot">The test is a bounded smoke benchmark for the local PHP runtime, not a production capacity guarantee.</div></div>
+    <div class="panel"><div class="panel-title">Observed latency profile</div><div class="bar-row"><div class="bar-label">p50</div><div class="bar"><i style="width:36%"></i></div><div class="bar-value">1.39 ms</div></div><div class="bar-row"><div class="bar-label">p95</div><div class="bar"><i style="width:100%"></i></div><div class="bar-value">3.90 ms</div></div><div class="bar-row"><div class="bar-label">max</div><div class="bar"><i style="width:100%"></i></div><div class="bar-value">3.91 ms</div></div><div class="foot">Harness throughput: 11,414.4 requests/sec in the measured run.</div></div>
+  </div>
+</div>
+</body>
+</html>

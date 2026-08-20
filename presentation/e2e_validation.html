@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UI end-to-end validation</title>
+<style>
+*{box-sizing:border-box}.slide-container{width:1280px;min-height:720px;background:radial-gradient(circle at 15% 0,#123c59 0,#071726 42%,#06111d 100%);color:#e8fbff;font-family:Arial,Helvetica,sans-serif;border:8px solid #000;padding:42px 54px 0}.eyebrow{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:#53e7ff;font-weight:800}.title{font-size:45px;font-weight:900;letter-spacing:-.05em;margin-top:12px}.sub{color:#8aa9b8;font-size:16px;margin-top:10px;max-width:850px}.flow{display:grid;grid-template-columns:1fr 1.05fr 1.1fr 1fr;gap:12px;margin-top:28px;align-items:stretch}.step{border:2px solid #1f5067;background:#0b2031;padding:12px;min-height:150px;box-shadow:8px 7px 0 #2468ff}.step-no{color:#ffd166;font-size:13px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}.step h2{font-size:22px;margin:10px 0 8px;color:#fff}.step p{font-size:15px;line-height:1.4;color:#b8d2dc;margin-bottom:6px}.step .arrow{color:#53e7ff;font-size:28px;margin-top:8px}.lower{display:grid;grid-template-columns:1.5fr 1fr;gap:18px;margin-top:18px}.panel{border:2px solid #1f5067;background:linear-gradient(135deg,#102c42,#081927);padding:12px;min-height:150px}.panel-title{color:#ffd166;font-size:14px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}.chips{display:flex;flex-wrap:wrap;gap:6px}.chip{border:1px solid #4f8095;padding:7px 10px;color:#d7f7ff;font-size:14px}.chip.combat{border-color:#ff8f70;color:#ffd0c5}.chip.covert{border-color:#53e7ff;color:#bdf7ff}.checks{display:grid;grid-template-columns:1fr 1fr;gap:6px}.check{border-bottom:1px solid #1f5067;padding:6px 0;color:#d7f7ff;font-size:15px}.check strong{color:#9ff3c8;margin-right:7px}.foot{margin-top:12px;color:#8aa9b8;font-size:13px;line-height:1.35}
+</style>
+</head>
+<body>
+<div class="slide-container">
+  <div class="eyebrow">10 / UI E2E VALIDATION</div>
+  <div class="title">Combat and espionage loops are browser-testable</div>
+  <div class="sub">The live dashboard test walks the same route controls a commander uses, then verifies the visible intent feedback and server-action contract.</div>
+  <div class="flow">
+    <div class="step"><div class="step-no">01 / Navigate</div><h2>Choose a route</h2><p>Open Target Selection, Spy Operations, and Sabotage Operations from the nested left navigation.</p><div class="arrow">→</div></div>
+    <div class="step"><div class="step-no">02 / Intent</div><h2>Press an operation</h2><p>Attack, Raid, Reconnaissance, Spy mission, and Run sabotage become real page-intent controls.</p><div class="arrow">→</div></div>
+    <div class="step"><div class="step-no">03 / Contract</div><h2>Validate the path</h2><p>The UI feedback names target validation, CSRF, RBAC, and the mapped PHP action contract.</p><div class="arrow">→</div></div>
+    <div class="step"><div class="step-no">04 / Assert</div><h2>Verify outcome</h2><p>Assertions confirm titles, formulas, controls, action names, and visible feedback without mutating player state.</p><div class="arrow">✓</div></div>
+  </div>
+  <div class="lower">
+    <div class="panel"><div class="panel-title">Validated intent matrix</div><div class="chips"><div class="chip combat">combat</div><div class="chip combat">combat:raid</div><div class="chip covert">covert:recon</div><div class="chip covert">covert:spy</div><div class="chip covert">covert:sabotage</div></div><div class="foot">Reusable test artifact: tests/ui_combat_espionage_e2e.js. The preview intentionally exercises player intent and feedback while leaving authoritative mutation to the server.</div></div>
+    <div class="panel"><div class="panel-title">Browser assertions</div><div class="checks"><div class="check"><strong>PASS</strong> route titles</div><div class="check"><strong>PASS</strong> formulas</div><div class="check"><strong>PASS</strong> controls</div><div class="check"><strong>PASS</strong> feedback</div><div class="check"><strong>PASS</strong> action mapping</div><div class="check"><strong>PASS</strong> sabotage loop</div></div></div>
+  </div>
+</div>
+</body>
+</html>

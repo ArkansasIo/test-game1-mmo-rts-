@@ -2,8 +2,8 @@
   "project_info": {
     "title": "StargateWars",
     "created": 1787203615.545,
-    "last_updated": 1787207735.849,
-    "total_slides": 9
+    "last_updated": 1787241021.139,
+    "total_slides": 11
   },
   "slides": [
     {
@@ -50,6 +50,16 @@
       "id": "frontend",
       "state": "edited",
       "pageNum": 9
+    },
+    {
+      "id": "stress_validation",
+      "state": "edited",
+      "pageNum": 10
+    },
+    {
+      "id": "e2e_validation",
+      "state": "edited",
+      "pageNum": 11
     }
   ],
   "outline": [
@@ -99,6 +109,18 @@
       "id": "frontend",
       "title": "The modular frontend is designed for expansion",
       "summary": "Show the category navigation, master CSS, module CSS, and next production steps."
+    },
+    {
+      "id": "stress_validation",
+      "title": "43 routes under bounded concurrent load",
+      "summary": "Summarize the local runtime stress-test design and measured results: 258 requests across 43 routes, 24-request concurrency batches, all successful, with p50, p95, and maximum latency.",
+      "image_plan": "No external image required. Use a data-led metric layout with a compact throughput and latency visualization built from the validated measurements."
+    },
+    {
+      "id": "e2e_validation",
+      "title": "Combat and espionage loops are browser-testable",
+      "summary": "Show the live UI path from navigation to combat and covert intent controls, visible feedback, and server-action contracts for combat, raid, reconnaissance, spy, and sabotage.",
+      "image_plan": "No external image required. Use a left-to-right flow diagram with route labels, intent chips, and a final validation status block."
     }
   ]
 }
