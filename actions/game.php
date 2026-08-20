@@ -14,6 +14,7 @@ require_once __DIR__ . '/../includes/services/SocialService.php';
 require_once __DIR__ . '/../includes/services/ProgressionService.php';
 require_once __DIR__ . '/../includes/services/DefenseTechnologyService.php';
 require_once __DIR__ . '/../includes/services/WeaponRepairService.php';
+require_once __DIR__ . '/../includes/services/UnitTrainingService.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') { http_response_code(405); exit('POST required'); }
 verify_csrf();
@@ -40,8 +41,8 @@ try {
         case 'change_race': $service->changeRace((int)$user['id'],(int)$_POST['race_id']); $_SESSION['flash']='Race changed.'; break;
         case 'select_registration_faction': (new FactionService(db()))->selectRegistration((int)$user['id'],(int)$_POST['race_id'],(int)$_POST['government_id']); $_SESSION['flash']='Race and government selected.'; break;
         case 'reform_government': (new FactionService(db()))->reformGovernment((int)$user['id'],(int)$_POST['government_id']); $_SESSION['flash']='Government reformed.'; break;
-        case 'train': $service->train((int)$user['id'],(string)$_POST['type'],(int)$_POST['quantity']); $_SESSION['flash']='Training completed.'; break;
-        case 'upgrade_up': $cost=$service->upgradeUnitProduction((int)$user['id']); $_SESSION['flash']='Unit Production upgraded for '.number_format($cost).' Naquadah.'; break;
+        case 'train': $training=(new UnitTrainingService(db()))->train((int)$user['id'],(string)$_POST['type'],(int)$_POST['quantity']); $_SESSION['flash']='Training queued for '.$training['quantity'].' '.$training['unit_key'].' units.'; break;
+        case 'upgrade_up': $cost=(new UnitTrainingService(db()))->upgradeProduction((int)$user['id']); $_SESSION['flash']='Unit Production upgraded for '.number_format($cost).' Naquadah.'; break;
         case 'technology': $technologyKey=(string)$_POST['technology_key']; $categoryStmt=db()->prepare('SELECT category FROM technologies WHERE technology_key=?'); $categoryStmt->execute([$technologyKey]); $category=(string)$categoryStmt->fetchColumn(); if($category==='defense'){ $research=(new DefenseTechnologyService(db()))->upgrade((int)$user['id'],$technologyKey); $_SESSION['flash']='Defense research queued to level '.$research['level_after'].' for '.number_format($research['cost']).' Naquadah.'; } else { $cost=$service->buyTechnology((int)$user['id'],$technologyKey); $_SESSION['flash']='Technology upgraded for '.number_format($cost).' Naquadah.'; } break;
         case 'weapon_buy': $service->buyWeapon((int)$user['id'],(int)$_POST['weapon_type_id'],(int)$_POST['quantity']); $_SESSION['flash']='Weapon purchased.'; break;
         case 'weapon_repair': $repair=(new WeaponRepairService(db()))->repair((int)$user['id'],(int)$_POST['weapon_id']); $_SESSION['flash']='Repaired '.$repair['name'].' for '.number_format($repair['repair_cost']).' Naquadah.'; break;
