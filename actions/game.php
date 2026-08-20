@@ -83,6 +83,7 @@ try {
         case 'system_map': (new WorldService())->getSystemMap((int)$_POST['system_id']); $_SESSION['flash']='Solar system map loaded.'; break;
         case 'mercenary_buy': $mercenary=(new MercenaryMarketService(db()))->buy((int)$user['id'],(int)$_POST['mercenary_type_id'],(int)$_POST['quantity'],(int)($_POST['duration_days']??1)); $_SESSION['flash']='Recruited '.number_format($mercenary['quantity']).' '.$mercenary['name'].' for '.number_format($mercenary['cost']).' Naquadah.'; break;
         case 'vacation': (new WorldService())->activateVacation((int)$user['id'],(int)$_POST['days']); $_SESSION['flash']='Vacation mode activated.'; break;
+        case 'universe_galaxies': (new WorldService())->selectGalaxy((int)$user['id'],(int)$_POST['galaxy_id']); $_SESSION['flash']='Galaxy map loaded.'; break;
         case 'refresh_rankings': $rankingResult=(new RankingsService(db()))->refresh((int)$user['id']); $_SESSION['rankings']=$rankingResult; $_SESSION['flash']='Rankings refreshed for '.count($rankingResult['rows']).' commanders.'; break;
         case 'ascend': (new WorldService())->ascend((int)$user['id'],trim((string)$_POST['ascended_race'])); $_SESSION['flash']='Ascension completed.'; break;
         case 'colony_turn': (new OGameService(db()))->processColonyTurn((int)$user['id'],(int)$_POST['colony_id'],(int)($_POST['elapsed_seconds']??3600)); $_SESSION['flash']='Colony turn processed.'; break;
