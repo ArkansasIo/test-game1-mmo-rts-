@@ -20,13 +20,13 @@
     if (button) { button.click(); await sleep(20); }
   };
   const runIntent = async (label, expectedAction) => {
-    const button = [...document.querySelectorAll('button.page-intent')]
+    const button = [...document.querySelectorAll('button.page-intent, button.attack-intent, button.sabotage-intent')]
       .find(element => element.textContent.trim() === label);
     assert(`intent-control:${label}`, Boolean(button), 'intent button found');
     if (button) {
       button.click();
       await sleep(20);
-      const feedback = document.querySelector('#intent-feedback');
+      const feedback = document.querySelector('#intent-feedback, #attack-feedback, #sabotage-feedback');
       assert(
         `feedback:${expectedAction}`,
         Boolean(feedback && feedback.textContent.includes(expectedAction)),
