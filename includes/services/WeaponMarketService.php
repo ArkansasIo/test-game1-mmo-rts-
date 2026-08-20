@@ -51,10 +51,13 @@ final class WeaponMarketService
 
     public function listWeaponOrder(int $sellerId, int $weaponTypeId, int $quantity, int $unitPrice, ?int $expiryHours = null): int
     {
+        if($sellerId<1||$weaponTypeId<1)throw new InvalidArgumentException('Invalid market listing request');
         $this->validateOrder($quantity, $unitPrice);
         $expiryHours = max(1, min(168, $expiryHours ?? self::DEFAULT_EXPIRY_HOURS));
         $this->pdo->beginTransaction();
         try {
+            $cooldownSeconds=(int)($this->pdo->query("SELECT setting_value FROM game_settings WHERE setting_key='market_list_cooldown_seconds'")->fetchColumn() ?: 0);
+            $cooldownStmt=$this->pdo->prepare("SELECT available_at FROM player_cooldowns WHERE player_id=? AND cooldown_key='market_list' FOR UPDATE");$cooldownStmt->execute([$sellerId]);$availableAt=$cooldownStmt->fetchColumn();if($availableAt!==false&&new DateTimeImmutable((string)$availableAt)>new DateTimeImmutable('now'))throw new RuntimeException('Market listing is on cooldown.');
             $stmt = $this->pdo->prepare('SELECT id, max_durability FROM weapon_types WHERE id=? FOR UPDATE');
             $stmt->execute([$weaponTypeId]);
             if (!$stmt->fetch()) throw new RuntimeException('Weapon type not found.');
@@ -66,7 +69,8 @@ final class WeaponMarketService
             $this->pdo->prepare('UPDATE player_weapons SET quantity=quantity-? WHERE id=?')->execute([$quantity, $inventory['id']]);
             $this->pdo->prepare("INSERT INTO market_orders (seller_id,resource_type,weapon_type_id,quantity,unit_price,status,expires_at) VALUES (?,'weapon',?,?,?,'open',?)")->execute([$sellerId, $weaponTypeId, $quantity, $unitPrice, $expiresAt]);
             $orderId = (int)$this->pdo->lastInsertId();
-            $this->event($sellerId, 'market_weapon_listed', ['order_id'=>$orderId,'weapon_type_id'=>$weaponTypeId,'quantity'=>$quantity,'unit_price'=>$unitPrice,'expires_at'=>$expiresAt]);
+            if($cooldownSeconds>0){$next=(new DateTimeImmutable('now'))->modify('+'.$cooldownSeconds.' seconds')->format('Y-m-d H:i:s');$this->pdo->prepare("INSERT INTO player_cooldowns(player_id,cooldown_key,available_at) VALUES(?,?,?) ON DUPLICATE KEY UPDATE available_at=VALUES(available_at)")->execute([$sellerId,'market_list',$next]);}
+            $this->event($sellerId, 'market_weapon_listed', ['order_id'=>$orderId,'weapon_type_id'=>$weaponTypeId,'quantity'=>$quantity,'unit_price'=>$unitPrice,'expires_at'=>$expiresAt,'cooldown_seconds'=>$cooldownSeconds]);
             $this->pdo->commit();
             return $orderId;
         } catch (Throwable $e) {
@@ -77,9 +81,12 @@ final class WeaponMarketService
 
     public function buyWeaponOrder(int $buyerId, int $orderId, int $quantity): array
     {
+        if($buyerId<1||$orderId<1)throw new InvalidArgumentException('Invalid market purchase request');
         if ($quantity < 1 || $quantity > self::MAX_QUANTITY) throw new InvalidArgumentException('Quantity must be positive.');
         $this->pdo->beginTransaction();
         try {
+            $cooldownSeconds=(int)($this->pdo->query("SELECT setting_value FROM game_settings WHERE setting_key='market_buy_cooldown_seconds'")->fetchColumn() ?: 0);
+            $cooldownStmt=$this->pdo->prepare("SELECT available_at FROM player_cooldowns WHERE player_id=? AND cooldown_key='market_buy' FOR UPDATE");$cooldownStmt->execute([$buyerId]);$availableAt=$cooldownStmt->fetchColumn();if($availableAt!==false&&new DateTimeImmutable((string)$availableAt)>new DateTimeImmutable('now'))throw new RuntimeException('Market purchase is on cooldown.');
             $stmt = $this->pdo->prepare("SELECT mo.*, wt.name, wt.max_durability FROM market_orders mo JOIN weapon_types wt ON wt.id=mo.weapon_type_id WHERE mo.id=? AND mo.resource_type='weapon' AND mo.status='open' FOR UPDATE");
             $stmt->execute([$orderId]);
             $order = $stmt->fetch();
@@ -99,7 +106,8 @@ final class WeaponMarketService
             $this->pdo->prepare("UPDATE market_orders SET quantity=?,status=IF(?=0,'filled','open') WHERE id=?")->execute([$remaining, $remaining, $orderId]);
             $this->pdo->prepare('INSERT INTO market_transactions (order_id,weapon_type_id,seller_id,buyer_id,quantity,unit_price,gross_amount,fee_amount,seller_net) VALUES (?,?,?,?,?,?,?,?,?)')->execute([$orderId,$order['weapon_type_id'],$order['seller_id'],$buyerId,$quantity,$order['unit_price'],$gross,$fee,$sellerNet]);
             $transactionId = (int)$this->pdo->lastInsertId();
-            $this->event($buyerId, 'market_weapon_bought', ['order_id'=>$orderId,'transaction_id'=>$transactionId,'quantity'=>$quantity,'gross_amount'=>$gross,'fee_amount'=>$fee,'seller_net'=>$sellerNet]);
+            if($cooldownSeconds>0){$next=(new DateTimeImmutable('now'))->modify('+'.$cooldownSeconds.' seconds')->format('Y-m-d H:i:s');$this->pdo->prepare("INSERT INTO player_cooldowns(player_id,cooldown_key,available_at) VALUES(?,?,?) ON DUPLICATE KEY UPDATE available_at=VALUES(available_at)")->execute([$buyerId,'market_buy',$next]);}
+            $this->event($buyerId, 'market_weapon_bought', ['order_id'=>$orderId,'transaction_id'=>$transactionId,'quantity'=>$quantity,'gross_amount'=>$gross,'fee_amount'=>$fee,'seller_net'=>$sellerNet,'cooldown_seconds'=>$cooldownSeconds]);
             $this->pdo->commit();
             return ['transaction_id'=>$transactionId,'quantity'=>$quantity,'gross_amount'=>$gross,'fee_amount'=>$fee,'seller_net'=>$sellerNet,'weapon_name'=>$order['name']];
         } catch (Throwable $e) {
