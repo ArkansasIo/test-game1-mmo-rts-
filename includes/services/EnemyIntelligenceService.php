@@ -1,0 +1,16 @@
+<?php
+declare(strict_types=1);
+
+final class EnemyIntelligenceService
+{
+    public function __construct(private PDO $pdo) {}
+
+    public function snapshot(int $playerId): array
+    {
+        $q=$this->pdo->prepare('SELECT anti_spies FROM player_resources WHERE player_id=?');$q->execute([$playerId]);$antiSpies=(int)($q->fetchColumn()?:0);
+        $reports=[];$q=$this->pdo->prepare('SELECT id,target_player_id,report_type,payload,seen_at,created_at FROM intelligence_reports WHERE player_id=? ORDER BY created_at DESC');$q->execute([$playerId]);foreach($q->fetchAll() as $r){$payload=json_decode((string)$r['payload'],true);$reports[(int)$r['target_player_id']]=$r+['payload_data'=>is_array($payload)?$payload:[]];}
+        $q=$this->pdo->prepare('SELECT tr.id,tr.player_id,tr.name,tr.race_name,tr.rank_position,tr.attack_score,tr.defense_score,tr.covert_score,tr.protection_until,COALESCE(p.display_name,p.username) AS owner_name,COALESCE(pr.anti_spies,0) AS target_counter FROM target_realms tr LEFT JOIN players p ON p.id=tr.player_id LEFT JOIN player_resources pr ON pr.player_id=tr.player_id WHERE tr.player_id IS NULL OR tr.player_id<>? ORDER BY tr.rank_position LIMIT 30');$q->execute([$playerId]);$targets=[];$now=new DateTimeImmutable('now');
+        foreach($q->fetchAll() as $r){$report=$reports[(int)($r['player_id']??0)]??null;$created=$report?new DateTimeImmutable((string)$report['created_at']):null;$ageHours=$created?max(0,($now->getTimestamp()-$created->getTimestamp())/3600):72;$freshness=round(max(0,100-min(100,$ageHours*8)),1);$quality=$report?min(100,50+(count($report['payload_data']??[])*10)):25;$adjustment=round(max(.25,1-(max(0,(int)$r['target_counter']-$antiSpies)/100)),2);$confidence=round(min(100,$quality*($freshness/100)*$adjustment),1);$targets[]=['id'=>(int)$r['id'],'player_id'=>$r['player_id']!==null?(int)$r['player_id']:null,'name'=>$r['name'],'owner_name'=>$r['owner_name']??$r['name'],'race'=>$r['race_name'],'rank'=>(int)$r['rank_position'],'attack'=>(int)$r['attack_score'],'defense'=>(int)$r['defense_score'],'covert'=>(int)$r['covert_score'],'protection_until'=>$r['protection_until'],'observation_quality'=>$quality,'freshness'=>$freshness,'counter_adjustment'=>$adjustment,'confidence'=>$confidence,'last_observation'=>$report['created_at']??null,'classification'=>$report?'CLASSIFIED':'UNOBSERVED','report_id'=>$report?(int)$report['id']:null,'read'=>$report?($report['seen_at']!==null):false];}
+        return ['targets'=>$targets,'target_count'=>count($targets),'classified_count'=>count(array_filter($targets,fn(array $t):bool=>$t['classification']==='CLASSIFIED')),'formula'=>'intelligence confidence = observation quality × freshness × counter-intelligence adjustment','states'=>['loading','ready','empty','protected','error']];
+    }
+}
