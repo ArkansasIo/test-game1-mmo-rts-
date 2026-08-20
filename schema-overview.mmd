@@ -1,0 +1,496 @@
+erDiagram
+    races {
+        INT id
+        STRING name
+        STRING bonus_label
+        DECIMAL bonus_percent
+        STRING bank_name
+        DECIMAL attack_modifier
+        DECIMAL defense_modifier
+        DECIMAL income_modifier
+    }
+    players {
+        INT id
+        STRING username
+        STRING display_name
+        STRING password_hash
+        STRING email
+        INT race_id
+        STRING ascended_race
+        STRING title
+    }
+    player_resources {
+        INT player_id
+        BIGINT naquadah
+        BIGINT banked_naquadah
+        INT attack_turns
+        INT market_turns
+        INT untrained_units
+        INT unit_production
+        INT miners
+    }
+    player_unit_stats {
+        INT player_id
+        INT covert_level
+        INT anti_covert_level
+        BIGINT attack_power
+        BIGINT defense_power
+        BIGINT covert_power
+        BIGINT anti_covert_power
+        STRING updated_at
+    }
+    menu_items {
+        INT id
+        INT parent_id
+        STRING label
+        STRING route
+        STRING icon
+        INT sort_order
+    }
+    page_content {
+        INT id
+        STRING route
+        STRING title
+        STRING description
+        TINYINT minimum_rank_level
+        STRING body_json
+    }
+    rank_definitions {
+        INT id
+        TINYINT rank_level
+        STRING name
+        BIGINT minimum_glory
+        BIGINT minimum_reputation
+    }
+    game_settings {
+        STRING setting_key
+        STRING setting_value
+        STRING updated_at
+    }
+    player_technologies {
+        BIGINT id
+        INT player_id
+        INT technology_id
+        STRING technology_key
+        STRING technology_name
+        STRING category
+        INT level
+        BIGINT next_cost
+    }
+    technologies {
+        INT id
+        STRING technology_key
+        STRING name
+        STRING category
+        BIGINT base_cost
+        DECIMAL cost_growth
+        DECIMAL effect_value
+        STRING description
+    }
+    weapon_types {
+        INT id
+        STRING name
+        STRING category
+        INT power
+        BIGINT price
+        INT max_durability
+        STRING description
+    }
+    player_weapons {
+        BIGINT id
+        INT player_id
+        INT weapon_type_id
+        INT quantity
+        INT durability
+    }
+    motherships {
+        INT id
+        INT player_id
+        STRING name
+        INT hull_level
+        INT volley_bays
+        INT shield_bays
+        INT fleet_hangars
+        INT weapons_power
+    }
+    mothership_modules {
+        INT id
+        INT mothership_id
+        STRING module_key
+        INT level
+        INT durability
+    }
+    player_planets {
+        INT id
+        INT player_id
+        STRING name
+        STRING planet_type
+        STRING size_label
+        INT size_level
+        DECIMAL attack_bonus
+        DECIMAL defense_bonus
+    }
+    planet_bonuses {
+        INT id
+        INT planet_id
+        STRING bonus_type
+        DECIMAL bonus_percent
+        INT level
+    }
+    planet_defenses {
+        INT id
+        INT planet_id
+        STRING defense_type
+        INT level
+        INT strength
+    }
+    alliances {
+        INT id
+        STRING name
+        STRING tag
+        INT founder_id
+        STRING description
+        STRING created_at
+    }
+    alliance_members {
+        INT alliance_id
+        INT player_id
+        STRING role
+        STRING joined_at
+    }
+    commander_relationships {
+        INT commander_id
+        INT officer_id
+        DECIMAL income_share_percent
+        DECIMAL unit_production_bonus
+        STRING status
+        STRING created_at
+    }
+    officer_relationships {
+        INT officer_id
+        INT commander_id
+        STRING relationship_type
+        STRING created_at
+    }
+    recruitment_records {
+        BIGINT id
+        INT commander_id
+        INT recruit_id
+        STRING status
+        STRING created_at
+    }
+    battles {
+        BIGINT id
+        STRING battle_seed
+        INT attacker_id
+        INT defender_id
+        STRING action_type
+        INT turns_spent
+        BIGINT attacker_score
+        BIGINT defender_score
+    }
+    battle_participants {
+        BIGINT battle_id
+        INT player_id
+        STRING side
+        STRING units_sent
+        STRING units_lost
+    }
+    battle_reports {
+        BIGINT id
+        BIGINT battle_id
+        INT recipient_id
+        STRING report_text
+        STRING report_json
+        STRING seen_at
+        STRING created_at
+    }
+    attack_logs {
+        BIGINT id
+        BIGINT battle_id
+        INT attacker_id
+        INT defender_id
+        STRING action_type
+        STRING result
+        STRING created_at
+    }
+    covert_agents {
+        INT player_id
+        INT count
+        INT level
+    }
+    anti_covert_agents {
+        INT player_id
+        INT count
+        INT level
+    }
+    spy_missions {
+        BIGINT id
+        INT attacker_id
+        INT defender_id
+        STRING mission_type
+        INT agents_sent
+        TINYINT success
+        TINYINT detected
+        INT agent_losses
+    }
+    sabotage_missions {
+        BIGINT id
+        INT attacker_id
+        INT defender_id
+        STRING target_system
+        INT agents_sent
+        TINYINT success
+        TINYINT detected
+        BIGINT damage_value
+    }
+    covert_missions {
+        BIGINT id
+        INT attacker_id
+        INT defender_id
+        STRING mission_type
+        INT agents_sent
+        TINYINT success
+        TINYINT detected
+        STRING result_text
+    }
+    intelligence_reports {
+        BIGINT id
+        INT player_id
+        INT target_player_id
+        STRING report_type
+        STRING payload
+        STRING created_at
+    }
+    market_orders {
+        BIGINT id
+        INT seller_id
+        STRING resource_type
+        INT quantity
+        BIGINT unit_price
+        STRING status
+        STRING created_at
+    }
+    private_trades {
+        BIGINT id
+        INT sender_id
+        INT recipient_id
+        STRING offer_json
+        STRING status
+        STRING expires_at
+        STRING created_at
+    }
+    mercenary_types {
+        INT id
+        STRING name
+        INT attack_power
+        INT defense_power
+        BIGINT price
+        INT capacity_cost
+    }
+    player_mercenaries {
+        INT player_id
+        INT mercenary_type_id
+        INT quantity
+    }
+    rankings {
+        INT player_id
+        BIGINT overall_score
+        BIGINT military_score
+        BIGINT economy_score
+        BIGINT covert_score
+        INT rank_position
+        STRING updated_at
+    }
+    rank_snapshots {
+        BIGINT id
+        INT player_id
+        DATE snapshot_date
+        BIGINT overall_score
+        BIGINT military_score
+        BIGINT economy_score
+        BIGINT covert_score
+        INT rank_position
+    }
+    glory_reputation {
+        INT player_id
+        BIGINT glory
+        BIGINT reputation
+        STRING updated_at
+    }
+    ascensions {
+        BIGINT id
+        INT player_id
+        STRING ascended_race
+        BIGINT glory_spent
+        BIGINT reputation_spent
+        BIGINT conversion_value
+        STRING title_granted
+        STRING created_at
+    }
+    ascension_states {
+        INT player_id
+        INT ascension_count
+        STRING ascended_race
+        BIGINT ascension_points
+        STRING last_ascended_at
+    }
+    protection_states {
+        INT player_id
+        STRING ppt_until
+        STRING vacation_until
+        STRING attack_cooldown_until
+        STRING protected_until
+    }
+    vacation_states {
+        INT player_id
+        TINYINT active
+        STRING starts_at
+        STRING ends_at
+    }
+    messages {
+        BIGINT id
+        INT sender_id
+        INT recipient_id
+        STRING subject
+        STRING body
+        STRING read_at
+        STRING created_at
+    }
+    blacklists {
+        INT player_id
+        INT blocked_player_id
+        STRING reason
+        STRING created_at
+    }
+    target_realms {
+        INT id
+        INT player_id
+        STRING name
+        STRING race_name
+        INT rank_position
+        BIGINT attack_score
+        BIGINT defense_score
+        BIGINT covert_score
+    }
+    ip_restrictions {
+        BIGINT id
+        STRING ip_address
+        INT player_id
+        STRING restriction_type
+        STRING reason
+        STRING expires_at
+        STRING created_at
+    }
+    game_turns {
+        BIGINT id
+        BIGINT turn_number
+        STRING processed_at
+        STRING status
+        STRING summary_json
+    }
+    turn_events {
+        BIGINT id
+        BIGINT game_turn_id
+        INT player_id
+        STRING event_type
+        STRING amount_json
+        STRING created_at
+    }
+    game_events {
+        BIGINT id
+        INT player_id
+        STRING event_type
+        STRING entity_type
+        BIGINT entity_id
+        STRING payload
+        STRING created_at
+    }
+    audit_logs {
+        BIGINT id
+        INT player_id
+        STRING action_name
+        STRING request_id
+        STRING ip_address
+        STRING payload
+        STRING created_at
+    }
+    alliances_black_market {
+        BIGINT id
+        INT seller_id
+        STRING item_key
+        INT quantity
+        BIGINT price
+        STRING status
+        STRING created_at
+    }
+    supporter_status {
+        INT player_id
+        TINYINT supporter_level
+        STRING starts_at
+        STRING ends_at
+    }
+    planet_explorations {
+        BIGINT id
+        INT player_id
+        STRING name
+        STRING discovery_type
+        STRING status
+        STRING result_json
+        STRING started_at
+        STRING completed_at
+    }
+    races ||--o{ players : "race_id"
+    players ||--o{ players : "commander_id"
+    players ||--o{ player_resources : "player_id"
+    players ||--o{ player_unit_stats : "player_id"
+    menu_items ||--o{ menu_items : "parent_id"
+    players ||--o{ player_technologies : "player_id"
+    players ||--o{ player_weapons : "player_id"
+    weapon_types ||--o{ player_weapons : "weapon_type_id"
+    players ||--o{ motherships : "player_id"
+    motherships ||--o{ mothership_modules : "mothership_id"
+    players ||--o{ player_planets : "player_id"
+    player_planets ||--o{ planet_bonuses : "planet_id"
+    player_planets ||--o{ planet_defenses : "planet_id"
+    players ||--o{ alliances : "founder_id"
+    alliances ||--o{ alliance_members : "alliance_id"
+    players ||--o{ alliance_members : "player_id"
+    players ||--o{ commander_relationships : "commander_id"
+    players ||--o{ officer_relationships : "officer_id"
+    players ||--o{ recruitment_records : "commander_id"
+    players ||--o{ battles : "attacker_id"
+    battles ||--o{ battle_participants : "battle_id"
+    players ||--o{ battle_participants : "player_id"
+    battles ||--o{ battle_reports : "battle_id"
+    players ||--o{ battle_reports : "recipient_id"
+    battles ||--o{ attack_logs : "battle_id"
+    players ||--o{ attack_logs : "attacker_id"
+    players ||--o{ covert_agents : "player_id"
+    players ||--o{ anti_covert_agents : "player_id"
+    players ||--o{ spy_missions : "attacker_id"
+    players ||--o{ sabotage_missions : "attacker_id"
+    players ||--o{ covert_missions : "attacker_id"
+    players ||--o{ intelligence_reports : "player_id"
+    players ||--o{ market_orders : "seller_id"
+    players ||--o{ private_trades : "sender_id"
+    players ||--o{ player_mercenaries : "player_id"
+    mercenary_types ||--o{ player_mercenaries : "mercenary_type_id"
+    players ||--o{ rankings : "player_id"
+    players ||--o{ rank_snapshots : "player_id"
+    players ||--o{ glory_reputation : "player_id"
+    players ||--o{ ascensions : "player_id"
+    players ||--o{ ascension_states : "player_id"
+    players ||--o{ protection_states : "player_id"
+    players ||--o{ vacation_states : "player_id"
+    players ||--o{ messages : "sender_id"
+    players ||--o{ blacklists : "player_id"
+    players ||--o{ target_realms : "player_id"
+    players ||--o{ ip_restrictions : "player_id"
+    game_turns ||--o{ turn_events : "game_turn_id"
+    players ||--o{ turn_events : "player_id"
+    players ||--o{ game_events : "player_id"
+    players ||--o{ audit_logs : "player_id"
+    players ||--o{ alliances_black_market : "seller_id"
+    players ||--o{ supporter_status : "player_id"
+    players ||--o{ planet_explorations : "player_id"

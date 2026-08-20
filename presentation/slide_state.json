@@ -1,0 +1,104 @@
+{
+  "project_info": {
+    "title": "StargateWars",
+    "created": 1787203615.545,
+    "last_updated": 1787207735.849,
+    "total_slides": 9
+  },
+  "slides": [
+    {
+      "id": "cover",
+      "state": "edited",
+      "pageNum": 1
+    },
+    {
+      "id": "strategy_loop",
+      "state": "edited",
+      "pageNum": 2
+    },
+    {
+      "id": "architecture",
+      "state": "edited",
+      "pageNum": 3
+    },
+    {
+      "id": "database",
+      "state": "edited",
+      "pageNum": 4
+    },
+    {
+      "id": "page_mapping",
+      "state": "edited",
+      "pageNum": 5
+    },
+    {
+      "id": "turn_engine",
+      "state": "edited",
+      "pageNum": 6
+    },
+    {
+      "id": "combat",
+      "state": "edited",
+      "pageNum": 7
+    },
+    {
+      "id": "covert",
+      "state": "edited",
+      "pageNum": 8
+    },
+    {
+      "id": "frontend",
+      "state": "edited",
+      "pageNum": 9
+    }
+  ],
+  "outline": [
+    {
+      "id": "cover",
+      "title": "StargateWars",
+      "summary": "Modular PHP/MySQL architecture, gameplay systems, and frontend navigation.",
+      "image_plan": "/home/ubuntu/upload/search_images/0eChMbv62iuc.jpg - Stargate theme fits the title StargateWars on the cover slide."
+    },
+    {
+      "id": "strategy_loop",
+      "title": "The product is a persistent strategy loop",
+      "summary": "Explain the 30-minute turn cycle, economy, military, covert, social, and progression loop."
+    },
+    {
+      "id": "architecture",
+      "title": "The codebase is organized around clear boundaries",
+      "summary": "Show frontend, backend, services, repositories, cron, and database boundaries."
+    },
+    {
+      "id": "database",
+      "title": "The database models the whole game state",
+      "summary": "Summarize the 54 canonical tables and major relationship domains.",
+      "image_plan": "/home/ubuntu/upload/search_images/o3qqsa46Lcmv.jpg - Database schema diagram showing canonical tables for slide 3."
+    },
+    {
+      "id": "page_mapping",
+      "title": "Every page maps controls to server intent",
+      "summary": "Show how page controls map to secure actions and database modules."
+    },
+    {
+      "id": "turn_engine",
+      "title": "The turn engine is timestamp-driven and transactional",
+      "summary": "Explain elapsed-time processing, turn caps, income, unit production, row locks, and audit events."
+    },
+    {
+      "id": "combat",
+      "title": "Combat combines power, risk, and auditability",
+      "summary": "Explain combat validation, calculation, transactions, casualties, loot, and reports."
+    },
+    {
+      "id": "covert",
+      "title": "Covert play is a parallel information economy",
+      "summary": "Explain recon, spy, sabotage, detection, intelligence reports, and covert persistence."
+    },
+    {
+      "id": "frontend",
+      "title": "The modular frontend is designed for expansion",
+      "summary": "Show the category navigation, master CSS, module CSS, and next production steps."
+    }
+  ]
+}

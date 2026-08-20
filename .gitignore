@@ -1,0 +1,15 @@
+.env
+.env.*
+!.env.example
+*.log
+*.zip
+.DS_Store
+Thumbs.db
+/tmp/
+cache/
+logs/
+node_modules/
+vendor/
+.idea/
+.vscode/
+.phpunit.result.cache

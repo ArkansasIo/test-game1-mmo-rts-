@@ -1,0 +1,17 @@
+from pathlib import Path
+import re
+path=Path('/home/ubuntu/stargatewars/index.php')
+text=path.read_text()
+start="<?php if($route==='resources'):?>"
+end="<?php elseif($route==='income'):?>"
+pattern=re.escape(start)+r'.*?'+re.escape(end)
+replacement=r'''<?php if($route==='resources'):?>
+<div class="content-grid"><div class="panel"><div class="panel-head"><div><p class="kicker">RESOURCE VAULT</p><h3>Strategic resource balances</h3></div><span class="status-badge">SERVER AUTHORITATIVE</span></div><div class="metrics-grid">
+<?php foreach([['metal','Metal','Industrial stock'],['crystal','Crystal','Research stock'],['naquadah','Naquadah','Strategic balance'],['energy','Energy','Production capacity'],['dark_matter','Dark Matter','Premium strategic reserve']] as $resource):?><div class="metric"><span><?=e($resource[1])?></span><strong><?=number((int)($resources[$resource[0]]??0))?></strong><small><?=e($resource[2])?></small></div><?php endforeach;?>
+</div><div class="form-grid"><form method="post" action="actions/game.php" class="action-form"><?=$csrf?><input type="hidden" name="action" value="deposit"><input type="hidden" name="redirect" value="resources"><label>Deposit Naquadah<input name="amount" type="number" min="1" max="<?=number((int)$resources['naquadah'])?>" required></label><button class="button dark" type="submit">Deposit to protected vault →</button></form><form method="post" action="actions/game.php" class="action-form"><?=$csrf?><input type="hidden" name="action" value="withdraw"><input type="hidden" name="redirect" value="resources"><label>Withdraw Naquadah<input name="amount" type="number" min="1" max="<?=number((int)$resources['banked_naquadah'])?>" required></label><button class="button dark" type="submit">Withdraw from vault →</button></form></div></div><div class="panel side-panel"><p class="kicker">RESOURCE FORMULA</p><h3>Current production model</h3><div class="stat-list"><div><span>Race income modifier</span><strong><?=e($player['race']??'Tau\'ri')?></strong></div><div><span>Government modifier</span><strong><?=e($player['government']??'Republic')?></strong></div><div><span>Banked Naquadah</span><strong><?=number((int)$resources['banked_naquadah'])?></strong></div><div><span>Attack turns</span><strong><?=number((int)$resources['attack_turns'])?></strong></div><div><span>Market turns</span><strong><?=number((int)$resources['market_turns'])?></strong></div></div><p class="muted">Production = base output × biome × race × government × technology. All balances are recalculated in PHP transactions.</p></div></div><div class="panel table-panel"><div class="panel-head"><div><p class="kicker">DARK MATTER LEDGER</p><h3>Premium resource rules</h3></div></div><div class="data-table"><div class="table-row table-head"><span>Operation</span><span>Validation</span><span>State</span></div><div class="table-row"><span>Grant / reward</span><span>Event or achievement source</span><span>Recorded</span></div><div class="table-row"><span>Spend</span><span>Positive amount and balance check</span><span>Protected</span></div><div class="table-row"><span>Government modifier</span><span>FactionService calculation</span><span>Applied server-side</span></div></div></div>
+<?php elseif($route==='income'):?>'''
+new_text,n=re.subn(pattern,replacement,text,flags=re.S)
+if n!=1:
+    raise SystemExit(f'resource branch replacement count={n}')
+path.write_text(new_text)
+print('resources_branch=upgraded')

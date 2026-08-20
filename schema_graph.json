@@ -1,0 +1,2190 @@
+{
+  "table_count": 54,
+  "relationship_count": 68,
+  "tables": [
+    {
+      "name": "races",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(50)"
+        },
+        {
+          "name": "bonus_label",
+          "type": "VARCHAR(120)"
+        },
+        {
+          "name": "bonus_percent",
+          "type": "DECIMAL(5,2)"
+        },
+        {
+          "name": "bank_name",
+          "type": "VARCHAR(100)"
+        },
+        {
+          "name": "attack_modifier",
+          "type": "DECIMAL(6,3)"
+        },
+        {
+          "name": "defense_modifier",
+          "type": "DECIMAL(6,3)"
+        },
+        {
+          "name": "income_modifier",
+          "type": "DECIMAL(6,3)"
+        },
+        {
+          "name": "covert_modifier",
+          "type": "DECIMAL(6,3)"
+        }
+      ]
+    },
+    {
+      "name": "players",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT"
+        },
+        {
+          "name": "username",
+          "type": "VARCHAR(50)"
+        },
+        {
+          "name": "display_name",
+          "type": "VARCHAR(100)"
+        },
+        {
+          "name": "password_hash",
+          "type": "VARCHAR(255)"
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR(190)"
+        },
+        {
+          "name": "race_id",
+          "type": "INT"
+        },
+        {
+          "name": "ascended_race",
+          "type": "VARCHAR(80)"
+        },
+        {
+          "name": "title",
+          "type": "VARCHAR(100)"
+        },
+        {
+          "name": "rank_level",
+          "type": "TINYINT"
+        },
+        {
+          "name": "rank_name",
+          "type": "VARCHAR(50)"
+        },
+        {
+          "name": "glory",
+          "type": "BIGINT"
+        },
+        {
+          "name": "reputation",
+          "type": "BIGINT"
+        },
+        {
+          "name": "defcon_level",
+          "type": "TINYINT"
+        },
+        {
+          "name": "commander_id",
+          "type": "INT"
+        },
+        {
+          "name": "alliance_id",
+          "type": "INT"
+        },
+        {
+          "name": "last_turn_at",
+          "type": "DATETIME"
+        },
+        {
+          "name": "protected_until",
+          "type": "DATETIME"
+        },
+        {
+          "name": "vacation_until",
+          "type": "DATETIME"
+        },
+        {
+          "name": "last_login_at",
+          "type": "DATETIME"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "player_resources",
+      "columns": [
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "naquadah",
+          "type": "BIGINT"
+        },
+        {
+          "name": "banked_naquadah",
+          "type": "BIGINT"
+        },
+        {
+          "name": "attack_turns",
+          "type": "INT"
+        },
+        {
+          "name": "market_turns",
+          "type": "INT"
+        },
+        {
+          "name": "untrained_units",
+          "type": "INT"
+        },
+        {
+          "name": "unit_production",
+          "type": "INT"
+        },
+        {
+          "name": "miners",
+          "type": "INT"
+        },
+        {
+          "name": "lifers",
+          "type": "INT"
+        },
+        {
+          "name": "attack_units",
+          "type": "INT"
+        },
+        {
+          "name": "super_attack_units",
+          "type": "INT"
+        },
+        {
+          "name": "defense_units",
+          "type": "INT"
+        },
+        {
+          "name": "super_defense_units",
+          "type": "INT"
+        },
+        {
+          "name": "spies",
+          "type": "INT"
+        },
+        {
+          "name": "anti_spies",
+          "type": "INT"
+        },
+        {
+          "name": "covert_capacity",
+          "type": "INT"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "player_unit_stats",
+      "columns": [
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "covert_level",
+          "type": "INT"
+        },
+        {
+          "name": "anti_covert_level",
+          "type": "INT"
+        },
+        {
+          "name": "attack_power",
+          "type": "BIGINT"
+        },
+        {
+          "name": "defense_power",
+          "type": "BIGINT"
+        },
+        {
+          "name": "covert_power",
+          "type": "BIGINT"
+        },
+        {
+          "name": "anti_covert_power",
+          "type": "BIGINT"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "menu_items",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT"
+        },
+        {
+          "name": "parent_id",
+          "type": "INT"
+        },
+        {
+          "name": "label",
+          "type": "VARCHAR(80)"
+        },
+        {
+          "name": "route",
+          "type": "VARCHAR(100)"
+        },
+        {
+          "name": "icon",
+          "type": "VARCHAR(10)"
+        },
+        {
+          "name": "sort_order",
+          "type": "INT"
+        }
+      ]
+    },
+    {
+      "name": "page_content",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT"
+        },
+        {
+          "name": "route",
+          "type": "VARCHAR(100)"
+        },
+        {
+          "name": "title",
+          "type": "VARCHAR(120)"
+        },
+        {
+          "name": "description",
+          "type": "TEXT"
+        },
+        {
+          "name": "minimum_rank_level",
+          "type": "TINYINT"
+        },
+        {
+          "name": "body_json",
+          "type": "JSON"
+        }
+      ]
+    },
+    {
+      "name": "rank_definitions",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT"
+        },
+        {
+          "name": "rank_level",
+          "type": "TINYINT"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(50)"
+        },
+        {
+          "name": "minimum_glory",
+          "type": "BIGINT"
+        },
+        {
+          "name": "minimum_reputation",
+          "type": "BIGINT"
+        }
+      ]
+    },
+    {
+      "name": "game_settings",
+      "columns": [
+        {
+          "name": "setting_key",
+          "type": "VARCHAR(80)"
+        },
+        {
+          "name": "setting_value",
+          "type": "VARCHAR(255)"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "player_technologies",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "technology_id",
+          "type": "INT"
+        },
+        {
+          "name": "technology_key",
+          "type": "VARCHAR(80)"
+        },
+        {
+          "name": "technology_name",
+          "type": "VARCHAR(120)"
+        },
+        {
+          "name": "category",
+          "type": "VARCHAR(40)"
+        },
+        {
+          "name": "level",
+          "type": "INT"
+        },
+        {
+          "name": "next_cost",
+          "type": "BIGINT"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "technologies",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT"
+        },
+        {
+          "name": "technology_key",
+          "type": "VARCHAR(80)"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(120)"
+        },
+        {
+          "name": "category",
+          "type": "ENUM('offense','defense','covert','anti_covert','unique','mercenary')"
+        },
+        {
+          "name": "base_cost",
+          "type": "BIGINT"
+        },
+        {
+          "name": "cost_growth",
+          "type": "DECIMAL(8,2)"
+        },
+        {
+          "name": "effect_value",
+          "type": "DECIMAL(8,2)"
+        },
+        {
+          "name": "description",
+          "type": "TEXT"
+        }
+      ]
+    },
+    {
+      "name": "weapon_types",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(80)"
+        },
+        {
+          "name": "category",
+          "type": "ENUM('attack','defense','super_attack','super_defense','mothership')"
+        },
+        {
+          "name": "power",
+          "type": "INT"
+        },
+        {
+          "name": "price",
+          "type": "BIGINT"
+        },
+        {
+          "name": "max_durability",
+          "type": "INT"
+        },
+        {
+          "name": "description",
+          "type": "TEXT"
+        }
+      ]
+    },
+    {
+      "name": "player_weapons",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "weapon_type_id",
+          "type": "INT"
+        },
+        {
+          "name": "quantity",
+          "type": "INT"
+        },
+        {
+          "name": "durability",
+          "type": "INT"
+        }
+      ]
+    },
+    {
+      "name": "motherships",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT"
+        },
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(100)"
+        },
+        {
+          "name": "hull_level",
+          "type": "INT"
+        },
+        {
+          "name": "volley_bays",
+          "type": "INT"
+        },
+        {
+          "name": "shield_bays",
+          "type": "INT"
+        },
+        {
+          "name": "fleet_hangars",
+          "type": "INT"
+        },
+        {
+          "name": "weapons_power",
+          "type": "INT"
+        },
+        {
+          "name": "shields_power",
+          "type": "INT"
+        },
+        {
+          "name": "exploration_level",
+          "type": "INT"
+        },
+        {
+          "name": "action_level",
+          "type": "INT"
+        }
+      ]
+    },
+    {
+      "name": "mothership_modules",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT"
+        },
+        {
+          "name": "mothership_id",
+          "type": "INT"
+        },
+        {
+          "name": "module_key",
+          "type": "VARCHAR(80)"
+        },
+        {
+          "name": "level",
+          "type": "INT"
+        },
+        {
+          "name": "durability",
+          "type": "INT"
+        }
+      ]
+    },
+    {
+      "name": "player_planets",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT"
+        },
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(100)"
+        },
+        {
+          "name": "planet_type",
+          "type": "VARCHAR(60)"
+        },
+        {
+          "name": "size_label",
+          "type": "ENUM('Tiny','Small','Medium','Large','Huge')"
+        },
+        {
+          "name": "size_level",
+          "type": "INT"
+        },
+        {
+          "name": "attack_bonus",
+          "type": "DECIMAL(6,2)"
+        },
+        {
+          "name": "defense_bonus",
+          "type": "DECIMAL(6,2)"
+        },
+        {
+          "name": "income_bonus",
+          "type": "DECIMAL(6,2)"
+        },
+        {
+          "name": "covert_bonus",
+          "type": "DECIMAL(6,2)"
+        },
+        {
+          "name": "owner_since",
+          "type": "DATETIME"
+        },
+        {
+          "name": "conquered_from",
+          "type": "INT"
+        }
+      ]
+    },
+    {
+      "name": "planet_bonuses",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT"
+        },
+        {
+          "name": "planet_id",
+          "type": "INT"
+        },
+        {
+          "name": "bonus_type",
+          "type": "ENUM('attack','defense','income','covert','production','mothership')"
+        },
+        {
+          "name": "bonus_percent",
+          "type": "DECIMAL(6,2)"
+        },
+        {
+          "name": "level",
+          "type": "INT"
+        }
+      ]
+    },
+    {
+      "name": "planet_defenses",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT"
+        },
+        {
+          "name": "planet_id",
+          "type": "INT"
+        },
+        {
+          "name": "defense_type",
+          "type": "VARCHAR(80)"
+        },
+        {
+          "name": "level",
+          "type": "INT"
+        },
+        {
+          "name": "strength",
+          "type": "INT"
+        }
+      ]
+    },
+    {
+      "name": "alliances",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(80)"
+        },
+        {
+          "name": "tag",
+          "type": "VARCHAR(12)"
+        },
+        {
+          "name": "founder_id",
+          "type": "INT"
+        },
+        {
+          "name": "description",
+          "type": "TEXT"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "alliance_members",
+      "columns": [
+        {
+          "name": "alliance_id",
+          "type": "INT"
+        },
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "role",
+          "type": "ENUM('leader','officer','member')"
+        },
+        {
+          "name": "joined_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "commander_relationships",
+      "columns": [
+        {
+          "name": "commander_id",
+          "type": "INT"
+        },
+        {
+          "name": "officer_id",
+          "type": "INT"
+        },
+        {
+          "name": "income_share_percent",
+          "type": "DECIMAL(5,2)"
+        },
+        {
+          "name": "unit_production_bonus",
+          "type": "DECIMAL(5,2)"
+        },
+        {
+          "name": "status",
+          "type": "ENUM('pending','active','ended')"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "officer_relationships",
+      "columns": [
+        {
+          "name": "officer_id",
+          "type": "INT"
+        },
+        {
+          "name": "commander_id",
+          "type": "INT"
+        },
+        {
+          "name": "relationship_type",
+          "type": "VARCHAR(40)"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "recruitment_records",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "commander_id",
+          "type": "INT"
+        },
+        {
+          "name": "recruit_id",
+          "type": "INT"
+        },
+        {
+          "name": "status",
+          "type": "ENUM('invited','accepted','rejected','cancelled')"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "battles",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "battle_seed",
+          "type": "CHAR(64)"
+        },
+        {
+          "name": "attacker_id",
+          "type": "INT"
+        },
+        {
+          "name": "defender_id",
+          "type": "INT"
+        },
+        {
+          "name": "action_type",
+          "type": "ENUM('attack','raid','planet_conquest','mothership')"
+        },
+        {
+          "name": "turns_spent",
+          "type": "INT"
+        },
+        {
+          "name": "attacker_score",
+          "type": "BIGINT"
+        },
+        {
+          "name": "defender_score",
+          "type": "BIGINT"
+        },
+        {
+          "name": "winner_id",
+          "type": "INT"
+        },
+        {
+          "name": "loot",
+          "type": "BIGINT"
+        },
+        {
+          "name": "attacker_casualties",
+          "type": "INT"
+        },
+        {
+          "name": "defender_casualties",
+          "type": "INT"
+        },
+        {
+          "name": "weapon_damage",
+          "type": "JSON"
+        },
+        {
+          "name": "world_snapshot",
+          "type": "JSON"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "battle_participants",
+      "columns": [
+        {
+          "name": "battle_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "side",
+          "type": "ENUM('attacker','defender')"
+        },
+        {
+          "name": "units_sent",
+          "type": "JSON"
+        },
+        {
+          "name": "units_lost",
+          "type": "JSON"
+        }
+      ]
+    },
+    {
+      "name": "battle_reports",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "battle_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "recipient_id",
+          "type": "INT"
+        },
+        {
+          "name": "report_text",
+          "type": "TEXT"
+        },
+        {
+          "name": "report_json",
+          "type": "JSON"
+        },
+        {
+          "name": "seen_at",
+          "type": "DATETIME"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "attack_logs",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "battle_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "attacker_id",
+          "type": "INT"
+        },
+        {
+          "name": "defender_id",
+          "type": "INT"
+        },
+        {
+          "name": "action_type",
+          "type": "VARCHAR(40)"
+        },
+        {
+          "name": "result",
+          "type": "VARCHAR(40)"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "covert_agents",
+      "columns": [
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "count",
+          "type": "INT"
+        },
+        {
+          "name": "level",
+          "type": "INT"
+        }
+      ]
+    },
+    {
+      "name": "anti_covert_agents",
+      "columns": [
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "count",
+          "type": "INT"
+        },
+        {
+          "name": "level",
+          "type": "INT"
+        }
+      ]
+    },
+    {
+      "name": "spy_missions",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "attacker_id",
+          "type": "INT"
+        },
+        {
+          "name": "defender_id",
+          "type": "INT"
+        },
+        {
+          "name": "mission_type",
+          "type": "ENUM('recon','spy')"
+        },
+        {
+          "name": "agents_sent",
+          "type": "INT"
+        },
+        {
+          "name": "success",
+          "type": "TINYINT(1)"
+        },
+        {
+          "name": "detected",
+          "type": "TINYINT(1)"
+        },
+        {
+          "name": "agent_losses",
+          "type": "INT"
+        },
+        {
+          "name": "result_text",
+          "type": "TEXT"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "sabotage_missions",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "attacker_id",
+          "type": "INT"
+        },
+        {
+          "name": "defender_id",
+          "type": "INT"
+        },
+        {
+          "name": "target_system",
+          "type": "VARCHAR(80)"
+        },
+        {
+          "name": "agents_sent",
+          "type": "INT"
+        },
+        {
+          "name": "success",
+          "type": "TINYINT(1)"
+        },
+        {
+          "name": "detected",
+          "type": "TINYINT(1)"
+        },
+        {
+          "name": "damage_value",
+          "type": "BIGINT"
+        },
+        {
+          "name": "result_text",
+          "type": "TEXT"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "covert_missions",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "attacker_id",
+          "type": "INT"
+        },
+        {
+          "name": "defender_id",
+          "type": "INT"
+        },
+        {
+          "name": "mission_type",
+          "type": "ENUM('recon','spy','sabotage')"
+        },
+        {
+          "name": "agents_sent",
+          "type": "INT"
+        },
+        {
+          "name": "success",
+          "type": "TINYINT(1)"
+        },
+        {
+          "name": "detected",
+          "type": "TINYINT(1)"
+        },
+        {
+          "name": "result_text",
+          "type": "TEXT"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "intelligence_reports",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "target_player_id",
+          "type": "INT"
+        },
+        {
+          "name": "report_type",
+          "type": "VARCHAR(40)"
+        },
+        {
+          "name": "payload",
+          "type": "JSON"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "market_orders",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "seller_id",
+          "type": "INT"
+        },
+        {
+          "name": "resource_type",
+          "type": "ENUM('naquadah','mercenary','weapon')"
+        },
+        {
+          "name": "quantity",
+          "type": "INT"
+        },
+        {
+          "name": "unit_price",
+          "type": "BIGINT"
+        },
+        {
+          "name": "status",
+          "type": "ENUM('open','filled','cancelled')"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "private_trades",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "sender_id",
+          "type": "INT"
+        },
+        {
+          "name": "recipient_id",
+          "type": "INT"
+        },
+        {
+          "name": "offer_json",
+          "type": "JSON"
+        },
+        {
+          "name": "status",
+          "type": "ENUM('pending','accepted','rejected','cancelled','expired')"
+        },
+        {
+          "name": "expires_at",
+          "type": "DATETIME"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "mercenary_types",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(80)"
+        },
+        {
+          "name": "attack_power",
+          "type": "INT"
+        },
+        {
+          "name": "defense_power",
+          "type": "INT"
+        },
+        {
+          "name": "price",
+          "type": "BIGINT"
+        },
+        {
+          "name": "capacity_cost",
+          "type": "INT"
+        }
+      ]
+    },
+    {
+      "name": "player_mercenaries",
+      "columns": [
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "mercenary_type_id",
+          "type": "INT"
+        },
+        {
+          "name": "quantity",
+          "type": "INT"
+        }
+      ]
+    },
+    {
+      "name": "rankings",
+      "columns": [
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "overall_score",
+          "type": "BIGINT"
+        },
+        {
+          "name": "military_score",
+          "type": "BIGINT"
+        },
+        {
+          "name": "economy_score",
+          "type": "BIGINT"
+        },
+        {
+          "name": "covert_score",
+          "type": "BIGINT"
+        },
+        {
+          "name": "rank_position",
+          "type": "INT"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "rank_snapshots",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "snapshot_date",
+          "type": "DATE"
+        },
+        {
+          "name": "overall_score",
+          "type": "BIGINT"
+        },
+        {
+          "name": "military_score",
+          "type": "BIGINT"
+        },
+        {
+          "name": "economy_score",
+          "type": "BIGINT"
+        },
+        {
+          "name": "covert_score",
+          "type": "BIGINT"
+        },
+        {
+          "name": "rank_position",
+          "type": "INT"
+        }
+      ]
+    },
+    {
+      "name": "glory_reputation",
+      "columns": [
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "glory",
+          "type": "BIGINT"
+        },
+        {
+          "name": "reputation",
+          "type": "BIGINT"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "ascensions",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "ascended_race",
+          "type": "VARCHAR(80)"
+        },
+        {
+          "name": "glory_spent",
+          "type": "BIGINT"
+        },
+        {
+          "name": "reputation_spent",
+          "type": "BIGINT"
+        },
+        {
+          "name": "conversion_value",
+          "type": "BIGINT"
+        },
+        {
+          "name": "title_granted",
+          "type": "VARCHAR(100)"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "ascension_states",
+      "columns": [
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "ascension_count",
+          "type": "INT"
+        },
+        {
+          "name": "ascended_race",
+          "type": "VARCHAR(80)"
+        },
+        {
+          "name": "ascension_points",
+          "type": "BIGINT"
+        },
+        {
+          "name": "last_ascended_at",
+          "type": "DATETIME"
+        }
+      ]
+    },
+    {
+      "name": "protection_states",
+      "columns": [
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "ppt_until",
+          "type": "DATETIME"
+        },
+        {
+          "name": "vacation_until",
+          "type": "DATETIME"
+        },
+        {
+          "name": "attack_cooldown_until",
+          "type": "DATETIME"
+        },
+        {
+          "name": "protected_until",
+          "type": "DATETIME"
+        }
+      ]
+    },
+    {
+      "name": "vacation_states",
+      "columns": [
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "active",
+          "type": "TINYINT(1)"
+        },
+        {
+          "name": "starts_at",
+          "type": "DATETIME"
+        },
+        {
+          "name": "ends_at",
+          "type": "DATETIME"
+        }
+      ]
+    },
+    {
+      "name": "messages",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "sender_id",
+          "type": "INT"
+        },
+        {
+          "name": "recipient_id",
+          "type": "INT"
+        },
+        {
+          "name": "subject",
+          "type": "VARCHAR(160)"
+        },
+        {
+          "name": "body",
+          "type": "TEXT"
+        },
+        {
+          "name": "read_at",
+          "type": "DATETIME"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "blacklists",
+      "columns": [
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "blocked_player_id",
+          "type": "INT"
+        },
+        {
+          "name": "reason",
+          "type": "VARCHAR(255)"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "target_realms",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT"
+        },
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(100)"
+        },
+        {
+          "name": "race_name",
+          "type": "VARCHAR(50)"
+        },
+        {
+          "name": "rank_position",
+          "type": "INT"
+        },
+        {
+          "name": "attack_score",
+          "type": "BIGINT"
+        },
+        {
+          "name": "defense_score",
+          "type": "BIGINT"
+        },
+        {
+          "name": "covert_score",
+          "type": "BIGINT"
+        }
+      ]
+    },
+    {
+      "name": "ip_restrictions",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ip_address",
+          "type": "VARBINARY(16)"
+        },
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "restriction_type",
+          "type": "ENUM('same_ip','attack_block','transfer_block','commander_block')"
+        },
+        {
+          "name": "reason",
+          "type": "VARCHAR(255)"
+        },
+        {
+          "name": "expires_at",
+          "type": "DATETIME"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "game_turns",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "turn_number",
+          "type": "BIGINT"
+        },
+        {
+          "name": "processed_at",
+          "type": "DATETIME"
+        },
+        {
+          "name": "status",
+          "type": "ENUM('started','completed','failed')"
+        },
+        {
+          "name": "summary_json",
+          "type": "JSON"
+        }
+      ]
+    },
+    {
+      "name": "turn_events",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "game_turn_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "event_type",
+          "type": "VARCHAR(80)"
+        },
+        {
+          "name": "amount_json",
+          "type": "JSON"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "game_events",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "event_type",
+          "type": "VARCHAR(80)"
+        },
+        {
+          "name": "entity_type",
+          "type": "VARCHAR(80)"
+        },
+        {
+          "name": "entity_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "payload",
+          "type": "JSON"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "audit_logs",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "action_name",
+          "type": "VARCHAR(100)"
+        },
+        {
+          "name": "request_id",
+          "type": "CHAR(36)"
+        },
+        {
+          "name": "ip_address",
+          "type": "VARBINARY(16)"
+        },
+        {
+          "name": "payload",
+          "type": "JSON"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "alliances_black_market",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "seller_id",
+          "type": "INT"
+        },
+        {
+          "name": "item_key",
+          "type": "VARCHAR(80)"
+        },
+        {
+          "name": "quantity",
+          "type": "INT"
+        },
+        {
+          "name": "price",
+          "type": "BIGINT"
+        },
+        {
+          "name": "status",
+          "type": "ENUM('open','sold','cancelled')"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "name": "supporter_status",
+      "columns": [
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "supporter_level",
+          "type": "TINYINT"
+        },
+        {
+          "name": "starts_at",
+          "type": "DATETIME"
+        },
+        {
+          "name": "ends_at",
+          "type": "DATETIME"
+        }
+      ]
+    },
+    {
+      "name": "planet_explorations",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "player_id",
+          "type": "INT"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(100)"
+        },
+        {
+          "name": "discovery_type",
+          "type": "VARCHAR(60)"
+        },
+        {
+          "name": "status",
+          "type": "ENUM('started','completed','failed')"
+        },
+        {
+          "name": "result_json",
+          "type": "JSON"
+        },
+        {
+          "name": "started_at",
+          "type": "DATETIME"
+        },
+        {
+          "name": "completed_at",
+          "type": "DATETIME"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from_table": "players",
+      "from_column": "race_id",
+      "to_table": "races",
+      "to_column": "id"
+    },
+    {
+      "from_table": "players",
+      "from_column": "commander_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "player_resources",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "player_unit_stats",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "menu_items",
+      "from_column": "parent_id",
+      "to_table": "menu_items",
+      "to_column": "id"
+    },
+    {
+      "from_table": "player_technologies",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "player_weapons",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "player_weapons",
+      "from_column": "weapon_type_id",
+      "to_table": "weapon_types",
+      "to_column": "id"
+    },
+    {
+      "from_table": "motherships",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "mothership_modules",
+      "from_column": "mothership_id",
+      "to_table": "motherships",
+      "to_column": "id"
+    },
+    {
+      "from_table": "player_planets",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "player_planets",
+      "from_column": "conquered_from",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "planet_bonuses",
+      "from_column": "planet_id",
+      "to_table": "player_planets",
+      "to_column": "id"
+    },
+    {
+      "from_table": "planet_defenses",
+      "from_column": "planet_id",
+      "to_table": "player_planets",
+      "to_column": "id"
+    },
+    {
+      "from_table": "alliances",
+      "from_column": "founder_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "alliance_members",
+      "from_column": "alliance_id",
+      "to_table": "alliances",
+      "to_column": "id"
+    },
+    {
+      "from_table": "alliance_members",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "commander_relationships",
+      "from_column": "commander_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "commander_relationships",
+      "from_column": "officer_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "officer_relationships",
+      "from_column": "officer_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "officer_relationships",
+      "from_column": "commander_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "recruitment_records",
+      "from_column": "commander_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "recruitment_records",
+      "from_column": "recruit_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "battles",
+      "from_column": "attacker_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "battles",
+      "from_column": "defender_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "battles",
+      "from_column": "winner_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "battle_participants",
+      "from_column": "battle_id",
+      "to_table": "battles",
+      "to_column": "id"
+    },
+    {
+      "from_table": "battle_participants",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "battle_reports",
+      "from_column": "battle_id",
+      "to_table": "battles",
+      "to_column": "id"
+    },
+    {
+      "from_table": "battle_reports",
+      "from_column": "recipient_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "attack_logs",
+      "from_column": "battle_id",
+      "to_table": "battles",
+      "to_column": "id"
+    },
+    {
+      "from_table": "attack_logs",
+      "from_column": "attacker_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "attack_logs",
+      "from_column": "defender_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "covert_agents",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "anti_covert_agents",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "spy_missions",
+      "from_column": "attacker_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "spy_missions",
+      "from_column": "defender_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "sabotage_missions",
+      "from_column": "attacker_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "sabotage_missions",
+      "from_column": "defender_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "covert_missions",
+      "from_column": "attacker_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "covert_missions",
+      "from_column": "defender_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "intelligence_reports",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "intelligence_reports",
+      "from_column": "target_player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "market_orders",
+      "from_column": "seller_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "private_trades",
+      "from_column": "sender_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "private_trades",
+      "from_column": "recipient_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "player_mercenaries",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "player_mercenaries",
+      "from_column": "mercenary_type_id",
+      "to_table": "mercenary_types",
+      "to_column": "id"
+    },
+    {
+      "from_table": "rankings",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "rank_snapshots",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "glory_reputation",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "ascensions",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "ascension_states",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "protection_states",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "vacation_states",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "messages",
+      "from_column": "sender_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "messages",
+      "from_column": "recipient_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "blacklists",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "blacklists",
+      "from_column": "blocked_player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "target_realms",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "ip_restrictions",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "turn_events",
+      "from_column": "game_turn_id",
+      "to_table": "game_turns",
+      "to_column": "id"
+    },
+    {
+      "from_table": "turn_events",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "game_events",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "audit_logs",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "alliances_black_market",
+      "from_column": "seller_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "supporter_status",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    },
+    {
+      "from_table": "planet_explorations",
+      "from_column": "player_id",
+      "to_table": "players",
+      "to_column": "id"
+    }
+  ]
+}
