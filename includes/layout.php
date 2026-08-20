@@ -10,7 +10,7 @@ foreach ($menu as $item) {
 }
 $pdo = db();
 $sessionUser = current_user();
-$player = $sessionUser ?? ['display_name'=>'Commander Tanang','username'=>'demo','race'=>'Tau\'ri'];
+$player = $sessionUser ?? ['id'=>0,'username'=>'demo_commander','display_name'=>'Commander Tanang','race'=>'Tau\'ri','government'=>'Republic','rank_level'=>1,'rank_name'=>'Initiate'];
 $resources = ['naquadah'=>125000,'dark_matter'=>2500,'metal'=>820000,'crystal'=>460000,'energy'=>640,'banked_naquadah'=>500000,'attack_turns'=>48,'market_turns'=>3,'untrained_units'=>1600,'unit_production'=>12,'miners'=>120,'lifers'=>12,'attack_units'=>850,'defense_units'=>1200,'spies'=>160,'anti_spies'=>140,'food'=>10000,'water'=>10000,'population'=>100,'population_capacity'=>1000];
 if ($pdo && $sessionUser) {
     try {

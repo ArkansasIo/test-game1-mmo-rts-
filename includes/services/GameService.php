@@ -68,7 +68,38 @@ final class GameService {
     public function resolveCombat(int $attackerId,int $defenderId,string $action,int $turns): array {
         if($turns<1||$turns>15)throw new InvalidArgumentException('Invalid combat request');Rules::cannotFarm($this->pdo,$attackerId,$defenderId);$this->pdo->beginTransaction();try{$a=$this->player($attackerId,true);$d=$this->player($defenderId,true);$ar=$this->resources($attackerId,true);$dr=$this->resources($defenderId,true);$now=new DateTimeImmutable('now');foreach([$a,$d] as $p){if(($p['vacation_until']&&new DateTimeImmutable($p['vacation_until'])>$now)||($p['protected_until']&&new DateTimeImmutable($p['protected_until'])>$now))throw new RuntimeException('Target is protected');}$scoreA=((int)$ar['attack_units']*5)+(int)$ar['spies'];$scoreD=((int)$dr['defense_units']*5)+(int)$dr['anti_spies'];$scoreA=(int)round($scoreA*(1+($a['race']==='Tau\'ri'?.25:0)));$scoreD=(int)round($scoreD*(1+($d['race']==='Asgard'?.25:0)));$scoreA*=max(1,$turns);$win=$scoreA>$scoreD;$loot=$win?min((int)$dr['naquadah'],(int)round($dr['naquadah']*.10)):0;$ac=$win?max(1,(int)round((int)$ar['attack_units']*.03)):max(1,(int)round((int)$ar['attack_units']*.06));$dc=$win?max(1,(int)round((int)$dr['defense_units']*.06)):max(1,(int)round((int)$dr['defense_units']*.03));$this->pdo->prepare('UPDATE player_resources SET attack_turns=attack_turns-?,attack_units=GREATEST(0,attack_units-?) WHERE player_id=?')->execute([$turns,$ac,$attackerId]);$this->pdo->prepare('UPDATE player_resources SET defense_units=GREATEST(0,defense_units-?),naquadah=naquadah-? WHERE player_id=?')->execute([$dc,$loot,$defenderId]);if($loot)$this->pdo->prepare('UPDATE player_resources SET naquadah=naquadah+? WHERE player_id=?')->execute([$loot,$attackerId]);$winner=$win?$attackerId:$defenderId;$stmt=$this->pdo->prepare("INSERT INTO battles (attacker_id,defender_id,action_type,turns_spent,attacker_score,defender_score,winner_id,loot,attacker_casualties,defender_casualties) VALUES (?,?,?,?,?,?,?,?,?,?)");$stmt->execute([$attackerId,$defenderId,$action,$turns,$scoreA,$scoreD,$winner,$loot,$ac,$dc]);$battleId=(int)$this->pdo->lastInsertId();$text=$win?'Victory':'Defeat';$report=$this->pdo->prepare('INSERT INTO battle_reports (battle_id,recipient_id,report_text) VALUES (?,?,?)');$report->execute([$battleId,$attackerId,$text.' — loot: '.$loot]);$report->execute([$battleId,$defenderId,($win?'Realm attacked successfully':'Realm defended successfully').' — casualties: '.$dc]);$this->event($attackerId,'combat_resolved','battle',$battleId,['action'=>$action,'winner_id'=>$winner,'loot'=>$loot]);$this->pdo->commit();return ['battle_id'=>$battleId,'winner_id'=>$winner,'loot'=>$loot,'attacker_casualties'=>$ac,'defender_casualties'=>$dc];}catch(Throwable $e){$this->pdo->rollBack();throw $e;}
     }
-    public function setDefcon(int $playerId,int $level):void{$level=max(0,min(4,$level));$this->pdo->beginTransaction();try{$s=$this->pdo->prepare('SELECT naquadah FROM player_resources WHERE player_id=? FOR UPDATE');$s->execute([$playerId]);$cost=$level*5000;if((int)$s->fetchColumn()<$cost)throw new RuntimeException('Not enough Naquadah for DefCon change');$this->pdo->prepare('UPDATE player_resources SET naquadah=naquadah-? WHERE player_id=?')->execute([$cost,$playerId]);$this->pdo->prepare('UPDATE players SET defcon_level=? WHERE id=?')->execute([$level,$playerId]);$this->event($playerId,'defcon_changed','player',$playerId,['level'=>$level,'cost'=>$cost]);$this->pdo->commit();}catch(Throwable $e){$this->pdo->rollBack();throw $e;}}
+    public static function defconCooldownState(?string $availableAt, ?DateTimeImmutable $now = null): array {
+        $now = $now ?? new DateTimeImmutable('now');
+        if (!$availableAt) return ['state'=>'ready','available_at'=>null,'remaining_seconds'=>0];
+        $available = new DateTimeImmutable($availableAt);
+        $remaining = max(0, $available->getTimestamp() - $now->getTimestamp());
+        return $remaining > 0
+            ? ['state'=>'cooldown','available_at'=>$available->format('Y-m-d H:i:s'),'remaining_seconds'=>$remaining]
+            : ['state'=>'ready','available_at'=>null,'remaining_seconds'=>0];
+    }
+    public function setDefcon(int $playerId,int $level):void {
+        $level=max(0,min(4,$level));
+        $this->pdo->beginTransaction();
+        try {
+            $cooldown=$this->pdo->prepare("SELECT available_at FROM player_cooldowns WHERE player_id=? AND cooldown_key='defcon_change' FOR UPDATE");
+            $cooldown->execute([$playerId]);
+            $state=self::defconCooldownState($cooldown->fetchColumn());
+            if($state['state']==='cooldown') throw new RuntimeException('DefCon change is on cooldown for '.$state['remaining_seconds'].' seconds.');
+            $s=$this->pdo->prepare('SELECT naquadah FROM player_resources WHERE player_id=? FOR UPDATE');
+            $s->execute([$playerId]);
+            $cost=$level*5000;
+            if((int)$s->fetchColumn()<$cost) throw new RuntimeException('Not enough Naquadah for DefCon change');
+            $this->pdo->prepare('UPDATE player_resources SET naquadah=naquadah-? WHERE player_id=?')->execute([$cost,$playerId]);
+            $this->pdo->prepare('UPDATE players SET defcon_level=? WHERE id=?')->execute([$level,$playerId]);
+            $availableAt=(new DateTimeImmutable('now'))->modify('+300 seconds')->format('Y-m-d H:i:s');
+            $this->pdo->prepare("INSERT INTO player_cooldowns (player_id,cooldown_key,available_at) VALUES (?, 'defcon_change', ?) ON DUPLICATE KEY UPDATE available_at=VALUES(available_at)")->execute([$playerId,$availableAt]);
+            $this->event($playerId,'defcon_changed','player',$playerId,['level'=>$level,'cost'=>$cost,'cooldown_until'=>$availableAt]);
+            $this->pdo->commit();
+        } catch(Throwable $e) {
+            if($this->pdo->inTransaction()) $this->pdo->rollBack();
+            throw $e;
+        }
+    }
     public function covertMission(int $attackerId,int $defenderId,string $type,int $agents): array {
         if($attackerId===$defenderId||$agents<1||!in_array($type,['recon','spy','sabotage'],true))throw new InvalidArgumentException('Invalid covert request');$this->pdo->beginTransaction();try{$a=$this->player($attackerId,true);$d=$this->player($defenderId,true);$ar=$this->resources($attackerId,true);$dr=$this->resources($defenderId,true);if((int)$ar['spies']<$agents)throw new RuntimeException('Not enough covert agents');$attack=(int)$ar['spies']*((int)($a['covert_level']??1));$def=(int)$dr['anti_spies']*((int)($d['anti_covert_level']??1));$success=$attack>($def+random_int(0,max(1,$def)));$detected=!$success&&random_int(0,100)<50;$result=$success?($type==='recon'?'Recon report acquired':($type==='spy'?'Spy operation succeeded':'Sabotage succeeded')):'Operation failed';$this->pdo->prepare('UPDATE player_resources SET spies=spies-? WHERE player_id=?')->execute([$agents,$attackerId]);$stmt=$this->pdo->prepare('INSERT INTO covert_missions (attacker_id,defender_id,mission_type,agents_sent,success,detected,result_text) VALUES (?,?,?,?,?,?,?)');$stmt->execute([$attackerId,$defenderId,$type,$agents,$success?1:0,$detected?1:0,$result]);$id=(int)$this->pdo->lastInsertId();if($success&&$type==='recon'){$this->pdo->prepare('INSERT INTO intelligence_reports (player_id,target_player_id,report_type,payload) VALUES (?,?,?,?)')->execute([$attackerId,$defenderId,'recon',json_encode(['defense_units'=>$dr['defense_units'],'attack_units'=>$dr['attack_units'],'naquadah'=>$dr['naquadah']])]);}$this->event($attackerId,'covert_mission','covert_mission',$id,['type'=>$type,'success'=>$success]);$this->pdo->commit();return ['mission_id'=>$id,'success'=>$success,'detected'=>$detected,'result'=>$result];}catch(Throwable $e){$this->pdo->rollBack();throw $e;}
     }

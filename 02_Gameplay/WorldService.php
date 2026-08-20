@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-require_once __DIR__ . '/../auth.php';
+require_once __DIR__ . '/../config/auth.php';
 final class WorldService {
     public function __construct(?PDO $pdo = null) { $this->pdo = $pdo ?? db() ?? throw new RuntimeException('Database unavailable'); }
     private function event(int $playerId,string $type,array $payload):void{$s=$this->pdo->prepare('INSERT INTO game_events(player_id,event_type,payload) VALUES(?,?,?)');$s->execute([$playerId,$type,json_encode($payload)]);}
