@@ -7,6 +7,7 @@ require_once __DIR__ . '/../includes/services/WeaponMarketService.php';
 require_once __DIR__ . '/../includes/services/ResourceMarketService.php';
 require_once __DIR__ . '/../includes/services/MercenaryMarketService.php';
 require_once __DIR__ . '/../includes/services/RankingsService.php';
+require_once __DIR__ . '/../includes/services/AllianceService.php';
 require_once __DIR__ . '/../includes/services/WorldService.php';
 require_once __DIR__ . '/../includes/services/OGameService.php';
 require_once __DIR__ . '/../includes/services/MMORPGService.php';
@@ -67,8 +68,8 @@ try {
         case 'explore': (new WorldService())->explore((int)$user['id'],trim((string)$_POST['name']),trim((string)$_POST['planet_type'])); $_SESSION['flash']='Planet exploration completed.'; break;
         case 'colonize_planet': $colonyId=(new WorldService())->colonizePlanet((int)$user['id'],(int)$_POST['planet_id'],trim((string)$_POST['colony_name'])); $_SESSION['flash']='Colony established #'.$colonyId.'.'; break;
         case 'planet_defense': (new WorldService())->upgradePlanetDefense((int)$user['id'],(int)$_POST['planet_id'],(string)$_POST['defense_type']); $_SESSION['flash']='Planet defense upgraded.'; break;
-        case 'alliance_create': (new WorldService())->createAlliance((int)$user['id'],trim((string)$_POST['name']),trim((string)$_POST['tag']),trim((string)$_POST['description'])); $_SESSION['flash']='Alliance created.'; break;
-        case 'alliance_join': (new WorldService())->joinAlliance((int)$user['id'],(int)$_POST['alliance_id']); $_SESSION['flash']='Joined alliance.'; break;
+        case 'alliance_create': $allianceId=(new AllianceService(db()))->create((int)$user['id'],(string)$_POST['name'],(string)$_POST['tag'],(string)($_POST['description']??'')); $_SESSION['flash']='Alliance created #'.$allianceId.'.'; break;
+        case 'alliance_join': $membership=(new AllianceService(db()))->join((int)$user['id'],(int)$_POST['alliance_id']); $_SESSION['flash']='Joined alliance '.$membership['name'].' ('.$membership['member_count'].'/'.$membership['capacity'].').'; break;
         case 'message': (new WorldService())->sendMessage((int)$user['id'],(int)$_POST['recipient_id'],trim((string)$_POST['subject']),trim((string)$_POST['body'])); $_SESSION['flash']='Message sent.'; break;
         case 'market_list': if(isset($_POST['resource_type'])){$orderId=(new ResourceMarketService(db()))->listOrder((int)$user['id'],(string)$_POST['resource_type'],(int)$_POST['quantity'],(int)$_POST['unit_price'],(int)($_POST['expiry_hours']??72));$_SESSION['flash']='Resource market order listed #'.$orderId.'.';}else{$orderId=(new WeaponMarketService(db()))->listWeaponOrder((int)$user['id'],(int)$_POST['weapon_type_id'],(int)$_POST['quantity'],(int)$_POST['unit_price'],(int)($_POST['expiry_hours']??72));$_SESSION['flash']='Weapon market order listed #'.$orderId.'.';} break;
         case 'market_buy': if(isset($_POST['resource_type'])||isset($_POST['resource_market'])){$trade=(new ResourceMarketService(db()))->buyOrder((int)$user['id'],(int)$_POST['order_id'],(int)$_POST['quantity']);$_SESSION['flash']='Purchased '.number_format($trade['quantity']).' '.$trade['resource_type'].' for '.number_format($trade['gross_amount']).' Naquadah; fee '.number_format($trade['fee_amount']).'.';}else{$trade=(new WeaponMarketService(db()))->buyWeaponOrder((int)$user['id'],(int)$_POST['order_id'],(int)$_POST['quantity']);$_SESSION['flash']='Purchased '.number_format($trade['quantity']).' '.$trade['weapon_name'].' for '.number_format($trade['gross_amount']).' Naquadah; fee '.number_format($trade['fee_amount']).'.';} break;
