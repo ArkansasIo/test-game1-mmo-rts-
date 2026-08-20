@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/config/auth.php';
+if (!current_user()) { require __DIR__ . '/public-landing.php'; exit; }
 require_once __DIR__ . '/includes/layout.php';
 $routeAliases = [
   'attack'=>'targets','armory'=>'weapons','training'=>'units','intelligence'=>'spy-log',

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
-require_once __DIR__ . '/../auth.php';
-require_once __DIR__ . '/../settings.php';
+require_once __DIR__ . '/../../config/auth.php';
+require_once __DIR__ . '/../../config/settings.php';
 require_once __DIR__ . '/FormulaService.php';
 require_once __DIR__ . '/Rules.php';
 require_once __DIR__ . '/EconomyService.php';
