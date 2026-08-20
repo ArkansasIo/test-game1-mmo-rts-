@@ -7,6 +7,7 @@ $pageContracts = require __DIR__ . '/config/page_contracts.php';
 $routeDetails = require __DIR__ . '/config/page_route_details.php';
 $liveMilitary = null;
 $liveTargets = null;
+$liveCovert = null;
 try {
     require_once __DIR__ . '/config/config.php';
     require_once __DIR__ . '/includes/services/GameService.php';
@@ -14,6 +15,7 @@ try {
     $liveGameService = new GameService(db());
     $liveMilitary = $liveGameService->militaryStats($livePlayerId);
     $liveTargets = $liveGameService->targetBoard($livePlayerId);
+    $liveCovert = $liveGameService->covertStats($livePlayerId);
 } catch (Throwable $e) {
     $liveMilitary = null;
 }
@@ -22,6 +24,7 @@ $state = [
     'resources'=>['metal'=>820000,'crystal'=>460000,'naquadah'=>1240000,'energy'=>640,'dark_matter'=>2500,'food'=>10000,'water'=>10000,'population'=>100],
     'military'=>$liveMilitary ?: ['attack_power'=>4250,'defense_power'=>6000,'covert_power'=>160,'anti_covert_power'=>140,'attack_base'=>4250,'defense_base'=>6000,'covert_base'=>160,'anti_covert_base'=>140,'attack_turns'=>84,'readiness'=>100,'defcon_level'=>1,'cooldown_state'=>'ready','cooldown_remaining_seconds'=>0,'race_name'=>"Tau'ri",'government_name'=>'Stellar Republic','formula'=>'power = units × base power × technology × race × government × planet bonus'],
     'target_board'=>$liveTargets ?: [],
+    'covert'=>$liveCovert ?: ['available_agents'=>160,'anti_covert_agents'=>140,'capacity'=>160,'covert_level'=>1,'anti_covert_level'=>1,'mission_state'=>'READY','formula'=>'detection = defender counter-intelligence − attacker agents − covert technology'],
     'colony'=>['name'=>'Asteria Prime','coordinate'=>'1:1:1:3','population'=>100,'capacity'=>210,'morale'=>92,'food'=>975,'water'=>980,'food_rate'=>25,'water_rate'=>20],
     'queues'=>[
         ['kind'=>'BUILDING','name'=>'Naquadah Mine II','level'=>'12 → 13','remaining'=>'00:18:42','status'=>'Queued'],

@@ -23,6 +23,8 @@ try {
         case 'progression_advance': $progress=(new ProgressionService(db()))->advance((int)$user['id'],trim((string)$_POST['entity_category']),trim((string)$_POST['entity_key'])); $_SESSION['flash']='Progression advanced to Tier '.$progress['tier_after'].' / Level '.$progress['level_after'].'.'; break;
         case 'read_military_stats': $_SESSION['military_stats']=$service->militaryStats((int)$user['id']); $_SESSION['flash']='Military statistics refreshed.'; break;
         case 'read_target_board': $_SESSION['target_board']=$service->targetBoard((int)$user['id']); $_SESSION['flash']='Target board refreshed.'; break;
+        case 'read_covert_state': $_SESSION['covert_state']=$service->covertStats((int)$user['id']); $_SESSION['flash']='Covert agent state refreshed.'; break;
+        case 'covert_preview': $_SESSION['covert_preview']=$service->covertPreview((int)$user['id'],(int)$_POST['target_id'],(int)$_POST['agents'],(string)($_POST['mission_type']??'spy')); $_SESSION['flash']='Covert detection preview refreshed.'; break;
         case 'combat_preview': $_SESSION['combat_preview']=$service->combatPreview((int)$user['id'],(int)$_POST['target_id'],(string)($_POST['combat_type']??'attack'),(int)($_POST['turns']??1)); $_SESSION['flash']='Combat preview refreshed.'; break;
         case 'set_defcon': $service->setDefcon((int)$user['id'],(int)$_POST['level']); $_SESSION['flash']='DefCon status updated.'; break;
         case 'deposit': $service->deposit((int)$user['id'],(int)$_POST['amount']); $_SESSION['flash']='Naquadah deposited.'; break;
