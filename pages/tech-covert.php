@@ -1,3 +1,3 @@
 <?php
-require __DIR__ . "/_entry.php";
-render_page("tech-covert");
+declare(strict_types=1);
+$route = 'tech-covert'; $group = 'technology'; $label = 'Covert Technology'; require __DIR__ . '/_nested_entry.php';

@@ -1,0 +1,67 @@
+<?php
+return array (
+  'group' => 'training',
+  'label' => 'Training',
+  'icon' => '◈',
+  'parent_route' => 'training',
+  'pages' => 
+  array (
+    0 => 
+    array (
+      'route' => 'units',
+      'title' => 'Unit Training',
+      'layout' => 'training',
+      'actions' => 
+      array (
+        0 => 'train',
+      ),
+      'tables' => 
+      array (
+        0 => 'player_resources',
+      ),
+    ),
+    1 => 
+    array (
+      'route' => 'miners',
+      'title' => 'Miners & Lifers',
+      'layout' => 'training',
+      'actions' => 
+      array (
+        0 => 'train',
+      ),
+      'tables' => 
+      array (
+        0 => 'player_resources',
+      ),
+    ),
+    2 => 
+    array (
+      'route' => 'super-units',
+      'title' => 'Super Units',
+      'layout' => 'training',
+      'actions' => 
+      array (
+        0 => 'train',
+      ),
+      'tables' => 
+      array (
+        0 => 'player_resources',
+        1 => 'technologies',
+      ),
+    ),
+    3 => 
+    array (
+      'route' => 'unit-production',
+      'title' => 'Unit Production',
+      'layout' => 'upgrade',
+      'actions' => 
+      array (
+        0 => 'upgrade_up',
+      ),
+      'tables' => 
+      array (
+        0 => 'player_resources',
+      ),
+    ),
+  ),
+);

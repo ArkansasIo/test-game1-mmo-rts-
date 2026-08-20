@@ -1,3 +1,3 @@
 <?php
-require __DIR__ . "/_entry.php";
-render_page("universe-planets");
+declare(strict_types=1);
+$route = 'universe-planets'; $group = 'universe'; $label = 'Universe Planets'; require __DIR__ . '/_nested_entry.php';

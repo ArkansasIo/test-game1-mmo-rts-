@@ -1,0 +1,53 @@
+<?php
+return array (
+  'group' => 'planets',
+  'label' => 'Planets',
+  'icon' => '○',
+  'parent_route' => 'planets',
+  'pages' => 
+  array (
+    0 => 
+    array (
+      'route' => 'planet-list',
+      'title' => 'Planet List',
+      'layout' => 'planets',
+      'actions' => 
+      array (
+        0 => 'explore',
+        1 => 'combat',
+      ),
+      'tables' => 
+      array (
+        0 => 'player_planets',
+        1 => 'planet_explorations',
+      ),
+    ),
+    1 => 
+    array (
+      'route' => 'planet-bonuses',
+      'title' => 'Planet Bonuses',
+      'layout' => 'planets',
+      'actions' => 
+      array (
+      ),
+      'tables' => 
+      array (
+        0 => 'planet_bonuses',
+      ),
+    ),
+    2 => 
+    array (
+      'route' => 'planet-defenses',
+      'title' => 'Planet Defenses',
+      'layout' => 'planets',
+      'actions' => 
+      array (
+        0 => 'planet_defense',
+      ),
+      'tables' => 
+      array (
+        0 => 'planet_defenses',
+      ),
+    ),
+  ),
+);

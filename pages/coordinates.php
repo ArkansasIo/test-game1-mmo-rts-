@@ -1,3 +1,3 @@
 <?php
-require __DIR__ . "/_entry.php";
-render_page("coordinates");
+declare(strict_types=1);
+$route = 'coordinates'; $group = 'universe'; $label = 'Coordinate Search'; require __DIR__ . '/_nested_entry.php';
