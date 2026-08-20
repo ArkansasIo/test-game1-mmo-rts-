@@ -1,4 +1,5 @@
 USE stargatewars;
+ALTER TABLE game_resource_types MODIFY COLUMN category ENUM('strategic','life_support','currency','population') NOT NULL DEFAULT 'strategic';
 
 ALTER TABLE player_resources
   ADD COLUMN IF NOT EXISTS metal BIGINT UNSIGNED NOT NULL DEFAULT 820000,

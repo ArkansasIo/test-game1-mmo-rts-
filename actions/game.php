@@ -9,6 +9,7 @@ require_once __DIR__ . '/../includes/services/MMORPGService.php';
 require_once __DIR__ . '/../includes/services/GameFeatureService.php';
 require_once __DIR__ . '/../includes/services/FactionService.php';
 require_once __DIR__ . '/../includes/services/SocialService.php';
+require_once __DIR__ . '/../includes/services/ProgressionService.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') { http_response_code(405); exit('POST required'); }
 verify_csrf();
@@ -16,6 +17,7 @@ $user=current_user(); $service=new GameService(); $action=(string)($_POST['actio
 try {
     switch ($action) {
         case 'process_turns': $result=$service->processTurns((int)$user['id']); $_SESSION['flash']='Processed '.$result['turns'].' turns and generated '.number_format($result['income']).' Naquadah.'; break;
+        case 'progression_advance': $progress=(new ProgressionService(db()))->advance((int)$user['id'],trim((string)$_POST['entity_category']),trim((string)$_POST['entity_key'])); $_SESSION['flash']='Progression advanced to Tier '.$progress['tier_after'].' / Level '.$progress['level_after'].'.'; break;
         case 'set_defcon': $service->setDefcon((int)$user['id'],(int)$_POST['level']); $_SESSION['flash']='DefCon status updated.'; break;
         case 'deposit': $service->deposit((int)$user['id'],(int)$_POST['amount']); $_SESSION['flash']='Naquadah deposited.'; break;
         case 'withdraw': $service->withdraw((int)$user['id'],(int)$_POST['amount']); $_SESSION['flash']='Naquadah withdrawn.'; break;

@@ -11,13 +11,13 @@ INSERT INTO game_settings (setting_key,setting_value) VALUES
 ON DUPLICATE KEY UPDATE setting_value=VALUES(setting_value);
 
 ALTER TABLE players
-  ADD COLUMN glory INT NOT NULL DEFAULT 0,
-  ADD COLUMN reputation INT NOT NULL DEFAULT 0,
-  ADD COLUMN defcon_level TINYINT UNSIGNED NOT NULL DEFAULT 0,
-  ADD COLUMN last_turn_at DATETIME NULL,
-  ADD COLUMN protected_until DATETIME NULL,
-  ADD COLUMN vacation_until DATETIME NULL,
-  ADD COLUMN ascension_count INT UNSIGNED NOT NULL DEFAULT 0;
+  ADD COLUMN IF NOT EXISTS glory INT NOT NULL DEFAULT 0,
+  ADD COLUMN IF NOT EXISTS reputation INT NOT NULL DEFAULT 0,
+  ADD COLUMN IF NOT EXISTS defcon_level TINYINT UNSIGNED NOT NULL DEFAULT 0,
+  ADD COLUMN IF NOT EXISTS last_turn_at DATETIME NULL,
+  ADD COLUMN IF NOT EXISTS protected_until DATETIME NULL,
+  ADD COLUMN IF NOT EXISTS vacation_until DATETIME NULL,
+  ADD COLUMN IF NOT EXISTS ascension_count INT UNSIGNED NOT NULL DEFAULT 0;
 
 CREATE TABLE IF NOT EXISTS player_unit_stats (
   player_id INT UNSIGNED PRIMARY KEY,
@@ -224,12 +224,12 @@ CREATE TABLE IF NOT EXISTS game_events (
   INDEX event_player (player_id,created_at), INDEX event_type (event_type,created_at)
 );
 
-INSERT INTO weapon_types (name,category,power,price,max_durability) VALUES
-('Standard Strike Weapon','attack',5,1000,100),('Standard Defense Weapon','defense',5,1000,100),('Super Strike Weapon','super_attack',10,5000,100),('Super Defense Weapon','super_defense',10,5000,100)
-ON DUPLICATE KEY UPDATE power=VALUES(power),price=VALUES(price);
-INSERT INTO technologies (technology_key,name,category,base_cost,cost_growth,effect_value) VALUES
-('siege','Siege Systems','offense',10000,1.5,5),('fortification','Fortification','defense',10000,1.5,5),('infiltration','Infiltration','covert',10000,1.5,5),('detection','Detection Grid','anti_covert',10000,1.5,5),('mercenary','Mercenary Capacity','mercenary',15000,1.5,5)
-ON DUPLICATE KEY UPDATE name=VALUES(name),effect_value=VALUES(effect_value);
+INSERT INTO weapon_types (name,category,power,price,max_durability,description) VALUES
+('Standard Strike Weapon','attack',5,1000,100,'Reliable baseline offensive weapon.'),('Standard Defense Weapon','defense',5,1000,100,'Reliable baseline defensive weapon.'),('Super Strike Weapon','super_attack',10,5000,100,'Enhanced offensive weapon for elite units.'),('Super Defense Weapon','super_defense',10,5000,100,'Enhanced defensive weapon for elite units.')
+ON DUPLICATE KEY UPDATE power=VALUES(power),price=VALUES(price),description=VALUES(description);
+INSERT INTO technologies (technology_key,name,category,base_cost,cost_growth,effect_value,description) VALUES
+('siege','Siege Systems','offense',10000,1.5,5,'Improves offensive fleet and weapon performance.'),('fortification','Fortification','defense',10000,1.5,5,'Improves planetary defense and damage mitigation.'),('infiltration','Infiltration','covert',10000,1.5,5,'Improves spying and sabotage success.'),('detection','Detection Grid','anti_covert',10000,1.5,5,'Improves detection and resistance against covert actions.'),('mercenary','Mercenary Capacity','mercenary',15000,1.5,5,'Improves mercenary recruitment capacity.')
+ON DUPLICATE KEY UPDATE name=VALUES(name),effect_value=VALUES(effect_value),description=VALUES(description);
 INSERT INTO mercenary_types (name,attack_power,defense_power,price) VALUES ('Jaffa Contract',8,4,2500),('Defense Drone Contract',3,8,2500),('Elite Operative Contract',6,6,4000)
 ON DUPLICATE KEY UPDATE price=VALUES(price);
 INSERT INTO player_unit_stats (player_id) SELECT id FROM players WHERE NOT EXISTS (SELECT 1 FROM player_unit_stats s WHERE s.player_id=players.id);

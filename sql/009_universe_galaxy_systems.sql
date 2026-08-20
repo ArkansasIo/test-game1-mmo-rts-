@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS universe_planets (
   gravity DECIMAL(5,2) NOT NULL DEFAULT 1.00,
   temperature_c SMALLINT NOT NULL DEFAULT 15,
   habitability DECIMAL(5,2) NOT NULL DEFAULT 0.75,
-  slots TINYINT UNSIGNED NOT NULL DEFAULT 150,
+  slots SMALLINT UNSIGNED NOT NULL DEFAULT 150,
   metal_modifier DECIMAL(6,3) NOT NULL DEFAULT 1.000,
   crystal_modifier DECIMAL(6,3) NOT NULL DEFAULT 1.000,
   food_modifier DECIMAL(6,3) NOT NULL DEFAULT 1.000,
@@ -85,6 +85,8 @@ CREATE TABLE IF NOT EXISTS universe_planets (
   KEY idx_planet_habitability (habitability),
   KEY idx_planet_colonizable (is_colonizable,is_occupied)
 ) ENGINE=InnoDB;
+
+ALTER TABLE universe_planets MODIFY COLUMN slots SMALLINT UNSIGNED NOT NULL DEFAULT 150;
 
 CREATE TABLE IF NOT EXISTS universe_moons (
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,

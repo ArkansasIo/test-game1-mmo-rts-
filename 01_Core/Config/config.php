@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 const DB_HOST = '127.0.0.1';
 const DB_NAME = 'stargatewars';
-const DB_USER = 'root';
-const DB_PASS = '';
+const DB_USER = 'stargate_app';
+const DB_PASS = 'StargateLocal2026';
 
 function db(): ?PDO {
     static $pdo = null;
