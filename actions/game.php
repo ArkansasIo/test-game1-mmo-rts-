@@ -4,6 +4,7 @@ require_once __DIR__ . '/../config/auth.php';
 require_auth();
 require_once __DIR__ . '/../includes/services/GameService.php';
 require_once __DIR__ . '/../includes/services/WeaponMarketService.php';
+require_once __DIR__ . '/../includes/services/ResourceMarketService.php';
 require_once __DIR__ . '/../includes/services/WorldService.php';
 require_once __DIR__ . '/../includes/services/OGameService.php';
 require_once __DIR__ . '/../includes/services/MMORPGService.php';
@@ -67,8 +68,8 @@ try {
         case 'alliance_create': (new WorldService())->createAlliance((int)$user['id'],trim((string)$_POST['name']),trim((string)$_POST['tag']),trim((string)$_POST['description'])); $_SESSION['flash']='Alliance created.'; break;
         case 'alliance_join': (new WorldService())->joinAlliance((int)$user['id'],(int)$_POST['alliance_id']); $_SESSION['flash']='Joined alliance.'; break;
         case 'message': (new WorldService())->sendMessage((int)$user['id'],(int)$_POST['recipient_id'],trim((string)$_POST['subject']),trim((string)$_POST['body'])); $_SESSION['flash']='Message sent.'; break;
-        case 'market_list': $orderId=(new WeaponMarketService(db()))->listWeaponOrder((int)$user['id'],(int)$_POST['weapon_type_id'],(int)$_POST['quantity'],(int)$_POST['unit_price'],(int)($_POST['expiry_hours']??72)); $_SESSION['flash']='Weapon market order listed #'.$orderId.'.'; break;
-        case 'market_buy': $trade=(new WeaponMarketService(db()))->buyWeaponOrder((int)$user['id'],(int)$_POST['order_id'],(int)$_POST['quantity']); $_SESSION['flash']='Purchased '.number_format($trade['quantity']).' '.$trade['weapon_name'].' for '.number_format($trade['gross_amount']).' Naquadah; fee '.number_format($trade['fee_amount']).'.'; break;
+        case 'market_list': if(isset($_POST['resource_type'])){$orderId=(new ResourceMarketService(db()))->listOrder((int)$user['id'],(string)$_POST['resource_type'],(int)$_POST['quantity'],(int)$_POST['unit_price'],(int)($_POST['expiry_hours']??72));$_SESSION['flash']='Resource market order listed #'.$orderId.'.';}else{$orderId=(new WeaponMarketService(db()))->listWeaponOrder((int)$user['id'],(int)$_POST['weapon_type_id'],(int)$_POST['quantity'],(int)$_POST['unit_price'],(int)($_POST['expiry_hours']??72));$_SESSION['flash']='Weapon market order listed #'.$orderId.'.';} break;
+        case 'market_buy': if(isset($_POST['resource_type'])||isset($_POST['resource_market'])){$trade=(new ResourceMarketService(db()))->buyOrder((int)$user['id'],(int)$_POST['order_id'],(int)$_POST['quantity']);$_SESSION['flash']='Purchased '.number_format($trade['quantity']).' '.$trade['resource_type'].' for '.number_format($trade['gross_amount']).' Naquadah; fee '.number_format($trade['fee_amount']).'.';}else{$trade=(new WeaponMarketService(db()))->buyWeaponOrder((int)$user['id'],(int)$_POST['order_id'],(int)$_POST['quantity']);$_SESSION['flash']='Purchased '.number_format($trade['quantity']).' '.$trade['weapon_name'].' for '.number_format($trade['gross_amount']).' Naquadah; fee '.number_format($trade['fee_amount']).'.';} break;
         case 'message_read': if(isset($_POST['report_id'])){ (new SpyLogService(db()))->markRead((int)$user['id'],(int)$_POST['report_id']); $_SESSION['flash']='Intelligence report marked read.'; } else { (new WorldService())->markMessageRead((int)$user['id'],(int)$_POST['message_id']); $_SESSION['flash']='Message marked read.'; } break;
         case 'blacklist': (new SocialService(db()))->blacklist((int)$user['id'],(int)$_POST['blocked_player_id'],(string)($_POST['reason']??'')); $_SESSION['flash']='Player blacklisted.'; break;
         case 'system_map': (new WorldService())->getSystemMap((int)$_POST['system_id']); $_SESSION['flash']='Solar system map loaded.'; break;
