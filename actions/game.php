@@ -13,6 +13,7 @@ require_once __DIR__ . '/../includes/services/FactionService.php';
 require_once __DIR__ . '/../includes/services/SocialService.php';
 require_once __DIR__ . '/../includes/services/ProgressionService.php';
 require_once __DIR__ . '/../includes/services/DefenseTechnologyService.php';
+require_once __DIR__ . '/../includes/services/WeaponRepairService.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') { http_response_code(405); exit('POST required'); }
 verify_csrf();
@@ -43,7 +44,7 @@ try {
         case 'upgrade_up': $cost=$service->upgradeUnitProduction((int)$user['id']); $_SESSION['flash']='Unit Production upgraded for '.number_format($cost).' Naquadah.'; break;
         case 'technology': $technologyKey=(string)$_POST['technology_key']; $categoryStmt=db()->prepare('SELECT category FROM technologies WHERE technology_key=?'); $categoryStmt->execute([$technologyKey]); $category=(string)$categoryStmt->fetchColumn(); if($category==='defense'){ $research=(new DefenseTechnologyService(db()))->upgrade((int)$user['id'],$technologyKey); $_SESSION['flash']='Defense research queued to level '.$research['level_after'].' for '.number_format($research['cost']).' Naquadah.'; } else { $cost=$service->buyTechnology((int)$user['id'],$technologyKey); $_SESSION['flash']='Technology upgraded for '.number_format($cost).' Naquadah.'; } break;
         case 'weapon_buy': $service->buyWeapon((int)$user['id'],(int)$_POST['weapon_type_id'],(int)$_POST['quantity']); $_SESSION['flash']='Weapon purchased.'; break;
-        case 'weapon_repair': $service->repairWeapons((int)$user['id'],(int)$_POST['weapon_id']); $_SESSION['flash']='Weapons repaired.'; break;
+        case 'weapon_repair': $repair=(new WeaponRepairService(db()))->repair((int)$user['id'],(int)$_POST['weapon_id']); $_SESSION['flash']='Repaired '.$repair['name'].' for '.number_format($repair['repair_cost']).' Naquadah.'; break;
         case 'mothership_upgrade': $cost=$service->upgradeMothership((int)$user['id'],(string)$_POST['module']); $_SESSION['flash']='Mothership upgraded for '.number_format($cost).' Naquadah.'; break;
         case 'combat':
         case 'combat:raid': $combatType=$action==='combat:raid'?'raid':(string)($_POST['combat_type']??'attack'); $result=$service->resolveCombat((int)$user['id'],(int)$_POST['target_id'],$combatType,(int)$_POST['turns']); $_SESSION['flash']='Battle resolved: '.($result['winner_id']===(int)$user['id']?'victory':'defeat').'.'; break;
