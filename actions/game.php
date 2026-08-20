@@ -25,6 +25,7 @@ require_once __DIR__ . '/../includes/services/SpyLogService.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') { http_response_code(405); exit('POST required'); }
 verify_csrf();
+function classify_feedback(Throwable $e): string { $message=strtolower($e->getMessage()); if(str_contains($message,'protected')||str_contains($message,'protection')||str_contains($message,'vacation')) return 'protected'; if(str_contains($message,'cooldown')) return 'cooldown'; if(str_contains($message,'not enough')||str_contains($message,'insufficient')||str_contains($message,'balance')) return 'insufficient-resource'; return $e instanceof InvalidArgumentException ? 'error' : 'error'; }
 $user=current_user(); $service=new GameService(); $action=(string)($_POST['action']??''); $requestedRedirect=(string)($_POST['redirect']??'dashboard'); $allowedRedirects=['dashboard','resources','income','military-stats','account-info','race','units','miners','unit-production','technology','targets','spy','sabotage','attack-log','weapons','weapon-market','repair','mothership','ship','modules','planet-list','planet-bonuses','planet-defenses','exploration','alliances','messages','resource-exchange','mercenary-market','rankings','vacation','ascension','colonies','food-water','population','resource-buildings','life-support','shipyard','defense-grid','research','navigation','energy','fleet-overview','missions','mission-log','events','event-history','galaxies','sectors','solar-systems','universe-planets','moons','coordinates']; $redirect=in_array($requestedRedirect,$allowedRedirects,true)?$requestedRedirect:'dashboard';
 try {
     switch ($action) {
@@ -87,6 +88,9 @@ try {
         case 'notification_read': db()->prepare('UPDATE player_notifications SET is_read=1 WHERE id=? AND player_id=?')->execute([(int)$_POST['notification_id'],(int)$user['id']]); $_SESSION['flash']='Notification marked read.'; break;
         default: throw new InvalidArgumentException('Unknown game action');
     }
-} catch (Throwable $e) { $_SESSION['error']=$e->getMessage(); }
+    $readActions=['read_income_breakdown','read_colony_comparison','read_military_stats','read_target_board','read_covert_state','covert_preview','sabotage_preview','combat_preview','read_weapon_inventory','inspect_durability','system_map'];
+    $_SESSION['feedback_state']=in_array($action,$readActions,true)?'ready':'success';
+    unset($_SESSION['error']);
+} catch (Throwable $e) { $_SESSION['feedback_state']=classify_feedback($e); $_SESSION['error']='Action could not be completed.'; $_SESSION['feedback_detail']=$e->getMessage(); }
 header('Location: ../index.php?page='.rawurlencode($redirect)); exit;
 ?>
