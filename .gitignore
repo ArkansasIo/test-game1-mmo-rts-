@@ -2,6 +2,7 @@
 .env.*
 !.env.example
 *.log
+storage/*.lock
 *.zip
 .DS_Store
 Thumbs.db

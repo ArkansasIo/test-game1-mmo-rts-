@@ -1,3 +1,4 @@
 <?php
 declare(strict_types=1);
-$route = 'enemy-intelligence'; $group = 'intelligence'; $label = 'Enemy Intelligence'; $pageDefinition = require '/home/ubuntu/stargatewars/config/page_definitions/intelligence/enemy-intelligence.php'; $pageModule = require '/home/ubuntu/stargatewars/includes/page_modules/intelligence/enemy-intelligence.php'; require __DIR__ . '/_nested_entry.php';
+$route = 'enemy-intelligence';
+require __DIR__ . '/_entry.php';

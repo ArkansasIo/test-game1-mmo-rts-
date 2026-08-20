@@ -1,9 +1,7 @@
 <?php
 declare(strict_types=1);
-$route = $route ?? 'dashboard';
-$group = $group ?? 'command-center';
-$label = $label ?? ucwords(str_replace('-', ' ', $route));
-$pageDefinition = $pageDefinition ?? null;
-$target = '/index.php?page=' . rawurlencode($route);
-header('Location: ' . $target, true, 302);
+require_once __DIR__ . '/../config/auth.php';
+$route = isset($route) && is_string($route) && preg_match('/^[a-z0-9-]+$/', $route) ? $route : 'dashboard';
+require_auth();
+header('Location: /game.php?page=' . rawurlencode($route), true, 302);
 exit;
