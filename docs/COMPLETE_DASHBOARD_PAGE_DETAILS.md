@@ -1,6 +1,6 @@
-# StargateWars Complete Dashboard Page Details
+# Universe Civilization: Empire at Wars Complete Dashboard Page Details
 
-The StargateWars dashboard uses a common PHP page contract while each page family exposes its own game mechanics, controls, state reads, writes, permissions, and result states.
+The Universe Civilization: Empire at Wars dashboard uses a common PHP page contract while each page family exposes its own game mechanics, controls, state reads, writes, permissions, and result states.
 
 > The client submits intent only. PHP validates the authenticated commander, CSRF token, permissions, ownership, cooldowns, balances, and current game state before committing a transaction.
 

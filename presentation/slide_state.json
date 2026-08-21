@@ -1,6 +1,6 @@
 {
   "project_info": {
-    "title": "StargateWars",
+    "title": "Universe Civilization: Empire at Wars",
     "created": 1787203615.545,
     "last_updated": 1787241021.139,
     "total_slides": 11
@@ -65,9 +65,9 @@
   "outline": [
     {
       "id": "cover",
-      "title": "StargateWars",
+      "title": "Universe Civilization: Empire at Wars",
       "summary": "Modular PHP/MySQL architecture, gameplay systems, and frontend navigation.",
-      "image_plan": "/home/ubuntu/upload/search_images/0eChMbv62iuc.jpg - Stargate theme fits the title StargateWars on the cover slide."
+      "image_plan": "/home/ubuntu/upload/search_images/0eChMbv62iuc.jpg - Stargate theme fits the title Universe Civilization: Empire at Wars on the cover slide."
     },
     {
       "id": "strategy_loop",

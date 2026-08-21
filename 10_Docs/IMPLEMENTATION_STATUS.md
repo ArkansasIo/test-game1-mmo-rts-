@@ -1,4 +1,4 @@
-# StargateWars Implementation Status
+# Universe Civilization: Empire at Wars Implementation Status
 
 ## Implemented foundation
 

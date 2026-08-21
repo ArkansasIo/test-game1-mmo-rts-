@@ -1,4 +1,4 @@
-# StargateWars System Map and Fleet Mission UI Integration Guide
+# Universe Civilization: Empire at Wars System Map and Fleet Mission UI Integration Guide
 
 ## Purpose
 

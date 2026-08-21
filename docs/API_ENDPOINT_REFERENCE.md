@@ -1,4 +1,4 @@
-# StargateWars API and Dashboard Endpoint Reference
+# Universe Civilization: Empire at Wars API and Dashboard Endpoint Reference
 
 Generated from the authoritative route registry and server-side contracts. The browser submits intent only; mutations are validated by authentication, CSRF, RBAC, ownership, cooldown, resource, and transaction rules before commit.
 

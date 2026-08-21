@@ -1,6 +1,6 @@
-# StargateWars PHP/MySQL Interface
+# Universe Civilization: Empire at Wars PHP/MySQL Interface
 
-This starter application provides a white-background, black-text StargateWars command interface with a persistent left sidebar, nested submenu navigation, dashboard cards, module pages, and a MySQL schema foundation.
+This starter application provides a white-background, black-text Universe Civilization: Empire at Wars command interface with a persistent left sidebar, nested submenu navigation, dashboard cards, module pages, and a MySQL schema foundation.
 
 ## Requirements
 

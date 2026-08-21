@@ -1,4 +1,4 @@
--- StargateWars Universe Expansion
+-- Universe Civilization: Empire at Wars Universe Expansion
 -- Apply after 008_mmorpg_rts_core.sql.
 -- MySQL 8.0+ / MariaDB 10.6+
 
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS player_colonies (
 ) ENGINE=InnoDB;
 
 INSERT INTO universe_galaxies (galaxy_number,name,description,star_density,sector_count,is_active) VALUES
-(1,'The Orion Expanse','The first mapped frontier of StargateWars.','standard',8,1),
+(1,'The Orion Expanse','The first mapped frontier of Universe Civilization: Empire at Wars.','standard',8,1),
 (2,'The Veiled Reach','A dangerous region of nebulae and ancient gates.','dense',8,1)
 ON DUPLICATE KEY UPDATE name=VALUES(name),description=VALUES(description),star_density=VALUES(star_density),sector_count=VALUES(sector_count);
 

@@ -1,4 +1,4 @@
-# StargateWars PHP Page Tree
+# Universe Civilization: Empire at Wars PHP Page Tree
 
 The left-side navigation is backed by `config/page_registry.php`. The generated page tree mirrors every registered menu group and submenu route while preserving the existing front-controller architecture.
 

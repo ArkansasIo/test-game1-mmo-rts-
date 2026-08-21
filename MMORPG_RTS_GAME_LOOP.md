@@ -1,4 +1,4 @@
-# StargateWars Text MMORPG / Turn-Based RTS Game Loop
+# Universe Civilization: Empire at Wars Text MMORPG / Turn-Based RTS Game Loop
 
 ## Core loop
 

@@ -16,11 +16,20 @@ return array (
       array (
         0 => 'explore',
         1 => 'combat',
+        2 => 'colonize_planet',
+        3 => 'planet_defense',
       ),
       'tables' => 
       array (
-        0 => 'player_planets',
-        1 => 'planet_explorations',
+        0 => 'player_colonies',
+        1 => 'planet_bonuses',
+        2 => 'planet_explorations',
+        3 => 'player_resources',
+        4 => 'universe_planets',
+        5 => 'planet_defenses',
+        6 => 'motherships',
+        7 => 'player_cooldowns',
+        8 => 'game_events',
       ),
     ),
     1 => 

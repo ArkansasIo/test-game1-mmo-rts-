@@ -1,6 +1,6 @@
-# StargateWars Eight-Resource Economy
+# Universe Civilization: Empire at Wars Eight-Resource Economy
 
-StargateWars uses eight connected resources rather than treating the colony as a simple Naquadah balance.
+Universe Civilization: Empire at Wars uses eight connected resources rather than treating the colony as a simple Naquadah balance.
 
 | Resource | Symbol | Function |
 |---|---|---|

@@ -1,4 +1,4 @@
-# StargateWars 500-Player Turn Load Test
+# Universe Civilization: Empire at Wars 500-Player Turn Load Test
 
 ## Scope
 

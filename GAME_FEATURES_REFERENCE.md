@@ -1,4 +1,4 @@
-# StargateWars Game Features Reference
+# Universe Civilization: Empire at Wars Game Features Reference
 
 ## Command Center
 

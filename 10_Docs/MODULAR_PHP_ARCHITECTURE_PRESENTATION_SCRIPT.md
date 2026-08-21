@@ -1,12 +1,12 @@
-# StargateWars Modular PHP Architecture and Game Logic
+# Universe Civilization: Empire at Wars Modular PHP Architecture and Game Logic
 
 ## Presentation script
 
-### Slide 1 — StargateWars: a modular strategy game platform
+### Slide 1 — Universe Civilization: Empire at Wars: a modular strategy game platform
 
 **Speaker script:**
 
-StargateWars is organized as a persistent text-based MMORPG and turn-based RTS. The player experience is presented through a left-side command navigation system, while PHP services and a MySQL database remain authoritative over every state transition. The current architecture contains twelve menu groups and forty-three registered page routes. Each page is separated into a route entrypoint, a definition contract, logic metadata, feature metadata, design metadata, systems metadata, and an executable page module.
+Universe Civilization: Empire at Wars is organized as a persistent text-based MMORPG and turn-based RTS. The player experience is presented through a left-side command navigation system, while PHP services and a MySQL database remain authoritative over every state transition. The current architecture contains twelve menu groups and forty-three registered page routes. Each page is separated into a route entrypoint, a definition contract, logic metadata, feature metadata, design metadata, systems metadata, and an executable page module.
 
 The architectural goal is controlled expansion: a new page can be added without placing all of its behavior into one monolithic controller or one oversized template.
 
@@ -122,7 +122,7 @@ The current system is designed for further implementation of page-specific prese
 
 The architecture is ready for that next stage because pages, contracts, modules, services, and database responsibilities are already separated.
 
-**Closing message:** StargateWars is no longer a collection of page mockups. It is a structured PHP game platform with independently addressable routes, explicit gameplay contracts, secure server authority, and repeatable integration testing.
+**Closing message:** Universe Civilization: Empire at Wars is no longer a collection of page mockups. It is a structured PHP game platform with independently addressable routes, explicit gameplay contracts, secure server authority, and repeatable integration testing.
 
 ---
 

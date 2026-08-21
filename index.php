@@ -67,7 +67,7 @@ $rankingRows=$pdo?->query('SELECT r.rank_position,p.display_name,p.username,r.ov
 $designs = require __DIR__ . '/config/page_designs.php';
 $runtimeSpecs = require __DIR__ . '/config/page_runtime_specs.php';
 $design = $designs[$layout] ?? ['template'=>'module-workspace','sections'=>['overview','controls','activity log'],'states'=>['ready','empty','error'],'primary_action'=>null];
-$runtime = $runtimeSpecs[$layout] ?? ['summary'=>$title,'detail'=>$descriptions[$activeParent]??'Authenticated StargateWars module.','mechanics'=>['validated input','server-side state','transaction feedback'],'reads'=>[],'writes'=>[],'permission'=>'authenticated commander','action'=>$design['primary_action']??null];
+$runtime = $runtimeSpecs[$layout] ?? ['summary'=>$title,'detail'=>$descriptions[$activeParent]??'Authenticated Universe Civilization: Empire at Wars module.','mechanics'=>['validated input','server-side state','transaction feedback'],'reads'=>[],'writes'=>[],'permission'=>'authenticated commander','action'=>$design['primary_action']??null];
 $sections = $design['sections'] ?? [];
 $states = $design['states'] ?? [];
 $primaryAction = $runtime['action'] ?? ($design['primary_action'] ?? null);

@@ -1,4 +1,4 @@
-# StargateWars Page → SQL Mapping
+# Universe Civilization: Empire at Wars Page → SQL Mapping
 
 This map connects each frontend page family to the database domains it reads or mutates. Browser controls submit intent; PHP services calculate outcomes and persist the result.
 

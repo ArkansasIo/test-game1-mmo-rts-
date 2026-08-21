@@ -1,6 +1,6 @@
-# OGame-Style StargateWars Expansion
+# OGame-Style Universe Civilization: Empire at Wars Expansion
 
-The attached foundation document is incorporated as an additive expansion to the existing StargateWars systems. It adds resource-management and fleet-strategy mechanics without replacing the original Naquadah, turns, personnel, covert, mothership, alliance, and Ascension systems.
+The attached foundation document is incorporated as an additive expansion to the existing Universe Civilization: Empire at Wars systems. It adds resource-management and fleet-strategy mechanics without replacing the original Naquadah, turns, personnel, covert, mothership, alliance, and Ascension systems.
 
 ## Frontend page families
 

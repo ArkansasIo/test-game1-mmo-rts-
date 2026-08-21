@@ -5,24 +5,30 @@ return array (
   'group_label' => 'Universe',
   'title' => 'Sector Map',
   'layout' => 'sectors',
-  'controls' => 
+  'controls' =>
   array (
     0 => 'Select sector',
     1 => 'Open system',
   ),
-  'actions' => 
+  'actions' =>
   array (
     0 => 'universe_sectors',
   ),
-  'tables' => 
+  'tables' =>
   array (
     0 => 'universe_sectors',
     1 => 'universe_solar_systems',
+    2 => 'universe_planets',
+    3 => 'motherships',
+    4 => 'mothership_modules',
+    5 => 'player_technologies',
+    6 => 'player_cooldowns',
+    7 => 'game_events',
   ),
-  'details' => 
+  'details' =>
   array (
     'hero' => 'Sector Map',
-    'panels' => 
+    'panels' =>
     array (
       0 => 'Sector class',
       1 => 'Danger level',
@@ -30,20 +36,20 @@ return array (
       3 => 'Anomaly rate',
     ),
     'formula' => 'sector output = base output × resource modifier; anomaly rate drives events',
-    'controls' => 
+    'controls' =>
     array (
       0 => 'Select sector',
       1 => 'Open system',
       2 => 'Filter by risk',
     ),
     'action' => NULL,
-    'tables' => 
+    'tables' =>
     array (
       0 => 'universe_sectors',
       1 => 'universe_solar_systems',
     ),
     'permission' => 'authenticated commander',
-    'states' => 
+    'states' =>
     array (
       0 => 'loading',
       1 => 'ready',
@@ -51,75 +57,106 @@ return array (
       3 => 'error',
     ),
   ),
-  'interaction' => 
+  'interaction' =>
   array (
     'page' => 'Sector Map',
-    'purpose' => 'Compare danger, resources, and anomalies.',
-    'buttons' => 
+    'purpose' => 'Scan a selected sector and compare systems by risk and strategic value.',
+    'buttons' =>
     array (
-      'Open system' => 
+      'Select sector' =>
       array (
-        'action' => 'read_sector',
-        'logic' => 'Load systems ordered by risk and strategic value.',
-        'permission' => 'authenticated commander',
-        'reads' => 
+        'action' => 'universe_sectors',
+        'logic' => 'Submit only the selected sector identifier; calculate sensor range × mothership science × scan technology on the server, apply sector visibility and scan cooldown, then return ordered systems with classified owner signals and travel lanes.',
+        'permission' => 'authenticated commander · sector visibility · scan cooldown',
+        'reads' =>
         array (
           0 => 'universe_sectors',
           1 => 'universe_solar_systems',
+          2 => 'universe_planets',
+          3 => 'motherships',
+          4 => 'mothership_modules',
+          5 => 'player_technologies',
+          6 => 'player_cooldowns',
         ),
-        'writes' => 
+        'writes' =>
         array (
+          0 => 'game_events',
         ),
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'empty',
-          2 => 'error',
+          2 => 'protected',
+          3 => 'cooldown',
+          4 => 'error',
+        ),
+      ),
+      'Open system' =>
+      array (
+        'action' => 'read_sector',
+        'logic' => 'Open a system only after the selected sector and coordinate visibility checks pass.',
+        'permission' => 'authenticated commander with permitted sector access',
+        'reads' =>
+        array (
+          0 => 'universe_sectors',
+          1 => 'universe_solar_systems',
+          2 => 'universe_planets',
+        ),
+        'writes' =>
+        array (
+        ),
+        'states' =>
+        array (
+          0 => 'ready',
+          1 => 'empty',
+          2 => 'protected',
+          3 => 'cooldown',
+          4 => 'error',
         ),
       ),
     ),
   ),
-  'logic' => 
+  'logic' =>
   array (
     'purpose' => 'Inspect sector class, danger, resource modifiers, and anomaly rate.',
-    'workflow' => 
+    'workflow' =>
     array (
       0 => 'select sector',
       1 => 'load systems',
       2 => 'calculate sector output',
       3 => 'filter by risk',
     ),
-    'validation' => 
+    'validation' =>
     array (
       0 => 'authenticated commander',
       1 => 'valid sector identifier',
     ),
-    'calculations' => 
+    'calculations' =>
     array (
       0 => 'base output × resource modifier; anomaly rate drives events',
     ),
-    'mutations' => 
+    'mutations' =>
     array (
     ),
   ),
-  'features' => 
+  'features' =>
   array (
     0 => 'sector class',
     1 => 'danger level',
     2 => 'resource modifier',
     3 => 'anomaly rate',
   ),
-  'design' => 
+  'design' =>
   array (
     'template' => 'sector-map',
-    'sections' => 
+    'sections' =>
     array (
       0 => 'sector selector',
       1 => 'danger',
       2 => 'resource modifier',
       3 => 'anomalies',
     ),
-    'components' => 
+    'components' =>
     array (
       0 => 'sector-card',
       1 => 'danger-meter',
@@ -128,26 +165,26 @@ return array (
     ),
     'responsive' => 'Sector cards stack on mobile',
   ),
-  'systems' => 
+  'systems' =>
   array (
-    'services' => 
+    'services' =>
     array (
       0 => 'UniverseService',
     ),
-    'reads' => 
+    'reads' =>
     array (
       0 => 'universe_sectors',
       1 => 'universe_solar_systems',
     ),
-    'writes' => 
+    'writes' =>
     array (
     ),
-    'actions' => 
+    'actions' =>
     array (
       0 => 'universe_sectors',
     ),
   ),
-  'contract_files' => 
+  'contract_files' =>
   array (
     'logic' => 'config/page_logic/universe/sectors.php',
     'features' => 'config/page_features/universe/sectors.php',

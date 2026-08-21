@@ -1,4 +1,4 @@
--- StargateWars full MMORPG/RTS feature extension.
+-- Universe Civilization: Empire at Wars full MMORPG/RTS feature extension.
 -- Apply after 010_dark_matter_resource.sql.
 
 CREATE TABLE IF NOT EXISTS technology_prerequisites (

@@ -1,4 +1,4 @@
--- StargateWars Income Breakdown seed
+-- Universe Civilization: Empire at Wars Income Breakdown seed
 -- Apply after 013_eight_resource_economy.sql.
 -- Idempotently creates the demo commander’s canonical settlement and universe registry row.
 

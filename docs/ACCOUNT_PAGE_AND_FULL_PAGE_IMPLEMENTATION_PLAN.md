@@ -1,8 +1,8 @@
-# StargateWars Account Page and Full Page-System Implementation Plan
+# Universe Civilization: Empire at Wars Account Page and Full Page-System Implementation Plan
 
 ## Goal
 
-Complete the Account Information page and standardize the remaining StargateWars dashboard and sub-page surfaces so every route provides a coherent PHP-rendered experience with database-backed state, secure server actions, permission checks, game-mechanic details, and consistent result feedback.
+Complete the Account Information page and standardize the remaining Universe Civilization: Empire at Wars dashboard and sub-page surfaces so every route provides a coherent PHP-rendered experience with database-backed state, secure server actions, permission checks, game-mechanic details, and consistent result feedback.
 
 ## Phase 1: Audit the current page system
 
@@ -65,4 +65,4 @@ Update the account and page-system documentation with the final route matrix, fa
 
 ## Assumptions and risks
 
-The project remains PHP 8.1+ with PDO and MySQL/MariaDB. Existing legacy `player_planets` and newer `player_colonies` models will remain compatible through service-layer separation. Government selection assumes migration `012_races_governments_registration.sql` has been applied. Live authenticated integration tests require seeded players, sessions, CSRF tokens, and a working MySQL connection. No external game data or copyrighted assets are required for this implementation; all race and government definitions are original StargateWars game content.
+The project remains PHP 8.1+ with PDO and MySQL/MariaDB. Existing legacy `player_planets` and newer `player_colonies` models will remain compatible through service-layer separation. Government selection assumes migration `012_races_governments_registration.sql` has been applied. Live authenticated integration tests require seeded players, sessions, CSRF tokens, and a working MySQL connection. No external game data or copyrighted assets are required for this implementation; all race and government definitions are original Universe Civilization: Empire at Wars game content.

@@ -1,6 +1,6 @@
-# StargateWars Universal Progression
+# Universe Civilization: Empire at Wars Universal Progression
 
-StargateWars uses one progression contract for players, buildings, technologies, units, fleets, defenses, colonies, mothership systems, exploration, diplomacy, races, and governments. Each entity has **21 tiers**, each tier has **23 levels**, and the complete progression range is **483 global levels**.
+Universe Civilization: Empire at Wars uses one progression contract for players, buildings, technologies, units, fleets, defenses, colonies, mothership systems, exploration, diplomacy, races, and governments. Each entity has **21 tiers**, each tier has **23 levels**, and the complete progression range is **483 global levels**.
 
 ## Global level formula
 

@@ -1,4 +1,4 @@
-# StargateWars Game Architecture and Folder Design
+# Universe Civilization: Empire at Wars Game Architecture and Folder Design
 
 ## Runtime model
 

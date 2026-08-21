@@ -20,6 +20,11 @@ return array (
       array (
         0 => 'universe_galaxies',
         1 => 'universe_sectors',
+        2 => 'universe_solar_systems',
+        3 => 'universe_planets',
+        4 => 'universe_discoveries',
+        5 => 'target_realms',
+        6 => 'game_events',
       ),
     ),
     1 => 
@@ -36,6 +41,12 @@ return array (
       array (
         0 => 'universe_sectors',
         1 => 'universe_solar_systems',
+        2 => 'universe_planets',
+        3 => 'motherships',
+        4 => 'mothership_modules',
+        5 => 'player_technologies',
+        6 => 'player_cooldowns',
+        7 => 'game_events',
       ),
     ),
     2 => 

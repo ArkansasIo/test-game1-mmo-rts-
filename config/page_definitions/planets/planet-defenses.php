@@ -58,82 +58,98 @@ return array (
   'interaction' => 
   array (
     'page' => 'Planets and Colonies',
-    'purpose' => 'Manage worlds, biomes, defenses, and life support.',
+    'purpose' => 'Manage owned colonies, life support, production output, and fleet presence.',
     'buttons' => 
     array (
       'Explore' => 
       array (
         'action' => 'explore',
-        'logic' => 'Resolve exploration travel, anomaly, discovery, and event reward.',
-        'permission' => 'exploration-capable commander',
+        'logic' => 'Dispatch mothership exploration to a validated unoccupied universe planet; legacy named-planet exploration remains supported for compatibility.',
+        'permission' => 'authenticated commander with colony and mothership authority',
         'reads' => 
         array (
-          0 => 'motherships',
-          1 => 'universe_solar_systems',
-          2 => 'universe_planets',
+          0 => 'player_colonies',
+          1 => 'planet_bonuses',
+          2 => 'planet_explorations',
+          3 => 'player_resources',
+          4 => 'universe_planets',
+          5 => 'motherships',
+          6 => 'player_cooldowns',
         ),
         'writes' => 
         array (
-          0 => 'universe_discoveries',
-          1 => 'game_events',
+          0 => 'planet_explorations',
+          1 => 'player_resources',
+          2 => 'player_cooldowns',
+          3 => 'game_events',
         ),
         'states' => 
         array (
           0 => 'ready',
-          1 => 'cooldown',
-          2 => 'success',
-          3 => 'error',
+          1 => 'empty',
+          2 => 'protected',
+          3 => 'success',
+          4 => 'error',
         ),
       ),
       'Colonize' => 
       array (
         'action' => 'colonize_planet',
-        'logic' => 'Lock planet, validate habitability and occupancy, then create colony.',
-        'permission' => 'commander with colonization access',
+        'logic' => 'Lock a validated planet, verify habitability, occupancy, colony capacity, ownership, resources, cooldown, and transaction state, then create the colony.',
+        'permission' => 'authenticated commander with colonization access',
         'reads' => 
         array (
-          0 => 'universe_planets',
-          1 => 'universe_moons',
-          2 => 'player_colonies',
+          0 => 'player_colonies',
+          1 => 'universe_planets',
+          2 => 'planet_bonuses',
+          3 => 'player_resources',
+          4 => 'player_cooldowns',
         ),
         'writes' => 
         array (
           0 => 'player_colonies',
           1 => 'universe_planets',
-          2 => 'game_audit_log',
+          2 => 'planet_bonuses',
+          3 => 'player_resources',
+          4 => 'player_cooldowns',
+          5 => 'game_events',
         ),
         'states' => 
         array (
           0 => 'ready',
-          1 => 'occupied',
+          1 => 'empty',
           2 => 'protected',
-          3 => 'insufficient-resource',
-          4 => 'success',
-          5 => 'error',
+          3 => 'success',
+          4 => 'error',
         ),
       ),
       'Upgrade defense' => 
       array (
         'action' => 'planet_defense',
-        'logic' => 'Validate colony ownership, resource cost, and defense level cap.',
-        'permission' => 'colony owner',
+        'logic' => 'Validate colony ownership, defense type, resource cost, cooldown, and defense level cap before queuing the upgrade atomically.',
+        'permission' => 'authenticated colony owner',
         'reads' => 
         array (
-          0 => 'planet_defenses',
-          1 => 'player_colonies',
-          2 => 'player_resources',
+          0 => 'player_colonies',
+          1 => 'planet_bonuses',
+          2 => 'planet_defenses',
+          3 => 'player_resources',
+          4 => 'player_cooldowns',
         ),
         'writes' => 
         array (
           0 => 'planet_defenses',
           1 => 'player_resources',
+          2 => 'player_cooldowns',
+          3 => 'game_events',
         ),
         'states' => 
         array (
           0 => 'ready',
-          1 => 'insufficient-resource',
-          2 => 'success',
-          3 => 'error',
+          1 => 'empty',
+          2 => 'protected',
+          3 => 'success',
+          4 => 'error',
         ),
       ),
     ),

@@ -22,10 +22,10 @@ return [
    'repair'=>['title'=>'Weapon Repair','layout'=>'repair','controls'=>['Repair weapon'],'actions'=>['weapon_repair'],'tables'=>['player_weapons','player_resources']],
  ]],
  'training'=>['label'=>'Training','icon'=>'◈','pages'=>[
-   'units'=>['title'=>'Unit Training','layout'=>'training','controls'=>['Train units'],'actions'=>['train'],'tables'=>['player_resources']],
+   'units'=>['title'=>'Unit Training','layout'=>'training','controls'=>['Train units'],'actions'=>['train','upgrade_up'],'tables'=>['unit_types','player_unit_stats','training_queues','player_resources','game_events']],
    'miners'=>['title'=>'Miners & Lifers','layout'=>'training','controls'=>['Train miners'],'actions'=>['train'],'tables'=>['player_resources']],
    'super-units'=>['title'=>'Super Units','layout'=>'training','controls'=>['Train elite units'],'actions'=>['train'],'tables'=>['player_resources','technologies']],
-   'unit-production'=>['title'=>'Unit Production','layout'=>'upgrade','controls'=>['Upgrade UP'],'actions'=>['upgrade_up'],'tables'=>['player_resources']],
+   'unit-production'=>['title'=>'Unit Production','layout'=>'upgrade','controls'=>['Upgrade UP'],'actions'=>['upgrade_up'],'tables'=>['unit_types','player_unit_stats','training_queues','player_resources','game_events']],
  ]],
  'technology'=>['label'=>'Technology','icon'=>'◇','pages'=>[
    'technology'=>['title'=>'Technology Tree','layout'=>'technology','controls'=>['Upgrade offense','Upgrade defense','Upgrade covert','Upgrade anti-covert'],'actions'=>['technology'],'tables'=>['technologies','player_technologies']],
@@ -48,7 +48,7 @@ return [
    'messages'=>['title'=>'Messages','layout'=>'messages','controls'=>['Send','Mark read','Blacklist'],'actions'=>['message','message_read'],'tables'=>['messages','blacklists']],
  ]],
  'planets'=>['label'=>'Planets','icon'=>'○','pages'=>[
-   'planet-list'=>['title'=>'Planet List','layout'=>'planets','controls'=>['Explore','Conquer'],'actions'=>['explore','combat'],'tables'=>['player_planets','planet_explorations']],
+   'planet-list'=>['title'=>'Planet List','layout'=>'planets','controls'=>['Explore','Colonize','Upgrade defense'],'actions'=>['explore','combat','colonize_planet','planet_defense'],'tables'=>['player_colonies','planet_bonuses','planet_explorations','player_resources','universe_planets','planet_defenses','motherships','player_cooldowns','game_events']],
    'planet-bonuses'=>['title'=>'Planet Bonuses','layout'=>'planets','controls'=>['View bonuses'],'actions'=>[],'tables'=>['planet_bonuses']],
    'planet-defenses'=>['title'=>'Planet Defenses','layout'=>'planets','controls'=>['Upgrade defense'],'actions'=>['planet_defense'],'tables'=>['planet_defenses']],
  ]],
@@ -63,11 +63,11 @@ return [
    'ascension'=>['title'=>'Ascension','layout'=>'progression','controls'=>['Check eligibility','Ascend'],'actions'=>['ascend'],'tables'=>['ascension_states','ascensions','glory_reputation']],
   ]],
  'universe'=>['label'=>'Universe','icon'=>'✦','pages'=>[
-   'galaxies'=>['title'=>'Galaxy Map','layout'=>'galaxies','controls'=>['Select galaxy','Open sector'],'actions'=>['universe_galaxies'],'tables'=>['universe_galaxies','universe_sectors']],
-   'sectors'=>['title'=>'Sector Map','layout'=>'sectors','controls'=>['Select sector','Open system'],'actions'=>['universe_sectors'],'tables'=>['universe_sectors','universe_solar_systems']],
+   'galaxies'=>['title'=>'Galaxy Map','layout'=>'galaxies','controls'=>['Select galaxy','Open sector'],'actions'=>['universe_galaxies'],'tables'=>['universe_galaxies','universe_sectors','universe_solar_systems','universe_planets','universe_discoveries','target_realms','game_events']],
+   'sectors'=>['title'=>'Sector Map','layout'=>'sectors','controls'=>['Select sector','Open system'],'actions'=>['universe_sectors'],'tables'=>['universe_sectors','universe_solar_systems','universe_planets','motherships','mothership_modules','player_technologies','player_cooldowns','game_events']],
    'solar-systems'=>['title'=>'Solar Systems','layout'=>'solar-systems','controls'=>['Open system','Scan system'],'actions'=>['system_map','explore'],'tables'=>['universe_solar_systems','universe_planets']],
    'universe-planets'=>['title'=>'Universe Planets','layout'=>'universe-planets','controls'=>['Inspect planet','Colonize planet'],'actions'=>['planet_details','colonize_planet'],'tables'=>['universe_planets','player_colonies']],
    'moons'=>['title'=>'Moon Registry','layout'=>'moons','controls'=>['Inspect moon','Build jump gate'],'actions'=>['moon_details','mothership_upgrade'],'tables'=>['universe_moons','universe_planets']],
-   'coordinates'=>['title'=>'Coordinate Search','layout'=>'coordinates','controls'=>['Search coordinates','Open system'],'actions'=>['coordinate_lookup'],'tables'=>['universe_galaxies','universe_sectors','universe_solar_systems','universe_planets']],
+   'coordinates'=>['title'=>'Coordinate Search','layout'=>'coordinates','controls'=>['Search coordinates','Open system'],'actions'=>['coordinate_lookup'],'tables'=>['universe_galaxies','universe_sectors','universe_solar_systems','universe_planets','universe_discoveries','player_colonies']],
   ]],
  ];

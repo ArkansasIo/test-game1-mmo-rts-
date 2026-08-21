@@ -1,4 +1,4 @@
--- StargateWars migration 034: application metadata and operational job audit
+-- Universe Civilization: Empire at Wars migration 034: application metadata and operational job audit
 CREATE TABLE IF NOT EXISTS application_metadata (
   metadata_key VARCHAR(80) PRIMARY KEY,
   metadata_value VARCHAR(255) NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS job_run_audit (
 
 INSERT INTO application_metadata(metadata_key,metadata_value) VALUES
  ('app_version','0.9.0'),
- ('app_build','SW-2026.08.20.01'),
+ ('app_build','UCEAW-2026.08.20.01'),
  ('release_channel','development'),
  ('schema_version','034'),
  ('tos_version','2026-08-20')

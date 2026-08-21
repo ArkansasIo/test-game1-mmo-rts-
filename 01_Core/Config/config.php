@@ -37,6 +37,7 @@ function fallback_menu(): array {
         ['label'=>'Planets','route'=>'planets','icon'=>'○','children'=>[['label'=>'Planet List','route'=>'planet-list'],['label'=>'Bonuses','route'=>'planet-bonuses'],['label'=>'Defenses','route'=>'planet-defenses']]],
         ['label'=>'Mothership','route'=>'mothership','icon'=>'△','children'=>[['label'=>'Ship','route'=>'ship'],['label'=>'Modules','route'=>'modules'],['label'=>'Exploration','route'=>'exploration']]],
         ['label'=>'Account','route'=>'account','icon'=>'◌','children'=>[['label'=>'Race','route'=>'race'],['label'=>'Vacation','route'=>'vacation'],['label'=>'Ascension','route'=>'ascension']]],
+        ['label'=>'Universe','route'=>'universe','icon'=>'✦','children'=>[['label'=>'Galaxy Map','route'=>'galaxies'],['label'=>'Sector Map','route'=>'sectors'],['label'=>'Solar Systems','route'=>'solar-systems'],['label'=>'Universe Planets','route'=>'universe-planets'],['label'=>'Moon Registry','route'=>'moons'],['label'=>'Coordinate Search','route'=>'coordinates']]],
     ];
 }
 

@@ -55,53 +55,61 @@ return array (
   'interaction' => 
   array (
     'page' => 'Training',
-    'purpose' => 'Convert population into specialized units.',
+    'purpose' => 'Convert population into specialized units and queue production upgrades.',
     'buttons' => 
     array (
       'Train units' => 
       array (
         'action' => 'train',
-        'logic' => 'Validate type and quantity, deduct untrained population, and increase unit stats.',
-        'permission' => 'authenticated commander',
+        'logic' => 'Validate type and quantity, then transactionally lock unit type, commander resources, academy level, queue capacity, cooldown, population, and Naquadah before creating a training queue and game event.',
+        'permission' => 'authenticated commander with owned population and training authority',
         'reads' => 
         array (
-          0 => 'player_resources',
-          1 => 'technologies',
+          0 => 'unit_types',
+          1 => 'player_unit_stats',
+          2 => 'training_queues',
+          3 => 'player_resources',
         ),
         'writes' => 
         array (
           0 => 'player_resources',
-          1 => 'player_unit_stats',
+          1 => 'training_queues',
           2 => 'game_events',
         ),
         'states' => 
         array (
           0 => 'ready',
-          1 => 'insufficient-resource',
-          2 => 'success',
-          3 => 'error',
+          1 => 'empty',
+          2 => 'insufficient-resource',
+          3 => 'success',
+          4 => 'error',
         ),
       ),
       'Upgrade production' => 
       array (
         'action' => 'upgrade_up',
-        'logic' => 'Calculate next production cost and increase production cap.',
-        'permission' => 'authenticated commander',
+        'logic' => 'Validate commander ownership, automation prerequisite, production queue capacity, cooldown, and Naquadah in one transaction before creating the production upgrade queue and game event.',
+        'permission' => 'authenticated commander with production authority',
         'reads' => 
         array (
-          0 => 'player_resources',
+          0 => 'unit_types',
+          1 => 'player_unit_stats',
+          2 => 'training_queues',
+          3 => 'player_resources',
         ),
         'writes' => 
         array (
           0 => 'player_resources',
-          1 => 'game_audit_log',
+          1 => 'training_queues',
+          2 => 'game_events',
         ),
         'states' => 
         array (
           0 => 'ready',
-          1 => 'insufficient-resource',
-          2 => 'success',
-          3 => 'error',
+          1 => 'empty',
+          2 => 'insufficient-resource',
+          3 => 'success',
+          4 => 'error',
         ),
       ),
     ),

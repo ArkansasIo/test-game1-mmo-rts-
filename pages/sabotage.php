@@ -1,4 +1,3 @@
 <?php
 declare(strict_types=1);
-$route = 'sabotage';
-require __DIR__ . '/_entry.php';
+$route = 'sabotage'; $group = 'attack'; $label = 'Sabotage Operations'; $pageDefinition = require '/home/ubuntu/stargatewars/config/page_definitions/attack/sabotage.php'; $pageModule = require '/home/ubuntu/stargatewars/includes/page_modules/attack/sabotage.php'; require __DIR__ . '/_nested_entry.php';

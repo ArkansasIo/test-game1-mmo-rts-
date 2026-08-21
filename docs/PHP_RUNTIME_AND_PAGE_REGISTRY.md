@@ -1,4 +1,4 @@
-# StargateWars PHP Runtime and Page Design Registry
+# Universe Civilization: Empire at Wars PHP Runtime and Page Design Registry
 
 ## Local PHP runtime setup
 

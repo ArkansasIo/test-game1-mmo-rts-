@@ -1,4 +1,4 @@
--- StargateWars migration 035: population scale-up for the active demo commander
+-- Universe Civilization: Empire at Wars migration 035: population scale-up for the active demo commander
 UPDATE player_resources pr
 JOIN players p ON p.id = pr.player_id
 SET pr.population = 150000,

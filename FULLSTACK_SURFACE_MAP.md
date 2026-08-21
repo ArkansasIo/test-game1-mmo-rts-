@@ -1,4 +1,4 @@
-# StargateWars Full-Stack Surface Map
+# Universe Civilization: Empire at Wars Full-Stack Surface Map
 
 This document maps every visible page and control to the server-side action and database state it uses. The application keeps the presentation layer in `index.php` and the reusable shell in `includes/layout.php`; the dedicated files in `pages/` are stable route entrypoints that redirect into the authenticated front controller.
 

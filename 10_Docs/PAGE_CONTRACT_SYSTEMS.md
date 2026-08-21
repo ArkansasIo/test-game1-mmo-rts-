@@ -1,6 +1,6 @@
-# StargateWars Per-Page Contract Systems
+# Universe Civilization: Empire at Wars Per-Page Contract Systems
 
-The StargateWars sidebar is now represented by independent PHP route files and independent page contract files. The canonical source remains `config/page_registry.php`; `tools/generate_page_tree.php` produces the grouped route tree and all associated metadata.
+The Universe Civilization: Empire at Wars sidebar is now represented by independent PHP route files and independent page contract files. The canonical source remains `config/page_registry.php`; `tools/generate_page_tree.php` produces the grouped route tree and all associated metadata.
 
 ## Per-page files
 

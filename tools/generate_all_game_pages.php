@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 /**
- * Canonical StargateWars page generator.
+ * Canonical Universe Civilization: Empire at Wars page generator.
  *
  * This wrapper is intentionally small: the page registry and contract catalog
  * remain the sources of truth, while generate_page_tree.php owns the complete

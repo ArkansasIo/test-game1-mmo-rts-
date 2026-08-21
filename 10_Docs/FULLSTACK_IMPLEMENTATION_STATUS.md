@@ -1,6 +1,6 @@
 # Full-Stack Implementation Status
 
-The StargateWars project now contains a connected frontend and backend surface for all current navigation routes.
+The Universe Civilization: Empire at Wars project now contains a connected frontend and backend surface for all current navigation routes.
 
 ## Frontend
 

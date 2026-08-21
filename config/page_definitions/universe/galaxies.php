@@ -18,6 +18,11 @@ return array (
   array (
     0 => 'universe_galaxies',
     1 => 'universe_sectors',
+    2 => 'universe_solar_systems',
+    3 => 'universe_planets',
+    4 => 'universe_discoveries',
+    5 => 'target_realms',
+    6 => 'game_events',
   ),
   'details' => 
   array (
@@ -54,27 +59,33 @@ return array (
   'interaction' => 
   array (
     'page' => 'Galaxy Map',
-    'purpose' => 'Navigate the universe hierarchy.',
+    'purpose' => 'Browse active galaxies and server-scoped sector distribution.',
     'buttons' => 
     array (
       'Select galaxy' => 
       array (
-        'action' => 'read_galaxy',
-        'logic' => 'Load active galaxy and sector summary.',
-        'permission' => 'authenticated commander',
+        'action' => 'universe_galaxies',
+        'logic' => 'Validate active galaxy identifiers, coordinate scope, scan permission, discovered-sector visibility, protected records, ownership summaries, and authenticated commander access before loading the map.',
+        'permission' => 'authenticated commander · coordinate access',
         'reads' => 
         array (
           0 => 'universe_galaxies',
           1 => 'universe_sectors',
+          2 => 'universe_solar_systems',
+          3 => 'universe_planets',
+          4 => 'universe_discoveries',
+          5 => 'target_realms',
         ),
         'writes' => 
         array (
+          0 => 'game_events',
         ),
         'states' => 
         array (
           0 => 'ready',
           1 => 'empty',
-          2 => 'error',
+          2 => 'protected',
+          3 => 'error',
         ),
       ),
     ),

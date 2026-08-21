@@ -1,48 +1,48 @@
 <?php
 return array (
-  'generated_at' => '2026-08-20T15:25:03+00:00',
+  'generated_at' => '2026-08-21T00:13:24+00:00',
   'page_count' => 43,
-  'routes' => 
+  'routes' =>
   array (
-    'dashboard' => 
+    'dashboard' =>
     array (
       'route' => 'dashboard',
       'group' => 'command-center',
       'group_label' => 'Command Center',
       'title' => 'Command Center',
       'layout' => 'dashboard',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Process turns',
         1 => 'Choose target',
         2 => 'Review reports',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'process_turns',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'players',
         1 => 'player_resources',
         2 => 'rankings',
         3 => 'game_events',
       ),
-      'details' => 
+      'details' =>
       array (
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Command Center',
         'purpose' => 'Read the commander state and issue high-level intent.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Process turns' => 
+          'Process turns' =>
           array (
             'action' => 'process_turns',
             'logic' => 'Lock player state, settle elapsed turns, production, upkeep, queues, missions, rankings, and events.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'players',
               1 => 'player_resources',
@@ -50,13 +50,13 @@ return array (
               3 => 'construction_queue',
               4 => 'fleet_missions',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'player_resources',
               1 => 'game_events',
               2 => 'rankings',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'cooldown',
@@ -64,39 +64,39 @@ return array (
               3 => 'error',
             ),
           ),
-          'Choose target' => 
+          'Choose target' =>
           array (
             'action' => 'navigate:targets',
             'logic' => 'Open known-realm target board without mutating state.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'target_realms',
             ),
-            'writes' => 
+            'writes' =>
             array (
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'empty',
             ),
           ),
-          'Review reports' => 
+          'Review reports' =>
           array (
             'action' => 'navigate:attack-log',
             'logic' => 'Open unread combat and intelligence reports.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'battle_reports',
               1 => 'intelligence_reports',
               2 => 'messages',
             ),
-            'writes' => 
+            'writes' =>
             array (
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'empty',
@@ -104,31 +104,31 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Coordinate colony, economy, queues, fleets, alerts, and turn settlement.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load authoritative state',
           1 => 'validate commander intent',
           2 => 'settle bounded turn window',
           3 => 'return refreshed state',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated commander',
           1 => 'CSRF token',
           2 => 'RBAC permission',
           3 => 'transaction boundary',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'resource settlement',
           1 => 'food and water upkeep',
           2 => 'queue completion',
           3 => 'fleet ETA',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'player_resources',
           1 => 'construction_queue',
@@ -137,7 +137,7 @@ return array (
           4 => 'rankings',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'eight-resource HUD',
         1 => 'colony life support',
@@ -146,10 +146,10 @@ return array (
         4 => 'universal progression',
         5 => 'server feedback',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'command-center',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'identity header',
           1 => 'resource strip',
@@ -161,7 +161,7 @@ return array (
           7 => 'progression',
           8 => 'alerts',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'resource-tile',
           1 => 'metric-grid',
@@ -171,15 +171,15 @@ return array (
         ),
         'responsive' => '12-column desktop grid collapses to stacked mobile panels',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'GameService',
           1 => 'DashboardService',
           2 => 'ProgressionService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'players',
           1 => 'player_resources',
@@ -189,7 +189,7 @@ return array (
           5 => 'rankings',
           6 => 'game_events',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'player_resources',
           1 => 'construction_queue',
@@ -197,7 +197,7 @@ return array (
           3 => 'rankings',
           4 => 'game_events',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'process_turns',
           1 => 'choose_target',
@@ -205,7 +205,7 @@ return array (
           3 => 'progression_advance',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/command-center/dashboard.php',
         'features' => 'config/page_features/command-center/dashboard.php',
@@ -214,95 +214,95 @@ return array (
         'module' => 'includes/page_modules/command-center/dashboard.php',
       ),
     ),
-    'account-info' => 
+    'account-info' =>
     array (
       'route' => 'account-info',
       'group' => 'command-center',
       'group_label' => 'Command Center',
       'title' => 'Account Information',
       'layout' => 'details',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'View profile',
         1 => 'View rank',
         2 => 'View protection',
       ),
-      'actions' => 
+      'actions' =>
       array (
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'players',
         1 => 'races',
         2 => 'rankings',
         3 => 'glory_reputation',
       ),
-      'details' => 
+      'details' =>
       array (
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Account Information',
         'purpose' => 'Read commander identity, race, government, rank, protection, and progression.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'View profile' => 
+          'View profile' =>
           array (
             'action' => 'read_profile',
             'logic' => 'Return safe public and private account fields for the authenticated player.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'players',
               1 => 'races',
               2 => 'government_types',
               3 => 'rankings',
             ),
-            'writes' => 
+            'writes' =>
             array (
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'empty',
               2 => 'error',
             ),
           ),
-          'View rank' => 
+          'View rank' =>
           array (
             'action' => 'read_rank',
             'logic' => 'Return current rank, score, Glory, Reputation, and progression history.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'rankings',
               1 => 'player_progression',
               2 => 'glory_reputation',
             ),
-            'writes' => 
+            'writes' =>
             array (
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'empty',
               2 => 'error',
             ),
           ),
-          'View protection' => 
+          'View protection' =>
           array (
             'action' => 'read_protection',
             'logic' => 'Return vacation, protection, attack cooldown, and DefCon state.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'protection_states',
               1 => 'players',
             ),
-            'writes' => 
+            'writes' =>
             array (
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'protected',
@@ -311,31 +311,31 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Read commander identity, faction, rank, protection, and progression.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load commander',
           1 => 'load faction and government',
           2 => 'load rank and progression',
           3 => 'render read-only profile',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated commander',
           1 => 'ownership scope',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'combined faction modifier',
           1 => 'rank score',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'commander profile',
         1 => 'race and government identity',
@@ -344,10 +344,10 @@ return array (
         4 => 'progression summary',
         5 => 'session security',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'account-details',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'profile',
           1 => 'faction identity',
@@ -355,7 +355,7 @@ return array (
           3 => 'protection',
           4 => 'security',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'profile-metric',
           1 => 'modifier-row',
@@ -363,14 +363,14 @@ return array (
         ),
         'responsive' => 'Two-column details collapse to one column',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'AccountService',
           1 => 'ProgressionService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'players',
           1 => 'races',
@@ -380,17 +380,17 @@ return array (
           5 => 'protection_states',
           6 => 'glory_reputation',
         ),
-        'writes' => 
+        'writes' =>
         array (
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'read_profile',
           1 => 'read_rank',
           2 => 'read_protection',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/command-center/account-info.php',
         'features' => 'config/page_features/command-center/account-info.php',
@@ -399,52 +399,52 @@ return array (
         'module' => 'includes/page_modules/command-center/account-info.php',
       ),
     ),
-    'resources' => 
+    'resources' =>
     array (
       'route' => 'resources',
       'group' => 'command-center',
       'group_label' => 'Command Center',
       'title' => 'Resources & Vault',
       'layout' => 'economy',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Deposit',
         1 => 'Withdraw',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'deposit',
         1 => 'withdraw',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'player_resources',
         1 => 'game_settings',
       ),
-      'details' => 
+      'details' =>
       array (
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Resources and Vault',
         'purpose' => 'Manage five strategic resources, protected reserves, production, upkeep, and Dark Matter.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Deposit' => 
+          'Deposit' =>
           array (
             'action' => 'deposit',
             'logic' => 'Validate amount and move available Naquadah into the protected vault.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'player_resources',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'player_resources',
               1 => 'game_audit_log',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'insufficient-resource',
@@ -452,21 +452,21 @@ return array (
               3 => 'error',
             ),
           ),
-          'Withdraw' => 
+          'Withdraw' =>
           array (
             'action' => 'withdraw',
             'logic' => 'Validate vault balance and move Naquadah into the available balance.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'player_resources',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'player_resources',
               1 => 'game_audit_log',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'insufficient-resource',
@@ -476,10 +476,10 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Manage the eight-resource ledger and protected Naquadah vault.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load resource ledger',
           1 => 'validate transfer amount',
@@ -487,7 +487,7 @@ return array (
           3 => 'move balance transactionally',
           4 => 'write audit event',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated commander',
           1 => 'CSRF token',
@@ -495,20 +495,20 @@ return array (
           3 => 'available or vault balance',
           4 => 'RBAC permission',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'available Naquadah',
           1 => 'protected vault balance',
           2 => 'eight-resource totals',
           3 => 'transfer delta',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'player_resources',
           1 => 'game_audit_log',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'eight-resource ledger',
         1 => 'Naquadah vault',
@@ -517,10 +517,10 @@ return array (
         4 => 'balance validation',
         5 => 'transaction feedback',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'resource-vault',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'balance cards',
           1 => 'resource ledger',
@@ -528,7 +528,7 @@ return array (
           3 => 'server contract',
           4 => 'feedback states',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'resource-card',
           1 => 'transfer-form',
@@ -537,30 +537,30 @@ return array (
         ),
         'responsive' => 'Resource cards flow from four columns to one column',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'GameService',
           1 => 'EconomyService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'player_resources',
           1 => 'game_settings',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'player_resources',
           1 => 'game_audit_log',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'deposit',
           1 => 'withdraw',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/command-center/resources.php',
         'features' => 'config/page_features/command-center/resources.php',
@@ -569,31 +569,31 @@ return array (
         'module' => 'includes/page_modules/command-center/resources.php',
       ),
     ),
-    'income' => 
+    'income' =>
     array (
       'route' => 'income',
       'group' => 'command-center',
       'group_label' => 'Command Center',
       'title' => 'Income Breakdown',
       'layout' => 'breakdown',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'View income formula',
       ),
-      'actions' => 
+      'actions' =>
       array (
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'player_resources',
         1 => 'races',
         2 => 'player_planets',
         3 => 'game_settings',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Income Breakdown',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Base income',
           1 => 'Race and government modifiers',
@@ -601,14 +601,14 @@ return array (
           3 => 'Food, water, and energy upkeep',
         ),
         'formula' => 'settlement = (base production × race modifier × government modifier × technology) − upkeep',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'View per-turn formula',
           1 => 'Compare colonies',
           2 => 'Open resources',
         ),
         'action' => NULL,
-        'tables' => 
+        'tables' =>
         array (
           0 => 'player_resources',
           1 => 'player_colonies',
@@ -617,7 +617,7 @@ return array (
           4 => 'technologies',
         ),
         'permission' => 'authenticated commander',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'empty',
@@ -625,18 +625,18 @@ return array (
           3 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Income Breakdown',
         'purpose' => 'Explain production and upkeep.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'View income formula' => 
+          'View income formula' =>
           array (
             'action' => 'read_income_breakdown',
             'logic' => 'Calculate base output, race modifier, government modifier, technology, biome, and upkeep.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'player_resources',
               1 => 'player_colonies',
@@ -644,30 +644,30 @@ return array (
               3 => 'government_types',
               4 => 'technologies',
             ),
-            'writes' => 
+            'writes' =>
             array (
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'empty',
               2 => 'error',
             ),
           ),
-          'Compare colonies' => 
+          'Compare colonies' =>
           array (
             'action' => 'read_colony_comparison',
             'logic' => 'Compare production and life-support efficiency across owned colonies.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'player_colonies',
               1 => 'universe_planets',
             ),
-            'writes' => 
+            'writes' =>
             array (
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'empty',
@@ -675,10 +675,10 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Explain production settlement by colony, faction, government, technology, biome, and upkeep.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load colony production',
           1 => 'load modifiers',
@@ -686,22 +686,22 @@ return array (
           3 => 'calculate food water energy upkeep',
           4 => 'render net settlement',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated commander',
           1 => 'owned colony scope',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'base production × race modifier × government modifier × technology − upkeep',
           1 => 'colony comparison',
           2 => 'life-support efficiency',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'income formula',
         1 => 'modifier breakdown',
@@ -710,10 +710,10 @@ return array (
         4 => 'production forecast',
         5 => 'read-only state',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'income-breakdown',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'formula',
           1 => 'modifier table',
@@ -721,7 +721,7 @@ return array (
           3 => 'upkeep',
           4 => 'feedback states',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'formula-block',
           1 => 'modifier-row',
@@ -730,14 +730,14 @@ return array (
         ),
         'responsive' => 'Formula and comparison sections stack on small screens',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'EconomyService',
           1 => 'ColonyService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'player_resources',
           1 => 'player_colonies',
@@ -746,16 +746,16 @@ return array (
           4 => 'technologies',
           5 => 'universe_planets',
         ),
-        'writes' => 
+        'writes' =>
         array (
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'read_income_breakdown',
           1 => 'read_colony_comparison',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/command-center/income.php',
         'features' => 'config/page_features/command-center/income.php',
@@ -764,32 +764,32 @@ return array (
         'module' => 'includes/page_modules/command-center/income.php',
       ),
     ),
-    'military-stats' => 
+    'military-stats' =>
     array (
       'route' => 'military-stats',
       'group' => 'command-center',
       'group_label' => 'Command Center',
       'title' => 'Military Statistics',
       'layout' => 'stats',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'View attack',
         1 => 'View defense',
         2 => 'View covert',
       ),
-      'actions' => 
+      'actions' =>
       array (
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'player_resources',
         1 => 'player_unit_stats',
         2 => 'rankings',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Military Statistics',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Attack power',
           1 => 'Defense power',
@@ -797,7 +797,7 @@ return array (
           3 => 'Readiness and DefCon',
         ),
         'formula' => 'power = units × base power × technology × race × government × planet bonus',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'View attack',
           1 => 'View defense',
@@ -805,7 +805,7 @@ return array (
           3 => 'Set DefCon',
         ),
         'action' => 'set_defcon',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'player_resources',
           1 => 'player_unit_stats',
@@ -813,7 +813,7 @@ return array (
           3 => 'protection_states',
         ),
         'permission' => 'authenticated commander',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'protected',
@@ -821,49 +821,49 @@ return array (
           3 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Military Statistics',
         'purpose' => 'Show attack, defense, covert, and readiness values.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'View attack' => 
+          'View attack' =>
           array (
             'action' => 'read_military_stats',
             'logic' => 'Aggregate units, weapons, technologies, race, government, and planet bonuses.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'player_resources',
               1 => 'player_unit_stats',
               2 => 'player_weapons',
               3 => 'technologies',
             ),
-            'writes' => 
+            'writes' =>
             array (
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'error',
             ),
           ),
-          'Set DefCon' => 
+          'Set DefCon' =>
           array (
             'action' => 'set_defcon',
             'logic' => 'Validate level, update alert posture, and apply income or defense effects.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'players',
               1 => 'protection_states',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'players',
               1 => 'game_audit_log',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'invalid-input',
@@ -873,10 +873,10 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Aggregate military, defense, covert, anti-covert, readiness, and DefCon values.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load units and weapons',
           1 => 'load technology and faction modifiers',
@@ -884,24 +884,24 @@ return array (
           3 => 'read protection and DefCon',
           4 => 'render readiness',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated commander',
           1 => 'valid DefCon level for mutation',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'units × base power × technology × race × government × planet bonus',
           1 => 'readiness score',
           2 => 'DefCon effect',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'players',
           1 => 'game_audit_log',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'attack power',
         1 => 'defense power',
@@ -910,10 +910,10 @@ return array (
         4 => 'readiness',
         5 => 'DefCon control',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'military-statistics',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'power totals',
           1 => 'unit breakdown',
@@ -921,7 +921,7 @@ return array (
           3 => 'readiness',
           4 => 'DefCon',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'power-metric',
           1 => 'modifier-table',
@@ -930,14 +930,14 @@ return array (
         ),
         'responsive' => 'Stat grid reduces from four columns to one',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'MilitaryService',
           1 => 'GameService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'player_resources',
           1 => 'player_unit_stats',
@@ -946,18 +946,18 @@ return array (
           4 => 'rankings',
           5 => 'protection_states',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'players',
           1 => 'game_audit_log',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'read_military_stats',
           1 => 'set_defcon',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/command-center/military-stats.php',
         'features' => 'config/page_features/command-center/military-stats.php',
@@ -966,14 +966,14 @@ return array (
         'module' => 'includes/page_modules/command-center/military-stats.php',
       ),
     ),
-    'targets' => 
+    'targets' =>
     array (
       'route' => 'targets',
       'group' => 'attack',
       'group_label' => 'Attack',
       'title' => 'Target Selection',
       'layout' => 'targets',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Attack',
         1 => 'Raid',
@@ -982,23 +982,23 @@ return array (
         4 => 'Conquer Planet',
         5 => 'Message',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'combat',
         1 => 'covert',
         2 => 'explore',
         3 => 'message',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'target_realms',
         1 => 'players',
         2 => 'battles',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Target Selection',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Known realms',
           1 => 'Protection status',
@@ -1006,7 +1006,7 @@ return array (
           3 => 'Operation costs',
         ),
         'formula' => 'battle outcome = validated force comparison + technology + defense + deterministic resolver',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Attack',
           1 => 'Raid',
@@ -1016,7 +1016,7 @@ return array (
           5 => 'Message',
         ),
         'action' => 'combat',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'target_realms',
           1 => 'players',
@@ -1025,7 +1025,7 @@ return array (
           4 => 'battles',
         ),
         'permission' => 'authenticated commander with attack turns',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'protected',
@@ -1035,32 +1035,32 @@ return array (
           5 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Target Selection',
         'purpose' => 'Choose and preview offensive or covert operations.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Attack' => 
+          'Attack' =>
           array (
             'action' => 'combat',
             'logic' => 'Validate target, protection, attack turns, fleet or units, then resolve combat transactionally.',
             'permission' => 'authenticated commander with attack turns',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'target_realms',
               1 => 'players',
               2 => 'battles',
               3 => 'protection_states',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'battles',
               1 => 'battle_rounds',
               2 => 'battle_reports',
               3 => 'attack_logs',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'protected',
@@ -1070,23 +1070,23 @@ return array (
               5 => 'error',
             ),
           ),
-          'Raid' => 
+          'Raid' =>
           array (
             'action' => 'combat:raid',
             'logic' => 'Resolve reduced-force combat with resource-loot rules.',
             'permission' => 'authenticated commander with attack turns',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'target_realms',
               1 => 'player_resources',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'battles',
               1 => 'battle_reports',
               2 => 'player_resources',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'protected',
@@ -1094,23 +1094,23 @@ return array (
               3 => 'error',
             ),
           ),
-          'Spy' => 
+          'Spy' =>
           array (
             'action' => 'covert:spy',
             'logic' => 'Allocate agents, calculate detection, and generate intelligence payload.',
             'permission' => 'authenticated commander with spies',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'covert_agents',
               1 => 'anti_covert_agents',
               2 => 'technologies',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'spy_missions',
               1 => 'intelligence_reports',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'insufficient-resource',
@@ -1118,23 +1118,23 @@ return array (
               3 => 'error',
             ),
           ),
-          'Sabotage' => 
+          'Sabotage' =>
           array (
             'action' => 'covert:sabotage',
             'logic' => 'Target a system, calculate detection, and apply bounded damage.',
             'permission' => 'authenticated commander with spies',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'covert_agents',
               1 => 'target_realms',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'sabotage_missions',
               1 => 'intelligence_reports',
               2 => 'game_events',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'insufficient-resource',
@@ -1144,10 +1144,10 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Select targets and preview combat, raid, covert, sabotage, and conquest operations.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load visible realms',
           1 => 'verify protection',
@@ -1155,7 +1155,7 @@ return array (
           3 => 'compare forces',
           4 => 'submit chosen operation',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated commander',
           1 => 'attack turns',
@@ -1163,13 +1163,13 @@ return array (
           3 => 'protection rules',
           4 => 'fleet or unit availability',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'validated force comparison + technology + defense + deterministic resolver',
           1 => 'operation cost',
           2 => 'loot preview',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'battles',
           1 => 'battle_rounds',
@@ -1178,7 +1178,7 @@ return array (
           4 => 'player_resources',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'known realm search',
         1 => 'protection badges',
@@ -1189,10 +1189,10 @@ return array (
         6 => 'spy',
         7 => 'sabotage',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'target-board',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'filters',
           1 => 'target rows',
@@ -1200,7 +1200,7 @@ return array (
           3 => 'combat preview',
           4 => 'operation controls',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'target-table',
           1 => 'protection-badge',
@@ -1209,15 +1209,15 @@ return array (
         ),
         'responsive' => 'Target table becomes stacked target rows',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'CombatService',
           1 => 'CovertService',
           2 => 'TargetingService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'target_realms',
           1 => 'players',
@@ -1225,7 +1225,7 @@ return array (
           3 => 'protection_states',
           4 => 'technologies',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'battles',
           1 => 'battle_rounds',
@@ -1233,7 +1233,7 @@ return array (
           3 => 'attack_logs',
           4 => 'player_resources',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'combat',
           1 => 'combat:raid',
@@ -1241,7 +1241,7 @@ return array (
           3 => 'covert:sabotage',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/attack/targets.php',
         'features' => 'config/page_features/attack/targets.php',
@@ -1250,32 +1250,32 @@ return array (
         'module' => 'includes/page_modules/attack/targets.php',
       ),
     ),
-    'spy' => 
+    'spy' =>
     array (
       'route' => 'spy',
       'group' => 'attack',
       'group_label' => 'Attack',
       'title' => 'Spy Operations',
       'layout' => 'covert',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Run reconnaissance',
         1 => 'Run spy mission',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'covert',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'covert_missions',
         1 => 'spy_missions',
         2 => 'intelligence_reports',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Covert Operations',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Agent allocation',
           1 => 'Detection chance',
@@ -1283,14 +1283,14 @@ return array (
           3 => 'Mission result',
         ),
         'formula' => 'detection = defender counter-intelligence − attacker agents − covert technology',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Reconnaissance',
           1 => 'Spy mission',
           2 => 'Sabotage mission',
         ),
         'action' => 'covert',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'covert_agents',
           1 => 'anti_covert_agents',
@@ -1300,7 +1300,7 @@ return array (
           5 => 'intelligence_reports',
         ),
         'permission' => 'authenticated commander with available agents',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'protected',
@@ -1310,28 +1310,28 @@ return array (
           5 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Spy and Sabotage Operations',
         'purpose' => 'Manage covert agent operations.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Run reconnaissance' => 
+          'Run reconnaissance' =>
           array (
             'action' => 'covert:recon',
             'logic' => 'Generate low-risk target intelligence with detection calculation.',
             'permission' => 'authenticated commander with agents',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'covert_agents',
               1 => 'target_realms',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'covert_missions',
               1 => 'intelligence_reports',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'cooldown',
@@ -1339,44 +1339,44 @@ return array (
               3 => 'error',
             ),
           ),
-          'Run spy mission' => 
+          'Run spy mission' =>
           array (
             'action' => 'covert:spy',
             'logic' => 'Resolve spy mission and store report.',
             'permission' => 'authenticated commander with spies',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'spy_missions',
               1 => 'technologies',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'spy_missions',
               1 => 'intelligence_reports',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'success',
               2 => 'error',
             ),
           ),
-          'Run sabotage' => 
+          'Run sabotage' =>
           array (
             'action' => 'covert:sabotage',
             'logic' => 'Resolve sabotage with detection and damage caps.',
             'permission' => 'authenticated commander with spies',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'sabotage_missions',
               1 => 'target_realms',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'sabotage_missions',
               1 => 'game_events',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'success',
@@ -1385,10 +1385,10 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Run reconnaissance, spy, and sabotage missions using agents and covert technology.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load agent pools',
           1 => 'select mission type',
@@ -1396,7 +1396,7 @@ return array (
           3 => 'resolve intelligence or damage',
           4 => 'store report and cooldown',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated commander',
           1 => 'available agents',
@@ -1404,13 +1404,13 @@ return array (
           3 => 'cooldown',
           4 => 'mission cost',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'defender counter-intelligence − attacker agents − covert technology',
           1 => 'detection chance',
           2 => 'bounded sabotage damage',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'covert_missions',
           1 => 'spy_missions',
@@ -1419,7 +1419,7 @@ return array (
           4 => 'game_events',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'agent allocation',
         1 => 'detection warning',
@@ -1429,17 +1429,17 @@ return array (
         5 => 'sabotage mission',
         6 => 'classified report',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'covert-operations',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'agent allocation',
           1 => 'detection meter',
           2 => 'target intelligence',
           3 => 'mission result',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'mission-selector',
           1 => 'agent-input',
@@ -1448,21 +1448,21 @@ return array (
         ),
         'responsive' => 'Mission controls and reports stack vertically',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'CovertService',
           1 => 'IntelligenceService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'covert_agents',
           1 => 'anti_covert_agents',
           2 => 'target_realms',
           3 => 'technologies',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'covert_missions',
           1 => 'spy_missions',
@@ -1470,14 +1470,14 @@ return array (
           3 => 'intelligence_reports',
           4 => 'game_events',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'covert:recon',
           1 => 'covert:spy',
           2 => 'covert:sabotage',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/attack/spy.php',
         'features' => 'config/page_features/attack/spy.php',
@@ -1486,31 +1486,31 @@ return array (
         'module' => 'includes/page_modules/attack/spy.php',
       ),
     ),
-    'sabotage' => 
+    'sabotage' =>
     array (
       'route' => 'sabotage',
       'group' => 'attack',
       'group_label' => 'Attack',
       'title' => 'Sabotage Operations',
       'layout' => 'covert',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Choose system',
         1 => 'Run sabotage',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'covert',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'covert_missions',
         1 => 'sabotage_missions',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Covert Operations',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Agent allocation',
           1 => 'Detection chance',
@@ -1518,14 +1518,14 @@ return array (
           3 => 'Mission result',
         ),
         'formula' => 'detection = defender counter-intelligence − attacker agents − covert technology',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Reconnaissance',
           1 => 'Spy mission',
           2 => 'Sabotage mission',
         ),
         'action' => 'covert',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'covert_agents',
           1 => 'anti_covert_agents',
@@ -1535,7 +1535,7 @@ return array (
           5 => 'intelligence_reports',
         ),
         'permission' => 'authenticated commander with available agents',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'protected',
@@ -1545,28 +1545,28 @@ return array (
           5 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Spy and Sabotage Operations',
         'purpose' => 'Manage covert agent operations.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Run reconnaissance' => 
+          'Run reconnaissance' =>
           array (
             'action' => 'covert:recon',
             'logic' => 'Generate low-risk target intelligence with detection calculation.',
             'permission' => 'authenticated commander with agents',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'covert_agents',
               1 => 'target_realms',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'covert_missions',
               1 => 'intelligence_reports',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'cooldown',
@@ -1574,44 +1574,44 @@ return array (
               3 => 'error',
             ),
           ),
-          'Run spy mission' => 
+          'Run spy mission' =>
           array (
             'action' => 'covert:spy',
             'logic' => 'Resolve spy mission and store report.',
             'permission' => 'authenticated commander with spies',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'spy_missions',
               1 => 'technologies',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'spy_missions',
               1 => 'intelligence_reports',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'success',
               2 => 'error',
             ),
           ),
-          'Run sabotage' => 
+          'Run sabotage' =>
           array (
             'action' => 'covert:sabotage',
             'logic' => 'Resolve sabotage with detection and damage caps.',
             'permission' => 'authenticated commander with spies',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'sabotage_missions',
               1 => 'target_realms',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'sabotage_missions',
               1 => 'game_events',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'success',
@@ -1620,10 +1620,10 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Run reconnaissance, spy, and sabotage missions using agents and covert technology.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load agent pools',
           1 => 'select mission type',
@@ -1631,7 +1631,7 @@ return array (
           3 => 'resolve intelligence or damage',
           4 => 'store report and cooldown',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated commander',
           1 => 'available agents',
@@ -1639,13 +1639,13 @@ return array (
           3 => 'cooldown',
           4 => 'mission cost',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'defender counter-intelligence − attacker agents − covert technology',
           1 => 'detection chance',
           2 => 'bounded sabotage damage',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'covert_missions',
           1 => 'spy_missions',
@@ -1654,7 +1654,7 @@ return array (
           4 => 'game_events',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'agent allocation',
         1 => 'detection warning',
@@ -1664,17 +1664,17 @@ return array (
         5 => 'sabotage mission',
         6 => 'classified report',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'covert-operations',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'agent allocation',
           1 => 'detection meter',
           2 => 'target intelligence',
           3 => 'mission result',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'mission-selector',
           1 => 'agent-input',
@@ -1683,21 +1683,21 @@ return array (
         ),
         'responsive' => 'Mission controls and reports stack vertically',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'CovertService',
           1 => 'IntelligenceService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'covert_agents',
           1 => 'anti_covert_agents',
           2 => 'target_realms',
           3 => 'technologies',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'covert_missions',
           1 => 'spy_missions',
@@ -1705,14 +1705,14 @@ return array (
           3 => 'intelligence_reports',
           4 => 'game_events',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'covert:recon',
           1 => 'covert:spy',
           2 => 'covert:sabotage',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/attack/sabotage.php',
         'features' => 'config/page_features/attack/sabotage.php',
@@ -1721,32 +1721,32 @@ return array (
         'module' => 'includes/page_modules/attack/sabotage.php',
       ),
     ),
-    'attack-log' => 
+    'attack-log' =>
     array (
       'route' => 'attack-log',
       'group' => 'attack',
       'group_label' => 'Attack',
       'title' => 'Attack Log & Reports',
       'layout' => 'reports',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Open report',
         1 => 'Mark read',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'message_read',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'battles',
         1 => 'battle_reports',
         2 => 'attack_logs',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Reports and Intelligence',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Unread reports',
           1 => 'Battle outcomes',
@@ -1754,14 +1754,14 @@ return array (
           3 => 'Audit and read state',
         ),
         'formula' => 'report visibility = recipient ownership + report classification + read status',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Open report',
           1 => 'Mark read',
           2 => 'Filter by type',
         ),
         'action' => 'message_read',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'battle_reports',
           1 => 'attack_logs',
@@ -1769,7 +1769,7 @@ return array (
           3 => 'messages',
         ),
         'permission' => 'authenticated report recipient',
-        'states' => 
+        'states' =>
         array (
           0 => 'loading',
           1 => 'ready',
@@ -1778,26 +1778,26 @@ return array (
           4 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Reports and Intelligence',
         'purpose' => 'Review server-generated outcomes.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Open report' => 
+          'Open report' =>
           array (
             'action' => 'read_report',
             'logic' => 'Verify recipient or owner, then return classified payload.',
             'permission' => 'report recipient',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'battle_reports',
               1 => 'intelligence_reports',
             ),
-            'writes' => 
+            'writes' =>
             array (
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'protected',
@@ -1805,21 +1805,21 @@ return array (
               3 => 'error',
             ),
           ),
-          'Mark read' => 
+          'Mark read' =>
           array (
             'action' => 'message_read',
             'logic' => 'Verify ownership and update unread state.',
             'permission' => 'message recipient',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'messages',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'messages',
               1 => 'game_audit_log',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'success',
@@ -1828,10 +1828,10 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Show battle, spy, sabotage, and system reports only to authorized recipients.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load recipient reports',
           1 => 'classify payload',
@@ -1839,23 +1839,23 @@ return array (
           3 => 'open or mark report read',
           4 => 'write audit state',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated report recipient',
           1 => 'recipient ownership',
           2 => 'classification access',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'recipient ownership + report classification + read status',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'messages',
           1 => 'game_audit_log',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'unread count',
         1 => 'battle outcomes',
@@ -1864,17 +1864,17 @@ return array (
         4 => 'mark read',
         5 => 'report filters',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'report-list',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'unread summary',
           1 => 'report table',
           2 => 'detail view',
           3 => 'read state',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'report-row',
           1 => 'classification-badge',
@@ -1883,32 +1883,32 @@ return array (
         ),
         'responsive' => 'Report rows become expandable cards',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'ReportService',
           1 => 'IntelligenceService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'battle_reports',
           1 => 'attack_logs',
           2 => 'intelligence_reports',
           3 => 'messages',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'messages',
           1 => 'game_audit_log',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'read_report',
           1 => 'message_read',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/attack/attack-log.php',
         'features' => 'config/page_features/attack/attack-log.php',
@@ -1917,31 +1917,31 @@ return array (
         'module' => 'includes/page_modules/attack/attack-log.php',
       ),
     ),
-    'weapons' => 
+    'weapons' =>
     array (
       'route' => 'weapons',
       'group' => 'armory',
       'group_label' => 'Armory',
       'title' => 'Weapon Inventory',
       'layout' => 'inventory',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Buy weapon',
         1 => 'Inspect durability',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'weapon_buy',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'weapon_types',
         1 => 'player_weapons',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Weapon Inventory',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Weapon catalogue',
           1 => 'Owned quantity',
@@ -1949,21 +1949,21 @@ return array (
           3 => 'Assignment readiness',
         ),
         'formula' => 'effective power = base power × durability × technology × race × government',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Buy weapon',
           1 => 'Inspect durability',
           2 => 'Assign weapon',
         ),
         'action' => 'weapon_buy',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'weapon_types',
           1 => 'player_weapons',
           2 => 'player_resources',
         ),
         'permission' => 'authenticated commander',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'insufficient-resource',
@@ -1971,28 +1971,28 @@ return array (
           3 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Weapon Inventory',
         'purpose' => 'Manage owned weapons and readiness.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Buy weapon' => 
+          'Buy weapon' =>
           array (
             'action' => 'weapon_buy',
             'logic' => 'Validate catalogue item, quantity, balance, and inventory upsert.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'weapon_types',
               1 => 'player_resources',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'player_weapons',
               1 => 'player_resources',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'insufficient-resource',
@@ -2000,20 +2000,20 @@ return array (
               3 => 'error',
             ),
           ),
-          'Inspect durability' => 
+          'Inspect durability' =>
           array (
             'action' => 'read_weapon',
             'logic' => 'Read quantity, durability, power, and assignment state.',
             'permission' => 'weapon owner',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'player_weapons',
               1 => 'weapon_types',
             ),
-            'writes' => 
+            'writes' =>
             array (
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'empty',
@@ -2021,34 +2021,34 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Manage owned weapons, quantities, durability, assignments, and effective power.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load catalogue',
           1 => 'validate purchase or inspection',
           2 => 'upsert inventory',
           3 => 'calculate durability-adjusted power',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated commander',
           1 => 'weapon ownership',
           2 => 'resource balance',
           3 => 'positive quantity',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'base power × durability × technology × race × government',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'player_weapons',
           1 => 'player_resources',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'weapon catalogue',
         1 => 'owned quantity',
@@ -2056,17 +2056,17 @@ return array (
         3 => 'assignment readiness',
         4 => 'weapon purchase',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'armory-inventory',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'catalogue',
           1 => 'inventory',
           2 => 'durability',
           3 => 'assignment',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'weapon-card',
           1 => 'durability-meter',
@@ -2075,31 +2075,31 @@ return array (
         ),
         'responsive' => 'Weapon cards wrap into a single-column inventory',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'ArmoryService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'weapon_types',
           1 => 'player_weapons',
           2 => 'player_resources',
           3 => 'technologies',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'player_weapons',
           1 => 'player_resources',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'weapon_buy',
           1 => 'read_weapon',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/armory/weapons.php',
         'features' => 'config/page_features/armory/weapons.php',
@@ -2108,32 +2108,32 @@ return array (
         'module' => 'includes/page_modules/armory/weapons.php',
       ),
     ),
-    'weapon-market' => 
+    'weapon-market' =>
     array (
       'route' => 'weapon-market',
       'group' => 'armory',
       'group_label' => 'Armory',
       'title' => 'Weapon Market',
       'layout' => 'market',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'List order',
         1 => 'Buy order',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'market_list',
         1 => 'market_buy',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'market_orders',
         1 => 'weapon_types',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Market Exchange',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Open orders',
           1 => 'Price history',
@@ -2141,14 +2141,14 @@ return array (
           3 => 'Settlement status',
         ),
         'formula' => 'settlement = quantity × unit price + market fee',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'List order',
           1 => 'Buy order',
           2 => 'Cancel order',
         ),
         'action' => 'market_list',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'market_orders',
           1 => 'trade_contracts',
@@ -2156,7 +2156,7 @@ return array (
           3 => 'mercenary_types',
         ),
         'permission' => 'authenticated commander with market turns',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'empty',
@@ -2166,28 +2166,28 @@ return array (
           5 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Markets',
         'purpose' => 'Trade resources, weapons, and mercenaries.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'List order' => 
+          'List order' =>
           array (
             'action' => 'market_list',
             'logic' => 'Validate resource, quantity, unit price, turn balance, and expiry.',
             'permission' => 'authenticated trader',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'player_resources',
               1 => 'market_orders',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'market_orders',
               1 => 'trade_contracts',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'insufficient-resource',
@@ -2196,23 +2196,23 @@ return array (
               4 => 'error',
             ),
           ),
-          'Buy order' => 
+          'Buy order' =>
           array (
             'action' => 'market_buy',
             'logic' => 'Lock order, check funds, transfer resource, and settle seller.',
             'permission' => 'authenticated trader',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'market_orders',
               1 => 'player_resources',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'market_orders',
               1 => 'player_resources',
               2 => 'game_audit_log',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'insufficient-resource',
@@ -2222,10 +2222,10 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'List and buy resource, weapon, and mercenary market orders.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load orders',
           1 => 'validate order fields',
@@ -2233,7 +2233,7 @@ return array (
           3 => 'settle trade',
           4 => 'write market event',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated trader',
           1 => 'market turns',
@@ -2241,11 +2241,11 @@ return array (
           3 => 'available balance',
           4 => 'order ownership',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'quantity × unit price + market fee',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'market_orders',
           1 => 'trade_contracts',
@@ -2253,7 +2253,7 @@ return array (
           3 => 'game_audit_log',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'open orders',
         1 => 'price history',
@@ -2262,17 +2262,17 @@ return array (
         4 => 'list order',
         5 => 'settlement status',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'market-exchange',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'orders',
           1 => 'price history',
           2 => 'order form',
           3 => 'settlement',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'order-table',
           1 => 'price-badge',
@@ -2281,34 +2281,34 @@ return array (
         ),
         'responsive' => 'Market tables scroll or stack into order cards',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'MarketService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'market_orders',
           1 => 'trade_contracts',
           2 => 'player_resources',
           3 => 'mercenary_types',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'market_orders',
           1 => 'trade_contracts',
           2 => 'player_resources',
           3 => 'game_audit_log',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'market_list',
           1 => 'market_buy',
           2 => 'market_cancel',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/armory/weapon-market.php',
         'features' => 'config/page_features/armory/weapon-market.php',
@@ -2317,30 +2317,30 @@ return array (
         'module' => 'includes/page_modules/armory/weapon-market.php',
       ),
     ),
-    'repair' => 
+    'repair' =>
     array (
       'route' => 'repair',
       'group' => 'armory',
       'group_label' => 'Armory',
       'title' => 'Weapon Repair',
       'layout' => 'repair',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Repair weapon',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'weapon_repair',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'player_weapons',
         1 => 'player_resources',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Weapon Repair',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Durability board',
           1 => 'Repair cost',
@@ -2348,20 +2348,20 @@ return array (
           3 => 'Repair result',
         ),
         'formula' => 'repair cost = missing durability × weapon tier × maintenance factor',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Repair weapon',
           1 => 'Inspect cost',
         ),
         'action' => 'weapon_repair',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'player_weapons',
           1 => 'weapon_types',
           2 => 'player_resources',
         ),
         'permission' => 'authenticated weapon owner',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'insufficient-resource',
@@ -2369,30 +2369,30 @@ return array (
           3 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Weapon Repair',
         'purpose' => 'Restore weapon durability.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Repair weapon' => 
+          'Repair weapon' =>
           array (
             'action' => 'weapon_repair',
             'logic' => 'Calculate missing-durability cost, lock weapon, deduct resources, and restore durability.',
             'permission' => 'weapon owner',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'player_weapons',
               1 => 'weapon_types',
               2 => 'player_resources',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'player_weapons',
               1 => 'player_resources',
               2 => 'game_audit_log',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'insufficient-resource',
@@ -2402,10 +2402,10 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Restore weapon durability using validated repair costs.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load damaged weapon',
           1 => 'calculate missing durability',
@@ -2413,41 +2413,41 @@ return array (
           3 => 'lock weapon',
           4 => 'restore durability transactionally',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'weapon owner',
           1 => 'positive durability gap',
           2 => 'resource balance',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'missing durability × weapon tier × maintenance factor',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'player_weapons',
           1 => 'player_resources',
           2 => 'game_audit_log',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'durability board',
         1 => 'repair cost',
         2 => 'resource check',
         3 => 'repair result',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'weapon-repair',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'damaged items',
           1 => 'cost preview',
           2 => 'confirmation',
           3 => 'result',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'durability-meter',
           1 => 'repair-cost',
@@ -2456,30 +2456,30 @@ return array (
         ),
         'responsive' => 'Repair cards stack on mobile',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'ArmoryService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'player_weapons',
           1 => 'weapon_types',
           2 => 'player_resources',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'player_weapons',
           1 => 'player_resources',
           2 => 'game_audit_log',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'weapon_repair',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/armory/repair.php',
         'features' => 'config/page_features/armory/repair.php',
@@ -2488,29 +2488,34 @@ return array (
         'module' => 'includes/page_modules/armory/repair.php',
       ),
     ),
-    'units' => 
+    'units' =>
     array (
       'route' => 'units',
       'group' => 'training',
       'group_label' => 'Training',
       'title' => 'Unit Training',
       'layout' => 'training',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Train units',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'train',
+        1 => 'upgrade_up',
       ),
-      'tables' => 
+      'tables' =>
       array (
-        0 => 'player_resources',
+        0 => 'unit_types',
+        1 => 'player_unit_stats',
+        2 => 'training_queues',
+        3 => 'player_resources',
+        4 => 'game_events',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Personnel Training',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Available population',
           1 => 'Training queue',
@@ -2518,21 +2523,21 @@ return array (
           3 => 'Current personnel',
         ),
         'formula' => 'training = population conversion − training cost + production bonus',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Train units',
           1 => 'Choose category',
           2 => 'Set quantity',
         ),
         'action' => 'train',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'player_resources',
           1 => 'player_unit_stats',
           2 => 'technologies',
         ),
         'permission' => 'authenticated commander with untrained population',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'insufficient-resource',
@@ -2541,64 +2546,72 @@ return array (
           4 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Training',
-        'purpose' => 'Convert population into specialized units.',
-        'buttons' => 
+        'purpose' => 'Convert population into specialized units and queue production upgrades.',
+        'buttons' =>
         array (
-          'Train units' => 
+          'Train units' =>
           array (
             'action' => 'train',
-            'logic' => 'Validate type and quantity, deduct untrained population, and increase unit stats.',
-            'permission' => 'authenticated commander',
-            'reads' => 
+            'logic' => 'Validate type and quantity, then transactionally lock unit type, commander resources, academy level, queue capacity, cooldown, population, and Naquadah before creating a training queue and game event.',
+            'permission' => 'authenticated commander with owned population and training authority',
+            'reads' =>
             array (
-              0 => 'player_resources',
-              1 => 'technologies',
-            ),
-            'writes' => 
-            array (
-              0 => 'player_resources',
+              0 => 'unit_types',
               1 => 'player_unit_stats',
+              2 => 'training_queues',
+              3 => 'player_resources',
+            ),
+            'writes' =>
+            array (
+              0 => 'player_resources',
+              1 => 'training_queues',
               2 => 'game_events',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
-              1 => 'insufficient-resource',
-              2 => 'success',
-              3 => 'error',
+              1 => 'empty',
+              2 => 'insufficient-resource',
+              3 => 'success',
+              4 => 'error',
             ),
           ),
-          'Upgrade production' => 
+          'Upgrade production' =>
           array (
             'action' => 'upgrade_up',
-            'logic' => 'Calculate next production cost and increase production cap.',
-            'permission' => 'authenticated commander',
-            'reads' => 
+            'logic' => 'Validate commander ownership, automation prerequisite, production queue capacity, cooldown, and Naquadah in one transaction before creating the production upgrade queue and game event.',
+            'permission' => 'authenticated commander with production authority',
+            'reads' =>
+            array (
+              0 => 'unit_types',
+              1 => 'player_unit_stats',
+              2 => 'training_queues',
+              3 => 'player_resources',
+            ),
+            'writes' =>
             array (
               0 => 'player_resources',
+              1 => 'training_queues',
+              2 => 'game_events',
             ),
-            'writes' => 
-            array (
-              0 => 'player_resources',
-              1 => 'game_audit_log',
-            ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
-              1 => 'insufficient-resource',
-              2 => 'success',
-              3 => 'error',
+              1 => 'empty',
+              2 => 'insufficient-resource',
+              3 => 'success',
+              4 => 'error',
             ),
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Convert available population into specialized personnel and units.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load population pool',
           1 => 'select unit category',
@@ -2606,25 +2619,25 @@ return array (
           3 => 'deduct population and cost',
           4 => 'update unit stats',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated commander',
           1 => 'untrained population',
           2 => 'positive quantity',
           3 => 'resource balance',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'population conversion − training cost + production bonus',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'player_resources',
           1 => 'player_unit_stats',
           2 => 'game_events',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'unit categories',
         1 => 'quantity input',
@@ -2632,17 +2645,17 @@ return array (
         3 => 'population conversion',
         4 => 'production upgrade',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'training-board',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'unit pool',
           1 => 'training controls',
           2 => 'cost preview',
           3 => 'queue/result',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'unit-card',
           1 => 'quantity-input',
@@ -2651,32 +2664,32 @@ return array (
         ),
         'responsive' => 'Training cards stack with full-width controls',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'TrainingService',
           1 => 'GameService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'player_resources',
           1 => 'player_unit_stats',
           2 => 'technologies',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'player_resources',
           1 => 'player_unit_stats',
           2 => 'game_events',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'train',
           1 => 'upgrade_up',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/training/units.php',
         'features' => 'config/page_features/training/units.php',
@@ -2685,29 +2698,29 @@ return array (
         'module' => 'includes/page_modules/training/units.php',
       ),
     ),
-    'miners' => 
+    'miners' =>
     array (
       'route' => 'miners',
       'group' => 'training',
       'group_label' => 'Training',
       'title' => 'Miners & Lifers',
       'layout' => 'training',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Train miners',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'train',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'player_resources',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Personnel Training',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Available population',
           1 => 'Training queue',
@@ -2715,21 +2728,21 @@ return array (
           3 => 'Current personnel',
         ),
         'formula' => 'training = population conversion − training cost + production bonus',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Train units',
           1 => 'Choose category',
           2 => 'Set quantity',
         ),
         'action' => 'train',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'player_resources',
           1 => 'player_unit_stats',
           2 => 'technologies',
         ),
         'permission' => 'authenticated commander with untrained population',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'insufficient-resource',
@@ -2738,64 +2751,72 @@ return array (
           4 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Training',
-        'purpose' => 'Convert population into specialized units.',
-        'buttons' => 
+        'purpose' => 'Convert population into specialized units and queue production upgrades.',
+        'buttons' =>
         array (
-          'Train units' => 
+          'Train units' =>
           array (
             'action' => 'train',
-            'logic' => 'Validate type and quantity, deduct untrained population, and increase unit stats.',
-            'permission' => 'authenticated commander',
-            'reads' => 
+            'logic' => 'Validate type and quantity, then transactionally lock unit type, commander resources, academy level, queue capacity, cooldown, population, and Naquadah before creating a training queue and game event.',
+            'permission' => 'authenticated commander with owned population and training authority',
+            'reads' =>
             array (
-              0 => 'player_resources',
-              1 => 'technologies',
-            ),
-            'writes' => 
-            array (
-              0 => 'player_resources',
+              0 => 'unit_types',
               1 => 'player_unit_stats',
+              2 => 'training_queues',
+              3 => 'player_resources',
+            ),
+            'writes' =>
+            array (
+              0 => 'player_resources',
+              1 => 'training_queues',
               2 => 'game_events',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
-              1 => 'insufficient-resource',
-              2 => 'success',
-              3 => 'error',
+              1 => 'empty',
+              2 => 'insufficient-resource',
+              3 => 'success',
+              4 => 'error',
             ),
           ),
-          'Upgrade production' => 
+          'Upgrade production' =>
           array (
             'action' => 'upgrade_up',
-            'logic' => 'Calculate next production cost and increase production cap.',
-            'permission' => 'authenticated commander',
-            'reads' => 
+            'logic' => 'Validate commander ownership, automation prerequisite, production queue capacity, cooldown, and Naquadah in one transaction before creating the production upgrade queue and game event.',
+            'permission' => 'authenticated commander with production authority',
+            'reads' =>
+            array (
+              0 => 'unit_types',
+              1 => 'player_unit_stats',
+              2 => 'training_queues',
+              3 => 'player_resources',
+            ),
+            'writes' =>
             array (
               0 => 'player_resources',
+              1 => 'training_queues',
+              2 => 'game_events',
             ),
-            'writes' => 
-            array (
-              0 => 'player_resources',
-              1 => 'game_audit_log',
-            ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
-              1 => 'insufficient-resource',
-              2 => 'success',
-              3 => 'error',
+              1 => 'empty',
+              2 => 'insufficient-resource',
+              3 => 'success',
+              4 => 'error',
             ),
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Convert available population into specialized personnel and units.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load population pool',
           1 => 'select unit category',
@@ -2803,25 +2824,25 @@ return array (
           3 => 'deduct population and cost',
           4 => 'update unit stats',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated commander',
           1 => 'untrained population',
           2 => 'positive quantity',
           3 => 'resource balance',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'population conversion − training cost + production bonus',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'player_resources',
           1 => 'player_unit_stats',
           2 => 'game_events',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'unit categories',
         1 => 'quantity input',
@@ -2829,17 +2850,17 @@ return array (
         3 => 'population conversion',
         4 => 'production upgrade',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'training-board',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'unit pool',
           1 => 'training controls',
           2 => 'cost preview',
           3 => 'queue/result',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'unit-card',
           1 => 'quantity-input',
@@ -2848,32 +2869,32 @@ return array (
         ),
         'responsive' => 'Training cards stack with full-width controls',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'TrainingService',
           1 => 'GameService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'player_resources',
           1 => 'player_unit_stats',
           2 => 'technologies',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'player_resources',
           1 => 'player_unit_stats',
           2 => 'game_events',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'train',
           1 => 'upgrade_up',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/training/miners.php',
         'features' => 'config/page_features/training/miners.php',
@@ -2882,30 +2903,30 @@ return array (
         'module' => 'includes/page_modules/training/miners.php',
       ),
     ),
-    'super-units' => 
+    'super-units' =>
     array (
       'route' => 'super-units',
       'group' => 'training',
       'group_label' => 'Training',
       'title' => 'Super Units',
       'layout' => 'training',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Train elite units',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'train',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'player_resources',
         1 => 'technologies',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Personnel Training',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Available population',
           1 => 'Training queue',
@@ -2913,21 +2934,21 @@ return array (
           3 => 'Current personnel',
         ),
         'formula' => 'training = population conversion − training cost + production bonus',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Train units',
           1 => 'Choose category',
           2 => 'Set quantity',
         ),
         'action' => 'train',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'player_resources',
           1 => 'player_unit_stats',
           2 => 'technologies',
         ),
         'permission' => 'authenticated commander with untrained population',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'insufficient-resource',
@@ -2936,64 +2957,72 @@ return array (
           4 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Training',
-        'purpose' => 'Convert population into specialized units.',
-        'buttons' => 
+        'purpose' => 'Convert population into specialized units and queue production upgrades.',
+        'buttons' =>
         array (
-          'Train units' => 
+          'Train units' =>
           array (
             'action' => 'train',
-            'logic' => 'Validate type and quantity, deduct untrained population, and increase unit stats.',
-            'permission' => 'authenticated commander',
-            'reads' => 
+            'logic' => 'Validate type and quantity, then transactionally lock unit type, commander resources, academy level, queue capacity, cooldown, population, and Naquadah before creating a training queue and game event.',
+            'permission' => 'authenticated commander with owned population and training authority',
+            'reads' =>
             array (
-              0 => 'player_resources',
-              1 => 'technologies',
-            ),
-            'writes' => 
-            array (
-              0 => 'player_resources',
+              0 => 'unit_types',
               1 => 'player_unit_stats',
+              2 => 'training_queues',
+              3 => 'player_resources',
+            ),
+            'writes' =>
+            array (
+              0 => 'player_resources',
+              1 => 'training_queues',
               2 => 'game_events',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
-              1 => 'insufficient-resource',
-              2 => 'success',
-              3 => 'error',
+              1 => 'empty',
+              2 => 'insufficient-resource',
+              3 => 'success',
+              4 => 'error',
             ),
           ),
-          'Upgrade production' => 
+          'Upgrade production' =>
           array (
             'action' => 'upgrade_up',
-            'logic' => 'Calculate next production cost and increase production cap.',
-            'permission' => 'authenticated commander',
-            'reads' => 
+            'logic' => 'Validate commander ownership, automation prerequisite, production queue capacity, cooldown, and Naquadah in one transaction before creating the production upgrade queue and game event.',
+            'permission' => 'authenticated commander with production authority',
+            'reads' =>
+            array (
+              0 => 'unit_types',
+              1 => 'player_unit_stats',
+              2 => 'training_queues',
+              3 => 'player_resources',
+            ),
+            'writes' =>
             array (
               0 => 'player_resources',
+              1 => 'training_queues',
+              2 => 'game_events',
             ),
-            'writes' => 
-            array (
-              0 => 'player_resources',
-              1 => 'game_audit_log',
-            ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
-              1 => 'insufficient-resource',
-              2 => 'success',
-              3 => 'error',
+              1 => 'empty',
+              2 => 'insufficient-resource',
+              3 => 'success',
+              4 => 'error',
             ),
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Convert available population into specialized personnel and units.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load population pool',
           1 => 'select unit category',
@@ -3001,25 +3030,25 @@ return array (
           3 => 'deduct population and cost',
           4 => 'update unit stats',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated commander',
           1 => 'untrained population',
           2 => 'positive quantity',
           3 => 'resource balance',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'population conversion − training cost + production bonus',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'player_resources',
           1 => 'player_unit_stats',
           2 => 'game_events',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'unit categories',
         1 => 'quantity input',
@@ -3027,17 +3056,17 @@ return array (
         3 => 'population conversion',
         4 => 'production upgrade',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'training-board',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'unit pool',
           1 => 'training controls',
           2 => 'cost preview',
           3 => 'queue/result',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'unit-card',
           1 => 'quantity-input',
@@ -3046,32 +3075,32 @@ return array (
         ),
         'responsive' => 'Training cards stack with full-width controls',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'TrainingService',
           1 => 'GameService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'player_resources',
           1 => 'player_unit_stats',
           2 => 'technologies',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'player_resources',
           1 => 'player_unit_stats',
           2 => 'game_events',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'train',
           1 => 'upgrade_up',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/training/super-units.php',
         'features' => 'config/page_features/training/super-units.php',
@@ -3080,29 +3109,33 @@ return array (
         'module' => 'includes/page_modules/training/super-units.php',
       ),
     ),
-    'unit-production' => 
+    'unit-production' =>
     array (
       'route' => 'unit-production',
       'group' => 'training',
       'group_label' => 'Training',
       'title' => 'Unit Production',
       'layout' => 'upgrade',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Upgrade UP',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'upgrade_up',
       ),
-      'tables' => 
+      'tables' =>
       array (
-        0 => 'player_resources',
+        0 => 'unit_types',
+        1 => 'player_unit_stats',
+        2 => 'training_queues',
+        3 => 'player_resources',
+        4 => 'game_events',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Unit Production',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Current production',
           1 => 'Next-level cost',
@@ -3110,20 +3143,20 @@ return array (
           3 => 'Upgrade effects',
         ),
         'formula' => 'upgrade cost = base cost × growth rate ^ current level',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Upgrade production',
           1 => 'Preview next level',
         ),
         'action' => 'upgrade_up',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'player_resources',
           1 => 'construction_queue',
           2 => 'technologies',
         ),
         'permission' => 'authenticated commander',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'insufficient-resource',
@@ -3132,29 +3165,29 @@ return array (
           4 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Unit Production',
         'purpose' => 'Upgrade the rate at which personnel and units can be produced.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Upgrade production' => 
+          'Upgrade production' =>
           array (
             'action' => 'upgrade_up',
             'logic' => 'Calculate next-level cost, lock resources, and increase production level.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'player_resources',
               1 => 'construction_queue',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'player_resources',
               1 => 'construction_queue',
               2 => 'game_audit_log',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'insufficient-resource',
@@ -3165,10 +3198,10 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Increase unit production capacity and show next-level effects.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load current level',
           1 => 'calculate next cost',
@@ -3176,25 +3209,25 @@ return array (
           3 => 'queue upgrade',
           4 => 'apply completion effect',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated commander',
           1 => 'positive current level',
           2 => 'resource balance',
           3 => 'level cap',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'base cost × growth rate ^ current level',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'player_resources',
           1 => 'construction_queue',
           2 => 'game_audit_log',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'current production',
         1 => 'next-level cost',
@@ -3202,17 +3235,17 @@ return array (
         3 => 'upgrade effects',
         4 => 'production preview',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'upgrade-card',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'current level',
           1 => 'next cost',
           2 => 'modifier preview',
           3 => 'confirmation',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'level-card',
           1 => 'cost-table',
@@ -3221,31 +3254,31 @@ return array (
         ),
         'responsive' => 'Upgrade card becomes full-width',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'TrainingService',
           1 => 'QueueService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'player_resources',
           1 => 'construction_queue',
           2 => 'technologies',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'player_resources',
           1 => 'construction_queue',
           2 => 'game_audit_log',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'upgrade_up',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/training/unit-production.php',
         'features' => 'config/page_features/training/unit-production.php',
@@ -3254,33 +3287,33 @@ return array (
         'module' => 'includes/page_modules/training/unit-production.php',
       ),
     ),
-    'technology' => 
+    'technology' =>
     array (
       'route' => 'technology',
       'group' => 'technology',
       'group_label' => 'Technology',
       'title' => 'Technology Tree',
       'layout' => 'technology',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Upgrade offense',
         1 => 'Upgrade defense',
         2 => 'Upgrade covert',
         3 => 'Upgrade anti-covert',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'technology',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'technologies',
         1 => 'player_technologies',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Technology Tree',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Offense branch',
           1 => 'Defense branch',
@@ -3289,7 +3322,7 @@ return array (
           4 => 'Prerequisites and queue',
         ),
         'formula' => 'research cost = base cost × growth ^ current level; completion applies effect',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Upgrade offense',
           1 => 'Upgrade defense',
@@ -3298,7 +3331,7 @@ return array (
           4 => 'Queue research',
         ),
         'action' => 'technology',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'technologies',
           1 => 'technology_prerequisites',
@@ -3306,7 +3339,7 @@ return array (
           3 => 'construction_queue',
         ),
         'permission' => 'authenticated commander with research access',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'locked',
@@ -3316,31 +3349,31 @@ return array (
           5 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Technology',
         'purpose' => 'Research permanent strategic upgrades.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Upgrade technology' => 
+          'Upgrade technology' =>
           array (
             'action' => 'technology',
             'logic' => 'Validate category, prerequisites, cost, queue availability, and apply effect on completion.',
             'permission' => 'authenticated researcher',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'technologies',
               1 => 'technology_prerequisites',
               2 => 'player_technologies',
               3 => 'player_resources',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'player_technologies',
               1 => 'construction_queue',
               2 => 'player_resources',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'locked',
@@ -3352,10 +3385,10 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Research offense, defense, covert, and anti-covert technology branches.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load technology tree',
           1 => 'check prerequisites',
@@ -3363,7 +3396,7 @@ return array (
           3 => 'queue research',
           4 => 'apply completed effect',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated researcher',
           1 => 'prerequisites',
@@ -3371,18 +3404,18 @@ return array (
           3 => 'resource balance',
           4 => 'level cap',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'base cost × growth ^ current level',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'player_technologies',
           1 => 'construction_queue',
           2 => 'player_resources',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'technology tree',
         1 => 'branch filters',
@@ -3391,10 +3424,10 @@ return array (
         4 => 'research queue',
         5 => 'effect preview',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'technology-tree',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'branch tabs',
           1 => 'technology cards',
@@ -3402,7 +3435,7 @@ return array (
           3 => 'cost',
           4 => 'queue',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'tech-card',
           1 => 'branch-tabs',
@@ -3411,14 +3444,14 @@ return array (
         ),
         'responsive' => 'Branch tabs scroll and cards stack',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'TechnologyService',
           1 => 'QueueService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'technologies',
           1 => 'technology_prerequisites',
@@ -3426,18 +3459,18 @@ return array (
           3 => 'player_resources',
           4 => 'construction_queue',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'player_technologies',
           1 => 'construction_queue',
           2 => 'player_resources',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'technology',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/technology/technology.php',
         'features' => 'config/page_features/technology/technology.php',
@@ -3446,30 +3479,30 @@ return array (
         'module' => 'includes/page_modules/technology/technology.php',
       ),
     ),
-    'tech-offense' => 
+    'tech-offense' =>
     array (
       'route' => 'tech-offense',
       'group' => 'technology',
       'group_label' => 'Technology',
       'title' => 'Offense Technology',
       'layout' => 'technology',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Upgrade',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'technology',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'technologies',
         1 => 'player_technologies',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Technology Tree',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Offense branch',
           1 => 'Defense branch',
@@ -3478,7 +3511,7 @@ return array (
           4 => 'Prerequisites and queue',
         ),
         'formula' => 'research cost = base cost × growth ^ current level; completion applies effect',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Upgrade offense',
           1 => 'Upgrade defense',
@@ -3487,7 +3520,7 @@ return array (
           4 => 'Queue research',
         ),
         'action' => 'technology',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'technologies',
           1 => 'technology_prerequisites',
@@ -3495,7 +3528,7 @@ return array (
           3 => 'construction_queue',
         ),
         'permission' => 'authenticated commander with research access',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'locked',
@@ -3505,31 +3538,31 @@ return array (
           5 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Technology',
         'purpose' => 'Research permanent strategic upgrades.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Upgrade technology' => 
+          'Upgrade technology' =>
           array (
             'action' => 'technology',
             'logic' => 'Validate category, prerequisites, cost, queue availability, and apply effect on completion.',
             'permission' => 'authenticated researcher',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'technologies',
               1 => 'technology_prerequisites',
               2 => 'player_technologies',
               3 => 'player_resources',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'player_technologies',
               1 => 'construction_queue',
               2 => 'player_resources',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'locked',
@@ -3541,10 +3574,10 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Research offense, defense, covert, and anti-covert technology branches.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load technology tree',
           1 => 'check prerequisites',
@@ -3552,7 +3585,7 @@ return array (
           3 => 'queue research',
           4 => 'apply completed effect',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated researcher',
           1 => 'prerequisites',
@@ -3560,18 +3593,18 @@ return array (
           3 => 'resource balance',
           4 => 'level cap',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'base cost × growth ^ current level',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'player_technologies',
           1 => 'construction_queue',
           2 => 'player_resources',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'technology tree',
         1 => 'branch filters',
@@ -3580,10 +3613,10 @@ return array (
         4 => 'research queue',
         5 => 'effect preview',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'technology-tree',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'branch tabs',
           1 => 'technology cards',
@@ -3591,7 +3624,7 @@ return array (
           3 => 'cost',
           4 => 'queue',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'tech-card',
           1 => 'branch-tabs',
@@ -3600,14 +3633,14 @@ return array (
         ),
         'responsive' => 'Branch tabs scroll and cards stack',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'TechnologyService',
           1 => 'QueueService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'technologies',
           1 => 'technology_prerequisites',
@@ -3615,18 +3648,18 @@ return array (
           3 => 'player_resources',
           4 => 'construction_queue',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'player_technologies',
           1 => 'construction_queue',
           2 => 'player_resources',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'technology',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/technology/tech-offense.php',
         'features' => 'config/page_features/technology/tech-offense.php',
@@ -3635,30 +3668,30 @@ return array (
         'module' => 'includes/page_modules/technology/tech-offense.php',
       ),
     ),
-    'tech-defense' => 
+    'tech-defense' =>
     array (
       'route' => 'tech-defense',
       'group' => 'technology',
       'group_label' => 'Technology',
       'title' => 'Defense Technology',
       'layout' => 'technology',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Upgrade',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'technology',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'technologies',
         1 => 'player_technologies',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Technology Tree',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Offense branch',
           1 => 'Defense branch',
@@ -3667,7 +3700,7 @@ return array (
           4 => 'Prerequisites and queue',
         ),
         'formula' => 'research cost = base cost × growth ^ current level; completion applies effect',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Upgrade offense',
           1 => 'Upgrade defense',
@@ -3676,7 +3709,7 @@ return array (
           4 => 'Queue research',
         ),
         'action' => 'technology',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'technologies',
           1 => 'technology_prerequisites',
@@ -3684,7 +3717,7 @@ return array (
           3 => 'construction_queue',
         ),
         'permission' => 'authenticated commander with research access',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'locked',
@@ -3694,31 +3727,31 @@ return array (
           5 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Technology',
         'purpose' => 'Research permanent strategic upgrades.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Upgrade technology' => 
+          'Upgrade technology' =>
           array (
             'action' => 'technology',
             'logic' => 'Validate category, prerequisites, cost, queue availability, and apply effect on completion.',
             'permission' => 'authenticated researcher',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'technologies',
               1 => 'technology_prerequisites',
               2 => 'player_technologies',
               3 => 'player_resources',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'player_technologies',
               1 => 'construction_queue',
               2 => 'player_resources',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'locked',
@@ -3730,10 +3763,10 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Research offense, defense, covert, and anti-covert technology branches.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load technology tree',
           1 => 'check prerequisites',
@@ -3741,7 +3774,7 @@ return array (
           3 => 'queue research',
           4 => 'apply completed effect',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated researcher',
           1 => 'prerequisites',
@@ -3749,18 +3782,18 @@ return array (
           3 => 'resource balance',
           4 => 'level cap',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'base cost × growth ^ current level',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'player_technologies',
           1 => 'construction_queue',
           2 => 'player_resources',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'technology tree',
         1 => 'branch filters',
@@ -3769,10 +3802,10 @@ return array (
         4 => 'research queue',
         5 => 'effect preview',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'technology-tree',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'branch tabs',
           1 => 'technology cards',
@@ -3780,7 +3813,7 @@ return array (
           3 => 'cost',
           4 => 'queue',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'tech-card',
           1 => 'branch-tabs',
@@ -3789,14 +3822,14 @@ return array (
         ),
         'responsive' => 'Branch tabs scroll and cards stack',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'TechnologyService',
           1 => 'QueueService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'technologies',
           1 => 'technology_prerequisites',
@@ -3804,18 +3837,18 @@ return array (
           3 => 'player_resources',
           4 => 'construction_queue',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'player_technologies',
           1 => 'construction_queue',
           2 => 'player_resources',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'technology',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/technology/tech-defense.php',
         'features' => 'config/page_features/technology/tech-defense.php',
@@ -3824,30 +3857,30 @@ return array (
         'module' => 'includes/page_modules/technology/tech-defense.php',
       ),
     ),
-    'tech-covert' => 
+    'tech-covert' =>
     array (
       'route' => 'tech-covert',
       'group' => 'technology',
       'group_label' => 'Technology',
       'title' => 'Covert Technology',
       'layout' => 'technology',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Upgrade',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'technology',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'technologies',
         1 => 'player_technologies',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Technology Tree',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Offense branch',
           1 => 'Defense branch',
@@ -3856,7 +3889,7 @@ return array (
           4 => 'Prerequisites and queue',
         ),
         'formula' => 'research cost = base cost × growth ^ current level; completion applies effect',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Upgrade offense',
           1 => 'Upgrade defense',
@@ -3865,7 +3898,7 @@ return array (
           4 => 'Queue research',
         ),
         'action' => 'technology',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'technologies',
           1 => 'technology_prerequisites',
@@ -3873,7 +3906,7 @@ return array (
           3 => 'construction_queue',
         ),
         'permission' => 'authenticated commander with research access',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'locked',
@@ -3883,31 +3916,31 @@ return array (
           5 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Technology',
         'purpose' => 'Research permanent strategic upgrades.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Upgrade technology' => 
+          'Upgrade technology' =>
           array (
             'action' => 'technology',
             'logic' => 'Validate category, prerequisites, cost, queue availability, and apply effect on completion.',
             'permission' => 'authenticated researcher',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'technologies',
               1 => 'technology_prerequisites',
               2 => 'player_technologies',
               3 => 'player_resources',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'player_technologies',
               1 => 'construction_queue',
               2 => 'player_resources',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'locked',
@@ -3919,10 +3952,10 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Research offense, defense, covert, and anti-covert technology branches.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load technology tree',
           1 => 'check prerequisites',
@@ -3930,7 +3963,7 @@ return array (
           3 => 'queue research',
           4 => 'apply completed effect',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated researcher',
           1 => 'prerequisites',
@@ -3938,18 +3971,18 @@ return array (
           3 => 'resource balance',
           4 => 'level cap',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'base cost × growth ^ current level',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'player_technologies',
           1 => 'construction_queue',
           2 => 'player_resources',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'technology tree',
         1 => 'branch filters',
@@ -3958,10 +3991,10 @@ return array (
         4 => 'research queue',
         5 => 'effect preview',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'technology-tree',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'branch tabs',
           1 => 'technology cards',
@@ -3969,7 +4002,7 @@ return array (
           3 => 'cost',
           4 => 'queue',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'tech-card',
           1 => 'branch-tabs',
@@ -3978,14 +4011,14 @@ return array (
         ),
         'responsive' => 'Branch tabs scroll and cards stack',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'TechnologyService',
           1 => 'QueueService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'technologies',
           1 => 'technology_prerequisites',
@@ -3993,18 +4026,18 @@ return array (
           3 => 'player_resources',
           4 => 'construction_queue',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'player_technologies',
           1 => 'construction_queue',
           2 => 'player_resources',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'technology',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/technology/tech-covert.php',
         'features' => 'config/page_features/technology/tech-covert.php',
@@ -4013,30 +4046,30 @@ return array (
         'module' => 'includes/page_modules/technology/tech-covert.php',
       ),
     ),
-    'tech-anti-covert' => 
+    'tech-anti-covert' =>
     array (
       'route' => 'tech-anti-covert',
       'group' => 'technology',
       'group_label' => 'Technology',
       'title' => 'Anti-Covert Technology',
       'layout' => 'technology',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Upgrade',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'technology',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'technologies',
         1 => 'player_technologies',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Technology Tree',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Offense branch',
           1 => 'Defense branch',
@@ -4045,7 +4078,7 @@ return array (
           4 => 'Prerequisites and queue',
         ),
         'formula' => 'research cost = base cost × growth ^ current level; completion applies effect',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Upgrade offense',
           1 => 'Upgrade defense',
@@ -4054,7 +4087,7 @@ return array (
           4 => 'Queue research',
         ),
         'action' => 'technology',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'technologies',
           1 => 'technology_prerequisites',
@@ -4062,7 +4095,7 @@ return array (
           3 => 'construction_queue',
         ),
         'permission' => 'authenticated commander with research access',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'locked',
@@ -4072,31 +4105,31 @@ return array (
           5 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Technology',
         'purpose' => 'Research permanent strategic upgrades.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Upgrade technology' => 
+          'Upgrade technology' =>
           array (
             'action' => 'technology',
             'logic' => 'Validate category, prerequisites, cost, queue availability, and apply effect on completion.',
             'permission' => 'authenticated researcher',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'technologies',
               1 => 'technology_prerequisites',
               2 => 'player_technologies',
               3 => 'player_resources',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'player_technologies',
               1 => 'construction_queue',
               2 => 'player_resources',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'locked',
@@ -4108,10 +4141,10 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Research offense, defense, covert, and anti-covert technology branches.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load technology tree',
           1 => 'check prerequisites',
@@ -4119,7 +4152,7 @@ return array (
           3 => 'queue research',
           4 => 'apply completed effect',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated researcher',
           1 => 'prerequisites',
@@ -4127,18 +4160,18 @@ return array (
           3 => 'resource balance',
           4 => 'level cap',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'base cost × growth ^ current level',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'player_technologies',
           1 => 'construction_queue',
           2 => 'player_resources',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'technology tree',
         1 => 'branch filters',
@@ -4147,10 +4180,10 @@ return array (
         4 => 'research queue',
         5 => 'effect preview',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'technology-tree',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'branch tabs',
           1 => 'technology cards',
@@ -4158,7 +4191,7 @@ return array (
           3 => 'cost',
           4 => 'queue',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'tech-card',
           1 => 'branch-tabs',
@@ -4167,14 +4200,14 @@ return array (
         ),
         'responsive' => 'Branch tabs scroll and cards stack',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'TechnologyService',
           1 => 'QueueService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'technologies',
           1 => 'technology_prerequisites',
@@ -4182,18 +4215,18 @@ return array (
           3 => 'player_resources',
           4 => 'construction_queue',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'player_technologies',
           1 => 'construction_queue',
           2 => 'player_resources',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'technology',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/technology/tech-anti-covert.php',
         'features' => 'config/page_features/technology/tech-anti-covert.php',
@@ -4202,31 +4235,31 @@ return array (
         'module' => 'includes/page_modules/technology/tech-anti-covert.php',
       ),
     ),
-    'spy-log' => 
+    'spy-log' =>
     array (
       'route' => 'spy-log',
       'group' => 'intelligence',
       'group_label' => 'Intelligence',
       'title' => 'Spy Log',
       'layout' => 'reports',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Open report',
         1 => 'Mark read',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'message_read',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'covert_missions',
         1 => 'intelligence_reports',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Reports and Intelligence',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Unread reports',
           1 => 'Battle outcomes',
@@ -4234,14 +4267,14 @@ return array (
           3 => 'Audit and read state',
         ),
         'formula' => 'report visibility = recipient ownership + report classification + read status',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Open report',
           1 => 'Mark read',
           2 => 'Filter by type',
         ),
         'action' => 'message_read',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'battle_reports',
           1 => 'attack_logs',
@@ -4249,7 +4282,7 @@ return array (
           3 => 'messages',
         ),
         'permission' => 'authenticated report recipient',
-        'states' => 
+        'states' =>
         array (
           0 => 'loading',
           1 => 'ready',
@@ -4258,26 +4291,26 @@ return array (
           4 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Reports and Intelligence',
         'purpose' => 'Review server-generated outcomes.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Open report' => 
+          'Open report' =>
           array (
             'action' => 'read_report',
             'logic' => 'Verify recipient or owner, then return classified payload.',
             'permission' => 'report recipient',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'battle_reports',
               1 => 'intelligence_reports',
             ),
-            'writes' => 
+            'writes' =>
             array (
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'protected',
@@ -4285,21 +4318,21 @@ return array (
               3 => 'error',
             ),
           ),
-          'Mark read' => 
+          'Mark read' =>
           array (
             'action' => 'message_read',
             'logic' => 'Verify ownership and update unread state.',
             'permission' => 'message recipient',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'messages',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'messages',
               1 => 'game_audit_log',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'success',
@@ -4308,10 +4341,10 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Show battle, spy, sabotage, and system reports only to authorized recipients.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load recipient reports',
           1 => 'classify payload',
@@ -4319,23 +4352,23 @@ return array (
           3 => 'open or mark report read',
           4 => 'write audit state',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated report recipient',
           1 => 'recipient ownership',
           2 => 'classification access',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'recipient ownership + report classification + read status',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'messages',
           1 => 'game_audit_log',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'unread count',
         1 => 'battle outcomes',
@@ -4344,17 +4377,17 @@ return array (
         4 => 'mark read',
         5 => 'report filters',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'report-list',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'unread summary',
           1 => 'report table',
           2 => 'detail view',
           3 => 'read state',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'report-row',
           1 => 'classification-badge',
@@ -4363,32 +4396,32 @@ return array (
         ),
         'responsive' => 'Report rows become expandable cards',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'ReportService',
           1 => 'IntelligenceService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'battle_reports',
           1 => 'attack_logs',
           2 => 'intelligence_reports',
           3 => 'messages',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'messages',
           1 => 'game_audit_log',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'read_report',
           1 => 'message_read',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/intelligence/spy-log.php',
         'features' => 'config/page_features/intelligence/spy-log.php',
@@ -4397,28 +4430,28 @@ return array (
         'module' => 'includes/page_modules/intelligence/spy-log.php',
       ),
     ),
-    'enemy-intelligence' => 
+    'enemy-intelligence' =>
     array (
       'route' => 'enemy-intelligence',
       'group' => 'intelligence',
       'group_label' => 'Intelligence',
       'title' => 'Enemy Intelligence',
       'layout' => 'reports',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Open intelligence report',
       ),
-      'actions' => 
+      'actions' =>
       array (
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'intelligence_reports',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Reports and Intelligence',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Unread reports',
           1 => 'Battle outcomes',
@@ -4426,14 +4459,14 @@ return array (
           3 => 'Audit and read state',
         ),
         'formula' => 'report visibility = recipient ownership + report classification + read status',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Open report',
           1 => 'Mark read',
           2 => 'Filter by type',
         ),
         'action' => 'message_read',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'battle_reports',
           1 => 'attack_logs',
@@ -4441,7 +4474,7 @@ return array (
           3 => 'messages',
         ),
         'permission' => 'authenticated report recipient',
-        'states' => 
+        'states' =>
         array (
           0 => 'loading',
           1 => 'ready',
@@ -4450,26 +4483,26 @@ return array (
           4 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Reports and Intelligence',
         'purpose' => 'Review server-generated outcomes.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Open report' => 
+          'Open report' =>
           array (
             'action' => 'read_report',
             'logic' => 'Verify recipient or owner, then return classified payload.',
             'permission' => 'report recipient',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'battle_reports',
               1 => 'intelligence_reports',
             ),
-            'writes' => 
+            'writes' =>
             array (
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'protected',
@@ -4477,21 +4510,21 @@ return array (
               3 => 'error',
             ),
           ),
-          'Mark read' => 
+          'Mark read' =>
           array (
             'action' => 'message_read',
             'logic' => 'Verify ownership and update unread state.',
             'permission' => 'message recipient',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'messages',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'messages',
               1 => 'game_audit_log',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'success',
@@ -4500,10 +4533,10 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Show battle, spy, sabotage, and system reports only to authorized recipients.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load recipient reports',
           1 => 'classify payload',
@@ -4511,23 +4544,23 @@ return array (
           3 => 'open or mark report read',
           4 => 'write audit state',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated report recipient',
           1 => 'recipient ownership',
           2 => 'classification access',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'recipient ownership + report classification + read status',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'messages',
           1 => 'game_audit_log',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'unread count',
         1 => 'battle outcomes',
@@ -4536,17 +4569,17 @@ return array (
         4 => 'mark read',
         5 => 'report filters',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'report-list',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'unread summary',
           1 => 'report table',
           2 => 'detail view',
           3 => 'read state',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'report-row',
           1 => 'classification-badge',
@@ -4555,32 +4588,32 @@ return array (
         ),
         'responsive' => 'Report rows become expandable cards',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'ReportService',
           1 => 'IntelligenceService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'battle_reports',
           1 => 'attack_logs',
           2 => 'intelligence_reports',
           3 => 'messages',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'messages',
           1 => 'game_audit_log',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'read_report',
           1 => 'message_read',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/intelligence/enemy-intelligence.php',
         'features' => 'config/page_features/intelligence/enemy-intelligence.php',
@@ -4589,32 +4622,32 @@ return array (
         'module' => 'includes/page_modules/intelligence/enemy-intelligence.php',
       ),
     ),
-    'resource-exchange' => 
+    'resource-exchange' =>
     array (
       'route' => 'resource-exchange',
       'group' => 'market',
       'group_label' => 'Market',
       'title' => 'Resource Exchange',
       'layout' => 'market',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'List order',
         1 => 'Buy order',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'market_list',
         1 => 'market_buy',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'market_orders',
         1 => 'player_resources',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Market Exchange',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Open orders',
           1 => 'Price history',
@@ -4622,14 +4655,14 @@ return array (
           3 => 'Settlement status',
         ),
         'formula' => 'settlement = quantity × unit price + market fee',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'List order',
           1 => 'Buy order',
           2 => 'Cancel order',
         ),
         'action' => 'market_list',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'market_orders',
           1 => 'trade_contracts',
@@ -4637,7 +4670,7 @@ return array (
           3 => 'mercenary_types',
         ),
         'permission' => 'authenticated commander with market turns',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'empty',
@@ -4647,28 +4680,28 @@ return array (
           5 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Markets',
         'purpose' => 'Trade resources, weapons, and mercenaries.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'List order' => 
+          'List order' =>
           array (
             'action' => 'market_list',
             'logic' => 'Validate resource, quantity, unit price, turn balance, and expiry.',
             'permission' => 'authenticated trader',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'player_resources',
               1 => 'market_orders',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'market_orders',
               1 => 'trade_contracts',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'insufficient-resource',
@@ -4677,23 +4710,23 @@ return array (
               4 => 'error',
             ),
           ),
-          'Buy order' => 
+          'Buy order' =>
           array (
             'action' => 'market_buy',
             'logic' => 'Lock order, check funds, transfer resource, and settle seller.',
             'permission' => 'authenticated trader',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'market_orders',
               1 => 'player_resources',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'market_orders',
               1 => 'player_resources',
               2 => 'game_audit_log',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'insufficient-resource',
@@ -4703,10 +4736,10 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'List and buy resource, weapon, and mercenary market orders.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load orders',
           1 => 'validate order fields',
@@ -4714,7 +4747,7 @@ return array (
           3 => 'settle trade',
           4 => 'write market event',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated trader',
           1 => 'market turns',
@@ -4722,11 +4755,11 @@ return array (
           3 => 'available balance',
           4 => 'order ownership',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'quantity × unit price + market fee',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'market_orders',
           1 => 'trade_contracts',
@@ -4734,7 +4767,7 @@ return array (
           3 => 'game_audit_log',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'open orders',
         1 => 'price history',
@@ -4743,17 +4776,17 @@ return array (
         4 => 'list order',
         5 => 'settlement status',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'market-exchange',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'orders',
           1 => 'price history',
           2 => 'order form',
           3 => 'settlement',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'order-table',
           1 => 'price-badge',
@@ -4762,34 +4795,34 @@ return array (
         ),
         'responsive' => 'Market tables scroll or stack into order cards',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'MarketService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'market_orders',
           1 => 'trade_contracts',
           2 => 'player_resources',
           3 => 'mercenary_types',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'market_orders',
           1 => 'trade_contracts',
           2 => 'player_resources',
           3 => 'game_audit_log',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'market_list',
           1 => 'market_buy',
           2 => 'market_cancel',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/market/resource-exchange.php',
         'features' => 'config/page_features/market/resource-exchange.php',
@@ -4798,31 +4831,31 @@ return array (
         'module' => 'includes/page_modules/market/resource-exchange.php',
       ),
     ),
-    'mercenary-market' => 
+    'mercenary-market' =>
     array (
       'route' => 'mercenary-market',
       'group' => 'market',
       'group_label' => 'Market',
       'title' => 'Mercenary Market',
       'layout' => 'market',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Recruit',
         1 => 'Sell',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'mercenary_buy',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'mercenary_types',
         1 => 'player_mercenaries',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Market Exchange',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Open orders',
           1 => 'Price history',
@@ -4830,14 +4863,14 @@ return array (
           3 => 'Settlement status',
         ),
         'formula' => 'settlement = quantity × unit price + market fee',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'List order',
           1 => 'Buy order',
           2 => 'Cancel order',
         ),
         'action' => 'market_list',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'market_orders',
           1 => 'trade_contracts',
@@ -4845,7 +4878,7 @@ return array (
           3 => 'mercenary_types',
         ),
         'permission' => 'authenticated commander with market turns',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'empty',
@@ -4855,28 +4888,28 @@ return array (
           5 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Markets',
         'purpose' => 'Trade resources, weapons, and mercenaries.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'List order' => 
+          'List order' =>
           array (
             'action' => 'market_list',
             'logic' => 'Validate resource, quantity, unit price, turn balance, and expiry.',
             'permission' => 'authenticated trader',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'player_resources',
               1 => 'market_orders',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'market_orders',
               1 => 'trade_contracts',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'insufficient-resource',
@@ -4885,23 +4918,23 @@ return array (
               4 => 'error',
             ),
           ),
-          'Buy order' => 
+          'Buy order' =>
           array (
             'action' => 'market_buy',
             'logic' => 'Lock order, check funds, transfer resource, and settle seller.',
             'permission' => 'authenticated trader',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'market_orders',
               1 => 'player_resources',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'market_orders',
               1 => 'player_resources',
               2 => 'game_audit_log',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'insufficient-resource',
@@ -4911,10 +4944,10 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'List and buy resource, weapon, and mercenary market orders.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load orders',
           1 => 'validate order fields',
@@ -4922,7 +4955,7 @@ return array (
           3 => 'settle trade',
           4 => 'write market event',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated trader',
           1 => 'market turns',
@@ -4930,11 +4963,11 @@ return array (
           3 => 'available balance',
           4 => 'order ownership',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'quantity × unit price + market fee',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'market_orders',
           1 => 'trade_contracts',
@@ -4942,7 +4975,7 @@ return array (
           3 => 'game_audit_log',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'open orders',
         1 => 'price history',
@@ -4951,17 +4984,17 @@ return array (
         4 => 'list order',
         5 => 'settlement status',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'market-exchange',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'orders',
           1 => 'price history',
           2 => 'order form',
           3 => 'settlement',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'order-table',
           1 => 'price-badge',
@@ -4970,34 +5003,34 @@ return array (
         ),
         'responsive' => 'Market tables scroll or stack into order cards',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'MarketService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'market_orders',
           1 => 'trade_contracts',
           2 => 'player_resources',
           3 => 'mercenary_types',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'market_orders',
           1 => 'trade_contracts',
           2 => 'player_resources',
           3 => 'game_audit_log',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'market_list',
           1 => 'market_buy',
           2 => 'market_cancel',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/market/mercenary-market.php',
         'features' => 'config/page_features/market/mercenary-market.php',
@@ -5006,31 +5039,31 @@ return array (
         'module' => 'includes/page_modules/market/mercenary-market.php',
       ),
     ),
-    'rankings' => 
+    'rankings' =>
     array (
       'route' => 'rankings',
       'group' => 'social',
       'group_label' => 'Social',
       'title' => 'Rankings',
       'layout' => 'rankings',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Refresh rankings',
         1 => 'Open player',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'refresh_rankings',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'rankings',
         1 => 'rank_snapshots',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Rankings',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Overall leaderboard',
           1 => 'Military leaderboard',
@@ -5039,21 +5072,21 @@ return array (
           4 => 'Historical snapshots',
         ),
         'formula' => 'score = weighted economy + military + covert + progression + colony value',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Refresh rankings',
           1 => 'Open player',
           2 => 'View snapshot',
         ),
         'action' => 'refresh_rankings',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'rankings',
           1 => 'rank_snapshots',
           2 => 'players',
         ),
         'permission' => 'authenticated commander',
-        'states' => 
+        'states' =>
         array (
           0 => 'loading',
           1 => 'ready',
@@ -5062,29 +5095,29 @@ return array (
           4 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Rankings',
         'purpose' => 'Compare commanders and preserve ranking snapshots.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Refresh rankings' => 
+          'Refresh rankings' =>
           array (
             'action' => 'refresh_rankings',
             'logic' => 'Recalculate weighted scores and persist snapshot.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'players',
               1 => 'player_resources',
               2 => 'rankings',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'rankings',
               1 => 'rank_snapshots',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'cooldown',
@@ -5092,20 +5125,20 @@ return array (
               3 => 'error',
             ),
           ),
-          'Open player' => 
+          'Open player' =>
           array (
             'action' => 'read_profile',
             'logic' => 'Open public commander profile without exposing private fields.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'players',
               1 => 'rankings',
             ),
-            'writes' => 
+            'writes' =>
             array (
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'not-found',
@@ -5113,32 +5146,32 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Compare economy, military, covert, progression, and colony scores.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load ranking snapshot',
           1 => 'calculate or refresh scores',
           2 => 'filter leaderboard',
           3 => 'open public profile',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated commander',
           1 => 'public profile field policy',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'weighted economy + military + covert + progression + colony value',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'rankings',
           1 => 'rank_snapshots',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'overall leaderboard',
         1 => 'military leaderboard',
@@ -5146,17 +5179,17 @@ return array (
         3 => 'covert leaderboard',
         4 => 'historical snapshots',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'ranking-table',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'filters',
           1 => 'leaderboard',
           2 => 'score breakdown',
           3 => 'snapshots',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'ranking-table',
           1 => 'score-badge',
@@ -5165,32 +5198,32 @@ return array (
         ),
         'responsive' => 'Leaderboard columns collapse into ranked cards',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'RankingService',
           1 => 'AccountService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'rankings',
           1 => 'rank_snapshots',
           2 => 'players',
           3 => 'player_resources',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'rankings',
           1 => 'rank_snapshots',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'refresh_rankings',
           1 => 'read_profile',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/social/rankings.php',
         'features' => 'config/page_features/social/rankings.php',
@@ -5199,33 +5232,33 @@ return array (
         'module' => 'includes/page_modules/social/rankings.php',
       ),
     ),
-    'alliances' => 
+    'alliances' =>
     array (
       'route' => 'alliances',
       'group' => 'social',
       'group_label' => 'Social',
       'title' => 'Alliances',
       'layout' => 'social',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Create alliance',
         1 => 'Join alliance',
         2 => 'Leave alliance',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'alliance_create',
         1 => 'alliance_join',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'alliances',
         1 => 'alliance_members',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Alliances and Diplomacy',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Alliance identity',
           1 => 'Members and roles',
@@ -5233,7 +5266,7 @@ return array (
           3 => 'Shared activity',
         ),
         'formula' => 'relation lifecycle = proposal → permission check → acceptance → active status',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Create alliance',
           1 => 'Join alliance',
@@ -5241,7 +5274,7 @@ return array (
           3 => 'Propose diplomacy',
         ),
         'action' => 'alliance_join',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'alliances',
           1 => 'alliance_members',
@@ -5250,7 +5283,7 @@ return array (
           4 => 'player_notifications',
         ),
         'permission' => 'authenticated commander with social access',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'protected',
@@ -5258,29 +5291,29 @@ return array (
           3 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Alliances and Diplomacy',
         'purpose' => 'Coordinate with other commanders.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Create alliance' => 
+          'Create alliance' =>
           array (
             'action' => 'alliance_create',
             'logic' => 'Validate name, ownership, and creator role, then create alliance and membership.',
             'permission' => 'commander without alliance',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'players',
               1 => 'alliances',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'alliances',
               1 => 'alliance_members',
               2 => 'game_audit_log',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'conflict',
@@ -5288,22 +5321,22 @@ return array (
               3 => 'error',
             ),
           ),
-          'Join alliance' => 
+          'Join alliance' =>
           array (
             'action' => 'alliance_join',
             'logic' => 'Validate invitation or open membership and create membership.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'alliances',
               1 => 'alliance_members',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'alliance_members',
               1 => 'player_notifications',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'protected',
@@ -5311,24 +5344,24 @@ return array (
               3 => 'error',
             ),
           ),
-          'Propose diplomacy' => 
+          'Propose diplomacy' =>
           array (
             'action' => 'diplomacy_propose',
             'logic' => 'Create relation proposal between two players in the current world.',
             'permission' => 'alliance or commander role',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'game_worlds',
               1 => 'players',
               2 => 'diplomacy_relations',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'diplomacy_relations',
               1 => 'diplomacy_actions',
               2 => 'player_notifications',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'conflict',
@@ -5338,28 +5371,28 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Create alliances, manage members, and coordinate diplomacy.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load alliance state',
           1 => 'validate role or invitation',
           2 => 'create membership or proposal',
           3 => 'notify participants',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated commander',
           1 => 'alliance role',
           2 => 'membership rules',
           3 => 'target ownership',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'relation proposal lifecycle',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'alliances',
           1 => 'alliance_members',
@@ -5368,7 +5401,7 @@ return array (
           4 => 'player_notifications',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'alliance identity',
         1 => 'member roles',
@@ -5376,17 +5409,17 @@ return array (
         3 => 'diplomacy proposals',
         4 => 'shared activity',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'social-command',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'alliance',
           1 => 'members',
           2 => 'diplomacy',
           3 => 'activity',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'member-table',
           1 => 'role-badge',
@@ -5395,15 +5428,15 @@ return array (
         ),
         'responsive' => 'Member table becomes stacked rows',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'AllianceService',
           1 => 'DiplomacyService',
           2 => 'NotificationService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'alliances',
           1 => 'alliance_members',
@@ -5411,7 +5444,7 @@ return array (
           3 => 'diplomacy_actions',
           4 => 'player_notifications',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'alliances',
           1 => 'alliance_members',
@@ -5419,14 +5452,14 @@ return array (
           3 => 'diplomacy_actions',
           4 => 'player_notifications',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'alliance_create',
           1 => 'alliance_join',
           2 => 'diplomacy_propose',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/social/alliances.php',
         'features' => 'config/page_features/social/alliances.php',
@@ -5435,33 +5468,33 @@ return array (
         'module' => 'includes/page_modules/social/alliances.php',
       ),
     ),
-    'messages' => 
+    'messages' =>
     array (
       'route' => 'messages',
       'group' => 'social',
       'group_label' => 'Social',
       'title' => 'Messages',
       'layout' => 'messages',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Send',
         1 => 'Mark read',
         2 => 'Blacklist',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'message',
         1 => 'message_read',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'messages',
         1 => 'blacklists',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Messages',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Inbox',
           1 => 'Unread count',
@@ -5469,21 +5502,21 @@ return array (
           3 => 'Blacklist and notifications',
         ),
         'formula' => 'message = validated sender + recipient + content policy + notification event',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Send',
           1 => 'Mark read',
           2 => 'Blacklist',
         ),
         'action' => 'message',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'messages',
           1 => 'blacklists',
           2 => 'player_notifications',
         ),
         'permission' => 'authenticated commander',
-        'states' => 
+        'states' =>
         array (
           0 => 'loading',
           1 => 'ready',
@@ -5492,28 +5525,28 @@ return array (
           4 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Messages',
         'purpose' => 'Communicate and manage notifications.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Send' => 
+          'Send' =>
           array (
             'action' => 'message',
             'logic' => 'Validate recipient, content, blacklist, and notification creation.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'players',
               1 => 'blacklists',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'messages',
               1 => 'player_notifications',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'protected',
@@ -5521,41 +5554,41 @@ return array (
               3 => 'error',
             ),
           ),
-          'Mark read' => 
+          'Mark read' =>
           array (
             'action' => 'message_read',
             'logic' => 'Verify recipient and mark message read.',
             'permission' => 'message recipient',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'messages',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'messages',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'success',
               2 => 'error',
             ),
           ),
-          'Blacklist' => 
+          'Blacklist' =>
           array (
             'action' => 'blacklist',
             'logic' => 'Verify target and upsert communication block.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'players',
               1 => 'blacklists',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'blacklists',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'success',
@@ -5564,10 +5597,10 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Send, receive, read, and block commander messages.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load inbox',
           1 => 'validate sender and recipient',
@@ -5575,25 +5608,25 @@ return array (
           3 => 'write message and notification',
           4 => 'update read or blacklist state',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated commander',
           1 => 'recipient exists',
           2 => 'blacklist policy',
           3 => 'message ownership',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'unread count',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'messages',
           1 => 'blacklists',
           2 => 'player_notifications',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'inbox',
         1 => 'unread count',
@@ -5602,17 +5635,17 @@ return array (
         4 => 'blacklist',
         5 => 'notifications',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'message-center',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'inbox',
           1 => 'compose',
           2 => 'read state',
           3 => 'blacklist',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'message-list',
           1 => 'compose-form',
@@ -5621,34 +5654,34 @@ return array (
         ),
         'responsive' => 'Message rows become conversation cards',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'MessageService',
           1 => 'NotificationService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'messages',
           1 => 'blacklists',
           2 => 'player_notifications',
           3 => 'players',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'messages',
           1 => 'blacklists',
           2 => 'player_notifications',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'message',
           1 => 'message_read',
           2 => 'blacklist',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/social/messages.php',
         'features' => 'config/page_features/social/messages.php',
@@ -5657,32 +5690,42 @@ return array (
         'module' => 'includes/page_modules/social/messages.php',
       ),
     ),
-    'planet-list' => 
+    'planet-list' =>
     array (
       'route' => 'planet-list',
       'group' => 'planets',
       'group_label' => 'Planets',
       'title' => 'Planet List',
       'layout' => 'planets',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Explore',
-        1 => 'Conquer',
+        1 => 'Colonize',
+        2 => 'Upgrade defense',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'explore',
         1 => 'combat',
+        2 => 'colonize_planet',
+        3 => 'planet_defense',
       ),
-      'tables' => 
+      'tables' =>
       array (
-        0 => 'player_planets',
-        1 => 'planet_explorations',
+        0 => 'player_colonies',
+        1 => 'planet_bonuses',
+        2 => 'planet_explorations',
+        3 => 'player_resources',
+        4 => 'universe_planets',
+        5 => 'planet_defenses',
+        6 => 'motherships',
+        7 => 'player_cooldowns',
+        8 => 'game_events',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Planet and Colony Management',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Planet portfolio',
           1 => 'Biome modifiers',
@@ -5690,7 +5733,7 @@ return array (
           3 => 'Population and life support',
         ),
         'formula' => 'colony state = production − food/water upkeep + morale and habitability modifiers',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Explore',
           1 => 'Colonize',
@@ -5698,7 +5741,7 @@ return array (
           3 => 'View bonuses',
         ),
         'action' => 'planet_defense',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'player_planets',
           1 => 'planet_bonuses',
@@ -5707,7 +5750,7 @@ return array (
           4 => 'player_colonies',
         ),
         'permission' => 'authenticated colony owner',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'empty',
@@ -5717,93 +5760,109 @@ return array (
           5 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Planets and Colonies',
-        'purpose' => 'Manage worlds, biomes, defenses, and life support.',
-        'buttons' => 
+        'purpose' => 'Manage owned colonies, life support, production output, and fleet presence.',
+        'buttons' =>
         array (
-          'Explore' => 
+          'Explore' =>
           array (
             'action' => 'explore',
-            'logic' => 'Resolve exploration travel, anomaly, discovery, and event reward.',
-            'permission' => 'exploration-capable commander',
-            'reads' => 
+            'logic' => 'Dispatch mothership exploration to a validated unoccupied universe planet; legacy named-planet exploration remains supported for compatibility.',
+            'permission' => 'authenticated commander with colony and mothership authority',
+            'reads' =>
             array (
-              0 => 'motherships',
-              1 => 'universe_solar_systems',
-              2 => 'universe_planets',
+              0 => 'player_colonies',
+              1 => 'planet_bonuses',
+              2 => 'planet_explorations',
+              3 => 'player_resources',
+              4 => 'universe_planets',
+              5 => 'motherships',
+              6 => 'player_cooldowns',
             ),
-            'writes' => 
+            'writes' =>
             array (
-              0 => 'universe_discoveries',
-              1 => 'game_events',
+              0 => 'planet_explorations',
+              1 => 'player_resources',
+              2 => 'player_cooldowns',
+              3 => 'game_events',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
-              1 => 'cooldown',
-              2 => 'success',
-              3 => 'error',
+              1 => 'empty',
+              2 => 'protected',
+              3 => 'success',
+              4 => 'error',
             ),
           ),
-          'Colonize' => 
+          'Colonize' =>
           array (
             'action' => 'colonize_planet',
-            'logic' => 'Lock planet, validate habitability and occupancy, then create colony.',
-            'permission' => 'commander with colonization access',
-            'reads' => 
-            array (
-              0 => 'universe_planets',
-              1 => 'universe_moons',
-              2 => 'player_colonies',
-            ),
-            'writes' => 
+            'logic' => 'Lock a validated planet, verify habitability, occupancy, colony capacity, ownership, resources, cooldown, and transaction state, then create the colony.',
+            'permission' => 'authenticated commander with colonization access',
+            'reads' =>
             array (
               0 => 'player_colonies',
               1 => 'universe_planets',
-              2 => 'game_audit_log',
+              2 => 'planet_bonuses',
+              3 => 'player_resources',
+              4 => 'player_cooldowns',
             ),
-            'states' => 
+            'writes' =>
+            array (
+              0 => 'player_colonies',
+              1 => 'universe_planets',
+              2 => 'planet_bonuses',
+              3 => 'player_resources',
+              4 => 'player_cooldowns',
+              5 => 'game_events',
+            ),
+            'states' =>
             array (
               0 => 'ready',
-              1 => 'occupied',
+              1 => 'empty',
               2 => 'protected',
-              3 => 'insufficient-resource',
-              4 => 'success',
-              5 => 'error',
+              3 => 'success',
+              4 => 'error',
             ),
           ),
-          'Upgrade defense' => 
+          'Upgrade defense' =>
           array (
             'action' => 'planet_defense',
-            'logic' => 'Validate colony ownership, resource cost, and defense level cap.',
-            'permission' => 'colony owner',
-            'reads' => 
+            'logic' => 'Validate colony ownership, defense type, resource cost, cooldown, and defense level cap before queuing the upgrade atomically.',
+            'permission' => 'authenticated colony owner',
+            'reads' =>
             array (
-              0 => 'planet_defenses',
-              1 => 'player_colonies',
-              2 => 'player_resources',
+              0 => 'player_colonies',
+              1 => 'planet_bonuses',
+              2 => 'planet_defenses',
+              3 => 'player_resources',
+              4 => 'player_cooldowns',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'planet_defenses',
               1 => 'player_resources',
+              2 => 'player_cooldowns',
+              3 => 'game_events',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
-              1 => 'insufficient-resource',
-              2 => 'success',
-              3 => 'error',
+              1 => 'empty',
+              2 => 'protected',
+              3 => 'success',
+              4 => 'error',
             ),
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Manage colonies, biomes, defenses, population, and life support.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load planet portfolio',
           1 => 'load biome and bonuses',
@@ -5811,18 +5870,18 @@ return array (
           3 => 'process exploration or defense action',
           4 => 'render life support',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated colony owner',
           1 => 'planet occupancy',
           2 => 'habitability',
           3 => 'resource balance',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'production − food/water upkeep + morale and habitability modifiers',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'player_colonies',
           1 => 'planet_defenses',
@@ -5830,7 +5889,7 @@ return array (
           3 => 'game_events',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'planet portfolio',
         1 => 'biome modifiers',
@@ -5840,10 +5899,10 @@ return array (
         5 => 'exploration',
         6 => 'colonization',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'colony-grid',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'planet selector',
           1 => 'population',
@@ -5851,7 +5910,7 @@ return array (
           3 => 'life support',
           4 => 'defenses',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'planet-card',
           1 => 'biome-badge',
@@ -5860,15 +5919,15 @@ return array (
         ),
         'responsive' => 'Planet cards use one column on mobile',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'ColonyService',
           1 => 'PlanetService',
           2 => 'ExplorationService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'player_planets',
           1 => 'player_colonies',
@@ -5876,21 +5935,21 @@ return array (
           3 => 'planet_defenses',
           4 => 'universe_planets',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'player_colonies',
           1 => 'planet_defenses',
           2 => 'universe_planets',
           3 => 'game_events',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'explore',
           1 => 'colonize_planet',
           2 => 'planet_defense',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/planets/planet-list.php',
         'features' => 'config/page_features/planets/planet-list.php',
@@ -5899,28 +5958,28 @@ return array (
         'module' => 'includes/page_modules/planets/planet-list.php',
       ),
     ),
-    'planet-bonuses' => 
+    'planet-bonuses' =>
     array (
       'route' => 'planet-bonuses',
       'group' => 'planets',
       'group_label' => 'Planets',
       'title' => 'Planet Bonuses',
       'layout' => 'planets',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'View bonuses',
       ),
-      'actions' => 
+      'actions' =>
       array (
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'planet_bonuses',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Planet and Colony Management',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Planet portfolio',
           1 => 'Biome modifiers',
@@ -5928,7 +5987,7 @@ return array (
           3 => 'Population and life support',
         ),
         'formula' => 'colony state = production − food/water upkeep + morale and habitability modifiers',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Explore',
           1 => 'Colonize',
@@ -5936,7 +5995,7 @@ return array (
           3 => 'View bonuses',
         ),
         'action' => 'planet_defense',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'player_planets',
           1 => 'planet_bonuses',
@@ -5945,7 +6004,7 @@ return array (
           4 => 'player_colonies',
         ),
         'permission' => 'authenticated colony owner',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'empty',
@@ -5955,93 +6014,109 @@ return array (
           5 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Planets and Colonies',
-        'purpose' => 'Manage worlds, biomes, defenses, and life support.',
-        'buttons' => 
+        'purpose' => 'Manage owned colonies, life support, production output, and fleet presence.',
+        'buttons' =>
         array (
-          'Explore' => 
+          'Explore' =>
           array (
             'action' => 'explore',
-            'logic' => 'Resolve exploration travel, anomaly, discovery, and event reward.',
-            'permission' => 'exploration-capable commander',
-            'reads' => 
+            'logic' => 'Dispatch mothership exploration to a validated unoccupied universe planet; legacy named-planet exploration remains supported for compatibility.',
+            'permission' => 'authenticated commander with colony and mothership authority',
+            'reads' =>
             array (
-              0 => 'motherships',
-              1 => 'universe_solar_systems',
-              2 => 'universe_planets',
+              0 => 'player_colonies',
+              1 => 'planet_bonuses',
+              2 => 'planet_explorations',
+              3 => 'player_resources',
+              4 => 'universe_planets',
+              5 => 'motherships',
+              6 => 'player_cooldowns',
             ),
-            'writes' => 
+            'writes' =>
             array (
-              0 => 'universe_discoveries',
-              1 => 'game_events',
+              0 => 'planet_explorations',
+              1 => 'player_resources',
+              2 => 'player_cooldowns',
+              3 => 'game_events',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
-              1 => 'cooldown',
-              2 => 'success',
-              3 => 'error',
+              1 => 'empty',
+              2 => 'protected',
+              3 => 'success',
+              4 => 'error',
             ),
           ),
-          'Colonize' => 
+          'Colonize' =>
           array (
             'action' => 'colonize_planet',
-            'logic' => 'Lock planet, validate habitability and occupancy, then create colony.',
-            'permission' => 'commander with colonization access',
-            'reads' => 
-            array (
-              0 => 'universe_planets',
-              1 => 'universe_moons',
-              2 => 'player_colonies',
-            ),
-            'writes' => 
+            'logic' => 'Lock a validated planet, verify habitability, occupancy, colony capacity, ownership, resources, cooldown, and transaction state, then create the colony.',
+            'permission' => 'authenticated commander with colonization access',
+            'reads' =>
             array (
               0 => 'player_colonies',
               1 => 'universe_planets',
-              2 => 'game_audit_log',
+              2 => 'planet_bonuses',
+              3 => 'player_resources',
+              4 => 'player_cooldowns',
             ),
-            'states' => 
+            'writes' =>
+            array (
+              0 => 'player_colonies',
+              1 => 'universe_planets',
+              2 => 'planet_bonuses',
+              3 => 'player_resources',
+              4 => 'player_cooldowns',
+              5 => 'game_events',
+            ),
+            'states' =>
             array (
               0 => 'ready',
-              1 => 'occupied',
+              1 => 'empty',
               2 => 'protected',
-              3 => 'insufficient-resource',
-              4 => 'success',
-              5 => 'error',
+              3 => 'success',
+              4 => 'error',
             ),
           ),
-          'Upgrade defense' => 
+          'Upgrade defense' =>
           array (
             'action' => 'planet_defense',
-            'logic' => 'Validate colony ownership, resource cost, and defense level cap.',
-            'permission' => 'colony owner',
-            'reads' => 
+            'logic' => 'Validate colony ownership, defense type, resource cost, cooldown, and defense level cap before queuing the upgrade atomically.',
+            'permission' => 'authenticated colony owner',
+            'reads' =>
             array (
-              0 => 'planet_defenses',
-              1 => 'player_colonies',
-              2 => 'player_resources',
+              0 => 'player_colonies',
+              1 => 'planet_bonuses',
+              2 => 'planet_defenses',
+              3 => 'player_resources',
+              4 => 'player_cooldowns',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'planet_defenses',
               1 => 'player_resources',
+              2 => 'player_cooldowns',
+              3 => 'game_events',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
-              1 => 'insufficient-resource',
-              2 => 'success',
-              3 => 'error',
+              1 => 'empty',
+              2 => 'protected',
+              3 => 'success',
+              4 => 'error',
             ),
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Manage colonies, biomes, defenses, population, and life support.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load planet portfolio',
           1 => 'load biome and bonuses',
@@ -6049,18 +6124,18 @@ return array (
           3 => 'process exploration or defense action',
           4 => 'render life support',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated colony owner',
           1 => 'planet occupancy',
           2 => 'habitability',
           3 => 'resource balance',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'production − food/water upkeep + morale and habitability modifiers',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'player_colonies',
           1 => 'planet_defenses',
@@ -6068,7 +6143,7 @@ return array (
           3 => 'game_events',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'planet portfolio',
         1 => 'biome modifiers',
@@ -6078,10 +6153,10 @@ return array (
         5 => 'exploration',
         6 => 'colonization',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'colony-grid',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'planet selector',
           1 => 'population',
@@ -6089,7 +6164,7 @@ return array (
           3 => 'life support',
           4 => 'defenses',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'planet-card',
           1 => 'biome-badge',
@@ -6098,15 +6173,15 @@ return array (
         ),
         'responsive' => 'Planet cards use one column on mobile',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'ColonyService',
           1 => 'PlanetService',
           2 => 'ExplorationService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'player_planets',
           1 => 'player_colonies',
@@ -6114,21 +6189,21 @@ return array (
           3 => 'planet_defenses',
           4 => 'universe_planets',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'player_colonies',
           1 => 'planet_defenses',
           2 => 'universe_planets',
           3 => 'game_events',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'explore',
           1 => 'colonize_planet',
           2 => 'planet_defense',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/planets/planet-bonuses.php',
         'features' => 'config/page_features/planets/planet-bonuses.php',
@@ -6137,29 +6212,29 @@ return array (
         'module' => 'includes/page_modules/planets/planet-bonuses.php',
       ),
     ),
-    'planet-defenses' => 
+    'planet-defenses' =>
     array (
       'route' => 'planet-defenses',
       'group' => 'planets',
       'group_label' => 'Planets',
       'title' => 'Planet Defenses',
       'layout' => 'planets',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Upgrade defense',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'planet_defense',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'planet_defenses',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Planet and Colony Management',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Planet portfolio',
           1 => 'Biome modifiers',
@@ -6167,7 +6242,7 @@ return array (
           3 => 'Population and life support',
         ),
         'formula' => 'colony state = production − food/water upkeep + morale and habitability modifiers',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Explore',
           1 => 'Colonize',
@@ -6175,7 +6250,7 @@ return array (
           3 => 'View bonuses',
         ),
         'action' => 'planet_defense',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'player_planets',
           1 => 'planet_bonuses',
@@ -6184,7 +6259,7 @@ return array (
           4 => 'player_colonies',
         ),
         'permission' => 'authenticated colony owner',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'empty',
@@ -6194,93 +6269,109 @@ return array (
           5 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Planets and Colonies',
-        'purpose' => 'Manage worlds, biomes, defenses, and life support.',
-        'buttons' => 
+        'purpose' => 'Manage owned colonies, life support, production output, and fleet presence.',
+        'buttons' =>
         array (
-          'Explore' => 
+          'Explore' =>
           array (
             'action' => 'explore',
-            'logic' => 'Resolve exploration travel, anomaly, discovery, and event reward.',
-            'permission' => 'exploration-capable commander',
-            'reads' => 
+            'logic' => 'Dispatch mothership exploration to a validated unoccupied universe planet; legacy named-planet exploration remains supported for compatibility.',
+            'permission' => 'authenticated commander with colony and mothership authority',
+            'reads' =>
             array (
-              0 => 'motherships',
-              1 => 'universe_solar_systems',
-              2 => 'universe_planets',
+              0 => 'player_colonies',
+              1 => 'planet_bonuses',
+              2 => 'planet_explorations',
+              3 => 'player_resources',
+              4 => 'universe_planets',
+              5 => 'motherships',
+              6 => 'player_cooldowns',
             ),
-            'writes' => 
+            'writes' =>
             array (
-              0 => 'universe_discoveries',
-              1 => 'game_events',
+              0 => 'planet_explorations',
+              1 => 'player_resources',
+              2 => 'player_cooldowns',
+              3 => 'game_events',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
-              1 => 'cooldown',
-              2 => 'success',
-              3 => 'error',
+              1 => 'empty',
+              2 => 'protected',
+              3 => 'success',
+              4 => 'error',
             ),
           ),
-          'Colonize' => 
+          'Colonize' =>
           array (
             'action' => 'colonize_planet',
-            'logic' => 'Lock planet, validate habitability and occupancy, then create colony.',
-            'permission' => 'commander with colonization access',
-            'reads' => 
-            array (
-              0 => 'universe_planets',
-              1 => 'universe_moons',
-              2 => 'player_colonies',
-            ),
-            'writes' => 
+            'logic' => 'Lock a validated planet, verify habitability, occupancy, colony capacity, ownership, resources, cooldown, and transaction state, then create the colony.',
+            'permission' => 'authenticated commander with colonization access',
+            'reads' =>
             array (
               0 => 'player_colonies',
               1 => 'universe_planets',
-              2 => 'game_audit_log',
+              2 => 'planet_bonuses',
+              3 => 'player_resources',
+              4 => 'player_cooldowns',
             ),
-            'states' => 
+            'writes' =>
+            array (
+              0 => 'player_colonies',
+              1 => 'universe_planets',
+              2 => 'planet_bonuses',
+              3 => 'player_resources',
+              4 => 'player_cooldowns',
+              5 => 'game_events',
+            ),
+            'states' =>
             array (
               0 => 'ready',
-              1 => 'occupied',
+              1 => 'empty',
               2 => 'protected',
-              3 => 'insufficient-resource',
-              4 => 'success',
-              5 => 'error',
+              3 => 'success',
+              4 => 'error',
             ),
           ),
-          'Upgrade defense' => 
+          'Upgrade defense' =>
           array (
             'action' => 'planet_defense',
-            'logic' => 'Validate colony ownership, resource cost, and defense level cap.',
-            'permission' => 'colony owner',
-            'reads' => 
+            'logic' => 'Validate colony ownership, defense type, resource cost, cooldown, and defense level cap before queuing the upgrade atomically.',
+            'permission' => 'authenticated colony owner',
+            'reads' =>
             array (
-              0 => 'planet_defenses',
-              1 => 'player_colonies',
-              2 => 'player_resources',
+              0 => 'player_colonies',
+              1 => 'planet_bonuses',
+              2 => 'planet_defenses',
+              3 => 'player_resources',
+              4 => 'player_cooldowns',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'planet_defenses',
               1 => 'player_resources',
+              2 => 'player_cooldowns',
+              3 => 'game_events',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
-              1 => 'insufficient-resource',
-              2 => 'success',
-              3 => 'error',
+              1 => 'empty',
+              2 => 'protected',
+              3 => 'success',
+              4 => 'error',
             ),
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Manage colonies, biomes, defenses, population, and life support.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load planet portfolio',
           1 => 'load biome and bonuses',
@@ -6288,18 +6379,18 @@ return array (
           3 => 'process exploration or defense action',
           4 => 'render life support',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated colony owner',
           1 => 'planet occupancy',
           2 => 'habitability',
           3 => 'resource balance',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'production − food/water upkeep + morale and habitability modifiers',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'player_colonies',
           1 => 'planet_defenses',
@@ -6307,7 +6398,7 @@ return array (
           3 => 'game_events',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'planet portfolio',
         1 => 'biome modifiers',
@@ -6317,10 +6408,10 @@ return array (
         5 => 'exploration',
         6 => 'colonization',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'colony-grid',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'planet selector',
           1 => 'population',
@@ -6328,7 +6419,7 @@ return array (
           3 => 'life support',
           4 => 'defenses',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'planet-card',
           1 => 'biome-badge',
@@ -6337,15 +6428,15 @@ return array (
         ),
         'responsive' => 'Planet cards use one column on mobile',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'ColonyService',
           1 => 'PlanetService',
           2 => 'ExplorationService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'player_planets',
           1 => 'player_colonies',
@@ -6353,21 +6444,21 @@ return array (
           3 => 'planet_defenses',
           4 => 'universe_planets',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'player_colonies',
           1 => 'planet_defenses',
           2 => 'universe_planets',
           3 => 'game_events',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'explore',
           1 => 'colonize_planet',
           2 => 'planet_defense',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/planets/planet-defenses.php',
         'features' => 'config/page_features/planets/planet-defenses.php',
@@ -6376,31 +6467,31 @@ return array (
         'module' => 'includes/page_modules/planets/planet-defenses.php',
       ),
     ),
-    'ship' => 
+    'ship' =>
     array (
       'route' => 'ship',
       'group' => 'mothership',
       'group_label' => 'Mothership',
       'title' => 'Mothership',
       'layout' => 'ship',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Upgrade hull',
         1 => 'Upgrade hangars',
         2 => 'Upgrade shields',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'mothership_upgrade',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'motherships',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Mothership Command',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Hull',
           1 => 'Weapons and shields',
@@ -6408,7 +6499,7 @@ return array (
           3 => 'Modules and capacity',
         ),
         'formula' => 'ship readiness = hull + modules + weapons + shields + fleet capacity',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Upgrade hull',
           1 => 'Upgrade hangars',
@@ -6416,14 +6507,14 @@ return array (
           3 => 'Upgrade module',
         ),
         'action' => 'mothership_upgrade',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'motherships',
           1 => 'mothership_modules',
           2 => 'player_resources',
         ),
         'permission' => 'authenticated mothership owner',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'insufficient-resource',
@@ -6432,28 +6523,28 @@ return array (
           4 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Mothership and Modules',
         'purpose' => 'Upgrade the commander’s strategic vessel.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Upgrade hull' => 
+          'Upgrade hull' =>
           array (
             'action' => 'mothership_upgrade',
             'logic' => 'Validate module type, cost, prerequisite, and capacity.',
             'permission' => 'mothership owner',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'motherships',
               1 => 'player_resources',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'motherships',
               1 => 'player_resources',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'insufficient-resource',
@@ -6462,35 +6553,42 @@ return array (
               4 => 'error',
             ),
           ),
-          'Explore' => 
+          'Explore' =>
           array (
             'action' => 'explore',
-            'logic' => 'Dispatch mothership exploration mission.',
-            'permission' => 'mothership owner',
-            'reads' => 
+            'logic' => 'Dispatch mothership exploration to a validated universe target and persist yield, travel, risk, cooldown, resource, and event state atomically.',
+            'permission' => 'mothership owner with hull readiness',
+            'reads' =>
             array (
               0 => 'motherships',
               1 => 'universe_solar_systems',
+              2 => 'universe_planets',
+              3 => 'player_resources',
+              4 => 'player_cooldowns',
             ),
-            'writes' => 
+            'writes' =>
             array (
-              0 => 'universe_discoveries',
-              1 => 'game_events',
+              0 => 'planet_explorations',
+              1 => 'player_resources',
+              2 => 'player_cooldowns',
+              3 => 'game_events',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
-              1 => 'cooldown',
-              2 => 'success',
-              3 => 'error',
+              1 => 'protected',
+              2 => 'insufficient-resource',
+              3 => 'cooldown',
+              4 => 'success',
+              5 => 'error',
             ),
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Command the mothership hull, hangars, shields, weapons, and modules.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load mothership',
           1 => 'select upgrade',
@@ -6498,18 +6596,18 @@ return array (
           3 => 'lock resources',
           4 => 'queue or apply upgrade',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'mothership owner',
           1 => 'module prerequisite',
           2 => 'resource balance',
           3 => 'capacity cap',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'hull + modules + weapons + shields + fleet capacity',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'motherships',
           1 => 'mothership_modules',
@@ -6517,7 +6615,7 @@ return array (
           3 => 'construction_queue',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'hull',
         1 => 'weapons and shields',
@@ -6526,17 +6624,17 @@ return array (
         4 => 'capacity',
         5 => 'upgrade queue',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'mothership-command',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'hull',
           1 => 'weapons',
           2 => 'hangars',
           3 => 'modules',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'ship-stat',
           1 => 'module-card',
@@ -6545,33 +6643,33 @@ return array (
         ),
         'responsive' => 'Ship systems stack into full-width modules',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'MothershipService',
           1 => 'QueueService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'motherships',
           1 => 'mothership_modules',
           2 => 'player_resources',
           3 => 'construction_queue',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'motherships',
           1 => 'mothership_modules',
           2 => 'player_resources',
           3 => 'construction_queue',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'mothership_upgrade',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/mothership/ship.php',
         'features' => 'config/page_features/mothership/ship.php',
@@ -6580,29 +6678,29 @@ return array (
         'module' => 'includes/page_modules/mothership/ship.php',
       ),
     ),
-    'modules' => 
+    'modules' =>
     array (
       'route' => 'modules',
       'group' => 'mothership',
       'group_label' => 'Mothership',
       'title' => 'Mothership Modules',
       'layout' => 'ship',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Upgrade module',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'mothership_upgrade',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'mothership_modules',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Mothership Command',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Hull',
           1 => 'Weapons and shields',
@@ -6610,7 +6708,7 @@ return array (
           3 => 'Modules and capacity',
         ),
         'formula' => 'ship readiness = hull + modules + weapons + shields + fleet capacity',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Upgrade hull',
           1 => 'Upgrade hangars',
@@ -6618,14 +6716,14 @@ return array (
           3 => 'Upgrade module',
         ),
         'action' => 'mothership_upgrade',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'motherships',
           1 => 'mothership_modules',
           2 => 'player_resources',
         ),
         'permission' => 'authenticated mothership owner',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'insufficient-resource',
@@ -6634,28 +6732,28 @@ return array (
           4 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Mothership and Modules',
         'purpose' => 'Upgrade the commander’s strategic vessel.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Upgrade hull' => 
+          'Upgrade hull' =>
           array (
             'action' => 'mothership_upgrade',
             'logic' => 'Validate module type, cost, prerequisite, and capacity.',
             'permission' => 'mothership owner',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'motherships',
               1 => 'player_resources',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'motherships',
               1 => 'player_resources',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'insufficient-resource',
@@ -6664,35 +6762,42 @@ return array (
               4 => 'error',
             ),
           ),
-          'Explore' => 
+          'Explore' =>
           array (
             'action' => 'explore',
-            'logic' => 'Dispatch mothership exploration mission.',
-            'permission' => 'mothership owner',
-            'reads' => 
+            'logic' => 'Dispatch mothership exploration to a validated universe target and persist yield, travel, risk, cooldown, resource, and event state atomically.',
+            'permission' => 'mothership owner with hull readiness',
+            'reads' =>
             array (
               0 => 'motherships',
               1 => 'universe_solar_systems',
+              2 => 'universe_planets',
+              3 => 'player_resources',
+              4 => 'player_cooldowns',
             ),
-            'writes' => 
+            'writes' =>
             array (
-              0 => 'universe_discoveries',
-              1 => 'game_events',
+              0 => 'planet_explorations',
+              1 => 'player_resources',
+              2 => 'player_cooldowns',
+              3 => 'game_events',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
-              1 => 'cooldown',
-              2 => 'success',
-              3 => 'error',
+              1 => 'protected',
+              2 => 'insufficient-resource',
+              3 => 'cooldown',
+              4 => 'success',
+              5 => 'error',
             ),
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Command the mothership hull, hangars, shields, weapons, and modules.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load mothership',
           1 => 'select upgrade',
@@ -6700,18 +6805,18 @@ return array (
           3 => 'lock resources',
           4 => 'queue or apply upgrade',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'mothership owner',
           1 => 'module prerequisite',
           2 => 'resource balance',
           3 => 'capacity cap',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'hull + modules + weapons + shields + fleet capacity',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'motherships',
           1 => 'mothership_modules',
@@ -6719,7 +6824,7 @@ return array (
           3 => 'construction_queue',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'hull',
         1 => 'weapons and shields',
@@ -6728,17 +6833,17 @@ return array (
         4 => 'capacity',
         5 => 'upgrade queue',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'mothership-command',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'hull',
           1 => 'weapons',
           2 => 'hangars',
           3 => 'modules',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'ship-stat',
           1 => 'module-card',
@@ -6747,33 +6852,33 @@ return array (
         ),
         'responsive' => 'Ship systems stack into full-width modules',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'MothershipService',
           1 => 'QueueService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'motherships',
           1 => 'mothership_modules',
           2 => 'player_resources',
           3 => 'construction_queue',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'motherships',
           1 => 'mothership_modules',
           2 => 'player_resources',
           3 => 'construction_queue',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'mothership_upgrade',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/mothership/modules.php',
         'features' => 'config/page_features/mothership/modules.php',
@@ -6782,98 +6887,105 @@ return array (
         'module' => 'includes/page_modules/mothership/modules.php',
       ),
     ),
-    'exploration' => 
+    'exploration' =>
     array (
       'route' => 'exploration',
       'group' => 'mothership',
       'group_label' => 'Mothership',
       'title' => 'Exploration',
       'layout' => 'exploration',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Explore planet',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'explore',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'motherships',
         1 => 'planet_explorations',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Exploration',
-        'panels' => 
+        'panels' =>
         array (
-          0 => 'Discovery range',
-          1 => 'System scan',
-          2 => 'Anomaly chance',
-          3 => 'Discovery rewards',
+          0 => 'Available expeditions',
+          1 => 'Distance and travel time',
+          2 => 'Biome rarity and yield',
+          3 => 'Discovery risk and mission result',
         ),
-        'formula' => 'discovery = exploration level + sensor bonus + anomaly rate − travel risk',
-        'controls' => 
+        'formula' => 'exploration yield = distance × ship science × biome rarity',
+        'controls' =>
         array (
-          0 => 'Explore system',
-          1 => 'Scan planet',
-          2 => 'Record discovery',
+          0 => 'Explore',
         ),
         'action' => 'explore',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'motherships',
-          1 => 'universe_solar_systems',
-          2 => 'universe_planets',
-          3 => 'universe_moons',
-          4 => 'universe_discoveries',
+          1 => 'planet_explorations',
+          2 => 'universe_solar_systems',
+          3 => 'universe_planets',
+          4 => 'player_resources',
+          5 => 'player_cooldowns',
+          6 => 'game_events',
         ),
-        'permission' => 'authenticated commander with exploration capacity',
-        'states' => 
+        'permission' => 'authenticated commander with mothership readiness',
+        'states' =>
         array (
           0 => 'ready',
-          1 => 'cooldown',
-          2 => 'success',
-          3 => 'error',
+          1 => 'protected',
+          2 => 'insufficient-resource',
+          3 => 'cooldown',
+          4 => 'success',
+          5 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Exploration',
-        'purpose' => 'Explore systems, anomalies, planets, and discovery opportunities.',
-        'buttons' => 
+        'purpose' => 'Dispatch a ready mothership to a validated unoccupied universe planet.',
+        'buttons' =>
         array (
-          'Explore' => 
+          'Explore' =>
           array (
             'action' => 'explore',
-            'logic' => 'Validate mothership readiness, calculate travel, resolve anomaly, and write discovery or event result.',
-            'permission' => 'exploration-capable commander',
-            'reads' => 
+            'logic' => 'Validate mothership ownership and hull readiness, lock the universe target, calculate distance × ship science × biome rarity, persist travel time and discovery risk, consume Naquadah, and record the result transactionally.',
+            'permission' => 'authenticated commander with mothership readiness',
+            'reads' =>
             array (
               0 => 'motherships',
               1 => 'universe_solar_systems',
               2 => 'universe_planets',
-              3 => 'universe_discoveries',
+              3 => 'player_resources',
+              4 => 'player_cooldowns',
             ),
-            'writes' => 
+            'writes' =>
             array (
-              0 => 'universe_discoveries',
-              1 => 'game_events',
+              0 => 'planet_explorations',
+              1 => 'player_resources',
+              2 => 'player_cooldowns',
+              3 => 'game_events',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
-              1 => 'cooldown',
-              2 => 'success',
-              3 => 'error',
+              1 => 'protected',
+              2 => 'insufficient-resource',
+              3 => 'cooldown',
+              4 => 'success',
+              5 => 'error',
             ),
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Explore systems, planets, moons, anomalies, and discovery rewards.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load sensor range',
           1 => 'validate mission capacity',
@@ -6881,24 +6993,24 @@ return array (
           3 => 'resolve anomaly',
           4 => 'record discovery',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'exploration-capable commander',
           1 => 'mothership readiness',
           2 => 'cooldown',
           3 => 'target visibility',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'exploration level + sensor bonus + anomaly rate − travel risk',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'universe_discoveries',
           1 => 'game_events',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'discovery range',
         1 => 'system scan',
@@ -6906,17 +7018,17 @@ return array (
         3 => 'discovery rewards',
         4 => 'travel risk',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'exploration-board',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'range',
           1 => 'system scan',
           2 => 'anomaly',
           3 => 'rewards',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'scan-form',
           1 => 'risk-meter',
@@ -6925,31 +7037,31 @@ return array (
         ),
         'responsive' => 'Exploration panels stack vertically',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'ExplorationService',
           1 => 'MothershipService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'motherships',
           1 => 'universe_solar_systems',
           2 => 'universe_planets',
           3 => 'universe_moons',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'universe_discoveries',
           1 => 'game_events',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'explore',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/mothership/exploration.php',
         'features' => 'config/page_features/mothership/exploration.php',
@@ -6958,30 +7070,30 @@ return array (
         'module' => 'includes/page_modules/mothership/exploration.php',
       ),
     ),
-    'race' => 
+    'race' =>
     array (
       'route' => 'race',
       'group' => 'account',
       'group_label' => 'Account',
       'title' => 'Race Selection',
       'layout' => 'account',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Select race',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'change_race',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'races',
         1 => 'players',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Account and Registration',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Race identity',
           1 => 'Government identity',
@@ -6989,7 +7101,7 @@ return array (
           3 => 'Session and security',
         ),
         'formula' => 'combined modifier = race modifier × government modifier',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Select race',
           1 => 'Select government',
@@ -6997,7 +7109,7 @@ return array (
           3 => 'View protection',
         ),
         'action' => 'select_registration_faction',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'players',
           1 => 'races',
@@ -7006,7 +7118,7 @@ return array (
           4 => 'player_government_history',
         ),
         'permission' => 'authenticated commander',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'protected',
@@ -7014,51 +7126,51 @@ return array (
           3 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Account and Registration',
         'purpose' => 'Manage faction identity, protection, and security.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Select race and government' => 
+          'Select race and government' =>
           array (
             'action' => 'select_registration_faction',
             'logic' => 'Validate both faction selections and save atomically.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'races',
               1 => 'government_types',
               2 => 'players',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'players',
               1 => 'player_government_history',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'success',
               2 => 'error',
             ),
           ),
-          'Reform government' => 
+          'Reform government' =>
           array (
             'action' => 'reform_government',
             'logic' => 'Lock player, validate active government, record history, and update government.',
             'permission' => 'authenticated commander with reform access',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'government_types',
               1 => 'players',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'players',
               1 => 'player_government_history',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'cooldown',
@@ -7066,21 +7178,21 @@ return array (
               3 => 'error',
             ),
           ),
-          'Vacation mode' => 
+          'Vacation mode' =>
           array (
             'action' => 'vacation',
             'logic' => 'Validate duration and set protection state.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'protection_states',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'protection_states',
               1 => 'players',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'protected',
@@ -7090,10 +7202,10 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Manage race, government, vacation, protection, and account security.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load faction options',
           1 => 'validate selection',
@@ -7101,18 +7213,18 @@ return array (
           3 => 'apply protection state',
           4 => 'render security controls',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated commander',
           1 => 'valid race and government',
           2 => 'vacation rules',
           3 => 'protection rules',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'race modifier × government modifier',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'players',
           1 => 'player_government_history',
@@ -7120,7 +7232,7 @@ return array (
           3 => 'protection_states',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'race selection',
         1 => 'government selection',
@@ -7128,10 +7240,10 @@ return array (
         3 => 'protection',
         4 => 'session security',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'account-settings',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'race selector',
           1 => 'government selector',
@@ -7139,7 +7251,7 @@ return array (
           3 => 'protection',
           4 => 'security',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'faction-selector',
           1 => 'modifier-preview',
@@ -7148,14 +7260,14 @@ return array (
         ),
         'responsive' => 'Settings sections stack on mobile',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'AccountService',
           1 => 'ProtectionService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'players',
           1 => 'races',
@@ -7163,21 +7275,21 @@ return array (
           3 => 'protection_states',
           4 => 'vacation_states',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'players',
           1 => 'player_government_history',
           2 => 'vacation_states',
           3 => 'protection_states',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'select_registration_faction',
           1 => 'change_race',
           2 => 'vacation',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/account/race.php',
         'features' => 'config/page_features/account/race.php',
@@ -7186,30 +7298,30 @@ return array (
         'module' => 'includes/page_modules/account/race.php',
       ),
     ),
-    'vacation' => 
+    'vacation' =>
     array (
       'route' => 'vacation',
       'group' => 'account',
       'group_label' => 'Account',
       'title' => 'Vacation Mode',
       'layout' => 'account',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Enable vacation',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'vacation',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'vacation_states',
         1 => 'protection_states',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Account and Registration',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Race identity',
           1 => 'Government identity',
@@ -7217,7 +7329,7 @@ return array (
           3 => 'Session and security',
         ),
         'formula' => 'combined modifier = race modifier × government modifier',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Select race',
           1 => 'Select government',
@@ -7225,7 +7337,7 @@ return array (
           3 => 'View protection',
         ),
         'action' => 'select_registration_faction',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'players',
           1 => 'races',
@@ -7234,7 +7346,7 @@ return array (
           4 => 'player_government_history',
         ),
         'permission' => 'authenticated commander',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'protected',
@@ -7242,51 +7354,51 @@ return array (
           3 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Account and Registration',
         'purpose' => 'Manage faction identity, protection, and security.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Select race and government' => 
+          'Select race and government' =>
           array (
             'action' => 'select_registration_faction',
             'logic' => 'Validate both faction selections and save atomically.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'races',
               1 => 'government_types',
               2 => 'players',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'players',
               1 => 'player_government_history',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'success',
               2 => 'error',
             ),
           ),
-          'Reform government' => 
+          'Reform government' =>
           array (
             'action' => 'reform_government',
             'logic' => 'Lock player, validate active government, record history, and update government.',
             'permission' => 'authenticated commander with reform access',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'government_types',
               1 => 'players',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'players',
               1 => 'player_government_history',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'cooldown',
@@ -7294,21 +7406,21 @@ return array (
               3 => 'error',
             ),
           ),
-          'Vacation mode' => 
+          'Vacation mode' =>
           array (
             'action' => 'vacation',
             'logic' => 'Validate duration and set protection state.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'protection_states',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'protection_states',
               1 => 'players',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'protected',
@@ -7318,10 +7430,10 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Manage race, government, vacation, protection, and account security.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load faction options',
           1 => 'validate selection',
@@ -7329,18 +7441,18 @@ return array (
           3 => 'apply protection state',
           4 => 'render security controls',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated commander',
           1 => 'valid race and government',
           2 => 'vacation rules',
           3 => 'protection rules',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'race modifier × government modifier',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'players',
           1 => 'player_government_history',
@@ -7348,7 +7460,7 @@ return array (
           3 => 'protection_states',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'race selection',
         1 => 'government selection',
@@ -7356,10 +7468,10 @@ return array (
         3 => 'protection',
         4 => 'session security',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'account-settings',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'race selector',
           1 => 'government selector',
@@ -7367,7 +7479,7 @@ return array (
           3 => 'protection',
           4 => 'security',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'faction-selector',
           1 => 'modifier-preview',
@@ -7376,14 +7488,14 @@ return array (
         ),
         'responsive' => 'Settings sections stack on mobile',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'AccountService',
           1 => 'ProtectionService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'players',
           1 => 'races',
@@ -7391,21 +7503,21 @@ return array (
           3 => 'protection_states',
           4 => 'vacation_states',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'players',
           1 => 'player_government_history',
           2 => 'vacation_states',
           3 => 'protection_states',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'select_registration_faction',
           1 => 'change_race',
           2 => 'vacation',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/account/vacation.php',
         'features' => 'config/page_features/account/vacation.php',
@@ -7414,32 +7526,32 @@ return array (
         'module' => 'includes/page_modules/account/vacation.php',
       ),
     ),
-    'ascension' => 
+    'ascension' =>
     array (
       'route' => 'ascension',
       'group' => 'account',
       'group_label' => 'Account',
       'title' => 'Ascension',
       'layout' => 'progression',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Check eligibility',
         1 => 'Ascend',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'ascend',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'ascension_states',
         1 => 'ascensions',
         2 => 'glory_reputation',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Progression and Ascension',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Experience',
           1 => 'Rank and Glory',
@@ -7447,14 +7559,14 @@ return array (
           3 => 'Ascension requirements',
         ),
         'formula' => 'level progression consumes experience thresholds and unlocks rank content',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Check eligibility',
           1 => 'Ascend',
           2 => 'View history',
         ),
         'action' => 'ascend',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'player_progression',
           1 => 'glory_reputation',
@@ -7463,7 +7575,7 @@ return array (
           4 => 'ascensions',
         ),
         'permission' => 'authenticated commander',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'locked',
@@ -7472,51 +7584,51 @@ return array (
           4 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Progression and Ascension',
         'purpose' => 'Advance rank and unlock long-term systems.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Check eligibility' => 
+          'Check eligibility' =>
           array (
             'action' => 'read_ascension',
             'logic' => 'Compare Glory, Reputation, level, and required technologies.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'player_progression',
               1 => 'glory_reputation',
               2 => 'ascension_states',
             ),
-            'writes' => 
+            'writes' =>
             array (
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'locked',
               2 => 'error',
             ),
           ),
-          'Ascend' => 
+          'Ascend' =>
           array (
             'action' => 'ascend',
             'logic' => 'Lock progression, validate requirements, write ascension, and grant result.',
             'permission' => 'eligible commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'player_progression',
               1 => 'glory_reputation',
               2 => 'ascension_states',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'ascensions',
               1 => 'players',
               2 => 'game_audit_log',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'locked',
@@ -7526,10 +7638,10 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Track universal tier and level progression, Glory, Reputation, and ascension.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'load progression state',
           1 => 'check thresholds',
@@ -7537,20 +7649,20 @@ return array (
           3 => 'advance or ascend transactionally',
           4 => 'write history',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated commander',
           1 => 'experience threshold',
           2 => 'tier and level cap',
           3 => 'resource or Glory cost',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'experience thresholds',
           1 => '21 tiers × 23 levels',
           2 => 'ascension eligibility',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'player_progression',
           1 => 'glory_reputation',
@@ -7559,7 +7671,7 @@ return array (
           4 => 'game_audit_log',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'experience',
         1 => 'tier and level',
@@ -7568,10 +7680,10 @@ return array (
         4 => 'ascension requirements',
         5 => 'progression history',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'progression-panel',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'requirements',
           1 => 'tier and level',
@@ -7579,7 +7691,7 @@ return array (
           3 => 'ascension preview',
           4 => 'history',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'progress-bar',
           1 => 'tier-badge',
@@ -7588,14 +7700,14 @@ return array (
         ),
         'responsive' => 'Progression metrics stack on mobile',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'ProgressionService',
           1 => 'AscensionService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'player_progression',
           1 => 'glory_reputation',
@@ -7603,7 +7715,7 @@ return array (
           3 => 'ascension_states',
           4 => 'ascensions',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'player_progression',
           1 => 'glory_reputation',
@@ -7611,13 +7723,13 @@ return array (
           3 => 'ascensions',
           4 => 'game_audit_log',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'progression_advance',
           1 => 'ascend',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/account/ascension.php',
         'features' => 'config/page_features/account/ascension.php',
@@ -7626,31 +7738,36 @@ return array (
         'module' => 'includes/page_modules/account/ascension.php',
       ),
     ),
-    'galaxies' => 
+    'galaxies' =>
     array (
       'route' => 'galaxies',
       'group' => 'universe',
       'group_label' => 'Universe',
       'title' => 'Galaxy Map',
       'layout' => 'galaxies',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Select galaxy',
         1 => 'Open sector',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'universe_galaxies',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'universe_galaxies',
         1 => 'universe_sectors',
+        2 => 'universe_solar_systems',
+        3 => 'universe_planets',
+        4 => 'universe_discoveries',
+        5 => 'target_realms',
+        6 => 'game_events',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Galaxy Map',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Galaxy selector',
           1 => 'Star density',
@@ -7658,20 +7775,20 @@ return array (
           3 => 'Travel risk',
         ),
         'formula' => 'travel risk = sector danger × system volatility × distance modifier',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Select galaxy',
           1 => 'Open sector',
           2 => 'Compare density',
         ),
         'action' => NULL,
-        'tables' => 
+        'tables' =>
         array (
           0 => 'universe_galaxies',
           1 => 'universe_sectors',
         ),
         'permission' => 'authenticated commander',
-        'states' => 
+        'states' =>
         array (
           0 => 'loading',
           1 => 'ready',
@@ -7679,75 +7796,81 @@ return array (
           3 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Galaxy Map',
-        'purpose' => 'Navigate the universe hierarchy.',
-        'buttons' => 
+        'purpose' => 'Browse active galaxies and server-scoped sector distribution.',
+        'buttons' =>
         array (
-          'Select galaxy' => 
+          'Select galaxy' =>
           array (
-            'action' => 'read_galaxy',
-            'logic' => 'Load active galaxy and sector summary.',
-            'permission' => 'authenticated commander',
-            'reads' => 
+            'action' => 'universe_galaxies',
+            'logic' => 'Validate active galaxy identifiers, coordinate scope, scan permission, discovered-sector visibility, protected records, ownership summaries, and authenticated commander access before loading the map.',
+            'permission' => 'authenticated commander · coordinate access',
+            'reads' =>
             array (
               0 => 'universe_galaxies',
               1 => 'universe_sectors',
+              2 => 'universe_solar_systems',
+              3 => 'universe_planets',
+              4 => 'universe_discoveries',
+              5 => 'target_realms',
             ),
-            'writes' => 
+            'writes' =>
             array (
+              0 => 'game_events',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'empty',
-              2 => 'error',
+              2 => 'protected',
+              3 => 'error',
             ),
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Browse galaxy density, sector overview, and travel risk.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'select galaxy',
           1 => 'load sectors',
           2 => 'calculate density and risk',
           3 => 'open sector',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated commander',
           1 => 'valid galaxy identifier',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'sector danger × system volatility × distance modifier',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'galaxy selector',
         1 => 'star density',
         2 => 'sector overview',
         3 => 'travel risk',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'galaxy-map',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'galaxy selector',
           1 => 'density',
           2 => 'sectors',
           3 => 'risk',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'selector',
           1 => 'density-metric',
@@ -7756,26 +7879,26 @@ return array (
         ),
         'responsive' => 'Map lists become stacked rows',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'UniverseService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'universe_galaxies',
           1 => 'universe_sectors',
         ),
-        'writes' => 
+        'writes' =>
         array (
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'universe_galaxies',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/universe/galaxies.php',
         'features' => 'config/page_features/universe/galaxies.php',
@@ -7784,31 +7907,37 @@ return array (
         'module' => 'includes/page_modules/universe/galaxies.php',
       ),
     ),
-    'sectors' => 
+    'sectors' =>
     array (
       'route' => 'sectors',
       'group' => 'universe',
       'group_label' => 'Universe',
       'title' => 'Sector Map',
       'layout' => 'sectors',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Select sector',
         1 => 'Open system',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'universe_sectors',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'universe_sectors',
         1 => 'universe_solar_systems',
+        2 => 'universe_planets',
+        3 => 'motherships',
+        4 => 'mothership_modules',
+        5 => 'player_technologies',
+        6 => 'player_cooldowns',
+        7 => 'game_events',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Sector Map',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Sector class',
           1 => 'Danger level',
@@ -7816,20 +7945,20 @@ return array (
           3 => 'Anomaly rate',
         ),
         'formula' => 'sector output = base output × resource modifier; anomaly rate drives events',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Select sector',
           1 => 'Open system',
           2 => 'Filter by risk',
         ),
         'action' => NULL,
-        'tables' => 
+        'tables' =>
         array (
           0 => 'universe_sectors',
           1 => 'universe_solar_systems',
         ),
         'permission' => 'authenticated commander',
-        'states' => 
+        'states' =>
         array (
           0 => 'loading',
           1 => 'ready',
@@ -7837,75 +7966,106 @@ return array (
           3 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Sector Map',
-        'purpose' => 'Compare danger, resources, and anomalies.',
-        'buttons' => 
+        'purpose' => 'Scan a selected sector and compare systems by risk and strategic value.',
+        'buttons' =>
         array (
-          'Open system' => 
+          'Select sector' =>
           array (
-            'action' => 'read_sector',
-            'logic' => 'Load systems ordered by risk and strategic value.',
-            'permission' => 'authenticated commander',
-            'reads' => 
+            'action' => 'universe_sectors',
+            'logic' => 'Submit only the selected sector identifier; calculate sensor range × mothership science × scan technology on the server, apply sector visibility and scan cooldown, then return ordered systems with classified owner signals and travel lanes.',
+            'permission' => 'authenticated commander · sector visibility · scan cooldown',
+            'reads' =>
             array (
               0 => 'universe_sectors',
               1 => 'universe_solar_systems',
+              2 => 'universe_planets',
+              3 => 'motherships',
+              4 => 'mothership_modules',
+              5 => 'player_technologies',
+              6 => 'player_cooldowns',
             ),
-            'writes' => 
+            'writes' =>
             array (
+              0 => 'game_events',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'empty',
-              2 => 'error',
+              2 => 'protected',
+              3 => 'cooldown',
+              4 => 'error',
+            ),
+          ),
+          'Open system' =>
+          array (
+            'action' => 'read_sector',
+            'logic' => 'Open a system only after the selected sector and coordinate visibility checks pass.',
+            'permission' => 'authenticated commander with permitted sector access',
+            'reads' =>
+            array (
+              0 => 'universe_sectors',
+              1 => 'universe_solar_systems',
+              2 => 'universe_planets',
+            ),
+            'writes' =>
+            array (
+            ),
+            'states' =>
+            array (
+              0 => 'ready',
+              1 => 'empty',
+              2 => 'protected',
+              3 => 'cooldown',
+              4 => 'error',
             ),
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Inspect sector class, danger, resource modifiers, and anomaly rate.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'select sector',
           1 => 'load systems',
           2 => 'calculate sector output',
           3 => 'filter by risk',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated commander',
           1 => 'valid sector identifier',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'base output × resource modifier; anomaly rate drives events',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'sector class',
         1 => 'danger level',
         2 => 'resource modifier',
         3 => 'anomaly rate',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'sector-map',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'sector selector',
           1 => 'danger',
           2 => 'resource modifier',
           3 => 'anomalies',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'sector-card',
           1 => 'danger-meter',
@@ -7914,26 +8074,26 @@ return array (
         ),
         'responsive' => 'Sector cards stack on mobile',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'UniverseService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'universe_sectors',
           1 => 'universe_solar_systems',
         ),
-        'writes' => 
+        'writes' =>
         array (
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'universe_sectors',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/universe/sectors.php',
         'features' => 'config/page_features/universe/sectors.php',
@@ -7942,32 +8102,32 @@ return array (
         'module' => 'includes/page_modules/universe/sectors.php',
       ),
     ),
-    'solar-systems' => 
+    'solar-systems' =>
     array (
       'route' => 'solar-systems',
       'group' => 'universe',
       'group_label' => 'Universe',
       'title' => 'Solar Systems',
       'layout' => 'solar-systems',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Open system',
         1 => 'Scan system',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'system_map',
         1 => 'explore',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'universe_solar_systems',
         1 => 'universe_planets',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Solar Systems',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Star class',
           1 => 'Orbit map',
@@ -7975,21 +8135,21 @@ return array (
           3 => 'Anomaly scan',
         ),
         'formula' => 'system travel = base travel × system modifier × sector danger',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Open system',
           1 => 'Scan system',
           2 => 'Explore anomaly',
         ),
         'action' => 'explore',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'universe_solar_systems',
           1 => 'universe_planets',
           2 => 'universe_discoveries',
         ),
         'permission' => 'authenticated commander',
-        'states' => 
+        'states' =>
         array (
           0 => 'loading',
           1 => 'ready',
@@ -7999,48 +8159,48 @@ return array (
           5 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Solar Systems',
         'purpose' => 'Scan stars, orbits, planets, and anomalies.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Scan system' => 
+          'Scan system' =>
           array (
             'action' => 'system_map',
             'logic' => 'Load orbit map and resolve permitted scan information.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'universe_solar_systems',
               1 => 'universe_planets',
             ),
-            'writes' => 
+            'writes' =>
             array (
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'empty',
               2 => 'error',
             ),
           ),
-          'Explore anomaly' => 
+          'Explore anomaly' =>
           array (
             'action' => 'explore',
             'logic' => 'Create discovery record and event reward when successful.',
             'permission' => 'exploration-capable commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'universe_solar_systems',
               1 => 'universe_discoveries',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'universe_discoveries',
               1 => 'game_events',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'cooldown',
@@ -8050,50 +8210,50 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Browse star class, orbit map, planet slots, and anomalies.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'open system',
           1 => 'load orbit map',
           2 => 'scan anomaly',
           3 => 'calculate travel',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated commander',
           1 => 'valid system identifier',
           2 => 'exploration capacity',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'base travel × system modifier × sector danger',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'universe_discoveries',
           1 => 'game_events',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'star class',
         1 => 'orbit map',
         2 => 'planet slots',
         3 => 'anomaly scan',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'solar-system-map',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'star',
           1 => 'orbits',
           2 => 'planet slots',
           3 => 'anomaly',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'orbit-list',
           1 => 'planet-slot',
@@ -8102,31 +8262,31 @@ return array (
         ),
         'responsive' => 'Orbit list becomes stacked planets',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'UniverseService',
           1 => 'ExplorationService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'universe_solar_systems',
           1 => 'universe_planets',
           2 => 'universe_discoveries',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'universe_discoveries',
           1 => 'game_events',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'system_map',
           1 => 'explore',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/universe/solar-systems.php',
         'features' => 'config/page_features/universe/solar-systems.php',
@@ -8135,32 +8295,32 @@ return array (
         'module' => 'includes/page_modules/universe/solar-systems.php',
       ),
     ),
-    'universe-planets' => 
+    'universe-planets' =>
     array (
       'route' => 'universe-planets',
       'group' => 'universe',
       'group_label' => 'Universe',
       'title' => 'Universe Planets',
       'layout' => 'universe-planets',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Inspect planet',
         1 => 'Colonize planet',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'planet_details',
         1 => 'colonize_planet',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'universe_planets',
         1 => 'player_colonies',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Universe Planets',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Planet class and biome',
           1 => 'Habitability',
@@ -8168,21 +8328,21 @@ return array (
           3 => 'Colony status',
         ),
         'formula' => 'colony viability = habitability × biome × race × government × life support',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Inspect planet',
           1 => 'Colonize planet',
           2 => 'View moons',
         ),
         'action' => 'colonize_planet',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'universe_planets',
           1 => 'universe_moons',
           2 => 'player_colonies',
         ),
         'permission' => 'authenticated commander with colonization access',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'occupied',
@@ -8192,27 +8352,27 @@ return array (
           5 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Universe Planets',
         'purpose' => 'Inspect worlds and colonization opportunities.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Inspect planet' => 
+          'Inspect planet' =>
           array (
             'action' => 'planet_details',
             'logic' => 'Load class, type, biome, habitability, modifiers, moons, and occupancy.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'universe_planets',
               1 => 'universe_moons',
               2 => 'player_colonies',
             ),
-            'writes' => 
+            'writes' =>
             array (
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'occupied',
@@ -8220,22 +8380,22 @@ return array (
               3 => 'error',
             ),
           ),
-          'Colonize planet' => 
+          'Colonize planet' =>
           array (
             'action' => 'colonize_planet',
             'logic' => 'Lock the planet and create a player colony only after all validation passes.',
             'permission' => 'colonization-capable commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'universe_planets',
               1 => 'player_colonies',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'player_colonies',
               1 => 'universe_planets',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'occupied',
@@ -8246,10 +8406,10 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Inspect planet class, biome, habitability, resource modifiers, and colony status.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'inspect planet',
           1 => 'load biome',
@@ -8257,7 +8417,7 @@ return array (
           3 => 'validate colonization',
           4 => 'create colony',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated commander',
           1 => 'colonization access',
@@ -8265,18 +8425,18 @@ return array (
           3 => 'habitability',
           4 => 'resource balance',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'habitability × biome × race × government × life support',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'universe_planets',
           1 => 'player_colonies',
           2 => 'game_audit_log',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'planet class',
         1 => 'biome',
@@ -8285,10 +8445,10 @@ return array (
         4 => 'colony status',
         5 => 'colonization',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'universe-planet',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'planet identity',
           1 => 'biome',
@@ -8296,7 +8456,7 @@ return array (
           3 => 'resources',
           4 => 'colony status',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'planet-detail',
           1 => 'biome-card',
@@ -8305,32 +8465,32 @@ return array (
         ),
         'responsive' => 'Planet details stack vertically',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'UniverseService',
           1 => 'ColonyService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'universe_planets',
           1 => 'universe_moons',
           2 => 'player_colonies',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'universe_planets',
           1 => 'player_colonies',
           2 => 'game_audit_log',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'planet_details',
           1 => 'colonize_planet',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/universe/universe-planets.php',
         'features' => 'config/page_features/universe/universe-planets.php',
@@ -8339,32 +8499,32 @@ return array (
         'module' => 'includes/page_modules/universe/universe-planets.php',
       ),
     ),
-    'moons' => 
+    'moons' =>
     array (
       'route' => 'moons',
       'group' => 'universe',
       'group_label' => 'Universe',
       'title' => 'Moon Registry',
       'layout' => 'moons',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Inspect moon',
         1 => 'Build jump gate',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'moon_details',
         1 => 'mothership_upgrade',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'universe_moons',
         1 => 'universe_planets',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Moon Registry',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Moon class and biome',
           1 => 'Sensor bonus',
@@ -8372,14 +8532,14 @@ return array (
           3 => 'Orbit relationship',
         ),
         'formula' => 'moon utility = sensor bonus + jump-gate level + moon resource modifiers',
-        'controls' => 
+        'controls' =>
         array (
           0 => 'Inspect moon',
           1 => 'Build jump gate',
           2 => 'Assign colony',
         ),
         'action' => 'mothership_upgrade',
-        'tables' => 
+        'tables' =>
         array (
           0 => 'universe_moons',
           1 => 'universe_planets',
@@ -8387,7 +8547,7 @@ return array (
           3 => 'mothership_modules',
         ),
         'permission' => 'authenticated commander with moon access',
-        'states' => 
+        'states' =>
         array (
           0 => 'ready',
           1 => 'empty',
@@ -8396,49 +8556,49 @@ return array (
           4 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Moon Registry',
         'purpose' => 'Inspect and develop moons.',
-        'buttons' => 
+        'buttons' =>
         array (
-          'Inspect moon' => 
+          'Inspect moon' =>
           array (
             'action' => 'moon_details',
             'logic' => 'Load moon class, biome, sensor bonus, jump-gate, and parent planet.',
             'permission' => 'authenticated commander',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'universe_moons',
               1 => 'universe_planets',
             ),
-            'writes' => 
+            'writes' =>
             array (
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'empty',
               2 => 'error',
             ),
           ),
-          'Build jump gate' => 
+          'Build jump gate' =>
           array (
             'action' => 'mothership_upgrade',
             'logic' => 'Validate moon ownership and module cost before upgrading gate.',
             'permission' => 'moon owner',
-            'reads' => 
+            'reads' =>
             array (
               0 => 'universe_moons',
               1 => 'player_colonies',
               2 => 'player_resources',
             ),
-            'writes' => 
+            'writes' =>
             array (
               0 => 'universe_moons',
               1 => 'player_resources',
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'insufficient-resource',
@@ -8448,34 +8608,34 @@ return array (
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
         'purpose' => 'Inspect moon class, sensor bonus, jump gate, and orbit relationship.',
-        'workflow' => 
+        'workflow' =>
         array (
           0 => 'inspect moon',
           1 => 'load parent planet',
           2 => 'calculate utility',
           3 => 'validate jump-gate upgrade',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated commander',
           1 => 'moon access',
           2 => 'colony or mothership ownership',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
           0 => 'sensor bonus + jump-gate level + moon resource modifiers',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
           0 => 'universe_moons',
           1 => 'mothership_modules',
           2 => 'player_colonies',
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'moon registry',
         1 => 'moon class',
@@ -8483,10 +8643,10 @@ return array (
         3 => 'jump-gate level',
         4 => 'orbit relationship',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'moon-registry',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'moon identity',
           1 => 'sensor',
@@ -8494,7 +8654,7 @@ return array (
           3 => 'orbit',
           4 => 'assignment',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'moon-card',
           1 => 'sensor-meter',
@@ -8503,32 +8663,32 @@ return array (
         ),
         'responsive' => 'Moon cards stack on mobile',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'UniverseService',
           1 => 'MothershipService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'universe_moons',
           1 => 'universe_planets',
           2 => 'player_colonies',
           3 => 'mothership_modules',
         ),
-        'writes' => 
+        'writes' =>
         array (
           0 => 'mothership_modules',
           1 => 'player_colonies',
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'moon_details',
           1 => 'mothership_upgrade',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/universe/moons.php',
         'features' => 'config/page_features/universe/moons.php',
@@ -8537,122 +8697,129 @@ return array (
         'module' => 'includes/page_modules/universe/moons.php',
       ),
     ),
-    'coordinates' => 
+    'coordinates' =>
     array (
       'route' => 'coordinates',
       'group' => 'universe',
       'group_label' => 'Universe',
       'title' => 'Coordinate Search',
       'layout' => 'coordinates',
-      'controls' => 
+      'controls' =>
       array (
         0 => 'Search coordinates',
         1 => 'Open system',
       ),
-      'actions' => 
+      'actions' =>
       array (
         0 => 'coordinate_lookup',
       ),
-      'tables' => 
+      'tables' =>
       array (
         0 => 'universe_galaxies',
         1 => 'universe_sectors',
         2 => 'universe_solar_systems',
         3 => 'universe_planets',
+        4 => 'universe_discoveries',
+        5 => 'player_colonies',
       ),
-      'details' => 
+      'details' =>
       array (
         'hero' => 'Coordinate Search',
-        'panels' => 
+        'panels' =>
         array (
           0 => 'Coordinate input',
           1 => 'Galaxy result',
           2 => 'System result',
           3 => 'Planet and moon result',
         ),
-        'formula' => 'coordinate = galaxy:sector:system:orbit; every level is validated server-side',
-        'controls' => 
+        'formula' => 'coordinate lookup = validated galaxy : sector : system : slot tuple',
+        'controls' =>
         array (
           0 => 'Search coordinates',
           1 => 'Open system',
           2 => 'Inspect planet',
         ),
-        'action' => NULL,
-        'tables' => 
+        'action' => 'coordinate_lookup',
+        'tables' =>
         array (
           0 => 'universe_galaxies',
           1 => 'universe_sectors',
           2 => 'universe_solar_systems',
           3 => 'universe_planets',
-          4 => 'universe_moons',
+          4 => 'universe_discoveries',
+          5 => 'player_colonies',
         ),
-        'permission' => 'authenticated commander',
-        'states' => 
+        'permission' => 'authenticated commander · coordinate access',
+        'states' =>
         array (
           0 => 'ready',
           1 => 'empty',
-          2 => 'invalid-input',
-          3 => 'error',
+          2 => 'error',
         ),
       ),
-      'interaction' => 
+      'interaction' =>
       array (
         'page' => 'Coordinate Search',
-        'purpose' => 'Find a galaxy, sector, system, planet, or moon.',
-        'buttons' => 
+        'purpose' => 'Locate a validated galaxy:sector:system:orbit tuple and disclose only permitted information.',
+        'buttons' =>
         array (
-          'Search coordinates' => 
+          'Search coordinates' =>
           array (
             'action' => 'coordinate_lookup',
-            'logic' => 'Parse galaxy:sector:system:orbit and query each hierarchy level safely.',
-            'permission' => 'authenticated commander',
-            'reads' => 
+            'logic' => 'Parse galaxy:sector:system:orbit, validate each hierarchy level and bounds, apply discovery filtering, classify ownership, and return scoped navigation identifiers.',
+            'permission' => 'authenticated commander · coordinate access',
+            'reads' =>
             array (
               0 => 'universe_galaxies',
               1 => 'universe_sectors',
               2 => 'universe_solar_systems',
               3 => 'universe_planets',
-              4 => 'universe_moons',
+              4 => 'universe_discoveries',
+              5 => 'player_colonies',
             ),
-            'writes' => 
+            'writes' =>
             array (
             ),
-            'states' => 
+            'states' =>
             array (
               0 => 'ready',
               1 => 'empty',
-              2 => 'invalid-input',
-              3 => 'error',
+              2 => 'error',
             ),
           ),
         ),
       ),
-      'logic' => 
+      'logic' =>
       array (
-        'purpose' => 'Validate and resolve galaxy:sector:system:orbit coordinates.',
-        'workflow' => 
+        'purpose' => 'Validate a coordinate tuple through the galaxy, sector, system, and orbit hierarchy, then apply discovery and ownership visibility.',
+        'workflow' =>
         array (
           0 => 'validate coordinate input',
           1 => 'find galaxy',
           2 => 'find sector',
           3 => 'find system',
-          4 => 'find planet or moon',
+          4 => 'find planet at orbit slot',
+          5 => 'apply discovery filter',
+          6 => 'classify ownership and return navigation identifiers',
         ),
-        'validation' => 
+        'validation' =>
         array (
           0 => 'authenticated commander',
           1 => 'coordinate format',
           2 => 'coordinate bounds',
+          3 => 'hierarchy validity',
+          4 => 'discovery or ownership visibility',
         ),
-        'calculations' => 
+        'calculations' =>
         array (
-          0 => 'coordinate = galaxy:sector:system:orbit',
+          0 => 'coordinate lookup = validated galaxy : sector : system : slot tuple',
+          1 => 'visibility = discovered system OR commander-owned colony',
         ),
-        'mutations' => 
+        'mutations' =>
         array (
         ),
       ),
-      'features' => 
+      'features' =>
       array (
         0 => 'coordinate input',
         1 => 'galaxy result',
@@ -8660,10 +8827,10 @@ return array (
         3 => 'planet result',
         4 => 'moon result',
       ),
-      'design' => 
+      'design' =>
       array (
         'template' => 'coordinate-search',
-        'sections' => 
+        'sections' =>
         array (
           0 => 'input',
           1 => 'galaxy',
@@ -8671,7 +8838,7 @@ return array (
           3 => 'system',
           4 => 'planet/moon',
         ),
-        'components' => 
+        'components' =>
         array (
           0 => 'coordinate-form',
           1 => 'result-path',
@@ -8680,13 +8847,13 @@ return array (
         ),
         'responsive' => 'Result path wraps into vertical steps',
       ),
-      'systems' => 
+      'systems' =>
       array (
-        'services' => 
+        'services' =>
         array (
           0 => 'UniverseService',
         ),
-        'reads' => 
+        'reads' =>
         array (
           0 => 'universe_galaxies',
           1 => 'universe_sectors',
@@ -8694,15 +8861,15 @@ return array (
           3 => 'universe_planets',
           4 => 'universe_moons',
         ),
-        'writes' => 
+        'writes' =>
         array (
         ),
-        'actions' => 
+        'actions' =>
         array (
           0 => 'coordinate_lookup',
         ),
       ),
-      'contract_files' => 
+      'contract_files' =>
       array (
         'logic' => 'config/page_logic/universe/coordinates.php',
         'features' => 'config/page_features/universe/coordinates.php',

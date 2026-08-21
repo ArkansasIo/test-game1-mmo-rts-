@@ -20,6 +20,8 @@ return array (
     1 => 'universe_sectors',
     2 => 'universe_solar_systems',
     3 => 'universe_planets',
+    4 => 'universe_discoveries',
+    5 => 'player_colonies',
   ),
   'details' => 
   array (
@@ -31,49 +33,50 @@ return array (
       2 => 'System result',
       3 => 'Planet and moon result',
     ),
-    'formula' => 'coordinate = galaxy:sector:system:orbit; every level is validated server-side',
+    'formula' => 'coordinate lookup = validated galaxy : sector : system : slot tuple',
     'controls' => 
     array (
       0 => 'Search coordinates',
       1 => 'Open system',
       2 => 'Inspect planet',
     ),
-    'action' => NULL,
+    'action' => 'coordinate_lookup',
     'tables' => 
     array (
       0 => 'universe_galaxies',
       1 => 'universe_sectors',
       2 => 'universe_solar_systems',
       3 => 'universe_planets',
-      4 => 'universe_moons',
+      4 => 'universe_discoveries',
+      5 => 'player_colonies',
     ),
-    'permission' => 'authenticated commander',
+    'permission' => 'authenticated commander · coordinate access',
     'states' => 
     array (
       0 => 'ready',
       1 => 'empty',
-      2 => 'invalid-input',
-      3 => 'error',
+      2 => 'error',
     ),
   ),
   'interaction' => 
   array (
     'page' => 'Coordinate Search',
-    'purpose' => 'Find a galaxy, sector, system, planet, or moon.',
+    'purpose' => 'Locate a validated galaxy:sector:system:orbit tuple and disclose only permitted information.',
     'buttons' => 
     array (
       'Search coordinates' => 
       array (
         'action' => 'coordinate_lookup',
-        'logic' => 'Parse galaxy:sector:system:orbit and query each hierarchy level safely.',
-        'permission' => 'authenticated commander',
+        'logic' => 'Parse galaxy:sector:system:orbit, validate each hierarchy level and bounds, apply discovery filtering, classify ownership, and return scoped navigation identifiers.',
+        'permission' => 'authenticated commander · coordinate access',
         'reads' => 
         array (
           0 => 'universe_galaxies',
           1 => 'universe_sectors',
           2 => 'universe_solar_systems',
           3 => 'universe_planets',
-          4 => 'universe_moons',
+          4 => 'universe_discoveries',
+          5 => 'player_colonies',
         ),
         'writes' => 
         array (
@@ -90,24 +93,29 @@ return array (
   ),
   'logic' => 
   array (
-    'purpose' => 'Validate and resolve galaxy:sector:system:orbit coordinates.',
+    'purpose' => 'Validate a coordinate tuple through the galaxy, sector, system, and orbit hierarchy, then apply discovery and ownership visibility.',
     'workflow' => 
     array (
       0 => 'validate coordinate input',
       1 => 'find galaxy',
       2 => 'find sector',
       3 => 'find system',
-      4 => 'find planet or moon',
+      4 => 'find planet at orbit slot',
+      5 => 'apply discovery filter',
+      6 => 'classify ownership and return navigation identifiers',
     ),
     'validation' => 
     array (
       0 => 'authenticated commander',
       1 => 'coordinate format',
       2 => 'coordinate bounds',
+      3 => 'hierarchy validity',
+      4 => 'discovery or ownership visibility',
     ),
     'calculations' => 
     array (
-      0 => 'coordinate = galaxy:sector:system:orbit',
+      0 => 'coordinate lookup = validated galaxy : sector : system : slot tuple',
+      1 => 'visibility = discovered system OR commander-owned colony',
     ),
     'mutations' => 
     array (

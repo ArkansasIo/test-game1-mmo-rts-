@@ -1,4 +1,4 @@
-# StargateWars Universe, Galaxy, Sector, System, Planet, and Moon Design
+# Universe Civilization: Empire at Wars Universe, Galaxy, Sector, System, Planet, and Moon Design
 
 ## Hierarchy
 

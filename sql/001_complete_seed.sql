@@ -22,7 +22,7 @@ INSERT INTO menu_items (parent_id,label,route,icon,sort_order) VALUES
 (NULL,'Command Center','dashboard','⌂',1),(NULL,'Attack','attack','⚔',2),(NULL,'Armory','armory','▣',3),
 (NULL,'Training','training','◈',4),(NULL,'Technology','technology','◇',5),(NULL,'Intelligence','intelligence','◎',6),
 (NULL,'Market','market','¤',7),(NULL,'Social','social','♧',8),(NULL,'Planets','planets','○',9),
-(NULL,'Mothership','mothership','△',10),(NULL,'Account','account','◌',11)
+(NULL,'Mothership','mothership','△',10),(NULL,'Account','account','◌',11),(NULL,'Universe','universe','✦',12)
 ON DUPLICATE KEY UPDATE label=VALUES(label),icon=VALUES(icon),sort_order=VALUES(sort_order);
 
 INSERT INTO menu_items (parent_id,label,route,sort_order) SELECT id,'Account Information','account-info',1 FROM menu_items WHERE route='dashboard' ON DUPLICATE KEY UPDATE label=VALUES(label);
@@ -58,6 +58,12 @@ INSERT INTO menu_items (parent_id,label,route,sort_order) SELECT id,'Ship','ship
 INSERT INTO menu_items (parent_id,label,route,sort_order) SELECT id,'Modules','modules',2 FROM menu_items WHERE route='mothership' ON DUPLICATE KEY UPDATE label=VALUES(label);
 INSERT INTO menu_items (parent_id,label,route,sort_order) SELECT id,'Exploration','exploration',3 FROM menu_items WHERE route='mothership' ON DUPLICATE KEY UPDATE label=VALUES(label);
 INSERT INTO menu_items (parent_id,label,route,sort_order) SELECT id,'Race','race',1 FROM menu_items WHERE route='account' ON DUPLICATE KEY UPDATE label=VALUES(label);
+INSERT INTO menu_items (parent_id,label,route,sort_order) SELECT id,'Galaxy Map','galaxies',1 FROM menu_items WHERE route='universe' ON DUPLICATE KEY UPDATE label=VALUES(label);
+INSERT INTO menu_items (parent_id,label,route,sort_order) SELECT id,'Sector Map','sectors',2 FROM menu_items WHERE route='universe' ON DUPLICATE KEY UPDATE label=VALUES(label);
+INSERT INTO menu_items (parent_id,label,route,sort_order) SELECT id,'Solar Systems','solar-systems',3 FROM menu_items WHERE route='universe' ON DUPLICATE KEY UPDATE label=VALUES(label);
+INSERT INTO menu_items (parent_id,label,route,sort_order) SELECT id,'Universe Planets','universe-planets',4 FROM menu_items WHERE route='universe' ON DUPLICATE KEY UPDATE label=VALUES(label);
+INSERT INTO menu_items (parent_id,label,route,sort_order) SELECT id,'Moon Registry','moons',5 FROM menu_items WHERE route='universe' ON DUPLICATE KEY UPDATE label=VALUES(label);
+INSERT INTO menu_items (parent_id,label,route,sort_order) SELECT id,'Coordinate Search','coordinates',6 FROM menu_items WHERE route='universe' ON DUPLICATE KEY UPDATE label=VALUES(label);
 INSERT INTO menu_items (parent_id,label,route,sort_order) SELECT id,'Vacation','vacation',2 FROM menu_items WHERE route='account' ON DUPLICATE KEY UPDATE label=VALUES(label);
 INSERT INTO menu_items (parent_id,label,route,sort_order) SELECT id,'Ascension','ascension',3 FROM menu_items WHERE route='account' ON DUPLICATE KEY UPDATE label=VALUES(label);
 
@@ -67,7 +73,7 @@ INSERT INTO page_content(route,title,description,minimum_rank_level) VALUES
 ('technology','Technology','Upgrade offense, defense, covert, and unique systems.',1),('targets','Targets','Select an enemy realm for combat.',1),('attack-log','Attack Log','Review battle results.',1),('spy','Spy','Run intelligence operations.',1),('sabotage','Sabotage','Run covert disruption operations.',2),
 ('weapons','Weapons','Manage weapon inventory.',1),('weapon-market','Buy / Sell','Trade weapon systems.',1),('repair','Repair','Restore weapon durability.',1),('resources','Resource Exchange','Trade resources with other players.',1),('mercenary-market','Mercenary Market','Recruit mercenary contracts.',2),
 ('alliances','Alliances','Create and join political organizations.',2),('messages','Messages','Send private commander messages.',1),('rankings','Rankings','Compare realm scores.',1),('planet-list','Planet List','Review controlled worlds.',1),('planet-bonuses','Planet Bonuses','Review planetary modifiers.',1),('planet-defenses','Planet Defenses','Build planetary defenses.',2),('exploration','Exploration','Explore for new planets.',1),
-('mothership','Mothership','Manage the command vessel.',1),('ship','Ship','Upgrade mothership components.',1),('modules','Modules','Upgrade mothership modules.',2),('vacation','Vacation','Activate temporary protection.',1),('ascension','Ascension','Convert progression into an ascended realm.',3)
+('mothership','Mothership','Manage the command vessel.',1),('ship','Ship','Upgrade mothership components.',1),('modules','Modules','Upgrade mothership modules.',2),('galaxies','Galaxy Map','Inspect discovered galaxies and sectors.',1),('sectors','Sector Map','Scan sectors and travel lanes.',1),('solar-systems','Solar Systems','Inspect system orbit maps and gate access.',1),('universe-planets','Universe Planets','Inspect planets and colonization status.',1),('moons','Moon Registry','Inspect moons and jump-gate infrastructure.',1),('coordinates','Coordinate Search','Search validated universe coordinates.',1),('vacation','Vacation','Activate temporary protection.',1),('ascension','Ascension','Convert progression into an ascended realm.',3)
 ON DUPLICATE KEY UPDATE title=VALUES(title),description=VALUES(description),minimum_rank_level=VALUES(minimum_rank_level);
 
 INSERT INTO technologies(technology_key,name,category,base_cost,cost_growth,effect_value,description) VALUES

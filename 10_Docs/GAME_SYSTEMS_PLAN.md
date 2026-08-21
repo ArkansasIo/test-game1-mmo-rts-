@@ -1,4 +1,4 @@
-# StargateWars Game Systems Implementation Plan
+# Universe Civilization: Empire at Wars Game Systems Implementation Plan
 
 ## Current foundation
 

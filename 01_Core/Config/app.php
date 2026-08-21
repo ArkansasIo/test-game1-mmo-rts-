@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 return [
-    'name' => getenv('APP_NAME') ?: 'StargateWars',
+    'name' => getenv('APP_NAME') ?: 'Universe Civilization: Empire at Wars',
     'timezone' => getenv('APP_TIMEZONE') ?: 'UTC',
     'turn_interval_seconds' => 1800,
     'max_attack_turns' => 10000,

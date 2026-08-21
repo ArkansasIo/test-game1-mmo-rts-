@@ -1,4 +1,4 @@
-# StargateWars Page Design and Function Map
+# Universe Civilization: Empire at Wars Page Design and Function Map
 
 ## Shared page shell
 

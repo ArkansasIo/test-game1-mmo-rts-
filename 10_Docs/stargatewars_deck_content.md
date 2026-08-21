@@ -1,5 +1,5 @@
 ## Cover
-StargateWars
+Universe Civilization: Empire at Wars
 Modular PHP/MySQL architecture, gameplay systems, and frontend navigation
 
 ## Slide 1

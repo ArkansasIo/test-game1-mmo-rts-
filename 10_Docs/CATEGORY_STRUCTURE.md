@@ -1,4 +1,4 @@
-# StargateWars Categorized Project Structure
+# Universe Civilization: Empire at Wars Categorized Project Structure
 
 The original working files remain at the project root for compatibility. The categorized directories provide a clean modular organization for future development and deployment.
 

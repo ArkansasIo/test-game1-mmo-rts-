@@ -15,7 +15,11 @@ return array (
   ),
   'tables' => 
   array (
-    0 => 'player_resources',
+    0 => 'unit_types',
+    1 => 'player_unit_stats',
+    2 => 'training_queues',
+    3 => 'player_resources',
+    4 => 'game_events',
   ),
   'details' => 
   array (

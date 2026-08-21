@@ -1,4 +1,3 @@
 <?php
 declare(strict_types=1);
-$route = 'weapons';
-require __DIR__ . '/_entry.php';
+$route = 'weapons'; $group = 'armory'; $label = 'Weapon Inventory'; $pageDefinition = require '/home/ubuntu/stargatewars/config/page_definitions/armory/weapons.php'; $pageModule = require '/home/ubuntu/stargatewars/includes/page_modules/armory/weapons.php'; require __DIR__ . '/_nested_entry.php';

@@ -2,7 +2,7 @@
 
 ## Scope
 
-This report covers all 43 generated StargateWars page modules, the executable page-module function family, the secure action controller, and the canonical database schema contract.
+This report covers all 43 generated Universe Civilization: Empire at Wars page modules, the executable page-module function family, the secure action controller, and the canonical database schema contract.
 
 ## Integration results
 

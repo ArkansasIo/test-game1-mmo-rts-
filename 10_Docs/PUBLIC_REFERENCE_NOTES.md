@@ -1,9 +1,9 @@
-# Public StargateWars Reference Notes
+# Public Universe Civilization: Empire at Wars Reference Notes
 
 ## Sources reviewed
 
 1. [StarGateWars User Guide](https://stargatewars.fandom.com/wiki/StarGateWars_(User_Guide)) — public community guide reviewed on 2026-08-20.
-2. [StargateWars Wiki](https://stargatewars.fandom.com/wiki/StargateWars) — public game overview discovered through search.
+2. [Universe Civilization: Empire at Wars Wiki](https://stargatewars.fandom.com/wiki/Universe Civilization: Empire at Wars) — public game overview discovered through search.
 3. [Planet](https://stargatewars.fandom.com/wiki/Planet) — public planet-system reference discovered through search.
 4. [Mothership](https://stargatewars.fandom.com/wiki/Mothership) — public mothership-system reference discovered through search.
 5. [Ascension](https://stargatewars.fandom.com/wiki/Ascension) — public progression reference discovered through search.

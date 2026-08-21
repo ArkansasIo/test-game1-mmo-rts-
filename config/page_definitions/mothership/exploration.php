@@ -23,65 +23,72 @@ return array (
     'hero' => 'Exploration',
     'panels' => 
     array (
-      0 => 'Discovery range',
-      1 => 'System scan',
-      2 => 'Anomaly chance',
-      3 => 'Discovery rewards',
+      0 => 'Available expeditions',
+      1 => 'Distance and travel time',
+      2 => 'Biome rarity and yield',
+      3 => 'Discovery risk and mission result',
     ),
-    'formula' => 'discovery = exploration level + sensor bonus + anomaly rate − travel risk',
+    'formula' => 'exploration yield = distance × ship science × biome rarity',
     'controls' => 
     array (
-      0 => 'Explore system',
-      1 => 'Scan planet',
-      2 => 'Record discovery',
+      0 => 'Explore',
     ),
     'action' => 'explore',
     'tables' => 
     array (
       0 => 'motherships',
-      1 => 'universe_solar_systems',
-      2 => 'universe_planets',
-      3 => 'universe_moons',
-      4 => 'universe_discoveries',
+      1 => 'planet_explorations',
+      2 => 'universe_solar_systems',
+      3 => 'universe_planets',
+      4 => 'player_resources',
+      5 => 'player_cooldowns',
+      6 => 'game_events',
     ),
-    'permission' => 'authenticated commander with exploration capacity',
+    'permission' => 'authenticated commander with mothership readiness',
     'states' => 
     array (
       0 => 'ready',
-      1 => 'cooldown',
-      2 => 'success',
-      3 => 'error',
+      1 => 'protected',
+      2 => 'insufficient-resource',
+      3 => 'cooldown',
+      4 => 'success',
+      5 => 'error',
     ),
   ),
   'interaction' => 
   array (
     'page' => 'Exploration',
-    'purpose' => 'Explore systems, anomalies, planets, and discovery opportunities.',
+    'purpose' => 'Dispatch a ready mothership to a validated unoccupied universe planet.',
     'buttons' => 
     array (
       'Explore' => 
       array (
         'action' => 'explore',
-        'logic' => 'Validate mothership readiness, calculate travel, resolve anomaly, and write discovery or event result.',
-        'permission' => 'exploration-capable commander',
+        'logic' => 'Validate mothership ownership and hull readiness, lock the universe target, calculate distance × ship science × biome rarity, persist travel time and discovery risk, consume Naquadah, and record the result transactionally.',
+        'permission' => 'authenticated commander with mothership readiness',
         'reads' => 
         array (
           0 => 'motherships',
           1 => 'universe_solar_systems',
           2 => 'universe_planets',
-          3 => 'universe_discoveries',
+          3 => 'player_resources',
+          4 => 'player_cooldowns',
         ),
         'writes' => 
         array (
-          0 => 'universe_discoveries',
-          1 => 'game_events',
+          0 => 'planet_explorations',
+          1 => 'player_resources',
+          2 => 'player_cooldowns',
+          3 => 'game_events',
         ),
         'states' => 
         array (
           0 => 'ready',
-          1 => 'cooldown',
-          2 => 'success',
-          3 => 'error',
+          1 => 'protected',
+          2 => 'insufficient-resource',
+          3 => 'cooldown',
+          4 => 'success',
+          5 => 'error',
         ),
       ),
     ),

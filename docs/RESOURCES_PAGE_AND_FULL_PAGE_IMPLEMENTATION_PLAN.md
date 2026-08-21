@@ -1,8 +1,8 @@
-# StargateWars Resources & Vault and Full Page-System Implementation Plan
+# Universe Civilization: Empire at Wars Resources & Vault and Full Page-System Implementation Plan
 
 ## Goal
 
-Complete the Resources & Vault page and standardize the remaining StargateWars dashboard and sub-page surfaces so every route provides a coherent PHP-rendered experience with database-backed resource state, secure deposit and withdrawal actions, permission checks, game formulas, and consistent result feedback.
+Complete the Resources & Vault page and standardize the remaining Universe Civilization: Empire at Wars dashboard and sub-page surfaces so every route provides a coherent PHP-rendered experience with database-backed resource state, secure deposit and withdrawal actions, permission checks, game formulas, and consistent result feedback.
 
 ## Phase 1: Audit current resource and page contracts
 

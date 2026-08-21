@@ -1,4 +1,4 @@
-# StargateWars Validation Update
+# Universe Civilization: Empire at Wars Validation Update
 
 ## Stress-test results
 The bounded concurrent PHP load harness exercised all 43 registered route panels through both central `index.php?page=...` routes and nested PHP entrypoints. The run used 3 rounds, a 24-request concurrency batch, and 258 total requests. All 258 responses were successful: 129 central routes returned HTTP 200 and 129 nested entrypoints returned HTTP 302 redirects. Observed latency was 1.39 ms at p50, 3.90 ms at p95, and 3.91 ms maximum in the local runtime, with 11,414.4 requests per second measured by the harness. These figures are local-runtime smoke-test measurements, not production capacity claims.

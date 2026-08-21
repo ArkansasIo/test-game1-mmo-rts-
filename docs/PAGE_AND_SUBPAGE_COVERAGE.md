@@ -1,4 +1,4 @@
-# StargateWars Page and Sub-Page Coverage
+# Universe Civilization: Empire at Wars Page and Sub-Page Coverage
 
 This report is generated from the PHP route registry, page designs, and feature contracts.
 

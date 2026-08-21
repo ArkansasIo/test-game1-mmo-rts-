@@ -1,4 +1,4 @@
-# StargateWars Turn-Processing Operations
+# Universe Civilization: Empire at Wars Turn-Processing Operations
 
 The canonical job is `cron/process_turns.php`. The categorized entrypoint at `08_Cron/TurnProcessing/process_turns.php` delegates to the same implementation so both deployment paths use identical logic.
 

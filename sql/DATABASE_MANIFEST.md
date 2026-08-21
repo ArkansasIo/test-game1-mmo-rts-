@@ -1,4 +1,4 @@
-# StargateWars Database Manifest
+# Universe Civilization: Empire at Wars Database Manifest
 
 ## Canonical fresh installation
 

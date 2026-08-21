@@ -1,4 +1,4 @@
-# StargateWars Database Testing and Relationship Reference
+# Universe Civilization: Empire at Wars Database Testing and Relationship Reference
 
 ## 1. Database integrity testing strategy
 

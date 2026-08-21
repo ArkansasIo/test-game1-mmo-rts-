@@ -2,7 +2,7 @@
 
 ## Opening
 
-“Today I’ll walk through the new colony-management layer added to StargateWars. The design borrows familiar browser-strategy patterns while preserving the project’s server-authoritative PHP/MySQL architecture. The main addition is that each colony is now a living operating system: it produces resources, consumes food and water, grows population, builds infrastructure, and dispatches fleets.”
+“Today I’ll walk through the new colony-management layer added to Universe Civilization: Empire at Wars. The design borrows familiar browser-strategy patterns while preserving the project’s server-authoritative PHP/MySQL architecture. The main addition is that each colony is now a living operating system: it produces resources, consumes food and water, grows population, builds infrastructure, and dispatches fleets.”
 
 ## Slide 1 — Colony state is more than a resource number
 
@@ -38,4 +38,4 @@
 
 ## Closing
 
-“The colony layer extends StargateWars from a single-player-state game into a multi-location strategy system. Life support creates pressure, buildings create choices, research and shipyards create long-term progression, and fleets connect those decisions to the wider world. The next production step is to run the migration on MySQL, connect the dashboard forms to authenticated PHP actions, and schedule queue and mission settlement in the turn worker.”
+“The colony layer extends Universe Civilization: Empire at Wars from a single-player-state game into a multi-location strategy system. Life support creates pressure, buildings create choices, research and shipyards create long-term progression, and fleets connect those decisions to the wider world. The next production step is to run the migration on MySQL, connect the dashboard forms to authenticated PHP actions, and schedule queue and mission settlement in the turn worker.”

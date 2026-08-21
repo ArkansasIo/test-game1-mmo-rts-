@@ -1,4 +1,4 @@
-# StargateWars Dashboard, Pages, and Game Mechanics
+# Universe Civilization: Empire at Wars Dashboard, Pages, and Game Mechanics
 
 ## Shared page lifecycle
 

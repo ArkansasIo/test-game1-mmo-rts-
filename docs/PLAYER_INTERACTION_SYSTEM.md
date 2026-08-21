@@ -1,4 +1,4 @@
-# StargateWars Player Interaction System
+# Universe Civilization: Empire at Wars Player Interaction System
 
 ## Interaction model
 

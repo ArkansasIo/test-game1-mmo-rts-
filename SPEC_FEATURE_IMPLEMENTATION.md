@@ -1,4 +1,4 @@
-# StargateWars Specification Feature Implementation
+# Universe Civilization: Empire at Wars Specification Feature Implementation
 
 This document translates the attached reverse-engineered design into front-end states and server-side behavior. The formulas are historical reconstruction values and should be treated as configurable balance defaults rather than unquestionable production truth.
 

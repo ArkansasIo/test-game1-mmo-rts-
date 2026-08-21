@@ -87,24 +87,31 @@ return array (
       'Explore' => 
       array (
         'action' => 'explore',
-        'logic' => 'Dispatch mothership exploration mission.',
-        'permission' => 'mothership owner',
+        'logic' => 'Dispatch mothership exploration to a validated universe target and persist yield, travel, risk, cooldown, resource, and event state atomically.',
+        'permission' => 'mothership owner with hull readiness',
         'reads' => 
         array (
           0 => 'motherships',
           1 => 'universe_solar_systems',
+          2 => 'universe_planets',
+          3 => 'player_resources',
+          4 => 'player_cooldowns',
         ),
         'writes' => 
         array (
-          0 => 'universe_discoveries',
-          1 => 'game_events',
+          0 => 'planet_explorations',
+          1 => 'player_resources',
+          2 => 'player_cooldowns',
+          3 => 'game_events',
         ),
         'states' => 
         array (
           0 => 'ready',
-          1 => 'cooldown',
-          2 => 'success',
-          3 => 'error',
+          1 => 'protected',
+          2 => 'insufficient-resource',
+          3 => 'cooldown',
+          4 => 'success',
+          5 => 'error',
         ),
       ),
     ),

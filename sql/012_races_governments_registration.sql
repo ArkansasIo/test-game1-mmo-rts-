@@ -1,4 +1,4 @@
--- StargateWars registration factions and government systems.
+-- Universe Civilization: Empire at Wars registration factions and government systems.
 -- Apply after 011_full_gameplay_features.sql.
 
 CREATE TABLE IF NOT EXISTS government_types (
