@@ -13,9 +13,9 @@ final class TurnProcessorService
     public function run(?DateTimeImmutable $now = null, ?int $playerFilter = null, bool $dryRun = false): array
     {
         $now = $now ?? new DateTimeImmutable('now');
-        $turnInterval = $this->setting('turn_interval_seconds', 1800);
-        if ($turnInterval < 60) {
-            throw new RuntimeException('Turn interval must be at least 60 seconds.');
+        $turnInterval = $this->setting('turn_interval_seconds', 10);
+        if ($turnInterval < 1) {
+            throw new RuntimeException('Turn interval must be at least 1 second.');
         }
 
         $turnNumber = intdiv($now->getTimestamp(), $turnInterval);

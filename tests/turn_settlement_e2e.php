@@ -21,7 +21,7 @@ $txMax=(int)$pdo->query('SELECT COALESCE(MAX(id),0) FROM resource_transactions')
 $report=['status'=>'passed','checks'=>[],'result'=>null];
 $check=function(string $name,bool $ok,string $detail='')use(&$report){$report['checks'][]=['name'=>$name,'passed'=>$ok,'detail'=>$detail];if(!$ok)$report['status']='failed';};
 try{
-  $pdo->prepare('UPDATE players SET last_turn_at=?,defcon_level=0 WHERE id=?')->execute([(new DateTimeImmutable('now'))->modify('-'.($interval*2+5).' seconds')->format('Y-m-d H:i:s'),$player]);
+  $pdo->prepare('UPDATE players SET last_turn_at=?,defcon_level=0 WHERE id=?')->execute([(new DateTimeImmutable('now'))->modify('-'.max(3605,$interval*2+5).' seconds')->format('Y-m-d H:i:s'),$player]);
   $service=new GameService($pdo);$result=$service->processTurns($player);$report['result']=$result;
   $afterResources=$get('SELECT attack_turns,unit_production,untrained_units,miners,lifers,naquadah FROM player_resources WHERE player_id=?',[$player]);
   $afterPlayer=$get('SELECT last_turn_at FROM players WHERE id=?',[$player]);

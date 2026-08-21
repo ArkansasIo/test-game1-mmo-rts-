@@ -3,7 +3,7 @@ declare(strict_types=1);
 require_once __DIR__ . '/config.php';
 
 const DEFAULT_GAME_SETTINGS = [
-    'turn_interval_seconds' => 1800,
+    'turn_interval_seconds' => 10,
     'turn_generation_threshold' => 4000,
     'turn_max_storage' => 10000,
     'natural_income_untrained' => 20,

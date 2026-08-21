@@ -1,6 +1,6 @@
 # Universe Civilization: Empire at Wars
-# Run the authoritative turn processor at minute 0 and 30 of every hour.
+# Run the authoritative turn processor every minute; each run settles up to six ten-second ticks.
 # Install with: crontab cron/universe-civilization-turns.cron
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-*/30 * * * * cd /home/ubuntu/stargatewars && /usr/bin/php cron/process_turns.php --json >> storage/logs/turn-processing.cron.log 2>&1
+* * * * * cd /home/ubuntu/stargatewars && /usr/bin/php cron/process_turns.php --json >> storage/logs/turn-processing.cron.log 2>&1

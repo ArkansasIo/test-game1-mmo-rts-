@@ -14,7 +14,7 @@ try {
     $settings = $pdo->prepare('SELECT setting_value FROM game_settings WHERE setting_key=?');
     $settings->execute(['turn_interval_seconds']);
     $interval = (int)$settings->fetchColumn();
-    $check('30-minute interval configured', $interval === 1800, 'interval=' . $interval);
+    $check('six-ticks-per-minute interval configured', $interval === 10, 'interval=' . $interval . '; ticks_per_minute=' . intdiv(60, max(1, $interval)));
 
     $tables = [];
     foreach (['game_turns', 'turn_events', 'game_events'] as $table) {
@@ -25,7 +25,7 @@ try {
 
     $service = new TurnProcessorService($pdo);
     $summary = $service->run(new DateTimeImmutable('now'), null, true);
-    $check('dry run reports interval', (int)($summary['interval_seconds'] ?? 0) === 1800);
+    $check('dry run reports ten-second interval', (int)($summary['interval_seconds'] ?? 0) === 10);
     $check('dry run does not mutate players', (int)($summary['processed'] ?? -1) === 0);
     $check('dry run has no errors', empty($summary['errors'] ?? []));
 

@@ -23,7 +23,7 @@ final class GameService {
         try {
             $player=$this->player($playerId,true);
             $resources=$this->resources($playerId,true);
-            $interval=$this->setting('turn_interval_seconds',1800);
+            $interval=$this->setting('turn_interval_seconds',10);
             $threshold=$this->setting('turn_generation_threshold',4000);
             $max=$this->setting('turn_max_storage',10000);
             $last=$player['last_turn_at'] ? new DateTimeImmutable($player['last_turn_at']) : $now;
@@ -44,8 +44,9 @@ final class GameService {
             $this->pdo->prepare('UPDATE players SET last_turn_at=? WHERE id=?')->execute([$newLast,$playerId]);
             $this->event($playerId,'turn_processed',null,null,['turns'=>$turns,'due_intervals'=>$due,'income'=>$income,'untrained_units'=>$newUnits,'generation_applied'=>$generationApplied]);
             $this->pdo->commit();
-            $colonySettlement=(new EconomyService($this->pdo))->settlePlayerColonies($playerId,$due);
-            return ['turns'=>$turns,'income'=>$income,'due_intervals'=>$due,'untrained_units'=>$newUnits,'elapsed_seconds'=>$elapsed,'colony_settlement'=>$colonySettlement];
+            $settlementHours=intdiv($elapsed,3600);
+            $colonySettlement=$settlementHours>0?(new EconomyService($this->pdo))->settlePlayerColonies($playerId,min(168,$settlementHours)):[];
+            return ['turns'=>$turns,'income'=>$income,'due_intervals'=>$due,'untrained_units'=>$newUnits,'elapsed_seconds'=>$elapsed,'settlement_hours'=>$settlementHours,'colony_settlement'=>$colonySettlement];
         } catch(Throwable $e){if($this->pdo->inTransaction())$this->pdo->rollBack();throw $e;}
     }
     public function deposit(int $playerId,int $amount):void{$this->moveBank($playerId,$amount,true);}
