@@ -36,6 +36,7 @@ require_once __DIR__ . '/../includes/services/EmpireOperationsService.php';
 require_once __DIR__ . '/../includes/services/DesignCatalogService.php';
 require_once __DIR__ . '/../includes/services/CombatFleetService.php';
 require_once __DIR__ . '/../includes/services/EspionageScanningService.php';
+require_once __DIR__ . '/../includes/services/SettlementConstructionService.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') { http_response_code(405); exit('POST required'); }
 verify_csrf();
@@ -75,6 +76,10 @@ try {
         case 'combat:raid': $combatType=$action==='combat:raid'?'raid':(string)($_POST['combat_type']??'attack'); $result=(new CombatFleetService(db()))->resolveCombat((int)$user['id'],(int)$_POST['target_id'],$combatType,['turns'=>(int)($_POST['turns']??1)]); $_SESSION['combat_result']=$result; $_SESSION['flash']='Battle resolved: '.($result['winner_id']===(int)$user['id']?'victory':'defeat').' after '.$result['rounds_fought'].' rounds.'; break;
         case 'fleet_move': $fleet=(new CombatFleetService(db()))->moveFleet((int)$user['id'],(int)$_POST['source_colony_id'],(int)$_POST['target_colony_id'],(string)($_POST['mission_type']??'transport'),json_decode((string)($_POST['units_json']??'{}'),true) ?: [],json_decode((string)($_POST['cargo_json']??'{}'),true) ?: []); $_SESSION['fleet_result']=$fleet; $_SESSION['flash']='Fleet mission #'.$fleet['mission_id'].' departed; arrival in '.$fleet['travel_seconds'].' seconds.'; break;
         case 'fleet_process_arrivals': $arrivals=(new CombatFleetService(db()))->processArrivals(); $_SESSION['fleet_arrivals']=$arrivals; $_SESSION['flash']='Processed '.$arrivals['processed'].' fleet arrivals.'; break;
+        case 'settlement_state': $settlement=(new SettlementConstructionService(db()))->state((int)$user['id'],(int)$_POST['colony_id']); $_SESSION['settlement_state']=$settlement; $_SESSION['flash']='Settlement power and building state refreshed.'; break;
+        case 'settlement_build': $settlement=(new SettlementConstructionService(db()))->construct((int)$user['id'],(int)$_POST['colony_id'],(int)$_POST['field_index'],(string)$_POST['building_key']); $_SESSION['settlement_result']=$settlement; $_SESSION['flash']='Construction queued for '.$settlement['building_key'].' level '.$settlement['level_after'].'.'; break;
+        case 'settlement_process': $settlement=(new SettlementConstructionService(db()))->processDue(); $_SESSION['settlement_result']=$settlement; $_SESSION['flash']='Completed '.$settlement['count'].' settlement construction queue item(s).'; break;
+        case 'settlement_demolish': $settlement=(new SettlementConstructionService(db()))->demolish((int)$user['id'],(int)$_POST['colony_id'],(int)$_POST['field_index']); $_SESSION['settlement_result']=$settlement; $_SESSION['flash']='Settlement field '.$settlement['field_index'].' demolished.'; break;
         case 'covert':
         case 'covert:recon':
         case 'covert:spy':
