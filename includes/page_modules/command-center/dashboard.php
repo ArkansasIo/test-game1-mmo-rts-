@@ -17,3 +17,7 @@ function stargatewars_command_center_dashboard_validate_intent(array $input): ar
 function stargatewars_command_center_dashboard_preview(array $context = []): array {
     return ['route' => 'dashboard', 'title' => 'Command Center', 'logic' => stargatewars_command_center_dashboard_logic(), 'features' => stargatewars_command_center_dashboard_features(), 'design' => stargatewars_command_center_dashboard_design(), 'systems' => stargatewars_command_center_dashboard_systems(), 'context' => $context];
 }
+
+function stargatewars_command_center_dashboard_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/command-center/dashboard.php'; }
+function stargatewars_command_center_dashboard_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/command-center/dashboard.php'; }
+function stargatewars_command_center_dashboard_state_transitions(): array { return stargatewars_command_center_dashboard_logic()['state_transitions'] ?? []; }

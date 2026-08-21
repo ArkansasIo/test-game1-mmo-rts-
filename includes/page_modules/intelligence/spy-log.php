@@ -17,3 +17,7 @@ function stargatewars_intelligence_spy_log_validate_intent(array $input): array 
 function stargatewars_intelligence_spy_log_preview(array $context = []): array {
     return ['route' => 'spy-log', 'title' => 'Spy Log', 'logic' => stargatewars_intelligence_spy_log_logic(), 'features' => stargatewars_intelligence_spy_log_features(), 'design' => stargatewars_intelligence_spy_log_design(), 'systems' => stargatewars_intelligence_spy_log_systems(), 'context' => $context];
 }
+
+function stargatewars_intelligence_spy_log_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/intelligence/spy-log.php'; }
+function stargatewars_intelligence_spy_log_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/intelligence/spy-log.php'; }
+function stargatewars_intelligence_spy_log_state_transitions(): array { return stargatewars_intelligence_spy_log_logic()['state_transitions'] ?? []; }

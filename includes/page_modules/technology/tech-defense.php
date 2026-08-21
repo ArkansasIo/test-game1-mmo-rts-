@@ -17,3 +17,7 @@ function stargatewars_technology_tech_defense_validate_intent(array $input): arr
 function stargatewars_technology_tech_defense_preview(array $context = []): array {
     return ['route' => 'tech-defense', 'title' => 'Defense Technology', 'logic' => stargatewars_technology_tech_defense_logic(), 'features' => stargatewars_technology_tech_defense_features(), 'design' => stargatewars_technology_tech_defense_design(), 'systems' => stargatewars_technology_tech_defense_systems(), 'context' => $context];
 }
+
+function stargatewars_technology_tech_defense_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/technology/tech-defense.php'; }
+function stargatewars_technology_tech_defense_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/technology/tech-defense.php'; }
+function stargatewars_technology_tech_defense_state_transitions(): array { return stargatewars_technology_tech_defense_logic()['state_transitions'] ?? []; }

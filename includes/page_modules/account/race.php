@@ -17,3 +17,7 @@ function stargatewars_account_race_validate_intent(array $input): array {
 function stargatewars_account_race_preview(array $context = []): array {
     return ['route' => 'race', 'title' => 'Race Selection', 'logic' => stargatewars_account_race_logic(), 'features' => stargatewars_account_race_features(), 'design' => stargatewars_account_race_design(), 'systems' => stargatewars_account_race_systems(), 'context' => $context];
 }
+
+function stargatewars_account_race_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/account/race.php'; }
+function stargatewars_account_race_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/account/race.php'; }
+function stargatewars_account_race_state_transitions(): array { return stargatewars_account_race_logic()['state_transitions'] ?? []; }

@@ -17,3 +17,7 @@ function stargatewars_universe_solar_systems_validate_intent(array $input): arra
 function stargatewars_universe_solar_systems_preview(array $context = []): array {
     return ['route' => 'solar-systems', 'title' => 'Solar Systems', 'logic' => stargatewars_universe_solar_systems_logic(), 'features' => stargatewars_universe_solar_systems_features(), 'design' => stargatewars_universe_solar_systems_design(), 'systems' => stargatewars_universe_solar_systems_systems(), 'context' => $context];
 }
+
+function stargatewars_universe_solar_systems_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/universe/solar-systems.php'; }
+function stargatewars_universe_solar_systems_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/universe/solar-systems.php'; }
+function stargatewars_universe_solar_systems_state_transitions(): array { return stargatewars_universe_solar_systems_logic()['state_transitions'] ?? []; }

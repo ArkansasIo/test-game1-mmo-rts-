@@ -17,3 +17,7 @@ function stargatewars_technology_tech_offense_validate_intent(array $input): arr
 function stargatewars_technology_tech_offense_preview(array $context = []): array {
     return ['route' => 'tech-offense', 'title' => 'Offense Technology', 'logic' => stargatewars_technology_tech_offense_logic(), 'features' => stargatewars_technology_tech_offense_features(), 'design' => stargatewars_technology_tech_offense_design(), 'systems' => stargatewars_technology_tech_offense_systems(), 'context' => $context];
 }
+
+function stargatewars_technology_tech_offense_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/technology/tech-offense.php'; }
+function stargatewars_technology_tech_offense_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/technology/tech-offense.php'; }
+function stargatewars_technology_tech_offense_state_transitions(): array { return stargatewars_technology_tech_offense_logic()['state_transitions'] ?? []; }

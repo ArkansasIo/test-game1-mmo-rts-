@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-08-21T00:12:52+00:00",
+    "generated_at": "2026-08-21T00:27:40+00:00",
     "groups": 12,
     "routes": 43,
     "complete_routes": 43,
@@ -7,8 +7,8 @@
     "support_files": {
         "php_pages": 24,
         "services": 38,
-        "sql_migrations": 40,
-        "tests": 41
+        "sql_migrations": 41,
+        "tests": 42
     },
     "rows": [
         {
@@ -1526,7 +1526,9 @@
                 "universe_galaxies",
                 "universe_sectors",
                 "universe_solar_systems",
-                "universe_planets"
+                "universe_planets",
+                "universe_discoveries",
+                "player_colonies"
             ],
             "feedback_states": [],
             "paths": {

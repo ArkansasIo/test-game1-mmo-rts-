@@ -14,6 +14,7 @@ require_once __DIR__ . '/../includes/services/PlanetDefenseService.php';
 require_once __DIR__ . '/../includes/services/MothershipService.php';
 require_once __DIR__ . '/../includes/services/MothershipExplorationService.php';
 require_once __DIR__ . '/../includes/services/WorldService.php';
+require_once __DIR__ . '/../includes/services/ProceduralUniverseService.php';
 require_once __DIR__ . '/../includes/services/OGameService.php';
 require_once __DIR__ . '/../includes/services/MMORPGService.php';
 require_once __DIR__ . '/../includes/services/GameFeatureService.php';
@@ -31,6 +32,8 @@ require_once __DIR__ . '/../includes/services/OffenseTechnologyService.php';
 require_once __DIR__ . '/../includes/services/CovertTechnologyService.php';
 require_once __DIR__ . '/../includes/services/AntiCovertTechnologyService.php';
 require_once __DIR__ . '/../includes/services/SpyLogService.php';
+require_once __DIR__ . '/../includes/services/EmpireOperationsService.php';
+require_once __DIR__ . '/../includes/services/DesignCatalogService.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') { http_response_code(405); exit('POST required'); }
 verify_csrf();
@@ -38,6 +41,8 @@ function classify_feedback(Throwable $e): string { $message=strtolower($e->getMe
 $user=current_user(); $service=new GameService(); $action=(string)($_POST['action']??''); $requestedRedirect=(string)($_POST['redirect']??'dashboard'); $allowedRedirects=['dashboard','resources','income','military-stats','account-info','race','units','miners','unit-production','technology','targets','spy','sabotage','attack-log','weapons','weapon-market','repair','mothership','ship','modules','planet-list','planet-bonuses','planet-defenses','exploration','alliances','messages','resource-exchange','mercenary-market','rankings','vacation','ascension','colonies','food-water','population','resource-buildings','life-support','shipyard','defense-grid','research','navigation','energy','fleet-overview','missions','mission-log','events','event-history','galaxies','sectors','solar-systems','universe-planets','moons','coordinates']; $redirect=in_array($requestedRedirect,$allowedRedirects,true)?$requestedRedirect:'dashboard';
 try {
     switch ($action) {
+        case 'read_design_catalog': $catalogService=new DesignCatalogService(db()); $catalogType=(string)($_POST['catalog_type']??'resources'); $catalogResult=$catalogService->all($catalogType); $_SESSION['design_catalog']=$catalogResult; $_SESSION['flash']='Design catalog refreshed.'; break;
+        case 'read_formula': $catalogService=new DesignCatalogService(db()); $formula=$catalogService->formula((string)($_POST['formula_key']??'')); if(!$formula) throw new InvalidArgumentException('Formula not found.'); $_SESSION['design_formula']=$formula; $_SESSION['flash']='Formula definition loaded.'; break;
         case 'process_turns': $result=$service->processTurns((int)$user['id']); $_SESSION['flash']='Processed '.$result['turns'].' turns and generated '.number_format($result['income']).' Naquadah.'; break;
         case 'read_income_breakdown': $result=(new EconomyService(db()))->incomeBreakdown((int)$user['id']); $_SESSION['income_breakdown']=$result; $_SESSION['flash']='Income breakdown refreshed.'; break;
         case 'read_colony_comparison': $result=(new EconomyService(db()))->colonyComparison((int)$user['id']); $_SESSION['colony_comparison']=$result; $_SESSION['flash']='Colony comparison refreshed for '.count($result).' colonies.'; break;
@@ -70,16 +75,19 @@ try {
         case 'covert:recon':
         case 'covert:spy':
         case 'covert:sabotage': $missionType=$action==='covert:recon'?'recon':($action==='covert:spy'?'spy':($action==='covert:sabotage'?'sabotage':(string)$_POST['mission_type'])); $result=$service->covertMission((int)$user['id'],(int)$_POST['target_id'],$missionType,(int)$_POST['agents']); $_SESSION['flash']=$result['result']; break;
+        case 'universe_scan': $universe=(new ProceduralUniverseService(db()))->scan((int)$user['id'],(int)$_POST['galaxy'],(int)$_POST['sector'],(int)$_POST['system'],(int)($_POST['orbit']??0)); $_SESSION['procedural_universe']=$universe; $_SESSION['flash']='Universe scan completed for '.(int)$_POST['galaxy'].':'.(int)$_POST['sector'].':'.(int)$_POST['system'].':'.(int)($_POST['orbit']??0).'.'; break;
+        case 'universe_explore': $universe=(new ProceduralUniverseService(db()))->explore((int)$user['id'],(int)$_POST['galaxy'],(int)$_POST['sector'],(int)$_POST['system'],(int)$_POST['orbit']); $_SESSION['procedural_universe_exploration']=$universe; $_SESSION['flash']=$universe['message'] ?? 'Universe exploration completed.'; break;
+        case 'universe_claim': $universe=(new ProceduralUniverseService(db()))->claim((int)$user['id'],(string)$_POST['entity_key'],(string)$_POST['ownership_type']); $_SESSION['procedural_universe_claim']=$universe; $_SESSION['flash']=$universe['message'] ?? 'Universe claim processed.'; break;
         case 'explore': if(isset($_POST['system_id'])){$result=(new WorldService(db()))->exploreAnomaly((int)$user['id'],(int)$_POST['system_id']);$_SESSION['solar_system_exploration']=$result;$_SESSION['flash']='Anomaly discovery completed in system #'.(int)$_POST['system_id'].'.';} elseif(isset($_POST['universe_planet_id'])){$exploration=(new MothershipExplorationService(db()))->explore((int)$user['id'],(int)$_POST['universe_planet_id']);$_SESSION['mothership_exploration']=$exploration;$_SESSION['flash']='Mothership exploration completed #'.$exploration['exploration_id'].' at '.($exploration['target']??'target').'.';}else{$exploration=(new PlanetService(db()))->explore((int)$user['id'],(string)$_POST['name'],(string)$_POST['planet_type']);$_SESSION['planet_exploration']=$exploration;$_SESSION['flash']='Planet exploration completed #'.$exploration['exploration_id'].'.';} break;
         case 'colonize_planet': $colony=(new PlanetService(db()))->colonize((int)$user['id'],(int)$_POST['planet_id'],(string)$_POST['colony_name']); $_SESSION['planet_colonization']=$colony; $_SESSION['flash']='Colony established #'.$colony['colony_id'].'.'; break;
         case 'planet_defense': $defense=(new PlanetDefenseService(db()))->upgrade((int)$user['id'],(int)$_POST['planet_id'],(string)$_POST['defense_type']); $_SESSION['planet_defense']=$defense; $_SESSION['flash']='Planet defense queued at level '.$defense['level_after'].'.'; break;
         case 'alliance_create': $allianceId=(new AllianceService(db()))->create((int)$user['id'],(string)$_POST['name'],(string)$_POST['tag'],(string)($_POST['description']??'')); $_SESSION['flash']='Alliance created #'.$allianceId.'.'; break;
         case 'alliance_join': $membership=(new AllianceService(db()))->join((int)$user['id'],(int)$_POST['alliance_id']); $_SESSION['flash']='Joined alliance '.$membership['name'].' ('.$membership['member_count'].'/'.$membership['capacity'].').'; break;
         case 'message': $messageId=(new MessagingService(db()))->send((int)$user['id'],(int)$_POST['recipient_id'],(string)$_POST['subject'],(string)$_POST['body']); $_SESSION['flash']='Message sent #'.$messageId.'.'; break;
+        case 'blacklist': (new MessagingService(db()))->blacklist((int)$user['id'],(int)$_POST['blocked_player_id'],(string)($_POST['reason']??'')); $_SESSION['flash']='Commander blocked.'; break;
         case 'market_list': if(isset($_POST['resource_type'])){$orderId=(new ResourceMarketService(db()))->listOrder((int)$user['id'],(string)$_POST['resource_type'],(int)$_POST['quantity'],(int)$_POST['unit_price'],(int)($_POST['expiry_hours']??72));$_SESSION['flash']='Resource market order listed #'.$orderId.'.';}else{$orderId=(new WeaponMarketService(db()))->listWeaponOrder((int)$user['id'],(int)$_POST['weapon_type_id'],(int)$_POST['quantity'],(int)$_POST['unit_price'],(int)($_POST['expiry_hours']??72));$_SESSION['flash']='Weapon market order listed #'.$orderId.'.';} break;
         case 'market_buy': if(isset($_POST['resource_type'])||isset($_POST['resource_market'])){$trade=(new ResourceMarketService(db()))->buyOrder((int)$user['id'],(int)$_POST['order_id'],(int)$_POST['quantity']);$_SESSION['flash']='Purchased '.number_format($trade['quantity']).' '.$trade['resource_type'].' for '.number_format($trade['gross_amount']).' Naquadah; fee '.number_format($trade['fee_amount']).'.';}else{$trade=(new WeaponMarketService(db()))->buyWeaponOrder((int)$user['id'],(int)$_POST['order_id'],(int)$_POST['quantity']);$_SESSION['flash']='Purchased '.number_format($trade['quantity']).' '.$trade['weapon_name'].' for '.number_format($trade['gross_amount']).' Naquadah; fee '.number_format($trade['fee_amount']).'.';} break;
         case 'legacy_message_read': if(isset($_POST['report_id'])){ (new SpyLogService(db()))->markRead((int)$user['id'],(int)$_POST['report_id']); $_SESSION['flash']='Intelligence report marked read.'; } else { (new MessagingService(db()))->markRead((int)$user['id'],(int)$_POST['message_id']); $_SESSION['flash']='Message marked read.'; } break;
-        case 'blacklist': (new MessagingService(db()))->blacklist((int)$user['id'],(int)$_POST['blocked_player_id'],(string)($_POST['reason']??'')); $_SESSION['flash']='Player blacklisted.'; break;
         case 'system_map': $_SESSION['solar_systems']=(new WorldService(db()))->solarSystemSnapshot((int)$user['id'],(int)$_POST['system_id']); $_SESSION['flash']='Solar system map loaded.'; break;
         case 'moon_details': $_SESSION['moon_details']=(new WorldService(db()))->moonRegistrySnapshot((int)$user['id'],(int)$_POST['moon_id']); $_SESSION['flash']='Moon inspection refreshed.'; break;
         case 'planet_details': $_SESSION['planet_details']=(new WorldService(db()))->getPlanetDetails((int)$_POST['planet_id']); $_SESSION['flash']='Planet inspection loaded.'; break;
@@ -99,12 +107,15 @@ try {
         case 'add_experience': $progress=(new MMORPGService(db()))->addExperience((int)$user['id'],(int)$_POST['amount']); $_SESSION['flash']='Progression updated to level '.$progress['level'].'.'; break;
         case 'diplomacy_propose': $id=(new MMORPGService(db()))->proposeDiplomacy((int)$_POST['world_id'],(int)$user['id'],(int)$_POST['target_player_id'],trim((string)$_POST['relation_type'])); $_SESSION['flash']='Diplomatic proposal created #'.$id.'.'; break;
         case 'trade_create': $id=(new MMORPGService(db()))->createTrade((int)$_POST['world_id'],(int)$user['id'],(int)$_POST['buyer_player_id'],trim((string)$_POST['resource_key']),(int)$_POST['quantity'],(int)$_POST['unit_price']); $_SESSION['flash']='Trade contract created #'.$id.'.'; break;
-        case 'notification_read': db()->prepare('UPDATE player_notifications SET is_read=1 WHERE id=? AND player_id=?')->execute([(int)$_POST['notification_id'],(int)$user['id']]); $_SESSION['flash']='Notification marked read.'; break;
+        case 'notification_read': (new EmpireOperationsService(db()))->markNotificationRead((int)$user['id'],(int)$_POST['notification_id']); $_SESSION['flash']='Notification marked read.'; break;
+        case 'expedition_resolve': $expedition=(new EmpireOperationsService(db()))->resolveExpedition((int)$user['id'],(int)$_POST['mission_id']); $_SESSION['empire_operations']=$expedition; $_SESSION['flash']='Expedition resolved: '.$expedition['outcome'].'.'; break;
+        case 'quest_start': $quest=(new EmpireOperationsService(db()))->startQuest((int)$user['id'],(int)$_POST['quest_id']); $_SESSION['empire_operations']=$quest; $_SESSION['flash']='Quest started.'; break;
+        case 'quest_claim': $quest=(new EmpireOperationsService(db()))->claimQuest((int)$user['id'],(int)$_POST['quest_id']); $_SESSION['empire_operations']=$quest; $_SESSION['flash']='Quest reward claimed.'; break;
         default: throw new InvalidArgumentException('Unknown game action');
     }
     $readActions=['read_income_breakdown','read_colony_comparison','read_military_stats','read_target_board','read_covert_state','covert_preview','sabotage_preview','combat_preview','read_weapon_inventory','inspect_durability','system_map'];
     $_SESSION['feedback_state']=in_array($action,$readActions,true)?'ready':'success';
     unset($_SESSION['error']);
-} catch (Throwable $e) { $_SESSION['feedback_state']=classify_feedback($e); $_SESSION['error']='Action could not be completed.'; $_SESSION['feedback_detail']=$e->getMessage(); }
-header('Location: ../index.php?page='.rawurlencode($redirect)); exit;
+} catch (Throwable $e) { $_SESSION['feedback_state']=classify_feedback($e); $_SESSION['error']='Action could not be completed.'; error_log('[game-action] player='.(int)$user['id'].' action='.$action.' error='.$e->getMessage()); }
+header('Location: ../game.php?page='.rawurlencode($redirect)); exit;
 ?>

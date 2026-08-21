@@ -1,0 +1,22 @@
+sequenceDiagram
+    actor Commander
+    participant Browser
+    participant Action as actions/game.php
+    participant Service as Domain Service
+    participant DB as MariaDB/MySQL
+    participant Events as game_events
+
+    Commander->>Browser: Submit intent with CSRF field
+    Browser->>Action: POST action and validated identifiers
+    Action->>Action: Authenticate and verify CSRF/RBAC
+    Action->>Service: Delegate player-scoped mutation
+    Service->>DB: BEGIN transaction
+    Service->>DB: Lock ownership, resources, queue, and cooldown rows
+    Service->>Service: Validate prerequisites and calculate authoritative result
+    Service->>DB: Update domain rows
+    Service->>Events: Write audit/game event
+    Events->>DB: Insert event in same transaction
+    Service->>DB: COMMIT
+    Service-->>Action: Result and safe feedback
+    Action-->>Browser: Redirect or refreshed state
+    Browser-->>Commander: Render success, error, or protected state

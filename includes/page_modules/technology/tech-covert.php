@@ -17,3 +17,7 @@ function stargatewars_technology_tech_covert_validate_intent(array $input): arra
 function stargatewars_technology_tech_covert_preview(array $context = []): array {
     return ['route' => 'tech-covert', 'title' => 'Covert Technology', 'logic' => stargatewars_technology_tech_covert_logic(), 'features' => stargatewars_technology_tech_covert_features(), 'design' => stargatewars_technology_tech_covert_design(), 'systems' => stargatewars_technology_tech_covert_systems(), 'context' => $context];
 }
+
+function stargatewars_technology_tech_covert_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/technology/tech-covert.php'; }
+function stargatewars_technology_tech_covert_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/technology/tech-covert.php'; }
+function stargatewars_technology_tech_covert_state_transitions(): array { return stargatewars_technology_tech_covert_logic()['state_transitions'] ?? []; }

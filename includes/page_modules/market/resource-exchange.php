@@ -17,3 +17,7 @@ function stargatewars_market_resource_exchange_validate_intent(array $input): ar
 function stargatewars_market_resource_exchange_preview(array $context = []): array {
     return ['route' => 'resource-exchange', 'title' => 'Resource Exchange', 'logic' => stargatewars_market_resource_exchange_logic(), 'features' => stargatewars_market_resource_exchange_features(), 'design' => stargatewars_market_resource_exchange_design(), 'systems' => stargatewars_market_resource_exchange_systems(), 'context' => $context];
 }
+
+function stargatewars_market_resource_exchange_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/market/resource-exchange.php'; }
+function stargatewars_market_resource_exchange_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/market/resource-exchange.php'; }
+function stargatewars_market_resource_exchange_state_transitions(): array { return stargatewars_market_resource_exchange_logic()['state_transitions'] ?? []; }

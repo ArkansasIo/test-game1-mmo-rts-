@@ -25,7 +25,7 @@ function verify_csrf(): void {
     }
 }
 function current_user(): ?array { return $_SESSION['user'] ?? null; }
-function require_guest(): void { if (current_user()) { header('Location: index.php'); exit; } }
+function require_guest(): void { if (current_user()) { header('Location: game.php'); exit; } }
 function require_auth(): void { if (!current_user()) { header('Location: login.php'); exit; } }
 function route_min_rank(string $route): int {
     return ['sabotage'=>2,'alliances'=>2,'modules'=>2,'ascension'=>3,'planet-conquest'=>2,'black-market'=>2][$route] ?? 1;

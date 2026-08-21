@@ -17,3 +17,7 @@ function stargatewars_attack_attack_log_validate_intent(array $input): array {
 function stargatewars_attack_attack_log_preview(array $context = []): array {
     return ['route' => 'attack-log', 'title' => 'Attack Log & Reports', 'logic' => stargatewars_attack_attack_log_logic(), 'features' => stargatewars_attack_attack_log_features(), 'design' => stargatewars_attack_attack_log_design(), 'systems' => stargatewars_attack_attack_log_systems(), 'context' => $context];
 }
+
+function stargatewars_attack_attack_log_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/attack/attack-log.php'; }
+function stargatewars_attack_attack_log_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/attack/attack-log.php'; }
+function stargatewars_attack_attack_log_state_transitions(): array { return stargatewars_attack_attack_log_logic()['state_transitions'] ?? []; }

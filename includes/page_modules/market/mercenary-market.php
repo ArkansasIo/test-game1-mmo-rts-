@@ -17,3 +17,7 @@ function stargatewars_market_mercenary_market_validate_intent(array $input): arr
 function stargatewars_market_mercenary_market_preview(array $context = []): array {
     return ['route' => 'mercenary-market', 'title' => 'Mercenary Market', 'logic' => stargatewars_market_mercenary_market_logic(), 'features' => stargatewars_market_mercenary_market_features(), 'design' => stargatewars_market_mercenary_market_design(), 'systems' => stargatewars_market_mercenary_market_systems(), 'context' => $context];
 }
+
+function stargatewars_market_mercenary_market_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/market/mercenary-market.php'; }
+function stargatewars_market_mercenary_market_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/market/mercenary-market.php'; }
+function stargatewars_market_mercenary_market_state_transitions(): array { return stargatewars_market_mercenary_market_logic()['state_transitions'] ?? []; }

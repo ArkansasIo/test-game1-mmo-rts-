@@ -17,3 +17,7 @@ function stargatewars_universe_universe_planets_validate_intent(array $input): a
 function stargatewars_universe_universe_planets_preview(array $context = []): array {
     return ['route' => 'universe-planets', 'title' => 'Universe Planets', 'logic' => stargatewars_universe_universe_planets_logic(), 'features' => stargatewars_universe_universe_planets_features(), 'design' => stargatewars_universe_universe_planets_design(), 'systems' => stargatewars_universe_universe_planets_systems(), 'context' => $context];
 }
+
+function stargatewars_universe_universe_planets_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/universe/universe-planets.php'; }
+function stargatewars_universe_universe_planets_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/universe/universe-planets.php'; }
+function stargatewars_universe_universe_planets_state_transitions(): array { return stargatewars_universe_universe_planets_logic()['state_transitions'] ?? []; }

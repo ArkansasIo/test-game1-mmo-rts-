@@ -17,3 +17,7 @@ function stargatewars_mothership_ship_validate_intent(array $input): array {
 function stargatewars_mothership_ship_preview(array $context = []): array {
     return ['route' => 'ship', 'title' => 'Mothership', 'logic' => stargatewars_mothership_ship_logic(), 'features' => stargatewars_mothership_ship_features(), 'design' => stargatewars_mothership_ship_design(), 'systems' => stargatewars_mothership_ship_systems(), 'context' => $context];
 }
+
+function stargatewars_mothership_ship_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/mothership/ship.php'; }
+function stargatewars_mothership_ship_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/mothership/ship.php'; }
+function stargatewars_mothership_ship_state_transitions(): array { return stargatewars_mothership_ship_logic()['state_transitions'] ?? []; }

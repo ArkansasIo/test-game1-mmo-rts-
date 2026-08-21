@@ -17,3 +17,7 @@ function stargatewars_mothership_modules_validate_intent(array $input): array {
 function stargatewars_mothership_modules_preview(array $context = []): array {
     return ['route' => 'modules', 'title' => 'Mothership Modules', 'logic' => stargatewars_mothership_modules_logic(), 'features' => stargatewars_mothership_modules_features(), 'design' => stargatewars_mothership_modules_design(), 'systems' => stargatewars_mothership_modules_systems(), 'context' => $context];
 }
+
+function stargatewars_mothership_modules_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/mothership/modules.php'; }
+function stargatewars_mothership_modules_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/mothership/modules.php'; }
+function stargatewars_mothership_modules_state_transitions(): array { return stargatewars_mothership_modules_logic()['state_transitions'] ?? []; }

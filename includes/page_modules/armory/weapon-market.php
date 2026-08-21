@@ -17,3 +17,7 @@ function stargatewars_armory_weapon_market_validate_intent(array $input): array 
 function stargatewars_armory_weapon_market_preview(array $context = []): array {
     return ['route' => 'weapon-market', 'title' => 'Weapon Market', 'logic' => stargatewars_armory_weapon_market_logic(), 'features' => stargatewars_armory_weapon_market_features(), 'design' => stargatewars_armory_weapon_market_design(), 'systems' => stargatewars_armory_weapon_market_systems(), 'context' => $context];
 }
+
+function stargatewars_armory_weapon_market_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/armory/weapon-market.php'; }
+function stargatewars_armory_weapon_market_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/armory/weapon-market.php'; }
+function stargatewars_armory_weapon_market_state_transitions(): array { return stargatewars_armory_weapon_market_logic()['state_transitions'] ?? []; }

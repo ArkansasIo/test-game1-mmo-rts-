@@ -1,6 +1,6 @@
 # Dedicated PHP Page Entrypoints
 
-Every route in the left navigation has a corresponding PHP file in this directory. The files are stable entrypoints that redirect to the authenticated front controller at `index.php?page=...`, preserving the shared sidebar, RBAC, CSRF-aware forms, flash notices, and database loading.
+Every route in the left navigation has a corresponding PHP file in this directory. The files are stable entrypoints that redirect to the authenticated front controller at `game.php?page=...`, preserving the shared sidebar, RBAC, CSRF-aware forms, flash notices, and database loading.
 
 ## Route groups
 
@@ -14,4 +14,4 @@ Every route in the left navigation has a corresponding PHP file in this director
 | Social and Economy | `alliances.php`, `messages.php`, `resource-exchange.php`, `mercenary-market.php`, `rankings.php` |
 | Account and Progression | `vacation.php`, `ascension.php` |
 
-The `planets.php` and `ship.php` files are convenience aliases for the corresponding navigation modules. Route-specific rendering remains in `index.php`, so the visual design and authorization rules stay consistent across every page.
+The `planets.php` and `ship.php` files are convenience aliases for the corresponding navigation modules. Route-specific rendering remains in `game.php`, so the visual design and authorization rules stay consistent across every page.

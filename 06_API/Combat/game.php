@@ -38,5 +38,5 @@ try {
         default: throw new InvalidArgumentException('Unknown game action');
     }
 } catch (Throwable $e) { $_SESSION['error']=$e->getMessage(); }
-header('Location: ../index.php?page='.rawurlencode($redirect)); exit;
+header('Location: ../game.php?page='.rawurlencode($redirect)); exit;
 ?>

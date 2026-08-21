@@ -17,3 +17,7 @@ function stargatewars_planets_planet_list_validate_intent(array $input): array {
 function stargatewars_planets_planet_list_preview(array $context = []): array {
     return ['route' => 'planet-list', 'title' => 'Planet List', 'logic' => stargatewars_planets_planet_list_logic(), 'features' => stargatewars_planets_planet_list_features(), 'design' => stargatewars_planets_planet_list_design(), 'systems' => stargatewars_planets_planet_list_systems(), 'context' => $context];
 }
+
+function stargatewars_planets_planet_list_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/planets/planet-list.php'; }
+function stargatewars_planets_planet_list_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/planets/planet-list.php'; }
+function stargatewars_planets_planet_list_state_transitions(): array { return stargatewars_planets_planet_list_logic()['state_transitions'] ?? []; }

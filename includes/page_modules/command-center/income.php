@@ -17,3 +17,7 @@ function stargatewars_command_center_income_validate_intent(array $input): array
 function stargatewars_command_center_income_preview(array $context = []): array {
     return ['route' => 'income', 'title' => 'Income Breakdown', 'logic' => stargatewars_command_center_income_logic(), 'features' => stargatewars_command_center_income_features(), 'design' => stargatewars_command_center_income_design(), 'systems' => stargatewars_command_center_income_systems(), 'context' => $context];
 }
+
+function stargatewars_command_center_income_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/command-center/income.php'; }
+function stargatewars_command_center_income_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/command-center/income.php'; }
+function stargatewars_command_center_income_state_transitions(): array { return stargatewars_command_center_income_logic()['state_transitions'] ?? []; }

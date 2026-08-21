@@ -17,3 +17,7 @@ function stargatewars_training_super_units_validate_intent(array $input): array 
 function stargatewars_training_super_units_preview(array $context = []): array {
     return ['route' => 'super-units', 'title' => 'Super Units', 'logic' => stargatewars_training_super_units_logic(), 'features' => stargatewars_training_super_units_features(), 'design' => stargatewars_training_super_units_design(), 'systems' => stargatewars_training_super_units_systems(), 'context' => $context];
 }
+
+function stargatewars_training_super_units_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/training/super-units.php'; }
+function stargatewars_training_super_units_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/training/super-units.php'; }
+function stargatewars_training_super_units_state_transitions(): array { return stargatewars_training_super_units_logic()['state_transitions'] ?? []; }

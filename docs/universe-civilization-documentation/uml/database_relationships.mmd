@@ -1,0 +1,81 @@
+erDiagram
+    PLAYERS ||--o{ PLAYER_RESOURCES : owns
+    PLAYERS ||--o{ PLAYER_COLONIES : controls
+    PLAYERS ||--o{ PLAYER_TECHNOLOGIES : researches
+    PLAYERS ||--o{ RESEARCH_QUEUES : queues
+    PLAYERS ||--o{ GAME_EVENTS : generates
+    PLAYERS ||--o{ PLAYER_UNITS : commands
+    PLAYERS ||--o{ PLAYER_WEAPONS : owns
+    PLAYERS ||--o{ BATTLES : attacks_or_defends
+    PLAYERS ||--o{ MESSAGES : sends_or_receives
+    PLAYERS ||--o{ ALLIANCE_MEMBERS : joins
+    PLAYERS ||--o{ RANKINGS : ranks
+    TECHNOLOGIES ||--o{ PLAYER_TECHNOLOGIES : defines
+    TECHNOLOGIES ||--o{ TECHNOLOGY_PREREQUISITES : requires
+    TECHNOLOGIES ||--o{ RESEARCH_QUEUES : schedules
+    UNIVERSE_GALAXIES ||--o{ UNIVERSE_SECTORS : contains
+    UNIVERSE_SECTORS ||--o{ UNIVERSE_SOLAR_SYSTEMS : contains
+    UNIVERSE_SOLAR_SYSTEMS ||--o{ UNIVERSE_PLANETS : contains
+    UNIVERSE_PLANETS ||--o{ UNIVERSE_MOONS : orbits
+    UNIVERSE_PLANETS ||--o{ PLAYER_COLONIES : colonized_as
+    PLAYER_COLONIES ||--o{ PLANET_DEFENSES : protects
+    PLAYER_COLONIES ||--o{ POPULATION_ASSIGNMENTS : allocates
+    ALLIANCES ||--o{ ALLIANCE_MEMBERS : contains
+    ALLIANCES ||--o{ ALLIANCE_PROJECTS : funds
+
+    PLAYERS {
+        int id PK
+        string username
+        string commander_name
+        int race_id FK
+        int government_id FK
+    }
+    PLAYER_RESOURCES {
+        int player_id PK,FK
+        decimal metal
+        decimal crystal
+        decimal deuterium
+        decimal naquadah
+        decimal energy
+        decimal dark_matter
+        decimal food
+        decimal water
+        decimal population
+    }
+    TECHNOLOGIES {
+        int id PK
+        string technology_key
+        string category
+        decimal base_cost
+        decimal cost_growth
+        decimal effect_value
+    }
+    PLAYER_TECHNOLOGIES {
+        int player_id FK
+        int technology_id FK
+        string technology_key
+        int level
+    }
+    RESEARCH_QUEUES {
+        int id PK
+        int player_id FK
+        string technology_key
+        int level_before
+        int level_after
+        datetime completes_at
+        string status
+    }
+    PLAYER_COLONIES {
+        int id PK
+        int player_id FK
+        int planet_id FK
+        decimal population
+        decimal morale
+    }
+    UNIVERSE_PLANETS {
+        int id PK
+        int system_id FK
+        int orbit
+        string biome
+        string habitability
+    }

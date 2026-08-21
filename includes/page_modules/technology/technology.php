@@ -17,3 +17,7 @@ function stargatewars_technology_technology_validate_intent(array $input): array
 function stargatewars_technology_technology_preview(array $context = []): array {
     return ['route' => 'technology', 'title' => 'Technology Tree', 'logic' => stargatewars_technology_technology_logic(), 'features' => stargatewars_technology_technology_features(), 'design' => stargatewars_technology_technology_design(), 'systems' => stargatewars_technology_technology_systems(), 'context' => $context];
 }
+
+function stargatewars_technology_technology_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/technology/technology.php'; }
+function stargatewars_technology_technology_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/technology/technology.php'; }
+function stargatewars_technology_technology_state_transitions(): array { return stargatewars_technology_technology_logic()['state_transitions'] ?? []; }

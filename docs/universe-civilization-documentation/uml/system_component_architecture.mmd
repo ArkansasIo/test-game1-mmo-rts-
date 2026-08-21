@@ -1,0 +1,18 @@
+flowchart LR
+    B[Browser Dashboard] --> G[game.php Shell]
+    B --> A[actions/game.php]
+    G --> R[Route Registry]
+    G --> P[Page Contracts and State]
+    A --> S[Service Layer]
+    S --> C[Core Gameplay Rules]
+    S --> U[Procedural Universe]
+    S --> Q[Queue and Cooldown Services]
+    S --> M[Market and Social Services]
+    S --> D[(MariaDB / MySQL)]
+    C --> D
+    U --> D
+    Q --> D
+    M --> D
+    J[Cron Turn Processor] --> S
+    E[Event and Audit Records] --> D
+    S --> E

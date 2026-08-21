@@ -17,3 +17,7 @@ function stargatewars_armory_repair_validate_intent(array $input): array {
 function stargatewars_armory_repair_preview(array $context = []): array {
     return ['route' => 'repair', 'title' => 'Weapon Repair', 'logic' => stargatewars_armory_repair_logic(), 'features' => stargatewars_armory_repair_features(), 'design' => stargatewars_armory_repair_design(), 'systems' => stargatewars_armory_repair_systems(), 'context' => $context];
 }
+
+function stargatewars_armory_repair_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/armory/repair.php'; }
+function stargatewars_armory_repair_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/armory/repair.php'; }
+function stargatewars_armory_repair_state_transitions(): array { return stargatewars_armory_repair_logic()['state_transitions'] ?? []; }

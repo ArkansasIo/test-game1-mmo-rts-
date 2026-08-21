@@ -25,7 +25,7 @@ function verify_csrf(): void {
     }
 }
 function current_user(): ?array { return $_SESSION['user'] ?? null; }
-function require_guest(): void { if (current_user()) { header('Location: index.php'); exit; } }
+function require_guest(): void { if (current_user()) { header('Location: game.php'); exit; } }
 function require_auth(): void { if (!current_user()) { header('Location: login.php'); exit; } }
 function route_min_rank(string $route): int {
     return ['sabotage'=>2,'alliances'=>2,'modules'=>2,'ascension'=>3,'planet-conquest'=>2,'black-market'=>2][$route] ?? 1;
@@ -37,6 +37,7 @@ function require_route_access(string $route): void {
 }
 function login_user(array $user): void {
     session_regenerate_id(true);
+    unset($_SESSION['csrf_token']);
     $_SESSION['user'] = ['id'=>(int)$user['id'], 'username'=>$user['username'], 'display_name'=>$user['display_name'], 'race'=>$user['race'], 'rank_level'=>(int)($user['rank_level'] ?? 1), 'rank_name'=>$user['rank_name'] ?? 'Initiate'];
 }
 function logout_user(): void { $_SESSION = []; if (ini_get('session.use_cookies')) { $params = session_get_cookie_params(); setcookie(session_name(), '', time() - 42000, $params['path'], '', (bool)$params['secure'], (bool)$params['httponly']); } session_destroy(); }

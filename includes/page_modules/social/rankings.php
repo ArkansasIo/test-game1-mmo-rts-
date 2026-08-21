@@ -17,3 +17,7 @@ function stargatewars_social_rankings_validate_intent(array $input): array {
 function stargatewars_social_rankings_preview(array $context = []): array {
     return ['route' => 'rankings', 'title' => 'Rankings', 'logic' => stargatewars_social_rankings_logic(), 'features' => stargatewars_social_rankings_features(), 'design' => stargatewars_social_rankings_design(), 'systems' => stargatewars_social_rankings_systems(), 'context' => $context];
 }
+
+function stargatewars_social_rankings_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/social/rankings.php'; }
+function stargatewars_social_rankings_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/social/rankings.php'; }
+function stargatewars_social_rankings_state_transitions(): array { return stargatewars_social_rankings_logic()['state_transitions'] ?? []; }
