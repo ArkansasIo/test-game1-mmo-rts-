@@ -21,7 +21,11 @@ CREATE TABLE IF NOT EXISTS government_types (
 
 ALTER TABLE players ADD COLUMN IF NOT EXISTS government_id INT UNSIGNED NULL AFTER race_id;
 ALTER TABLE players ADD COLUMN IF NOT EXISTS registration_completed_at DATETIME NULL;
-ALTER TABLE players ADD CONSTRAINT fk_players_government FOREIGN KEY (government_id) REFERENCES government_types(id) ON DELETE SET NULL;
+SET @players_government_fk_exists = (SELECT COUNT(*) FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE CONSTRAINT_SCHEMA = DATABASE() AND TABLE_NAME = 'players' AND CONSTRAINT_NAME = 'fk_players_government');
+SET @players_government_fk_sql = IF(@players_government_fk_exists = 0, 'ALTER TABLE players ADD CONSTRAINT fk_players_government FOREIGN KEY (government_id) REFERENCES government_types(id) ON DELETE SET NULL', 'SELECT 1');
+PREPARE players_government_fk_stmt FROM @players_government_fk_sql;
+EXECUTE players_government_fk_stmt;
+DEALLOCATE PREPARE players_government_fk_stmt;
 
 CREATE TABLE IF NOT EXISTS player_government_history (
   id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,

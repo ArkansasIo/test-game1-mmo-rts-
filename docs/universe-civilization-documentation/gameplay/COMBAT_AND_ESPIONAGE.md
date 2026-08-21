@@ -36,3 +36,12 @@ Battle reports and intelligence reports include recipient, classification, read 
 ## Testing
 
 Combat tests should cover zero force, maximum force, equal force, protected target, cooldown, insufficient resources, invalid target, rapid-fire cap, deterministic repeatability, loss bounds, debris creation, report visibility, and concurrent attack attempts. Covert tests should cover invalid target, insufficient agents, detection, sabotage damage caps, and report classification.
+
+
+## Implemented combat and fleet-resolution layer
+
+The server now provides `CombatFleetService`, which resolves combat inside a database transaction. It validates participants and protection state, uses a deterministic SHA-256 seed, runs up to the configured maximum number of rounds, calculates round power and damage, records rapid-fire events, applies bounded casualties and loot, persists `battles`, `battle_rounds`, `battle_participants`, and `battle_reports`, and writes commander events. Dashboard `target_realms` identifiers are resolved to their owning player before combat.
+
+Fleet movement is persisted in `fleet_missions`. The service validates source-colony ownership, target existence, mission type, unit quantities, coordinates, Deuterium fuel, and travel time. Departures consume Deuterium atomically and create `fleet_events`. Due missions are processed by `processArrivals`; attack and raid missions invoke the same combat resolver, while non-combat missions complete with arrival and return events.
+
+Migration `045_combat_fleet_mechanics.sql` adds travel metadata, battle seeds and round counters, compatible round-resolution fields, `fleet_events`, and the combat/fleet settings used by the authoritative service.

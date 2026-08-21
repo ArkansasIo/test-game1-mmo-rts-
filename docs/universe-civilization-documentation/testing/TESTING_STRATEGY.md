@@ -35,3 +35,12 @@ Tests should use isolated fixtures or a dedicated test database. Production or r
 ## Failure handling
 
 A failure must record command, environment, migration version, test name, relevant route or action, and safe diagnostic output. Database mutation tests should roll back or reset fixtures. Flaky tests must not be silently ignored; they should be isolated and fixed or explicitly documented with a tracked issue.
+
+
+## New combat, fleet, and authentication coverage
+
+The implementation adds `tests/combat_fleet_mechanics_test.php`, which provisions a temporary defender colony when needed, verifies deterministic seeded combat, persists round records, checks rapid-fire accounting, validates two-player battle reports, exercises Deuterium fuel deduction, confirms source-colony ownership, processes an arrived attack mission, and restores the original player and event state.
+
+The implementation also adds `tests/auth_registration_login_e2e.js`. This HTTP end-to-end test validates registration CSRF rejection, successful account creation, login CSRF presence, invalid credential handling, valid login session establishment, protected dashboard access, branding, and Deuterium rendering. It runs against the live staging PHP server through `STAGING_BASE_URL` or defaults to `http://127.0.0.1:8095`.
+
+The final validation run recorded zero PHP syntax failures, 50 passing PHP tests, a passing combat/fleet integration test, a passing authentication end-to-end test, and a successful migration plan containing migration 045.

@@ -1,0 +1,6 @@
+<?php
+declare(strict_types=1);
+require_once __DIR__ . '/../config/config.php';
+$pdo=db();
+$stmt=$pdo->query("SELECT CONSTRAINT_NAME, REFERENCED_TABLE_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='players' AND REFERENCED_TABLE_NAME IS NOT NULL ORDER BY CONSTRAINT_NAME");
+echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC), JSON_PRETTY_PRINT) . PHP_EOL;

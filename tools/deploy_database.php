@@ -138,12 +138,11 @@ try {
             $started = microtime(true);
             deployLog('APPLY ' . $migration['file']);
             try {
-                $pdo->beginTransaction();
+                // MariaDB/MySQL DDL can implicitly commit, so migrations run without PDO transaction wrappers.
                 $pdo->exec((string)$migration['sql']);
                 $elapsed = (int)round((microtime(true) - $started) * 1000);
                 $stmt = $pdo->prepare("INSERT INTO schema_migrations (migration_key, filename, checksum, status, execution_ms, error_message) VALUES (?, ?, ?, 'applied', ?, NULL) ON DUPLICATE KEY UPDATE filename=VALUES(filename), checksum=VALUES(checksum), status='applied', execution_ms=VALUES(execution_ms), applied_at=CURRENT_TIMESTAMP, error_message=NULL");
                 $stmt->execute([$migration['key'], $migration['file'], $migration['checksum'], $elapsed]);
-                $pdo->commit();
                 deployLog('DONE ' . $migration['file'] . ' ' . $elapsed . 'ms');
             } catch (Throwable $e) {
                 if ($pdo->inTransaction()) {

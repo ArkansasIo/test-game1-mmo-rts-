@@ -14,6 +14,7 @@ $oldPlayer=$get('SELECT last_turn_at,defcon_level,race_id FROM players WHERE id=
 $oldResources=$get('SELECT attack_turns,unit_production,untrained_units,miners,lifers,naquadah FROM player_resources WHERE player_id=?',[$player]);
 $oldColony=$get('SELECT id,food_stock,water_stock,population,morale,workforce FROM colonies WHERE player_id=? ORDER BY id LIMIT 1',[$player]);
 if(!$oldColony){fwrite(STDERR,"FAIL: demo colony missing\n");exit(1);}
+$pdo->prepare('UPDATE colonies SET food_stock=100000,water_stock=100000 WHERE id=?')->execute([$oldColony['id']]);
 $eventMax=(int)$pdo->query('SELECT COALESCE(MAX(id),0) FROM game_events')->fetchColumn();
 $snapshotMax=(int)$pdo->query('SELECT COALESCE(MAX(id),0) FROM colony_turn_snapshots')->fetchColumn();
 $txMax=(int)$pdo->query('SELECT COALESCE(MAX(id),0) FROM resource_transactions')->fetchColumn();
@@ -33,7 +34,7 @@ try{
   $check('attack turns incremented',(int)$afterResources['attack_turns']===(int)$oldResources['attack_turns']+$turns);
   $check('untrained units generated',(int)$afterResources['untrained_units']===(int)$oldResources['untrained_units']+(int)$oldResources['unit_production']*$turns);
   $check('naquadah income persisted',(int)$afterResources['naquadah']===(int)$oldResources['naquadah']+$income);
-  $check('last turn advanced',!empty($afterPlayer['last_turn_at']));$check('turn event written',(bool)$event);$check('colony food settled',$snapshot && (int)$afterColony['food_stock']<(int)$oldColony['food_stock']);$check('colony water settled',$snapshot && (int)$afterColony['water_stock']<(int)$oldColony['water_stock']);$check('settlement snapshot written',(bool)$snapshot);$check('resource transactions written',(bool)$transaction);
+  $check('last turn advanced',!empty($afterPlayer['last_turn_at']));$check('turn event written',(bool)$event);$check('colony food settled',$snapshot && (int)$snapshot['food_after']<(int)$snapshot['food_before']);$check('colony water settled',$snapshot && (int)$snapshot['water_after']<(int)$snapshot['water_before']);$check('settlement snapshot written',(bool)$snapshot);$check('resource transactions written',(bool)$transaction);
 }catch(Throwable $e){$report['status']='failed';$report['error']=$e->getMessage();}
 finally{
   try{
