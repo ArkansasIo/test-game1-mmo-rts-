@@ -16,6 +16,7 @@ return [
  'upgrade'=>['template'=>'upgrade-card','sections'=>['current level','next cost','modifier preview','confirmation'],'states'=>['ready','insufficient-funds','max-level'],'primary_action'=>'upgrade_up'],
  'technology'=>['template'=>'technology-tree','sections'=>['category tabs','technology cards','level and cost','upgrade result'],'states'=>['ready','locked','insufficient-funds'],'primary_action'=>'technology'],
  'planets'=>['template'=>'planet-grid','sections'=>['planet cards','bonuses','defenses','exploration controls'],'states'=>['ready','unknown-planet','protected'],'primary_action'=>'explore'],
+ 'settlement'=>['template'=>'settlement-power-grid','sections'=>['field grid','power output','power consumption','construction queue','building catalog'],'states'=>['ready','empty','insufficient-resource','success','error'],'primary_action'=>'settlement_build'],
  'ship'=>['template'=>'mothership-grid','sections'=>['hull stats','module cards','upgrade costs','exploration status'],'states'=>['ready','insufficient-funds','cooldown'],'primary_action'=>'mothership_upgrade'],
  'exploration'=>['template'=>'exploration-panel','sections'=>['coordinates','scan result','planet card','mission history'],'states'=>['ready','scanning','success','failure'],'primary_action'=>'explore'],
  'social'=>['template'=>'social-workspace','sections'=>['alliance summary','member table','join/create forms','activity log'],'states'=>['ready','no-alliance','permission-denied'],'primary_action'=>'alliance_join'],
