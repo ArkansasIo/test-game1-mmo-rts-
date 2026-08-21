@@ -1,0 +1,255 @@
+<?php
+return array (
+  'route' => 'settlement',
+  'group' => 'planets',
+  'group_label' => 'Planets',
+  'title' => 'Settlement & Power Grid',
+  'layout' => 'planets',
+  'controls' => 
+  array (
+    0 => 'Upgrade defense',
+  ),
+  'actions' => 
+  array (
+    0 => 'planet_defense',
+  ),
+  'tables' => 
+  array (
+    0 => 'settlement',
+  ),
+  'details' => 
+  array (
+    'hero' => 'Planet and Colony Management',
+    'panels' => 
+    array (
+      0 => 'Planet portfolio',
+      1 => 'Biome modifiers',
+      2 => 'Defenses',
+      3 => 'Population and life support',
+    ),
+    'formula' => 'colony state = production − food/water upkeep + morale and habitability modifiers',
+    'controls' => 
+    array (
+      0 => 'Explore',
+      1 => 'Colonize',
+      2 => 'Upgrade defense',
+      3 => 'View bonuses',
+    ),
+    'action' => 'planet_defense',
+    'tables' => 
+    array (
+      0 => 'player_planets',
+      1 => 'planet_bonuses',
+      2 => 'settlement',
+      3 => 'universe_planets',
+      4 => 'player_colonies',
+    ),
+    'permission' => 'authenticated colony owner',
+    'states' => 
+    array (
+      0 => 'ready',
+      1 => 'empty',
+      2 => 'protected',
+      3 => 'insufficient-resource',
+      4 => 'success',
+      5 => 'error',
+    ),
+  ),
+  'interaction' => 
+  array (
+    'page' => 'Planets and Colonies',
+    'purpose' => 'Manage owned colonies, life support, production output, and fleet presence.',
+    'buttons' => 
+    array (
+      'Explore' => 
+      array (
+        'action' => 'explore',
+        'logic' => 'Dispatch mothership exploration to a validated unoccupied universe planet; legacy named-planet exploration remains supported for compatibility.',
+        'permission' => 'authenticated commander with colony and mothership authority',
+        'reads' => 
+        array (
+          0 => 'player_colonies',
+          1 => 'planet_bonuses',
+          2 => 'planet_explorations',
+          3 => 'player_resources',
+          4 => 'universe_planets',
+          5 => 'motherships',
+          6 => 'player_cooldowns',
+        ),
+        'writes' => 
+        array (
+          0 => 'planet_explorations',
+          1 => 'player_resources',
+          2 => 'player_cooldowns',
+          3 => 'game_events',
+        ),
+        'states' => 
+        array (
+          0 => 'ready',
+          1 => 'empty',
+          2 => 'protected',
+          3 => 'success',
+          4 => 'error',
+        ),
+      ),
+      'Colonize' => 
+      array (
+        'action' => 'colonize_planet',
+        'logic' => 'Lock a validated planet, verify habitability, occupancy, colony capacity, ownership, resources, cooldown, and transaction state, then create the colony.',
+        'permission' => 'authenticated commander with colonization access',
+        'reads' => 
+        array (
+          0 => 'player_colonies',
+          1 => 'universe_planets',
+          2 => 'planet_bonuses',
+          3 => 'player_resources',
+          4 => 'player_cooldowns',
+        ),
+        'writes' => 
+        array (
+          0 => 'player_colonies',
+          1 => 'universe_planets',
+          2 => 'planet_bonuses',
+          3 => 'player_resources',
+          4 => 'player_cooldowns',
+          5 => 'game_events',
+        ),
+        'states' => 
+        array (
+          0 => 'ready',
+          1 => 'empty',
+          2 => 'protected',
+          3 => 'success',
+          4 => 'error',
+        ),
+      ),
+      'Upgrade defense' => 
+      array (
+        'action' => 'planet_defense',
+        'logic' => 'Validate colony ownership, defense type, resource cost, cooldown, and defense level cap before queuing the upgrade atomically.',
+        'permission' => 'authenticated colony owner',
+        'reads' => 
+        array (
+          0 => 'player_colonies',
+          1 => 'planet_bonuses',
+          2 => 'settlement',
+          3 => 'player_resources',
+          4 => 'player_cooldowns',
+        ),
+        'writes' => 
+        array (
+          0 => 'settlement',
+          1 => 'player_resources',
+          2 => 'player_cooldowns',
+          3 => 'game_events',
+        ),
+        'states' => 
+        array (
+          0 => 'ready',
+          1 => 'empty',
+          2 => 'protected',
+          3 => 'success',
+          4 => 'error',
+        ),
+      ),
+    ),
+  ),
+  'logic' => 
+  array (
+    'purpose' => 'Manage colonies, biomes, defenses, population, and life support.',
+    'workflow' => 
+    array (
+      0 => 'load planet portfolio',
+      1 => 'load biome and bonuses',
+      2 => 'validate colony ownership',
+      3 => 'process exploration or defense action',
+      4 => 'render life support',
+    ),
+    'validation' => 
+    array (
+      0 => 'authenticated colony owner',
+      1 => 'planet occupancy',
+      2 => 'habitability',
+      3 => 'resource balance',
+    ),
+    'calculations' => 
+    array (
+      0 => 'production − food/water upkeep + morale and habitability modifiers',
+    ),
+    'mutations' => 
+    array (
+      0 => 'player_colonies',
+      1 => 'settlement',
+      2 => 'universe_planets',
+      3 => 'game_events',
+    ),
+  ),
+  'features' => 
+  array (
+    0 => 'planet portfolio',
+    1 => 'biome modifiers',
+    2 => 'defenses',
+    3 => 'population',
+    4 => 'food and water',
+    5 => 'exploration',
+    6 => 'colonization',
+  ),
+  'design' => 
+  array (
+    'template' => 'colony-grid',
+    'sections' => 
+    array (
+      0 => 'planet selector',
+      1 => 'population',
+      2 => 'biome',
+      3 => 'life support',
+      4 => 'defenses',
+    ),
+    'components' => 
+    array (
+      0 => 'planet-card',
+      1 => 'biome-badge',
+      2 => 'life-support-meter',
+      3 => 'defense-table',
+    ),
+    'responsive' => 'Planet cards use one column on mobile',
+  ),
+  'systems' => 
+  array (
+    'services' => 
+    array (
+      0 => 'ColonyService',
+      1 => 'PlanetService',
+      2 => 'ExplorationService',
+    ),
+    'reads' => 
+    array (
+      0 => 'player_planets',
+      1 => 'player_colonies',
+      2 => 'planet_bonuses',
+      3 => 'settlement',
+      4 => 'universe_planets',
+    ),
+    'writes' => 
+    array (
+      0 => 'player_colonies',
+      1 => 'settlement',
+      2 => 'universe_planets',
+      3 => 'game_events',
+    ),
+    'actions' => 
+    array (
+      0 => 'explore',
+      1 => 'colonize_planet',
+      2 => 'planet_defense',
+    ),
+  ),
+  'contract_files' => 
+  array (
+    'logic' => 'config/page_logic/planets/settlement.php',
+    'features' => 'config/page_features/planets/settlement.php',
+    'design' => 'config/page_design_specs/planets/settlement.php',
+    'systems' => 'config/page_systems/planets/settlement.php',
+    'module' => 'includes/page_modules/planets/settlement.php',
+  ),
+);
