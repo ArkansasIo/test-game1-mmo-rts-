@@ -12,7 +12,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $pdo->prepare("SELECT p.*, r.name AS race FROM players p JOIN races r ON r.id=p.race_id WHERE p.username = ? LIMIT 1");
         $stmt->execute([$username]);
         $user = $stmt->fetch();
-        if ($user && password_verify($password, $user['password_hash'])) {
+        $passwordValid = $user && password_verify($password, (string)$user['password_hash']);
+        $legacyHashValid = $user && preg_match('/^[a-f0-9]{64}$/i', (string)$user['password_hash']) === 1 && hash_equals(strtolower((string)$user['password_hash']), hash('sha256', $password));
+        if ($user && ($passwordValid || $legacyHashValid)) {
+            if ($legacyHashValid) {
+                $rehash = $pdo->prepare('UPDATE players SET password_hash=? WHERE id=?');
+                $rehash->execute([password_hash($password, PASSWORD_DEFAULT), (int)$user['id']]);
+            }
             login_user($user);
             header('Location: game.php');
             exit;

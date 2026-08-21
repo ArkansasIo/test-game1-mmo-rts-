@@ -5,7 +5,7 @@ require_once __DIR__ . '/../config/config.php';
 $pdo = db();
 $pdo->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
 $pdo->exec("CREATE TABLE IF NOT EXISTS schema_migrations (id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,migration_key VARCHAR(160) NOT NULL UNIQUE,filename VARCHAR(255) NOT NULL,checksum CHAR(64) NOT NULL,status ENUM('applied','failed') NOT NULL,execution_ms INT UNSIGNED NOT NULL DEFAULT 0,applied_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,error_message TEXT NULL)");
-foreach (['038_government_commander_units.sql','039_construction_production_research.sql','040_procedural_universe_seed_engine.sql','041_rankings_component_extension.sql','042_mmo_expansion_core.sql','043_design_catalog_and_mechanics.sql','044_deuterium_resource.sql'] as $file) {
+foreach (['038_government_commander_units.sql','039_construction_production_research.sql','040_procedural_universe_seed_engine.sql','041_rankings_component_extension.sql','042_mmo_expansion_core.sql','043_design_catalog_and_mechanics.sql','044_deuterium_resource.sql','057_admin_override_tokens.sql','058_sync_empire_limits.sql'] as $file) {
     $path = __DIR__ . '/../sql/' . $file;
     $key = pathinfo($file, PATHINFO_FILENAME);
     $checksum = hash_file('sha256', $path);

@@ -19,6 +19,6 @@ return array (
   'actions' => 
   array (
     0 => 'weapon_buy',
-    1 => 'read_weapon',
+    1 => 'read_weapon_inventory',
   ),
 );

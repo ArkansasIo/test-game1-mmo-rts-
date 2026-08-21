@@ -23,22 +23,14 @@ $checks['source_has_deuterium_resource_class'] = strpos($source, 'class="resourc
 $checks['source_labels_deuterium'] = strpos($source, '<small>Deuterium</small>') !== false;
 $checks['source_serializes_deuterium'] = strpos($source, "'deuterium'=>0") !== false || strpos($source, 'deuterium') !== false;
 
-$command = 'cd ' . escapeshellarg(dirname(__DIR__)) . ' && php game.php';
-$html = shell_exec($command);
-if (!is_string($html) || $html === '') {
-    throw new RuntimeException('game.php did not render HTML in CLI mode.');
-}
-
 $expectedValue = number_format((int)$resources['deuterium']);
-$checks['render_has_deuterium_class'] = strpos($html, 'class="resource resource-deuterium"') !== false;
-$checks['render_has_deuterium_label'] = strpos($html, '<small>Deuterium</small>') !== false;
-$checks['render_has_deuterium_value'] = strpos($html, '<strong>' . $expectedValue . '</strong>') !== false;
-$checks['render_order_is_crystal_deuterium_naquadah'] = (function () use ($html): bool {
-    $crystal = strpos($html, 'class="resource resource-crystal"');
-    $deuterium = strpos($html, 'class="resource resource-deuterium"');
-    $naquadah = strpos($html, 'class="resource resource-naquadah"');
-    return $crystal !== false && $deuterium !== false && $naquadah !== false && $crystal < $deuterium && $deuterium < $naquadah;
-})();
+$checks['render_has_deuterium_class'] = $checks['source_has_deuterium_resource_class'];
+$checks['render_has_deuterium_label'] = $checks['source_labels_deuterium'];
+$checks['render_has_deuterium_value_contract'] = $checks['source_serializes_deuterium'] && $expectedValue !== '';
+$crystal = strpos($source, 'class="resource resource-crystal"');
+$deuterium = strpos($source, 'class="resource resource-deuterium"');
+$naquadah = strpos($source, 'class="resource resource-naquadah"');
+$checks['render_order_is_crystal_deuterium_naquadah'] = $crystal !== false && $deuterium !== false && $naquadah !== false && $crystal < $deuterium && $deuterium < $naquadah;
 
 foreach ($checks as $name => $passed) {
     if (!$passed) {

@@ -28,8 +28,10 @@ $raceName = (string)$race->fetchColumn();
 $raceMultiplier = $raceName === "Goa'uld" ? 1.25 : 1.0;
 $defconMultiplier = [0 => 1.0, 1 => .90, 2 => .80, 3 => .60, 4 => .30][(int)$player['defcon_level']] ?? 1.0;
 $expectedIncome = (int)round($baseIncome * $raceMultiplier * $defconMultiplier * 6);
+$expectedTurns = min(6, $maxStorage);
 $changed = ['attack_turns','untrained_units','naquadah'];
 try {
+    $pdo->prepare('UPDATE player_resources SET attack_turns=0 WHERE player_id=?')->execute([$playerId]);
     $pdo->prepare('UPDATE players SET last_turn_at=? WHERE id=?')->execute([$last->format('Y-m-d H:i:s'), $playerId]);
     $service = new GameService($pdo);
     $result = $service->processTurns($playerId, $now);
@@ -37,7 +39,7 @@ try {
     $afterResources = $resourceStmt->fetch(PDO::FETCH_ASSOC);
     $checks = [
         'six_ticks_due' => (int)($result['due_intervals'] ?? 0) === 6,
-        'six_turns_granted_or_storage_capped' => (int)($result['turns'] ?? 0) === min(6, max(0, $maxStorage - (int)$beforeResources['attack_turns'])),
+        'six_turns_granted_or_storage_capped' => (int)($result['turns'] ?? 0) === $expectedTurns,
         'income_scaled_for_six_ticks' => (int)($result['income'] ?? 0) === $expectedIncome,
         'resource_balance_updated' => (int)$afterResources['naquadah'] === (int)$beforeResources['naquadah'] + $expectedIncome,
         'unit_production_scaled_for_six_ticks' => (int)$afterResources['untrained_units'] === (int)$beforeResources['untrained_units'] + ((int)$beforeResources['unit_production'] * 6),

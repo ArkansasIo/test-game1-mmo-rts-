@@ -1,0 +1,20 @@
+<?php
+declare(strict_types=1);
+require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../includes/services/EquipmentStatService.php';
+$pdo = db();
+$checks = [];
+$checks['eight_equipment_classes'] = (int)$pdo->query('SELECT COUNT(*) FROM equipment_class_catalog')->fetchColumn() === 8;
+$checks['sixteen_equipment_designs'] = (int)$pdo->query('SELECT COUNT(*) FROM equipment_design_catalog')->fetchColumn() === 16;
+$checks['all_designs_have_class'] = (int)$pdo->query('SELECT COUNT(*) FROM equipment_design_catalog ed LEFT JOIN equipment_class_catalog ec ON ec.class_id=ed.class_id WHERE ec.class_id IS NULL')->fetchColumn() === 0;
+$checks['all_designs_have_level_99'] = (int)$pdo->query('SELECT COUNT(*) FROM equipment_design_catalog WHERE max_level=99')->fetchColumn() === 16;
+$checks['all_designs_have_bounded_stats'] = (int)$pdo->query('SELECT COUNT(*) FROM equipment_design_catalog WHERE accuracy BETWEEN 0 AND 5 AND penetration BETWEEN 0 AND 5 AND resistance BETWEEN 0 AND 5 AND mobility BETWEEN 0.05 AND 5')->fetchColumn() === 16;
+$service = new EquipmentStatService($pdo);
+$resolved = $service->resolveDesign('PLA-LANCE-02', 999, 99.0);
+$checks['level_clamped_to_99'] = $resolved['level'] === 99;
+$checks['technology_multiplier_clamped'] = $resolved['technology_multiplier'] === 10.0;
+$checks['all_resolved_stats_nonnegative'] = min($resolved['stats']) >= 0;
+$checks['bounded_ratio_stats'] = $resolved['stats']['accuracy'] <= 5 && $resolved['stats']['penetration'] <= 5 && $resolved['stats']['resistance'] <= 5 && $resolved['stats']['mobility'] <= 5;
+$failures = array_keys(array_filter($checks, static fn(bool $ok): bool => !$ok));
+echo json_encode(['status'=>$failures?'failed':'passed','checks'=>$checks,'resolved_sample'=>$resolved,'failures'=>$failures], JSON_PRETTY_PRINT) . PHP_EOL;
+exit($failures ? 1 : 0);

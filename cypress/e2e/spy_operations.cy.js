@@ -1,6 +1,7 @@
 describe('Spy Operations', () => {
   const username = Cypress.env('E2E_USERNAME') || 'demo_commander';
-  const password = Cypress.env('E2E_PASSWORD') || 'StargateDemo!2026';
+  const password = Cypress.env('E2E_PASSWORD');
+  if (!password) throw new Error('Set E2E_PASSWORD before running authenticated Cypress tests.');
 
   beforeEach(() => {
     cy.visit('/login.php');

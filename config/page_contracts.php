@@ -2002,7 +2002,7 @@ return array (
           ),
           'Inspect durability' =>
           array (
-            'action' => 'read_weapon',
+            'action' => 'read_weapon_inventory',
             'logic' => 'Read quantity, durability, power, and assignment state.',
             'permission' => 'weapon owner',
             'reads' =>
@@ -2096,7 +2096,7 @@ return array (
         'actions' =>
         array (
           0 => 'weapon_buy',
-          1 => 'read_weapon',
+          1 => 'read_weapon_inventory',
         ),
       ),
       'contract_files' =>

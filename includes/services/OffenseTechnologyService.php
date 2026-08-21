@@ -7,7 +7,7 @@ final class OffenseTechnologyService
 
     public function snapshot(int $playerId): array
     {
-        $tree=new TechnologyTreeService($this->pdo);$state=$tree->snapshot($playerId);$state['technologies']=array_values(array_filter($state['technologies'],fn(array $t): bool=>$t['category']==='offense'));$state['branch']='offense';$state['formula']='offense effect = base damage × technology level × tier coefficient';$state['weapon_systems']=$this->weaponSystems($playerId);$state['damage_modifier']=round(array_sum(array_map(fn(array $t): float=>(float)$t['current_effect'],$state['technologies'])),2);$state['next_damage_modifier']=round(array_sum(array_map(fn(array $t): float=>(float)$t['next_effect'],$state['technologies'])),2);return $state;
+        $tree=new TechnologyTreeService($this->pdo);$state=$tree->snapshot($playerId);$state['technologies']=array_values(array_filter($state['technologies'],fn(array $t): bool=>$t['category']==='offense'));$state['branch_systems']=array_values(array_filter($state['branch_systems']??[],fn(array $t): bool=>$t['category']==='offense'));$state['branch']='offense';$state['formula']='offense effect = base damage × technology level × tier coefficient';$state['weapon_systems']=$this->weaponSystems($playerId);$state['damage_modifier']=round(array_sum(array_map(fn(array $t): float=>(float)$t['current_effect'],$state['technologies'])),2);$state['next_damage_modifier']=round(array_sum(array_map(fn(array $t): float=>(float)$t['next_effect'],$state['technologies'])),2);return $state;
     }
 
     private function weaponSystems(int $playerId): array
