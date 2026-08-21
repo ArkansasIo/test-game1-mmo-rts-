@@ -49,6 +49,7 @@ return [
  ]],
  'planets'=>['label'=>'Planets','icon'=>'○','pages'=>[
    'planet-list'=>['title'=>'Planet List','layout'=>'planets','controls'=>['Explore','Colonize','Upgrade defense'],'actions'=>['explore','combat','colonize_planet','planet_defense'],'tables'=>['player_colonies','planet_bonuses','planet_explorations','player_resources','universe_planets','planet_defenses','motherships','player_cooldowns','game_events']],
+   'settlement'=>['title'=>'Settlement & Power Grid','layout'=>'settlement','controls'=>['Queue build','Demolish','Process construction'],'actions'=>['settlement_state','settlement_build','settlement_demolish','settlement_process'],'tables'=>['settlement_fields','settlement_buildings','settlement_construction_queues','building_types','player_resources','game_events']],
    'planet-bonuses'=>['title'=>'Planet Bonuses','layout'=>'planets','controls'=>['View bonuses'],'actions'=>[],'tables'=>['planet_bonuses']],
    'planet-defenses'=>['title'=>'Planet Defenses','layout'=>'planets','controls'=>['Upgrade defense'],'actions'=>['planet_defense'],'tables'=>['planet_defenses']],
  ]],
