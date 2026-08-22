@@ -15,6 +15,13 @@ $playerId = (int)$player['id'];
 $ship = $pdo->prepare('SELECT id FROM motherships WHERE player_id=? ORDER BY id LIMIT 1');
 $ship->execute([$playerId]);
 $shipId = (int)$ship->fetchColumn();
+$hull = $pdo->prepare('SELECT hull_level FROM motherships WHERE id=? AND player_id=?');
+$hull->execute([$shipId, $playerId]);
+$hullLevel = (int)$hull->fetchColumn();
+if ($hullLevel >= 21) {
+    echo json_encode(['status'=>'skipped','reason'=>'The seeded mothership is already at the hull upgrade cap; deuterium queue coverage requires an available upgrade slot.','hull_level'=>$hullLevel], JSON_PRETTY_PRINT) . PHP_EOL;
+    exit(0);
+}
 $planet = $pdo->prepare('SELECT id FROM player_planets WHERE player_id=? ORDER BY id LIMIT 1');
 $planet->execute([$playerId]);
 $planetId = (int)$planet->fetchColumn();

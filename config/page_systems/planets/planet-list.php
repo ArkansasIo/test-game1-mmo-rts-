@@ -24,7 +24,8 @@ return array (
   'actions' => 
   array (
     0 => 'explore',
-    1 => 'colonize_planet',
-    2 => 'planet_defense',
+    1 => 'combat',
+    2 => 'colonize_planet',
+    3 => 'planet_defense',
   ),
 );
