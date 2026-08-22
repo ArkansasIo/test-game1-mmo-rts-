@@ -7,17 +7,15 @@ return array (
   'layout' => 'training',
   'controls' => 
   array (
-    0 => 'Assign miners',
+    0 => 'Train miners',
   ),
   'actions' => 
   array (
-    0 => 'assign_workforce',
+    0 => 'train',
   ),
   'tables' => 
   array (
     0 => 'player_resources',
-    1 => 'colonies',
-    2 => 'population_assignments',
   ),
   'details' => 
   array (
@@ -36,7 +34,7 @@ return array (
       1 => 'Choose category',
       2 => 'Set quantity',
     ),
-    'action' => 'assign_workforce',
+    'action' => 'train',
     'tables' => 
     array (
       0 => 'player_resources',
@@ -61,7 +59,7 @@ return array (
     array (
       'Train units' => 
       array (
-        'action' => 'assign_workforce',
+        'action' => 'train',
         'logic' => 'Validate type and quantity, then transactionally lock unit type, commander resources, academy level, queue capacity, cooldown, population, and Naquadah before creating a training queue and game event.',
         'permission' => 'authenticated commander with owned population and training authority',
         'reads' => 
@@ -117,7 +115,7 @@ return array (
   ),
   'logic' => 
   array (
-    'purpose' => 'Assign colony population to mining and life-support roles.',
+    'purpose' => 'Convert available population into specialized personnel and units.',
     'workflow' => 
     array (
       0 => 'load population pool',

@@ -2,29 +2,25 @@
 return array (
   'services' => 
   array (
-    0 => 'ColonyService',
-    1 => 'PlanetService',
-    2 => 'ExplorationService',
+    0 => 'PageService',
   ),
   'reads' => 
   array (
-    0 => 'player_planets',
-    1 => 'player_colonies',
-    2 => 'planet_bonuses',
-    3 => 'settlement',
-    4 => 'universe_planets',
+    0 => 'settlement_fields',
+    1 => 'settlement_buildings',
+    2 => 'settlement_construction_queues',
+    3 => 'building_types',
+    4 => 'player_resources',
+    5 => 'game_events',
   ),
   'writes' => 
   array (
-    0 => 'player_colonies',
-    1 => 'settlement',
-    2 => 'universe_planets',
-    3 => 'game_events',
   ),
   'actions' => 
   array (
-    0 => 'explore',
-    1 => 'colonize_planet',
-    2 => 'planet_defense',
+    0 => 'settlement_state',
+    1 => 'settlement_build',
+    2 => 'settlement_demolish',
+    3 => 'settlement_process',
   ),
 );

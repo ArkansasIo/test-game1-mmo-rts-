@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+*{box-sizing:border-box}body{margin:0}
+.slide-container{width:1280px;min-height:720px;background:#f7fafc;color:#10202b;font-family:Arial,Helvetica,sans-serif;padding:52px 70px 0}
+.kicker{font-size:13px;letter-spacing:3px;color:#1d7896;font-weight:700}
+.title{font-size:38px;margin:10px 0 28px;font-weight:800}
+.layout{display:grid;grid-template-columns:770px 1fr;gap:20px}
+.matrix{border-top:4px solid #42b7d6}
+.item{display:grid;grid-template-columns:170px 1fr;gap:12px;border-bottom:1px solid #cbd8df;padding:8px 0;min-height:48px}
+.item strong{font-size:15px;color:#1d7896}
+.item span{font-size:16px;line-height:1.35;color:#3e5360}
+.side{background:#0b2638;color:#d9f7ff;padding:18px 20px;min-height:300px}
+.side h2{font-size:22px;margin:0 0 12px}
+.big{font-size:62px;font-weight:800;line-height:1}
+.small{color:#86b9c8;font-size:12px;letter-spacing:2px;margin-top:4px}
+.side-rule{height:1px;background:#3f7185;margin:12px 0 8px}
+.side-row{padding:6px 0;border-bottom:1px solid #315568;font-size:14px;line-height:1.35}
+.side-row b{display:block;color:#78edff;font-size:11px;letter-spacing:1px;margin-bottom:4px}
+.footer{margin-top:12px;border-top:3px solid #42b7d6;padding-top:10px;color:#5e7180;font-size:13px}
+</style>
+</head>
+<body>
+<div class="slide-container"><div class="kicker">PAGE DESIGN SYSTEM</div><h1 class="title">Every Route Carries a Playable Contract</h1><div class="layout"><div class="matrix"><div class="item"><strong>Purpose</strong><span>Commander responsibility and nav position.</span></div><div class="item"><strong>Mechanic</strong><span>Server rule or formula for state, queue, or progression.</span></div><div class="item"><strong>Functions</strong><span>Inspection, comparison, planning, queueing, navigation, review.</span></div><div class="item"><strong>Features</strong><span>Primary panels: rosters, queues, maps, forecasts, reports.</span></div><div class="item"><strong>Sub-features</strong><span>Filters, prerequisites, cooldowns, permissions, links.</span></div><div class="item"><strong>Controls + feedback</strong><span>Buttons, intents, loading, locked, success, error states.</span></div></div><div class="side"><h2>Route specification coverage</h2><div class="big">191</div><div class="small">DETAILED ROUTE SPECS</div><div class="side-rule"></div><div class="side-row"><b>AUTHORITY</b>Browser submits intent; server validates ownership, CSRF, RBAC, prerequisites.</div><div class="side-row"><b>DATA SCOPE</b>Each route declares its action set, tables, permissions, sections.</div><div class="side-row"><b>REUSE</b>Family renderers provide consistent layout; specs supply domain content.</div><div class="side-row"><b>OUTPUT</b>Generated definitions, logic, features, systems, modules.</div></div></div><div class="footer"><b>Implementation artifact</b> · <code>config/detailed_page_specs.php</code> · validated 191 / 191 routes</div></div>
+</body>
+</html>

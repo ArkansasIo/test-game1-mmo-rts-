@@ -17,7 +17,3 @@ function stargatewars_account_ascension_validate_intent(array $input): array {
 function stargatewars_account_ascension_preview(array $context = []): array {
     return ['route' => 'ascension', 'title' => 'Ascension', 'logic' => stargatewars_account_ascension_logic(), 'features' => stargatewars_account_ascension_features(), 'design' => stargatewars_account_ascension_design(), 'systems' => stargatewars_account_ascension_systems(), 'context' => $context];
 }
-
-function stargatewars_account_ascension_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/account/ascension.php'; }
-function stargatewars_account_ascension_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/account/ascension.php'; }
-function stargatewars_account_ascension_state_transitions(): array { return stargatewars_account_ascension_logic()['state_transitions'] ?? []; }

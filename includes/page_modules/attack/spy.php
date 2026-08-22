@@ -17,7 +17,3 @@ function stargatewars_attack_spy_validate_intent(array $input): array {
 function stargatewars_attack_spy_preview(array $context = []): array {
     return ['route' => 'spy', 'title' => 'Spy Operations', 'logic' => stargatewars_attack_spy_logic(), 'features' => stargatewars_attack_spy_features(), 'design' => stargatewars_attack_spy_design(), 'systems' => stargatewars_attack_spy_systems(), 'context' => $context];
 }
-
-function stargatewars_attack_spy_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/attack/spy.php'; }
-function stargatewars_attack_spy_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/attack/spy.php'; }
-function stargatewars_attack_spy_state_transitions(): array { return stargatewars_attack_spy_logic()['state_transitions'] ?? []; }

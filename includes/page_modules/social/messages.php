@@ -17,7 +17,3 @@ function stargatewars_social_messages_validate_intent(array $input): array {
 function stargatewars_social_messages_preview(array $context = []): array {
     return ['route' => 'messages', 'title' => 'Messages', 'logic' => stargatewars_social_messages_logic(), 'features' => stargatewars_social_messages_features(), 'design' => stargatewars_social_messages_design(), 'systems' => stargatewars_social_messages_systems(), 'context' => $context];
 }
-
-function stargatewars_social_messages_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/social/messages.php'; }
-function stargatewars_social_messages_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/social/messages.php'; }
-function stargatewars_social_messages_state_transitions(): array { return stargatewars_social_messages_logic()['state_transitions'] ?? []; }

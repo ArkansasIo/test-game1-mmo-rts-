@@ -17,7 +17,3 @@ function stargatewars_universe_sectors_validate_intent(array $input): array {
 function stargatewars_universe_sectors_preview(array $context = []): array {
     return ['route' => 'sectors', 'title' => 'Sector Map', 'logic' => stargatewars_universe_sectors_logic(), 'features' => stargatewars_universe_sectors_features(), 'design' => stargatewars_universe_sectors_design(), 'systems' => stargatewars_universe_sectors_systems(), 'context' => $context];
 }
-
-function stargatewars_universe_sectors_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/universe/sectors.php'; }
-function stargatewars_universe_sectors_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/universe/sectors.php'; }
-function stargatewars_universe_sectors_state_transitions(): array { return stargatewars_universe_sectors_logic()['state_transitions'] ?? []; }

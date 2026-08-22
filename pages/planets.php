@@ -1,6 +1,3 @@
 <?php
 declare(strict_types=1);
-$route = basename($_SERVER['SCRIPT_FILENAME'] ?? 'dashboard.php', '.php');
-if ($route === '_entry') { $route = 'dashboard'; }
-header('Location: ../game.php?page=' . rawurlencode(str_replace('_', '-', $route)), true, 302);
-exit;
+$route = 'planets'; $group = 'empire'; $label = 'Planets'; $pageDefinition = require '/home/ubuntu/stargatewars/config/page_definitions/empire/planets.php'; $pageModule = require '/home/ubuntu/stargatewars/includes/page_modules/empire/planets.php'; require __DIR__ . '/_nested_entry.php';

@@ -34,6 +34,29 @@ return array (
     ),
     1 => 
     array (
+      'route' => 'settlement',
+      'title' => 'Settlement & Power Grid',
+      'layout' => 'settlement',
+      'definition' => 'config/page_definitions/planets/settlement.php',
+      'actions' => 
+      array (
+        0 => 'settlement_state',
+        1 => 'settlement_build',
+        2 => 'settlement_demolish',
+        3 => 'settlement_process',
+      ),
+      'tables' => 
+      array (
+        0 => 'settlement_fields',
+        1 => 'settlement_buildings',
+        2 => 'settlement_construction_queues',
+        3 => 'building_types',
+        4 => 'player_resources',
+        5 => 'game_events',
+      ),
+    ),
+    2 => 
+    array (
       'route' => 'planet-bonuses',
       'title' => 'Planet Bonuses',
       'layout' => 'planets',
@@ -46,7 +69,7 @@ return array (
         0 => 'planet_bonuses',
       ),
     ),
-    2 => 
+    3 => 
     array (
       'route' => 'planet-defenses',
       'title' => 'Planet Defenses',

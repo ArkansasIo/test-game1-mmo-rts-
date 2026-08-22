@@ -1,0 +1,17 @@
+from pathlib import Path
+
+path = Path('/home/ubuntu/stargatewars/game.php')
+source = path.read_text()
+old_boot = "const requestedPageRaw=new URLSearchParams(window.location.search).get('page')||'dashboard';const requestedPage=requestedPageRaw==='planets'?'planet-list':requestedPageRaw;let selected=Object.prototype.hasOwnProperty.call(routeDetails,requestedPage)?requestedPage:'dashboard';"
+new_boot = "const requestedPageRaw=new URLSearchParams(window.location.search).get('page')||'dashboard';const requestedPage=requestedPageRaw==='planets'?'planet-list':requestedPageRaw;const registryHasPage=Object.values(registry).some(group=>group&&group.pages&&Object.prototype.hasOwnProperty.call(group.pages,requestedPage));let selected=Object.prototype.hasOwnProperty.call(routeDetails,requestedPage)||registryHasPage?requestedPage:'dashboard';"
+if old_boot not in source:
+    raise SystemExit('route bootstrap anchor not found')
+source = source.replace(old_boot, new_boot, 1)
+marker = 'function render(){'
+generic = '''function genericPage(){const found=Object.entries(registry).map(([groupKey,group])=>({groupKey,group,definition:(group.pages||{})[selected]})).find(item=>item.definition);const definition=found&&found.definition?found.definition:{};const group=found?found.group:{};const title=definition.title||selected.replace(/-/g,' ').replace(/\\b\\w/g,c=>c.toUpperCase());const controls=definition.controls||['Open overview','Review status'];const actions=definition.actions||[];const tables=definition.tables||[];document.getElementById('section').textContent=String(group.label||'GAME').toUpperCase();document.getElementById('title').textContent=title;document.getElementById('description').textContent='Server-authoritative '+title.toLowerCase()+' operations with authenticated scope and transactional validation.';document.getElementById('content').innerHTML='<div class=\\"cc-grid\\"><div class=\\"card wide\\"><div class=\\"eyebrow\\">PAGE OVERVIEW</div><h2>'+esc(title)+'</h2><p class=\\"permission\\">Route: '+esc(selected)+'</p><div class=\\"metric-grid\\"><div class=\\"metric\\"><span>Menu group</span><strong>'+esc(group.label||'GAME')+'</strong><small>Registry-backed navigation</small></div><div class=\\"metric\\"><span>Layout</span><strong>'+esc(definition.layout||'generic')+'</strong><small>Reusable page family</small></div><div class=\\"metric\\"><span>Controls</span><strong>'+fmt(controls.length)+'</strong><small>Intent controls available</small></div></div></div><div class=\\"card side-card\\"><div class=\\"eyebrow\\">PAGE CONTROLS</div><h2>Available operations</h2>'+controls.map(c=>'<div class=\\"row\\"><span>'+esc(c)+'</span><span class=\\"badge\\">OPEN</span></div>').join('')+'</div><div class=\\"card wide\\"><div class=\\"eyebrow\\">SERVER CONTRACT</div><h2>Authoritative scope</h2><p class=\\"permission\\">Client submits intent only. Authentication, CSRF, ownership, cooldown, resource, and transaction checks remain server-side.</p><p>'+actions.map(a=>'<span class=\\"badge\\">'+esc(a)+'</span> ').join('')+'</p><p>'+tables.map(t=>'<span class=\\"badge\\">'+esc(t)+'</span> ').join('')+'</p></div></div>';}'''
+if marker not in source:
+    raise SystemExit('render function anchor not found')
+if 'function genericPage()' not in source:
+    source = source.replace(marker, generic + marker, 1)
+path.write_text(source)
+print('registry-aware route fallback added')

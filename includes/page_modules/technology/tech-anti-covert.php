@@ -17,7 +17,3 @@ function stargatewars_technology_tech_anti_covert_validate_intent(array $input):
 function stargatewars_technology_tech_anti_covert_preview(array $context = []): array {
     return ['route' => 'tech-anti-covert', 'title' => 'Anti-Covert Technology', 'logic' => stargatewars_technology_tech_anti_covert_logic(), 'features' => stargatewars_technology_tech_anti_covert_features(), 'design' => stargatewars_technology_tech_anti_covert_design(), 'systems' => stargatewars_technology_tech_anti_covert_systems(), 'context' => $context];
 }
-
-function stargatewars_technology_tech_anti_covert_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/technology/tech-anti-covert.php'; }
-function stargatewars_technology_tech_anti_covert_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/technology/tech-anti-covert.php'; }
-function stargatewars_technology_tech_anti_covert_state_transitions(): array { return stargatewars_technology_tech_anti_covert_logic()['state_transitions'] ?? []; }

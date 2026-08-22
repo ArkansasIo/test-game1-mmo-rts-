@@ -17,7 +17,3 @@ function stargatewars_training_unit_production_validate_intent(array $input): ar
 function stargatewars_training_unit_production_preview(array $context = []): array {
     return ['route' => 'unit-production', 'title' => 'Unit Production', 'logic' => stargatewars_training_unit_production_logic(), 'features' => stargatewars_training_unit_production_features(), 'design' => stargatewars_training_unit_production_design(), 'systems' => stargatewars_training_unit_production_systems(), 'context' => $context];
 }
-
-function stargatewars_training_unit_production_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/training/unit-production.php'; }
-function stargatewars_training_unit_production_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/training/unit-production.php'; }
-function stargatewars_training_unit_production_state_transitions(): array { return stargatewars_training_unit_production_logic()['state_transitions'] ?? []; }

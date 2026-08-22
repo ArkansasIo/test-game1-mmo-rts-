@@ -1,0 +1,5196 @@
+{
+    "intelligence-espionage": {
+        "title": "Espionage",
+        "group": "intelligence",
+        "mechanic": "intelligence result = sensor power + covert skill \u2212 target counter-intelligence",
+        "features": [
+            "target profile",
+            "detection estimate",
+            "classified output",
+            "mission history",
+            "covert pool",
+            "detection forecast",
+            "report classification"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "low-risk scan",
+            "spy mission",
+            "sabotage",
+            "sensor phalanx",
+            "fleet activity"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "spy-missions": {
+        "title": "Spy Missions",
+        "group": "intelligence",
+        "mechanic": "detection = defender counter-intelligence \u2212 attacker agents \u2212 covert technology",
+        "features": [
+            "covert pool",
+            "target profile",
+            "detection forecast",
+            "report classification"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "low-risk scan",
+            "spy mission",
+            "sabotage",
+            "sensor phalanx",
+            "fleet activity"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "counter-espionage": {
+        "title": "Counter-Espionage",
+        "group": "intelligence",
+        "mechanic": "detection = defender counter-intelligence \u2212 attacker agents \u2212 covert technology",
+        "features": [
+            "covert pool",
+            "target profile",
+            "detection forecast",
+            "report classification"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "low-risk scan",
+            "spy mission",
+            "sabotage",
+            "sensor phalanx",
+            "fleet activity"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "intelligence-sabotage": {
+        "title": "Sabotage",
+        "group": "intelligence",
+        "mechanic": "intelligence result = sensor power + covert skill \u2212 target counter-intelligence",
+        "features": [
+            "target profile",
+            "detection estimate",
+            "classified output",
+            "mission history",
+            "covert pool",
+            "detection forecast",
+            "report classification"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "low-risk scan",
+            "spy mission",
+            "sabotage",
+            "sensor phalanx",
+            "fleet activity"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "reconnaissance": {
+        "title": "Reconnaissance",
+        "group": "intelligence",
+        "mechanic": "detection = defender counter-intelligence \u2212 attacker agents \u2212 covert technology",
+        "features": [
+            "covert pool",
+            "target profile",
+            "detection forecast",
+            "report classification"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "low-risk scan",
+            "spy mission",
+            "sabotage",
+            "sensor phalanx",
+            "fleet activity"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "sensor-phalanx": {
+        "title": "Sensor Phalanx",
+        "group": "intelligence",
+        "mechanic": "detection = defender counter-intelligence \u2212 attacker agents \u2212 covert technology",
+        "features": [
+            "covert pool",
+            "target profile",
+            "detection forecast",
+            "report classification"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "low-risk scan",
+            "spy mission",
+            "sabotage",
+            "sensor phalanx",
+            "fleet activity"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "fleet-activity": {
+        "title": "Fleet Activity",
+        "group": "intelligence",
+        "mechanic": "fleet mission = validated composition + route distance + propulsion + fuel + cooldown",
+        "features": [
+            "fleet roster",
+            "formation editor",
+            "mission route",
+            "arrival forecast",
+            "covert pool",
+            "target profile",
+            "detection forecast",
+            "report classification"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "low-risk scan",
+            "spy mission",
+            "sabotage",
+            "sensor phalanx",
+            "fleet activity"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "intelligence-reports": {
+        "title": "Intelligence Reports",
+        "group": "intelligence",
+        "mechanic": "intelligence result = sensor power + covert skill \u2212 target counter-intelligence",
+        "features": [
+            "target profile",
+            "detection estimate",
+            "classified output",
+            "mission history",
+            "covert pool",
+            "detection forecast",
+            "report classification"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "low-risk scan",
+            "spy mission",
+            "sabotage",
+            "sensor phalanx",
+            "fleet activity"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "resource-exchange": {
+        "title": "Resource Exchange",
+        "group": "market",
+        "mechanic": "resource state = authenticated balance + production \u2212 upkeep \u2212 queued cost",
+        "features": [
+            "balance tiles",
+            "production history",
+            "consumption forecast",
+            "deficit warning",
+            "page overview",
+            "control panel",
+            "server contract"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "loading",
+            "ready",
+            "empty",
+            "error"
+        ],
+        "buttons": [
+            {
+                "label": "Market List",
+                "action": "market_list",
+                "behavior": "Submit commander intent; server validates before mutation."
+            },
+            {
+                "label": "Market Buy",
+                "action": "market_buy",
+                "behavior": "Submit commander intent; server validates before mutation."
+            }
+        ]
+    },
+    "mercenary-market": {
+        "title": "Mercenary Market",
+        "group": "market",
+        "mechanic": "trade settlement = validated order \u00d7 price \u2212 fee \u2212 escrow state",
+        "features": [
+            "order book",
+            "price bands",
+            "escrow state",
+            "trade history",
+            "page overview",
+            "control panel",
+            "server contract"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "loading",
+            "ready",
+            "empty",
+            "error"
+        ],
+        "buttons": [
+            {
+                "label": "Mercenary Buy",
+                "action": "mercenary_buy",
+                "behavior": "Submit commander intent; server validates before mutation."
+            }
+        ]
+    },
+    "rankings": {
+        "title": "Rankings",
+        "group": "social",
+        "mechanic": "ranking score = economy + military + technology + glory \u2212 penalties",
+        "features": [
+            "leaderboard",
+            "score breakdown",
+            "movement indicator",
+            "season snapshot",
+            "page overview",
+            "control panel",
+            "server contract"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "loading",
+            "ready",
+            "empty",
+            "error"
+        ],
+        "buttons": [
+            {
+                "label": "Refresh Rankings",
+                "action": "refresh_rankings",
+                "behavior": "Submit commander intent; server validates before mutation."
+            }
+        ]
+    },
+    "social-messages": {
+        "title": "Messages",
+        "group": "social",
+        "mechanic": "state = authenticated read scope + validated intent + transaction result",
+        "features": [
+            "page overview",
+            "control panel",
+            "server contract"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "loading",
+            "ready",
+            "empty",
+            "error"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "notifications": {
+        "title": "Notifications",
+        "group": "social",
+        "mechanic": "state = authenticated read scope + validated intent + transaction result",
+        "features": [
+            "page overview",
+            "control panel",
+            "server contract"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "loading",
+            "ready",
+            "empty",
+            "error"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "global-chat": {
+        "title": "Global Chat",
+        "group": "social",
+        "mechanic": "state = authenticated read scope + validated intent + transaction result",
+        "features": [
+            "page overview",
+            "control panel",
+            "server contract"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "loading",
+            "ready",
+            "empty",
+            "error"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "buddy-list": {
+        "title": "Buddy List",
+        "group": "social",
+        "mechanic": "state = authenticated read scope + validated intent + transaction result",
+        "features": [
+            "page overview",
+            "control panel",
+            "server contract"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "loading",
+            "ready",
+            "empty",
+            "error"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "recruitment": {
+        "title": "Recruitment",
+        "group": "social",
+        "mechanic": "state = authenticated read scope + validated intent + transaction result",
+        "features": [
+            "page overview",
+            "control panel",
+            "server contract"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "loading",
+            "ready",
+            "empty",
+            "error"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "empires-at-war": {
+        "title": "Empires at War",
+        "group": "social",
+        "mechanic": "state = authenticated read scope + validated intent + transaction result",
+        "features": [
+            "page overview",
+            "control panel",
+            "server contract"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "loading",
+            "ready",
+            "empty",
+            "error"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "modules": {
+        "title": "Mothership Modules",
+        "group": "mothership",
+        "mechanic": "state = authenticated read scope + validated intent + transaction result",
+        "features": [
+            "page overview",
+            "control panel",
+            "server contract"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "loading",
+            "ready",
+            "empty",
+            "error"
+        ],
+        "buttons": [
+            {
+                "label": "Mothership Upgrade",
+                "action": "mothership_upgrade",
+                "behavior": "Submit commander intent; server validates before mutation."
+            }
+        ]
+    },
+    "overview-dashboard": {
+        "title": "Dashboard",
+        "group": "overview",
+        "mechanic": "state summary = authenticated colony telemetry + queued operations + unread events",
+        "features": [
+            "live status strip",
+            "priority alerts",
+            "objective progress",
+            "operation timeline"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "filter by severity",
+            "sort by completion",
+            "acknowledge read-only alerts"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "empire-overview": {
+        "title": "Empire Overview",
+        "group": "overview",
+        "mechanic": "state summary = authenticated colony telemetry + queued operations + unread events",
+        "features": [
+            "live status strip",
+            "priority alerts",
+            "objective progress",
+            "operation timeline"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "filter by severity",
+            "sort by completion",
+            "acknowledge read-only alerts"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "active-operations": {
+        "title": "Active Operations",
+        "group": "overview",
+        "mechanic": "state summary = authenticated colony telemetry + queued operations + unread events",
+        "features": [
+            "live status strip",
+            "priority alerts",
+            "objective progress",
+            "operation timeline"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "filter by severity",
+            "sort by completion",
+            "acknowledge read-only alerts"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "alerts": {
+        "title": "Alerts",
+        "group": "overview",
+        "mechanic": "state summary = authenticated colony telemetry + queued operations + unread events",
+        "features": [
+            "live status strip",
+            "priority alerts",
+            "objective progress",
+            "operation timeline"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "filter by severity",
+            "sort by completion",
+            "acknowledge read-only alerts"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "tutorial-objectives": {
+        "title": "Tutorial / Objectives",
+        "group": "overview",
+        "mechanic": "state summary = authenticated colony telemetry + queued operations + unread events",
+        "features": [
+            "live status strip",
+            "priority alerts",
+            "objective progress",
+            "operation timeline"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "filter by severity",
+            "sort by completion",
+            "acknowledge read-only alerts"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "planets": {
+        "title": "Planets",
+        "group": "empire",
+        "mechanic": "empire output = colony production \u00d7 biome \u00d7 race \u00d7 government \u00d7 morale",
+        "features": [
+            "colony roster",
+            "life-support summary",
+            "specialization profile",
+            "capacity warnings"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "world filters",
+            "morale indicators",
+            "ownership scope",
+            "queue visibility"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "colonies": {
+        "title": "Colonies",
+        "group": "empire",
+        "mechanic": "empire output = colony production \u00d7 biome \u00d7 race \u00d7 government \u00d7 morale",
+        "features": [
+            "colony roster",
+            "life-support summary",
+            "specialization profile",
+            "capacity warnings"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "world filters",
+            "morale indicators",
+            "ownership scope",
+            "queue visibility"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "empire-moons": {
+        "title": "Moons",
+        "group": "empire",
+        "mechanic": "empire output = colony production \u00d7 biome \u00d7 race \u00d7 government \u00d7 morale",
+        "features": [
+            "colony roster",
+            "life-support summary",
+            "specialization profile",
+            "capacity warnings"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "world filters",
+            "morale indicators",
+            "ownership scope",
+            "queue visibility"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "buildings": {
+        "title": "Buildings",
+        "group": "empire",
+        "mechanic": "empire output = colony production \u00d7 biome \u00d7 race \u00d7 government \u00d7 morale",
+        "features": [
+            "colony roster",
+            "life-support summary",
+            "specialization profile",
+            "capacity warnings"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "world filters",
+            "morale indicators",
+            "ownership scope",
+            "queue visibility"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "facilities": {
+        "title": "Facilities",
+        "group": "empire",
+        "mechanic": "empire output = colony production \u00d7 biome \u00d7 race \u00d7 government \u00d7 morale",
+        "features": [
+            "colony roster",
+            "life-support summary",
+            "specialization profile",
+            "capacity warnings"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "world filters",
+            "morale indicators",
+            "ownership scope",
+            "queue visibility"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "storage": {
+        "title": "Storage",
+        "group": "empire",
+        "mechanic": "empire output = colony production \u00d7 biome \u00d7 race \u00d7 government \u00d7 morale",
+        "features": [
+            "colony roster",
+            "life-support summary",
+            "specialization profile",
+            "capacity warnings"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "world filters",
+            "morale indicators",
+            "ownership scope",
+            "queue visibility"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "population": {
+        "title": "Population",
+        "group": "empire",
+        "mechanic": "empire output = colony production \u00d7 biome \u00d7 race \u00d7 government \u00d7 morale",
+        "features": [
+            "colony roster",
+            "life-support summary",
+            "specialization profile",
+            "capacity warnings"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "world filters",
+            "morale indicators",
+            "ownership scope",
+            "queue visibility"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "planet-specialization": {
+        "title": "Planet Specialization",
+        "group": "empire",
+        "mechanic": "empire output = colony production \u00d7 biome \u00d7 race \u00d7 government \u00d7 morale",
+        "features": [
+            "colony roster",
+            "life-support summary",
+            "specialization profile",
+            "capacity warnings"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "world filters",
+            "morale indicators",
+            "ownership scope",
+            "queue visibility"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "resource-overview": {
+        "title": "Resource Overview",
+        "group": "resources",
+        "mechanic": "resource state = authenticated balance + production \u2212 upkeep \u2212 queued cost",
+        "features": [
+            "balance tiles",
+            "production history",
+            "consumption forecast",
+            "deficit warning",
+            "resource tiles",
+            "income breakdown",
+            "production forecast",
+            "deficit warnings"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "per-turn view",
+            "per-colony view",
+            "resource filters",
+            "shortfall states"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "metal": {
+        "title": "Metal",
+        "group": "resources",
+        "mechanic": "metal net = mines + income \u2212 construction \u2212 fleet upkeep",
+        "features": [
+            "metal balance",
+            "mine output",
+            "construction demand",
+            "turn forecast",
+            "resource tiles",
+            "income breakdown",
+            "production forecast",
+            "deficit warnings"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "per-turn view",
+            "per-colony view",
+            "resource filters",
+            "shortfall states"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "crystal": {
+        "title": "Crystal",
+        "group": "resources",
+        "mechanic": "crystal net = crystal production + income \u2212 research \u2212 crafting demand",
+        "features": [
+            "crystal balance",
+            "research demand",
+            "crafting demand",
+            "turn forecast",
+            "resource tiles",
+            "income breakdown",
+            "production forecast",
+            "deficit warnings"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "per-turn view",
+            "per-colony view",
+            "resource filters",
+            "shortfall states"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "deuterium": {
+        "title": "Deuterium",
+        "group": "resources",
+        "mechanic": "deuterium net = refinery output + income \u2212 fuel \u2212 research \u2212 power demand",
+        "features": [
+            "deuterium balance",
+            "fuel demand",
+            "research demand",
+            "shortfall forecast",
+            "resource tiles",
+            "income breakdown",
+            "production forecast",
+            "deficit warnings"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "per-turn view",
+            "per-colony view",
+            "resource filters",
+            "shortfall states"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "naquadah": {
+        "title": "Naquadah",
+        "group": "resources",
+        "mechanic": "net resource change = production + income \u2212 upkeep \u2212 queue costs",
+        "features": [
+            "resource tiles",
+            "income breakdown",
+            "production forecast",
+            "deficit warnings"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "per-turn view",
+            "per-colony view",
+            "resource filters",
+            "shortfall states"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "energy": {
+        "title": "Energy",
+        "group": "resources",
+        "mechanic": "energy margin = generated power \u2212 colony load \u2212 fleet load \u2212 module draw",
+        "features": [
+            "generation",
+            "load graph",
+            "brownout state",
+            "power priorities",
+            "resource tiles",
+            "income breakdown",
+            "production forecast",
+            "deficit warnings"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "per-turn view",
+            "per-colony view",
+            "resource filters",
+            "shortfall states"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "dark-matter": {
+        "title": "Dark Matter",
+        "group": "resources",
+        "mechanic": "net resource change = production + income \u2212 upkeep \u2212 queue costs",
+        "features": [
+            "resource tiles",
+            "income breakdown",
+            "production forecast",
+            "deficit warnings"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "per-turn view",
+            "per-colony view",
+            "resource filters",
+            "shortfall states"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "production": {
+        "title": "Production",
+        "group": "resources",
+        "mechanic": "net resource change = production + income \u2212 upkeep \u2212 queue costs",
+        "features": [
+            "resource tiles",
+            "income breakdown",
+            "production forecast",
+            "deficit warnings"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "per-turn view",
+            "per-colony view",
+            "resource filters",
+            "shortfall states"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "energy-grid": {
+        "title": "Energy Grid",
+        "group": "resources",
+        "mechanic": "energy margin = generated power \u2212 colony load \u2212 fleet load \u2212 module draw",
+        "features": [
+            "generation",
+            "load graph",
+            "brownout state",
+            "power priorities",
+            "resource tiles",
+            "income breakdown",
+            "production forecast",
+            "deficit warnings"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "per-turn view",
+            "per-colony view",
+            "resource filters",
+            "shortfall states"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "construction-buildings": {
+        "title": "Buildings",
+        "group": "construction",
+        "mechanic": "build eligibility = ownership + prerequisite + cost + field capacity + queue slot",
+        "features": [
+            "build catalogue",
+            "level preview",
+            "queue timeline",
+            "field usage",
+            "building catalogue",
+            "prerequisite matrix",
+            "power impact"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "level preview",
+            "cancel policy",
+            "field placement",
+            "capacity validation"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "construction-facilities": {
+        "title": "Facilities",
+        "group": "construction",
+        "mechanic": "build eligibility = ownership + prerequisite + cost + field capacity + queue slot",
+        "features": [
+            "build catalogue",
+            "level preview",
+            "queue timeline",
+            "field usage",
+            "building catalogue",
+            "prerequisite matrix",
+            "power impact"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "level preview",
+            "cancel policy",
+            "field placement",
+            "capacity validation"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "construction-queue": {
+        "title": "Construction Queue",
+        "group": "construction",
+        "mechanic": "build eligibility = ownership + prerequisite + cost + field capacity + queue slot",
+        "features": [
+            "build catalogue",
+            "level preview",
+            "queue timeline",
+            "field usage",
+            "building catalogue",
+            "prerequisite matrix",
+            "power impact"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "level preview",
+            "cancel policy",
+            "field placement",
+            "capacity validation"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "shipyard": {
+        "title": "Shipyard",
+        "group": "construction",
+        "mechanic": "ship production = blueprint cost + yard capacity + queue availability + resource balance",
+        "features": [
+            "ship catalogue",
+            "yard queue",
+            "hull preview",
+            "fuel profile",
+            "building catalogue",
+            "queue timeline",
+            "prerequisite matrix",
+            "power impact"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "level preview",
+            "cancel policy",
+            "field placement",
+            "capacity validation"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "defense": {
+        "title": "Defense",
+        "group": "construction",
+        "mechanic": "queue eligibility = ownership + prerequisite + resource balance + queue capacity + cooldown",
+        "features": [
+            "building catalogue",
+            "queue timeline",
+            "prerequisite matrix",
+            "power impact"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "level preview",
+            "cancel policy",
+            "field placement",
+            "capacity validation"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "robotics": {
+        "title": "Robotics",
+        "group": "construction",
+        "mechanic": "queue eligibility = ownership + prerequisite + resource balance + queue capacity + cooldown",
+        "features": [
+            "building catalogue",
+            "queue timeline",
+            "prerequisite matrix",
+            "power impact"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "level preview",
+            "cancel policy",
+            "field placement",
+            "capacity validation"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "nanite-factory": {
+        "title": "Nanite Factory",
+        "group": "construction",
+        "mechanic": "queue eligibility = ownership + prerequisite + resource balance + queue capacity + cooldown",
+        "features": [
+            "building catalogue",
+            "queue timeline",
+            "prerequisite matrix",
+            "power impact"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "level preview",
+            "cancel policy",
+            "field placement",
+            "capacity validation"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "terraformer": {
+        "title": "Terraformer",
+        "group": "construction",
+        "mechanic": "queue eligibility = ownership + prerequisite + resource balance + queue capacity + cooldown",
+        "features": [
+            "building catalogue",
+            "queue timeline",
+            "prerequisite matrix",
+            "power impact"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "level preview",
+            "cancel policy",
+            "field placement",
+            "capacity validation"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "space-dock": {
+        "title": "Space Dock",
+        "group": "construction",
+        "mechanic": "queue eligibility = ownership + prerequisite + resource balance + queue capacity + cooldown",
+        "features": [
+            "building catalogue",
+            "queue timeline",
+            "prerequisite matrix",
+            "power impact"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "level preview",
+            "cancel policy",
+            "field placement",
+            "capacity validation"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "research-technology": {
+        "title": "Technology",
+        "group": "research",
+        "mechanic": "research completion = base cost \u00d7 growth^level with prerequisite and queue validation",
+        "features": [
+            "technology tree",
+            "prerequisite graph",
+            "research queue",
+            "effect preview",
+            "branch tree",
+            "locked-state explanation"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "offense",
+            "defense",
+            "covert",
+            "anti-covert",
+            "propulsion",
+            "astrophysics"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "advanced-research": {
+        "title": "Advanced Research",
+        "group": "research",
+        "mechanic": "research completion = base cost \u00d7 growth^level with prerequisite and queue validation",
+        "features": [
+            "technology tree",
+            "prerequisite graph",
+            "research queue",
+            "effect preview",
+            "branch tree",
+            "locked-state explanation"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "offense",
+            "defense",
+            "covert",
+            "anti-covert",
+            "propulsion",
+            "astrophysics"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "combat": {
+        "title": "Combat",
+        "group": "research",
+        "mechanic": "research cost = base cost \u00d7 growth ^ current level; completion applies effect",
+        "features": [
+            "branch tree",
+            "research queue",
+            "effect preview",
+            "locked-state explanation"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "offense",
+            "defense",
+            "covert",
+            "anti-covert",
+            "propulsion",
+            "astrophysics"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "propulsion": {
+        "title": "Propulsion",
+        "group": "research",
+        "mechanic": "research cost = base cost \u00d7 growth ^ current level; completion applies effect",
+        "features": [
+            "branch tree",
+            "research queue",
+            "effect preview",
+            "locked-state explanation"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "offense",
+            "defense",
+            "covert",
+            "anti-covert",
+            "propulsion",
+            "astrophysics"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "espionage": {
+        "title": "Espionage",
+        "group": "research",
+        "mechanic": "research cost = base cost \u00d7 growth ^ current level; completion applies effect",
+        "features": [
+            "branch tree",
+            "research queue",
+            "effect preview",
+            "locked-state explanation"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "offense",
+            "defense",
+            "covert",
+            "anti-covert",
+            "propulsion",
+            "astrophysics"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "astrophysics": {
+        "title": "Astrophysics",
+        "group": "research",
+        "mechanic": "research cost = base cost \u00d7 growth ^ current level; completion applies effect",
+        "features": [
+            "branch tree",
+            "research queue",
+            "effect preview",
+            "locked-state explanation"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "offense",
+            "defense",
+            "covert",
+            "anti-covert",
+            "propulsion",
+            "astrophysics"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "stargate-technology": {
+        "title": "Stargate Technology",
+        "group": "research",
+        "mechanic": "research cost = base cost \u00d7 growth ^ current level; completion applies effect",
+        "features": [
+            "branch tree",
+            "research queue",
+            "effect preview",
+            "locked-state explanation"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "offense",
+            "defense",
+            "covert",
+            "anti-covert",
+            "propulsion",
+            "astrophysics"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "mothership-technology": {
+        "title": "Mothership Technology",
+        "group": "research",
+        "mechanic": "research cost = base cost \u00d7 growth ^ current level; completion applies effect",
+        "features": [
+            "branch tree",
+            "research queue",
+            "effect preview",
+            "locked-state explanation"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "offense",
+            "defense",
+            "covert",
+            "anti-covert",
+            "propulsion",
+            "astrophysics"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "lifeform-research": {
+        "title": "Lifeform Research",
+        "group": "research",
+        "mechanic": "research completion = base cost \u00d7 growth^level with prerequisite and queue validation",
+        "features": [
+            "technology tree",
+            "prerequisite graph",
+            "research queue",
+            "effect preview",
+            "branch tree",
+            "locked-state explanation"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "offense",
+            "defense",
+            "covert",
+            "anti-covert",
+            "propulsion",
+            "astrophysics"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "ascension-research": {
+        "title": "Ascension Research",
+        "group": "research",
+        "mechanic": "research completion = base cost \u00d7 growth^level with prerequisite and queue validation",
+        "features": [
+            "technology tree",
+            "prerequisite graph",
+            "research queue",
+            "effect preview",
+            "branch tree",
+            "locked-state explanation"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "offense",
+            "defense",
+            "covert",
+            "anti-covert",
+            "propulsion",
+            "astrophysics"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "fleet-manager": {
+        "title": "Fleet Manager",
+        "group": "fleet",
+        "mechanic": "fleet mission = validated composition + route distance + propulsion + fuel + cooldown",
+        "features": [
+            "fleet roster",
+            "formation editor",
+            "mission route",
+            "arrival forecast",
+            "loadout view",
+            "mission planner",
+            "fuel estimate"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "speed calculation",
+            "risk preview",
+            "arrival timing",
+            "formation modifiers"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "starships": {
+        "title": "Starships",
+        "group": "fleet",
+        "mechanic": "mission readiness = ownership + fleet availability + fuel + route validation + cooldown",
+        "features": [
+            "fleet roster",
+            "loadout view",
+            "mission planner",
+            "fuel estimate"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "speed calculation",
+            "risk preview",
+            "arrival timing",
+            "formation modifiers"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "motherships": {
+        "title": "Motherships",
+        "group": "fleet",
+        "mechanic": "mission readiness = ownership + fleet availability + fuel + route validation + cooldown",
+        "features": [
+            "fleet roster",
+            "loadout view",
+            "mission planner",
+            "fuel estimate"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "speed calculation",
+            "risk preview",
+            "arrival timing",
+            "formation modifiers"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "ship-upgrades": {
+        "title": "Ship Upgrades",
+        "group": "fleet",
+        "mechanic": "mission readiness = ownership + fleet availability + fuel + route validation + cooldown",
+        "features": [
+            "fleet roster",
+            "loadout view",
+            "mission planner",
+            "fuel estimate"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "speed calculation",
+            "risk preview",
+            "arrival timing",
+            "formation modifiers"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "formations": {
+        "title": "Formations",
+        "group": "fleet",
+        "mechanic": "mission readiness = ownership + fleet availability + fuel + route validation + cooldown",
+        "features": [
+            "fleet roster",
+            "loadout view",
+            "mission planner",
+            "fuel estimate"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "speed calculation",
+            "risk preview",
+            "arrival timing",
+            "formation modifiers"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "fleet-missions": {
+        "title": "Fleet Missions",
+        "group": "fleet",
+        "mechanic": "fleet mission = validated composition + route distance + propulsion + fuel + cooldown",
+        "features": [
+            "fleet roster",
+            "formation editor",
+            "mission route",
+            "arrival forecast",
+            "loadout view",
+            "mission planner",
+            "fuel estimate"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "speed calculation",
+            "risk preview",
+            "arrival timing",
+            "formation modifiers"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "expeditions": {
+        "title": "Expeditions",
+        "group": "fleet",
+        "mechanic": "mission readiness = ownership + fleet availability + fuel + route validation + cooldown",
+        "features": [
+            "fleet roster",
+            "loadout view",
+            "mission planner",
+            "fuel estimate"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "speed calculation",
+            "risk preview",
+            "arrival timing",
+            "formation modifiers"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "fleet-save": {
+        "title": "Fleet Save",
+        "group": "fleet",
+        "mechanic": "fleet mission = validated composition + route distance + propulsion + fuel + cooldown",
+        "features": [
+            "fleet roster",
+            "formation editor",
+            "mission route",
+            "arrival forecast",
+            "loadout view",
+            "mission planner",
+            "fuel estimate"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "speed calculation",
+            "risk preview",
+            "arrival timing",
+            "formation modifiers"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "acs": {
+        "title": "ACS",
+        "group": "fleet",
+        "mechanic": "mission readiness = ownership + fleet availability + fuel + route validation + cooldown",
+        "features": [
+            "fleet roster",
+            "loadout view",
+            "mission planner",
+            "fuel estimate"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "speed calculation",
+            "risk preview",
+            "arrival timing",
+            "formation modifiers"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "ground-forces": {
+        "title": "Ground Forces",
+        "group": "military",
+        "mechanic": "combat power = units \u00d7 equipment \u00d7 technology \u00d7 morale \u2212 penalties",
+        "features": [
+            "force roster",
+            "training queue",
+            "defense grid",
+            "combat simulator"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "shield",
+            "armor",
+            "penetration",
+            "casualty preview",
+            "readiness state"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "military-units": {
+        "title": "Units",
+        "group": "military",
+        "mechanic": "combat readiness = units \u00d7 equipment \u00d7 technology \u00d7 morale \u2212 fatigue",
+        "features": [
+            "force roster",
+            "training queue",
+            "defense posture",
+            "combat readiness",
+            "defense grid",
+            "combat simulator"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "shield",
+            "armor",
+            "penetration",
+            "casualty preview",
+            "readiness state"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "officers": {
+        "title": "Officers",
+        "group": "military",
+        "mechanic": "combat power = units \u00d7 equipment \u00d7 technology \u00d7 morale \u2212 penalties",
+        "features": [
+            "force roster",
+            "training queue",
+            "defense grid",
+            "combat simulator"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "shield",
+            "armor",
+            "penetration",
+            "casualty preview",
+            "readiness state"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "training-center": {
+        "title": "Training Center",
+        "group": "military",
+        "mechanic": "combat power = units \u00d7 equipment \u00d7 technology \u00d7 morale \u2212 penalties",
+        "features": [
+            "force roster",
+            "training queue",
+            "defense grid",
+            "combat simulator"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "shield",
+            "armor",
+            "penetration",
+            "casualty preview",
+            "readiness state"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "planetary-defense": {
+        "title": "Planetary Defense",
+        "group": "military",
+        "mechanic": "combat power = units \u00d7 equipment \u00d7 technology \u00d7 morale \u2212 penalties",
+        "features": [
+            "force roster",
+            "training queue",
+            "defense grid",
+            "combat simulator"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "shield",
+            "armor",
+            "penetration",
+            "casualty preview",
+            "readiness state"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "missile-warfare": {
+        "title": "Missile Warfare",
+        "group": "military",
+        "mechanic": "combat power = units \u00d7 equipment \u00d7 technology \u00d7 morale \u2212 penalties",
+        "features": [
+            "force roster",
+            "training queue",
+            "defense grid",
+            "combat simulator"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "shield",
+            "armor",
+            "penetration",
+            "casualty preview",
+            "readiness state"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "combat-simulator": {
+        "title": "Combat Simulator",
+        "group": "military",
+        "mechanic": "combat power = units \u00d7 equipment \u00d7 technology \u00d7 morale \u2212 penalties",
+        "features": [
+            "force roster",
+            "training queue",
+            "defense grid",
+            "combat simulator"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "shield",
+            "armor",
+            "penetration",
+            "casualty preview",
+            "readiness state"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "war-room": {
+        "title": "War Room",
+        "group": "military",
+        "mechanic": "combat power = units \u00d7 equipment \u00d7 technology \u00d7 morale \u2212 penalties",
+        "features": [
+            "force roster",
+            "training queue",
+            "defense grid",
+            "combat simulator"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "shield",
+            "armor",
+            "penetration",
+            "casualty preview",
+            "readiness state"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "campaigns": {
+        "title": "Campaigns",
+        "group": "military",
+        "mechanic": "combat power = units \u00d7 equipment \u00d7 technology \u00d7 morale \u2212 penalties",
+        "features": [
+            "force roster",
+            "training queue",
+            "defense grid",
+            "combat simulator"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "shield",
+            "armor",
+            "penetration",
+            "casualty preview",
+            "readiness state"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "galaxy-view": {
+        "title": "Galaxy View",
+        "group": "galaxy",
+        "mechanic": "navigation visibility = coordinate scope + discovery state + scan power + permission",
+        "features": [
+            "map viewport",
+            "coordinate path",
+            "scan state",
+            "discovery record",
+            "coordinate navigator",
+            "map layers",
+            "sensor scope",
+            "travel lanes"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "galaxy filter",
+            "sector filter",
+            "system orbit",
+            "anomaly status",
+            "NPC signal"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "galaxy-map": {
+        "title": "Galaxy Map",
+        "group": "galaxy",
+        "mechanic": "navigation visibility = coordinate scope + discovery state + scan power + permission",
+        "features": [
+            "map viewport",
+            "coordinate path",
+            "scan state",
+            "discovery record",
+            "coordinate navigator",
+            "map layers",
+            "sensor scope",
+            "travel lanes"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "galaxy filter",
+            "sector filter",
+            "system orbit",
+            "anomaly status",
+            "NPC signal"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "galaxy-solar-systems": {
+        "title": "Solar Systems",
+        "group": "galaxy",
+        "mechanic": "navigation visibility = coordinate scope + discovery state + scan power + permission",
+        "features": [
+            "map viewport",
+            "coordinate path",
+            "scan state",
+            "discovery record",
+            "coordinate navigator",
+            "map layers",
+            "sensor scope",
+            "travel lanes"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "galaxy filter",
+            "sector filter",
+            "system orbit",
+            "anomaly status",
+            "NPC signal"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "3d-universe": {
+        "title": "3D Universe",
+        "group": "galaxy",
+        "mechanic": "visibility = discovered scope + scan permission + coordinate hierarchy + sensor power",
+        "features": [
+            "coordinate navigator",
+            "map layers",
+            "sensor scope",
+            "travel lanes"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "galaxy filter",
+            "sector filter",
+            "system orbit",
+            "anomaly status",
+            "NPC signal"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "galaxy-sectors": {
+        "title": "Sectors",
+        "group": "galaxy",
+        "mechanic": "navigation visibility = coordinate scope + discovery state + scan power + permission",
+        "features": [
+            "map viewport",
+            "coordinate path",
+            "scan state",
+            "discovery record",
+            "coordinate navigator",
+            "map layers",
+            "sensor scope",
+            "travel lanes"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "galaxy filter",
+            "sector filter",
+            "system orbit",
+            "anomaly status",
+            "NPC signal"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "realm-systems": {
+        "title": "Realm Systems",
+        "group": "galaxy",
+        "mechanic": "visibility = discovered scope + scan permission + coordinate hierarchy + sensor power",
+        "features": [
+            "coordinate navigator",
+            "map layers",
+            "sensor scope",
+            "travel lanes"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "galaxy filter",
+            "sector filter",
+            "system orbit",
+            "anomaly status",
+            "NPC signal"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "stargate-network": {
+        "title": "Stargate Network",
+        "group": "galaxy",
+        "mechanic": "visibility = discovered scope + scan permission + coordinate hierarchy + sensor power",
+        "features": [
+            "coordinate navigator",
+            "map layers",
+            "sensor scope",
+            "travel lanes"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "galaxy filter",
+            "sector filter",
+            "system orbit",
+            "anomaly status",
+            "NPC signal"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "wormholes": {
+        "title": "Wormholes",
+        "group": "galaxy",
+        "mechanic": "visibility = discovered scope + scan permission + coordinate hierarchy + sensor power",
+        "features": [
+            "coordinate navigator",
+            "map layers",
+            "sensor scope",
+            "travel lanes"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "galaxy filter",
+            "sector filter",
+            "system orbit",
+            "anomaly status",
+            "NPC signal"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "anomalies": {
+        "title": "Anomalies",
+        "group": "galaxy",
+        "mechanic": "visibility = discovered scope + scan permission + coordinate hierarchy + sensor power",
+        "features": [
+            "coordinate navigator",
+            "map layers",
+            "sensor scope",
+            "travel lanes"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "galaxy filter",
+            "sector filter",
+            "system orbit",
+            "anomaly status",
+            "NPC signal"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "npc-factions": {
+        "title": "NPC Factions",
+        "group": "galaxy",
+        "mechanic": "visibility = discovered scope + scan permission + coordinate hierarchy + sensor power",
+        "features": [
+            "coordinate navigator",
+            "map layers",
+            "sensor scope",
+            "travel lanes"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "galaxy filter",
+            "sector filter",
+            "system orbit",
+            "anomaly status",
+            "NPC signal"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "seed-discovery": {
+        "title": "Seed Discovery",
+        "group": "galaxy",
+        "mechanic": "visibility = discovered scope + scan permission + coordinate hierarchy + sensor power",
+        "features": [
+            "coordinate navigator",
+            "map layers",
+            "sensor scope",
+            "travel lanes"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "galaxy filter",
+            "sector filter",
+            "system orbit",
+            "anomaly status",
+            "NPC signal"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "galactic-calendar": {
+        "title": "Galactic Calendar",
+        "group": "galaxy",
+        "mechanic": "visibility = discovered scope + scan permission + coordinate hierarchy + sensor power",
+        "features": [
+            "coordinate navigator",
+            "map layers",
+            "sensor scope",
+            "travel lanes"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "galaxy filter",
+            "sector filter",
+            "system orbit",
+            "anomaly status",
+            "NPC signal"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "marketplace": {
+        "title": "Marketplace",
+        "group": "economy",
+        "mechanic": "trade settlement = validated order \u00d7 price \u2212 fee \u2212 escrow state",
+        "features": [
+            "order book",
+            "price bands",
+            "escrow state",
+            "trade history",
+            "price limits",
+            "insurance status"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "buy",
+            "sell",
+            "route capacity",
+            "expiry",
+            "fee preview"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "resource-trading": {
+        "title": "Resource Trading",
+        "group": "economy",
+        "mechanic": "resource state = authenticated balance + production \u2212 upkeep \u2212 queued cost",
+        "features": [
+            "balance tiles",
+            "production history",
+            "consumption forecast",
+            "deficit warning",
+            "order book",
+            "price limits",
+            "trade history",
+            "insurance status"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "buy",
+            "sell",
+            "route capacity",
+            "expiry",
+            "fee preview"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "trade-routes": {
+        "title": "Trade Routes",
+        "group": "economy",
+        "mechanic": "settlement = validated order \u00d7 market price \u2212 fee \u2212 risk adjustment",
+        "features": [
+            "order book",
+            "price limits",
+            "trade history",
+            "insurance status"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "buy",
+            "sell",
+            "route capacity",
+            "expiry",
+            "fee preview"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "merchant": {
+        "title": "Merchant",
+        "group": "economy",
+        "mechanic": "settlement = validated order \u00d7 market price \u2212 fee \u2212 risk adjustment",
+        "features": [
+            "order book",
+            "price limits",
+            "trade history",
+            "insurance status"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "buy",
+            "sell",
+            "route capacity",
+            "expiry",
+            "fee preview"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "auction-house": {
+        "title": "Auction House",
+        "group": "economy",
+        "mechanic": "settlement = validated order \u00d7 market price \u2212 fee \u2212 risk adjustment",
+        "features": [
+            "order book",
+            "price limits",
+            "trade history",
+            "insurance status"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "buy",
+            "sell",
+            "route capacity",
+            "expiry",
+            "fee preview"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "black-market": {
+        "title": "Black Market",
+        "group": "economy",
+        "mechanic": "trade settlement = validated order \u00d7 price \u2212 fee \u2212 escrow state",
+        "features": [
+            "order book",
+            "price bands",
+            "escrow state",
+            "trade history",
+            "price limits",
+            "insurance status"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "buy",
+            "sell",
+            "route capacity",
+            "expiry",
+            "fee preview"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "insurance": {
+        "title": "Insurance",
+        "group": "economy",
+        "mechanic": "settlement = validated order \u00d7 market price \u2212 fee \u2212 risk adjustment",
+        "features": [
+            "order book",
+            "price limits",
+            "trade history",
+            "insurance status"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "buy",
+            "sell",
+            "route capacity",
+            "expiry",
+            "fee preview"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "workshop": {
+        "title": "Workshop",
+        "group": "crafting",
+        "mechanic": "craft output = blueprint tier \u00d7 material quality \u00d7 skill modifier \u00d7 station efficiency",
+        "features": [
+            "blueprint library",
+            "materials inventory",
+            "craft queue",
+            "augmentation panel"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "quality tier",
+            "success chance",
+            "durability",
+            "salvage yield",
+            "artifact effects"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "master-crafting": {
+        "title": "Master Crafting",
+        "group": "crafting",
+        "mechanic": "craft output = blueprint tier \u00d7 material quality \u00d7 skill \u00d7 station efficiency",
+        "features": [
+            "blueprints",
+            "materials",
+            "craft queue",
+            "quality preview",
+            "blueprint library",
+            "materials inventory",
+            "augmentation panel"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "quality tier",
+            "success chance",
+            "durability",
+            "salvage yield",
+            "artifact effects"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "crafting-rank": {
+        "title": "Crafting Rank",
+        "group": "crafting",
+        "mechanic": "craft output = blueprint tier \u00d7 material quality \u00d7 skill \u00d7 station efficiency",
+        "features": [
+            "blueprints",
+            "materials",
+            "craft queue",
+            "quality preview",
+            "blueprint library",
+            "materials inventory",
+            "augmentation panel"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "quality tier",
+            "success chance",
+            "durability",
+            "salvage yield",
+            "artifact effects"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "materials": {
+        "title": "Materials",
+        "group": "crafting",
+        "mechanic": "craft output = blueprint tier \u00d7 material quality \u00d7 skill modifier \u00d7 station efficiency",
+        "features": [
+            "blueprint library",
+            "materials inventory",
+            "craft queue",
+            "augmentation panel"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "quality tier",
+            "success chance",
+            "durability",
+            "salvage yield",
+            "artifact effects"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "materials-lab": {
+        "title": "Materials Lab",
+        "group": "crafting",
+        "mechanic": "craft output = blueprint tier \u00d7 material quality \u00d7 skill modifier \u00d7 station efficiency",
+        "features": [
+            "blueprint library",
+            "materials inventory",
+            "craft queue",
+            "augmentation panel"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "quality tier",
+            "success chance",
+            "durability",
+            "salvage yield",
+            "artifact effects"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "dismantling": {
+        "title": "Dismantling",
+        "group": "crafting",
+        "mechanic": "craft output = blueprint tier \u00d7 material quality \u00d7 skill modifier \u00d7 station efficiency",
+        "features": [
+            "blueprint library",
+            "materials inventory",
+            "craft queue",
+            "augmentation panel"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "quality tier",
+            "success chance",
+            "durability",
+            "salvage yield",
+            "artifact effects"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "augmentations": {
+        "title": "Augmentations",
+        "group": "crafting",
+        "mechanic": "craft output = blueprint tier \u00d7 material quality \u00d7 skill modifier \u00d7 station efficiency",
+        "features": [
+            "blueprint library",
+            "materials inventory",
+            "craft queue",
+            "augmentation panel"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "quality tier",
+            "success chance",
+            "durability",
+            "salvage yield",
+            "artifact effects"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "artifacts": {
+        "title": "Artifacts",
+        "group": "crafting",
+        "mechanic": "craft output = blueprint tier \u00d7 material quality \u00d7 skill modifier \u00d7 station efficiency",
+        "features": [
+            "blueprint library",
+            "materials inventory",
+            "craft queue",
+            "augmentation panel"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "quality tier",
+            "success chance",
+            "durability",
+            "salvage yield",
+            "artifact effects"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "blueprints": {
+        "title": "Blueprints",
+        "group": "crafting",
+        "mechanic": "craft output = blueprint tier \u00d7 material quality \u00d7 skill modifier \u00d7 station efficiency",
+        "features": [
+            "blueprint library",
+            "materials inventory",
+            "craft queue",
+            "augmentation panel"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "quality tier",
+            "success chance",
+            "durability",
+            "salvage yield",
+            "artifact effects"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "alliance-hub": {
+        "title": "Alliance Hub",
+        "group": "alliance",
+        "mechanic": "alliance action = membership role + diplomatic state + project capacity + audit event",
+        "features": [
+            "member roster",
+            "role matrix",
+            "diplomacy map",
+            "shared projects",
+            "role permissions"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "officer roles",
+            "war state",
+            "ACS readiness",
+            "logistics capacity",
+            "alliance reports"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "members": {
+        "title": "Members",
+        "group": "alliance",
+        "mechanic": "alliance capacity = command level \u00d7 alliance technology \u00d7 government modifier",
+        "features": [
+            "member roster",
+            "role permissions",
+            "diplomacy map",
+            "shared projects"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "officer roles",
+            "war state",
+            "ACS readiness",
+            "logistics capacity",
+            "alliance reports"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "commanders": {
+        "title": "Commanders",
+        "group": "alliance",
+        "mechanic": "alliance capacity = command level \u00d7 alliance technology \u00d7 government modifier",
+        "features": [
+            "member roster",
+            "role permissions",
+            "diplomacy map",
+            "shared projects"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "officer roles",
+            "war state",
+            "ACS readiness",
+            "logistics capacity",
+            "alliance reports"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "alliance-officers": {
+        "title": "Officers",
+        "group": "alliance",
+        "mechanic": "alliance action = membership role + diplomatic state + project capacity + audit event",
+        "features": [
+            "member roster",
+            "role matrix",
+            "diplomacy map",
+            "shared projects",
+            "role permissions"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "officer roles",
+            "war state",
+            "ACS readiness",
+            "logistics capacity",
+            "alliance reports"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "diplomacy": {
+        "title": "Diplomacy",
+        "group": "alliance",
+        "mechanic": "alliance capacity = command level \u00d7 alliance technology \u00d7 government modifier",
+        "features": [
+            "member roster",
+            "role permissions",
+            "diplomacy map",
+            "shared projects"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "officer roles",
+            "war state",
+            "ACS readiness",
+            "logistics capacity",
+            "alliance reports"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "war": {
+        "title": "War",
+        "group": "alliance",
+        "mechanic": "alliance capacity = command level \u00d7 alliance technology \u00d7 government modifier",
+        "features": [
+            "member roster",
+            "role permissions",
+            "diplomacy map",
+            "shared projects"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "officer roles",
+            "war state",
+            "ACS readiness",
+            "logistics capacity",
+            "alliance reports"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "alliance-acs": {
+        "title": "ACS",
+        "group": "alliance",
+        "mechanic": "alliance action = membership role + diplomatic state + project capacity + audit event",
+        "features": [
+            "member roster",
+            "role matrix",
+            "diplomacy map",
+            "shared projects",
+            "role permissions"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "officer roles",
+            "war state",
+            "ACS readiness",
+            "logistics capacity",
+            "alliance reports"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "alliance-logistics": {
+        "title": "Alliance Logistics",
+        "group": "alliance",
+        "mechanic": "alliance action = membership role + diplomatic state + project capacity + audit event",
+        "features": [
+            "member roster",
+            "role matrix",
+            "diplomacy map",
+            "shared projects",
+            "role permissions"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "officer roles",
+            "war state",
+            "ACS readiness",
+            "logistics capacity",
+            "alliance reports"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "alliance-stargates": {
+        "title": "Alliance Stargates",
+        "group": "alliance",
+        "mechanic": "alliance action = membership role + diplomatic state + project capacity + audit event",
+        "features": [
+            "member roster",
+            "role matrix",
+            "diplomacy map",
+            "shared projects",
+            "role permissions"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "officer roles",
+            "war state",
+            "ACS readiness",
+            "logistics capacity",
+            "alliance reports"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "alliance-intelligence": {
+        "title": "Alliance Intelligence",
+        "group": "alliance",
+        "mechanic": "intelligence result = sensor power + covert skill \u2212 target counter-intelligence",
+        "features": [
+            "target profile",
+            "detection estimate",
+            "classified output",
+            "mission history",
+            "member roster",
+            "role permissions",
+            "diplomacy map",
+            "shared projects"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "officer roles",
+            "war state",
+            "ACS readiness",
+            "logistics capacity",
+            "alliance reports"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "lifeforms-population": {
+        "title": "Population",
+        "group": "lifeforms",
+        "mechanic": "lifeform progress = population \u00d7 role efficiency \u00d7 tier modifier \u00d7 morale",
+        "features": [
+            "population roles",
+            "tier ladder",
+            "trait matrix",
+            "bonus summary",
+            "population profile",
+            "food balance",
+            "lifeform tree"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "tier progress",
+            "civilization level",
+            "bonus stacking",
+            "workforce allocation"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "food": {
+        "title": "Food",
+        "group": "lifeforms",
+        "mechanic": "lifeform output = population \u00d7 role efficiency \u00d7 morale \u00d7 tier modifier",
+        "features": [
+            "population profile",
+            "food balance",
+            "lifeform tree",
+            "trait matrix"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "tier progress",
+            "civilization level",
+            "bonus stacking",
+            "workforce allocation"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "lifeform-buildings": {
+        "title": "Lifeform Buildings",
+        "group": "lifeforms",
+        "mechanic": "lifeform progress = population \u00d7 role efficiency \u00d7 tier modifier \u00d7 morale",
+        "features": [
+            "population roles",
+            "tier ladder",
+            "trait matrix",
+            "bonus summary",
+            "population profile",
+            "food balance",
+            "lifeform tree"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "tier progress",
+            "civilization level",
+            "bonus stacking",
+            "workforce allocation"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "lifeforms-lifeform-research": {
+        "title": "Lifeform Research",
+        "group": "lifeforms",
+        "mechanic": "research completion = base cost \u00d7 growth^level with prerequisite and queue validation",
+        "features": [
+            "technology tree",
+            "prerequisite graph",
+            "research queue",
+            "effect preview",
+            "population profile",
+            "food balance",
+            "lifeform tree",
+            "trait matrix"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "tier progress",
+            "civilization level",
+            "bonus stacking",
+            "workforce allocation"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "civilization-tier": {
+        "title": "Civilization Tier",
+        "group": "lifeforms",
+        "mechanic": "lifeform output = population \u00d7 role efficiency \u00d7 morale \u00d7 tier modifier",
+        "features": [
+            "population profile",
+            "food balance",
+            "lifeform tree",
+            "trait matrix"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "tier progress",
+            "civilization level",
+            "bonus stacking",
+            "workforce allocation"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "traits": {
+        "title": "Traits",
+        "group": "lifeforms",
+        "mechanic": "lifeform output = population \u00d7 role efficiency \u00d7 morale \u00d7 tier modifier",
+        "features": [
+            "population profile",
+            "food balance",
+            "lifeform tree",
+            "trait matrix"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "tier progress",
+            "civilization level",
+            "bonus stacking",
+            "workforce allocation"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "lifeform-bonuses": {
+        "title": "Lifeform Bonuses",
+        "group": "lifeforms",
+        "mechanic": "lifeform progress = population \u00d7 role efficiency \u00d7 tier modifier \u00d7 morale",
+        "features": [
+            "population roles",
+            "tier ladder",
+            "trait matrix",
+            "bonus summary",
+            "population profile",
+            "food balance",
+            "lifeform tree"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "tier progress",
+            "civilization level",
+            "bonus stacking",
+            "workforce allocation"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "quests": {
+        "title": "Quests",
+        "group": "activities",
+        "mechanic": "activity reward = validated objective completion \u00d7 difficulty \u00d7 season modifier",
+        "features": [
+            "activity board",
+            "progress tracker",
+            "reward preview",
+            "season timeline"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "eligibility",
+            "cooldown",
+            "risk",
+            "reward state",
+            "completion audit"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "activities-expeditions": {
+        "title": "Expeditions",
+        "group": "activities",
+        "mechanic": "activity reward = validated objective completion \u00d7 difficulty \u00d7 season modifier",
+        "features": [
+            "activity board",
+            "progress tracker",
+            "reward preview",
+            "season timeline"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "eligibility",
+            "cooldown",
+            "risk",
+            "reward state",
+            "completion audit"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "pirate-hunting": {
+        "title": "Pirate Hunting",
+        "group": "activities",
+        "mechanic": "activity reward = validated objective completion \u00d7 difficulty \u00d7 season modifier",
+        "features": [
+            "activity board",
+            "progress tracker",
+            "reward preview",
+            "season timeline"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "eligibility",
+            "cooldown",
+            "risk",
+            "reward state",
+            "completion audit"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "bounty-board": {
+        "title": "Bounty Board",
+        "group": "activities",
+        "mechanic": "activity reward = validated objective completion \u00d7 difficulty \u00d7 season modifier",
+        "features": [
+            "activity board",
+            "progress tracker",
+            "reward preview",
+            "season timeline"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "eligibility",
+            "cooldown",
+            "risk",
+            "reward state",
+            "completion audit"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "world-bosses": {
+        "title": "World Bosses",
+        "group": "activities",
+        "mechanic": "activity reward = validated objective completion \u00d7 difficulty \u00d7 season modifier",
+        "features": [
+            "activity board",
+            "progress tracker",
+            "reward preview",
+            "season timeline"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "eligibility",
+            "cooldown",
+            "risk",
+            "reward state",
+            "completion audit"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "activities-anomalies": {
+        "title": "Anomalies",
+        "group": "activities",
+        "mechanic": "activity reward = validated objective completion \u00d7 difficulty \u00d7 season modifier",
+        "features": [
+            "activity board",
+            "progress tracker",
+            "reward preview",
+            "season timeline"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "eligibility",
+            "cooldown",
+            "risk",
+            "reward state",
+            "completion audit"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "activities-campaigns": {
+        "title": "Campaigns",
+        "group": "activities",
+        "mechanic": "activity reward = validated objective completion \u00d7 difficulty \u00d7 season modifier",
+        "features": [
+            "activity board",
+            "progress tracker",
+            "reward preview",
+            "season timeline"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "eligibility",
+            "cooldown",
+            "risk",
+            "reward state",
+            "completion audit"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "achievements": {
+        "title": "Achievements",
+        "group": "activities",
+        "mechanic": "activity reward = validated objective completion \u00d7 difficulty \u00d7 season modifier",
+        "features": [
+            "activity board",
+            "progress tracker",
+            "reward preview",
+            "season timeline"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "eligibility",
+            "cooldown",
+            "risk",
+            "reward state",
+            "completion audit"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "seasonal-events": {
+        "title": "Seasonal Events",
+        "group": "activities",
+        "mechanic": "activity reward = validated objective completion \u00d7 difficulty \u00d7 season modifier",
+        "features": [
+            "activity board",
+            "progress tracker",
+            "reward preview",
+            "season timeline"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "eligibility",
+            "cooldown",
+            "risk",
+            "reward state",
+            "completion audit"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "glory": {
+        "title": "Glory",
+        "group": "prestige",
+        "mechanic": "prestige score = glory + reputation + ascension milestones \u2212 penalties",
+        "features": [
+            "prestige summary",
+            "milestone ladder",
+            "title library",
+            "permanent modifiers"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "thresholds",
+            "locked states",
+            "season movement",
+            "bonus application"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "reputation": {
+        "title": "Reputation",
+        "group": "prestige",
+        "mechanic": "prestige score = glory + reputation + ascension milestones \u2212 penalties",
+        "features": [
+            "prestige summary",
+            "milestone ladder",
+            "title library",
+            "permanent modifiers"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "thresholds",
+            "locked states",
+            "season movement",
+            "bonus application"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "prestige-ascension": {
+        "title": "Ascension",
+        "group": "prestige",
+        "mechanic": "prestige state = glory + reputation + ascension milestones \u2212 penalties",
+        "features": [
+            "milestone ladder",
+            "reputation track",
+            "title library",
+            "permanent modifiers",
+            "prestige summary"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "thresholds",
+            "locked states",
+            "season movement",
+            "bonus application"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "re-ascension": {
+        "title": "Re-Ascension",
+        "group": "prestige",
+        "mechanic": "prestige score = glory + reputation + ascension milestones \u2212 penalties",
+        "features": [
+            "prestige summary",
+            "milestone ladder",
+            "title library",
+            "permanent modifiers"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "thresholds",
+            "locked states",
+            "season movement",
+            "bonus application"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "ascended-races": {
+        "title": "Ascended Races",
+        "group": "prestige",
+        "mechanic": "prestige score = glory + reputation + ascension milestones \u2212 penalties",
+        "features": [
+            "prestige summary",
+            "milestone ladder",
+            "title library",
+            "permanent modifiers"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "thresholds",
+            "locked states",
+            "season movement",
+            "bonus application"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "titles": {
+        "title": "Titles",
+        "group": "prestige",
+        "mechanic": "prestige score = glory + reputation + ascension milestones \u2212 penalties",
+        "features": [
+            "prestige summary",
+            "milestone ladder",
+            "title library",
+            "permanent modifiers"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "thresholds",
+            "locked states",
+            "season movement",
+            "bonus application"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "permanent-bonuses": {
+        "title": "Permanent Bonuses",
+        "group": "prestige",
+        "mechanic": "prestige score = glory + reputation + ascension milestones \u2212 penalties",
+        "features": [
+            "prestige summary",
+            "milestone ladder",
+            "title library",
+            "permanent modifiers"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "thresholds",
+            "locked states",
+            "season movement",
+            "bonus application"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "empire": {
+        "title": "Empire",
+        "group": "rankings",
+        "mechanic": "ranking score = economy + military + technology + glory \u2212 penalties",
+        "features": [
+            "leaderboard",
+            "movement indicators",
+            "score breakdown",
+            "season snapshot"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "universe filter",
+            "category filter",
+            "rank movement",
+            "public visibility"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "economy": {
+        "title": "Economy",
+        "group": "rankings",
+        "mechanic": "ranking score = economy + military + technology + glory \u2212 penalties",
+        "features": [
+            "leaderboard",
+            "movement indicators",
+            "score breakdown",
+            "season snapshot"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "universe filter",
+            "category filter",
+            "rank movement",
+            "public visibility"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "fleet": {
+        "title": "Fleet",
+        "group": "rankings",
+        "mechanic": "fleet mission = validated composition + route distance + propulsion + fuel + cooldown",
+        "features": [
+            "fleet roster",
+            "formation editor",
+            "mission route",
+            "arrival forecast",
+            "leaderboard",
+            "movement indicators",
+            "score breakdown",
+            "season snapshot"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "universe filter",
+            "category filter",
+            "rank movement",
+            "public visibility"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "research": {
+        "title": "Research",
+        "group": "rankings",
+        "mechanic": "research completion = base cost \u00d7 growth^level with prerequisite and queue validation",
+        "features": [
+            "technology tree",
+            "prerequisite graph",
+            "research queue",
+            "effect preview",
+            "leaderboard",
+            "movement indicators",
+            "score breakdown",
+            "season snapshot"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "universe filter",
+            "category filter",
+            "rank movement",
+            "public visibility"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "rankings-defense": {
+        "title": "Defense",
+        "group": "rankings",
+        "mechanic": "ranking score = economy + military + technology + glory \u2212 penalties",
+        "features": [
+            "leaderboard",
+            "score breakdown",
+            "movement indicator",
+            "season snapshot",
+            "movement indicators"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "universe filter",
+            "category filter",
+            "rank movement",
+            "public visibility"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "covert": {
+        "title": "Covert",
+        "group": "rankings",
+        "mechanic": "ranking score = economy + military + technology + glory \u2212 penalties",
+        "features": [
+            "leaderboard",
+            "movement indicators",
+            "score breakdown",
+            "season snapshot"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "universe filter",
+            "category filter",
+            "rank movement",
+            "public visibility"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "alliance": {
+        "title": "Alliance",
+        "group": "rankings",
+        "mechanic": "alliance action = membership role + diplomatic state + project capacity + audit event",
+        "features": [
+            "member roster",
+            "role matrix",
+            "diplomacy map",
+            "shared projects",
+            "leaderboard",
+            "movement indicators",
+            "score breakdown",
+            "season snapshot"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "universe filter",
+            "category filter",
+            "rank movement",
+            "public visibility"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "lifeform": {
+        "title": "Lifeform",
+        "group": "rankings",
+        "mechanic": "lifeform progress = population \u00d7 role efficiency \u00d7 tier modifier \u00d7 morale",
+        "features": [
+            "population roles",
+            "tier ladder",
+            "trait matrix",
+            "bonus summary",
+            "leaderboard",
+            "movement indicators",
+            "score breakdown",
+            "season snapshot"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "universe filter",
+            "category filter",
+            "rank movement",
+            "public visibility"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "galactic-control": {
+        "title": "Galactic Control",
+        "group": "rankings",
+        "mechanic": "ranking score = economy + military + technology + glory \u2212 penalties",
+        "features": [
+            "leaderboard",
+            "movement indicators",
+            "score breakdown",
+            "season snapshot"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "universe filter",
+            "category filter",
+            "rank movement",
+            "public visibility"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "store": {
+        "title": "Store",
+        "group": "premium",
+        "mechanic": "purchase eligibility = authenticated account + catalogue availability + balance + entitlement rules",
+        "features": [
+            "catalogue",
+            "entitlement panel",
+            "expiry state",
+            "purchase confirmation"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "price display",
+            "inventory grant",
+            "renewal",
+            "service limits"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "premium-officers": {
+        "title": "Officers",
+        "group": "premium",
+        "mechanic": "entitlement = authenticated account + catalogue item + balance + service policy",
+        "features": [
+            "store catalogue",
+            "entitlement state",
+            "expiry timer",
+            "purchase confirmation",
+            "catalogue",
+            "entitlement panel",
+            "expiry state"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "price display",
+            "inventory grant",
+            "renewal",
+            "service limits"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "commander": {
+        "title": "Commander",
+        "group": "premium",
+        "mechanic": "purchase eligibility = authenticated account + catalogue availability + balance + entitlement rules",
+        "features": [
+            "catalogue",
+            "entitlement panel",
+            "expiry state",
+            "purchase confirmation"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "price display",
+            "inventory grant",
+            "renewal",
+            "service limits"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    },
+    "premium-services": {
+        "title": "Premium Services",
+        "group": "premium",
+        "mechanic": "entitlement = authenticated account + catalogue item + balance + service policy",
+        "features": [
+            "store catalogue",
+            "entitlement state",
+            "expiry timer",
+            "purchase confirmation",
+            "catalogue",
+            "entitlement panel",
+            "expiry state"
+        ],
+        "sub_features": [
+            "empty-state explanation",
+            "loading and refresh state",
+            "permission-aware controls",
+            "related-page navigation",
+            "price display",
+            "inventory grant",
+            "renewal",
+            "service limits"
+        ],
+        "buttons": [
+            {
+                "label": "Inspect page",
+                "action": "inspect_page",
+                "behavior": "Read authenticated page contract."
+            },
+            {
+                "label": "Refresh state",
+                "action": "refresh_page",
+                "behavior": "Refresh authenticated page metadata."
+            }
+        ]
+    }
+}

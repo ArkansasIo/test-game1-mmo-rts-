@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+*{box-sizing:border-box}body{margin:0}.slide-container{width:1280px;min-height:720px;background:#f7fafc;color:#10202b;font-family:Arial,Helvetica,sans-serif;padding:54px 68px 0}.kicker{font-size:13px;letter-spacing:3px;color:#1d7896;font-weight:700}.title{font-size:38px;margin:10px 0 10px}.subtitle{font-size:17px;color:#5e7180;margin:0 0 30px;max-width:910px;line-height:1.4}.metric{position:absolute;right:70px;top:54px;text-align:right;color:#1d7896}.metric strong{font-size:42px;display:block;line-height:1}.metric span{font-size:11px;letter-spacing:1.5px;color:#5e7180}.pipeline{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;align-items:stretch}.layer{min-height:270px;background:#fff;border-top:5px solid #42b7d6;border-bottom:1px solid #cbd8df;padding:18px 14px}.layer:nth-child(2){border-top-color:#2e8eaa}.layer:nth-child(3){border-top-color:#6a55a7}.layer:nth-child(4){border-top-color:#836b25}.layer:nth-child(5){border-top-color:#2e6da9}.layer:nth-child(6){border-top-color:#1f8b72}.num{font-size:12px;letter-spacing:2px;color:#5e7180}.name{font-size:22px;font-weight:800;margin:12px 0 12px}.desc{font-size:15px;line-height:1.38;color:#425764}.file{margin-top:18px;padding-top:12px;border-top:1px solid #dce6eb;font-family:monospace;font-size:12px;color:#1d7896;line-height:1.45}.arrow{position:absolute;display:none}.authority{margin-top:28px;background:#0b2638;color:#d9f7ff;padding:20px 24px;display:grid;grid-template-columns:190px 1fr 220px;gap:22px;align-items:center}.authority .label{font-size:12px;letter-spacing:2px;color:#78edff}.authority .text{font-size:16px;line-height:1.4}.authority .count{border-left:1px solid #3f7185;padding-left:20px;font-size:14px;color:#86b9c8}.authority b{color:#d9f7ff;font-size:24px;display:block;margin-bottom:5px}.footer{margin-top:20px;font-size:13px;color:#5e7180}
+</style>
+</head>
+<body>
+<div class="slide-container">
+<div class="kicker">PAGE AND CONTRACT LAYERS</div>
+<h1 class="title">One Route, Six Generated Layers</h1>
+<p class="subtitle">The registry drives a repeatable contract pipeline so every active route has a predictable file surface and a consistent renderer.</p>
+<div class="metric"><strong>1,528</strong><span>ROUTE LAYERS CHECKED</span></div>
+<div class="pipeline">
+<div class="layer"><div class="num">01 · SOURCE</div><div class="name">Registry</div><div class="desc">Authoritative route key, group, label, layout, controls, actions, and table scope.</div><div class="file">config/page_registry.php</div></div>
+<div class="layer"><div class="num">02 · PAGE</div><div class="name">Definition</div><div class="desc">Page title, summary, route metadata, states, and generated page identity.</div><div class="file">config/page_definitions/&lt;group&gt;/</div></div>
+<div class="layer"><div class="num">03 · RULES</div><div class="name">Logic</div><div class="desc">Function behavior, validation expectations, mechanics, and action intent.</div><div class="file">config/page_logic/&lt;group&gt;/</div></div>
+<div class="layer"><div class="num">04 · EXPERIENCE</div><div class="name">Features</div><div class="desc">Feature list, sub-features, controls, information sections, and feedback context.</div><div class="file">config/page_features/&lt;group&gt;/<br>config/page_design_specs/&lt;group&gt;/</div></div>
+<div class="layer"><div class="num">05 · SYSTEMS</div><div class="name">Systems + Module</div><div class="desc">Database scope, permissions, server contracts, and reusable page module behavior.</div><div class="file">config/page_systems/&lt;group&gt;/<br>includes/page_modules/&lt;group&gt;/</div></div>
+<div class="layer"><div class="num">06 · OUTPUT</div><div class="name">Rendered Page</div><div class="desc">Consistent shell with navigation, theme, controls, state panels, and route-aware content.</div><div class="file">pages/&lt;group&gt;/<br>game.php renderer</div></div>
+</div>
+<div class="authority"><div class="label">SERVER AUTHORITY</div><div class="text">The browser submits commander intent only. Authentication, CSRF, RBAC, ownership, cooldown, resource, prerequisite, and transaction checks remain server-side.</div><div class="count"><b>191 / 191</b>routes with complete generated contract layers</div></div>
+<div class="footer">Architecture status: generated coverage is complete; deeper domain-specific gameplay panels continue to be added behind the same contract boundary.</div>
+</div>
+</body>
+</html>

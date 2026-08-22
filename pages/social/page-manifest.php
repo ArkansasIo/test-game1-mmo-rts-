@@ -56,5 +56,89 @@ return array (
         1 => 'blacklists',
       ),
     ),
+    3 => 
+    array (
+      'route' => 'social-messages',
+      'title' => 'Messages',
+      'layout' => 'social',
+      'definition' => 'config/page_definitions/social/social-messages.php',
+      'actions' => 
+      array (
+      ),
+      'tables' => 
+      array (
+        0 => 'game_events',
+      ),
+    ),
+    4 => 
+    array (
+      'route' => 'notifications',
+      'title' => 'Notifications',
+      'layout' => 'social',
+      'definition' => 'config/page_definitions/social/notifications.php',
+      'actions' => 
+      array (
+      ),
+      'tables' => 
+      array (
+        0 => 'game_events',
+      ),
+    ),
+    5 => 
+    array (
+      'route' => 'global-chat',
+      'title' => 'Global Chat',
+      'layout' => 'social',
+      'definition' => 'config/page_definitions/social/global-chat.php',
+      'actions' => 
+      array (
+      ),
+      'tables' => 
+      array (
+        0 => 'game_events',
+      ),
+    ),
+    6 => 
+    array (
+      'route' => 'buddy-list',
+      'title' => 'Buddy List',
+      'layout' => 'social',
+      'definition' => 'config/page_definitions/social/buddy-list.php',
+      'actions' => 
+      array (
+      ),
+      'tables' => 
+      array (
+        0 => 'game_events',
+      ),
+    ),
+    7 => 
+    array (
+      'route' => 'recruitment',
+      'title' => 'Recruitment',
+      'layout' => 'social',
+      'definition' => 'config/page_definitions/social/recruitment.php',
+      'actions' => 
+      array (
+      ),
+      'tables' => 
+      array (
+        0 => 'game_events',
+      ),
+    ),
+    8 => 
+    array (
+      'route' => 'empires-at-war',
+      'title' => 'Empires at War',
+      'layout' => 'social',
+      'definition' => 'config/page_definitions/social/empires-at-war.php',
+      'actions' => 
+      array (
+      ),
+      'tables' => 
+      array (
+        0 => 'game_events',
+      ),
+    ),
   ),
 );

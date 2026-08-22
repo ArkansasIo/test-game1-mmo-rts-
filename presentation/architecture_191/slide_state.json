@@ -1,0 +1,100 @@
+{
+  "project_info": {
+    "title": "191-Route Game Architecture",
+    "created": 1787357160.162,
+    "last_updated": 1787357388.441,
+    "total_slides": 8
+  },
+  "slides": [
+    {
+      "id": "title",
+      "state": "edited",
+      "pageNum": 1
+    },
+    {
+      "id": "live_tests",
+      "state": "edited",
+      "pageNum": 2
+    },
+    {
+      "id": "route_inventory",
+      "state": "edited",
+      "pageNum": 3
+    },
+    {
+      "id": "architecture_layers",
+      "state": "edited",
+      "pageNum": 4
+    },
+    {
+      "id": "design_system",
+      "state": "edited",
+      "pageNum": 5
+    },
+    {
+      "id": "theme_navigation",
+      "state": "edited",
+      "pageNum": 6
+    },
+    {
+      "id": "validation",
+      "state": "edited",
+      "pageNum": 7
+    },
+    {
+      "id": "delivery",
+      "state": "edited",
+      "pageNum": 8
+    }
+  ],
+  "outline": [
+    {
+      "id": "title",
+      "title": "191-Route Game Architecture",
+      "summary": "Universe Civilization: Empire at Wars route system, page design, live verification, and delivery overview.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "live_tests",
+      "title": "Live Interface Verification",
+      "summary": "Fleet Manager and Construction Queue were opened through the public game URL and verified with their route-specific content, System Design panel, controls, and server contract.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "route_inventory",
+      "title": "Route Inventory",
+      "summary": "The registry contains 28 navigation groups and 191 active routes spanning command, empire, resources, construction, research, fleet, military, intelligence, galaxy, economy, crafting, alliance, lifeforms, activities, prestige, rankings, and premium.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "architecture_layers",
+      "title": "Page and Contract Layers",
+      "summary": "Each route has definition, logic, feature, design, systems, and module layers, with generated page files and server-authoritative metadata.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "design_system",
+      "title": "Detailed Page Design System",
+      "summary": "Every route includes purpose, mechanic, functions, features, sub-features, controls, information sections, permissions, database scope, and feedback states.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "theme_navigation",
+      "title": "Navigation and Theme System",
+      "summary": "The left navigation and shared theme system support 28 groups, compact page layouts, Default White, Window Blue Sci-Fi, and Deep Space Blue modes.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "validation",
+      "title": "Integration Results",
+      "summary": "All 191 routes, 1,528 route layers, 1,769 PHP files, detailed specs, links, dependencies, and syntax checks passed.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "delivery",
+      "title": "Delivery and Next Build Layer",
+      "summary": "The complete codebase, detailed specs, theme assets, tests, and documentation are ready to commit and push to GitHub after final repository synchronization.",
+      "image_plan": "Use a suitable image if needed"
+    }
+  ]
+}

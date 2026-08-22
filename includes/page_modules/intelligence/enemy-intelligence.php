@@ -17,7 +17,3 @@ function stargatewars_intelligence_enemy_intelligence_validate_intent(array $inp
 function stargatewars_intelligence_enemy_intelligence_preview(array $context = []): array {
     return ['route' => 'enemy-intelligence', 'title' => 'Enemy Intelligence', 'logic' => stargatewars_intelligence_enemy_intelligence_logic(), 'features' => stargatewars_intelligence_enemy_intelligence_features(), 'design' => stargatewars_intelligence_enemy_intelligence_design(), 'systems' => stargatewars_intelligence_enemy_intelligence_systems(), 'context' => $context];
 }
-
-function stargatewars_intelligence_enemy_intelligence_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/intelligence/enemy-intelligence.php'; }
-function stargatewars_intelligence_enemy_intelligence_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/intelligence/enemy-intelligence.php'; }
-function stargatewars_intelligence_enemy_intelligence_state_transitions(): array { return stargatewars_intelligence_enemy_intelligence_logic()['state_transitions'] ?? []; }

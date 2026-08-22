@@ -116,6 +116,8 @@ return array (
         1 => 'universe_sectors',
         2 => 'universe_solar_systems',
         3 => 'universe_planets',
+        4 => 'universe_discoveries',
+        5 => 'player_colonies',
       ),
     ),
   ),

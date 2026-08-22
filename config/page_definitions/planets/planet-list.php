@@ -40,7 +40,7 @@ return array (
       2 => 'Defenses',
       3 => 'Population and life support',
     ),
-    'formula' => 'colony output = base production × biome × race × government × morale',
+    'formula' => 'colony state = production − food/water upkeep + morale and habitability modifiers',
     'controls' => 
     array (
       0 => 'Explore',
@@ -187,7 +187,7 @@ return array (
     ),
     'calculations' => 
     array (
-      0 => 'base production × biome × race × government × morale',
+      0 => 'production − food/water upkeep + morale and habitability modifiers',
     ),
     'mutations' => 
     array (

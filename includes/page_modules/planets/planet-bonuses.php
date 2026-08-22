@@ -17,7 +17,3 @@ function stargatewars_planets_planet_bonuses_validate_intent(array $input): arra
 function stargatewars_planets_planet_bonuses_preview(array $context = []): array {
     return ['route' => 'planet-bonuses', 'title' => 'Planet Bonuses', 'logic' => stargatewars_planets_planet_bonuses_logic(), 'features' => stargatewars_planets_planet_bonuses_features(), 'design' => stargatewars_planets_planet_bonuses_design(), 'systems' => stargatewars_planets_planet_bonuses_systems(), 'context' => $context];
 }
-
-function stargatewars_planets_planet_bonuses_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/planets/planet-bonuses.php'; }
-function stargatewars_planets_planet_bonuses_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/planets/planet-bonuses.php'; }
-function stargatewars_planets_planet_bonuses_state_transitions(): array { return stargatewars_planets_planet_bonuses_logic()['state_transitions'] ?? []; }

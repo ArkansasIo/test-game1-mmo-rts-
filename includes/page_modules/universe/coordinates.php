@@ -17,7 +17,3 @@ function stargatewars_universe_coordinates_validate_intent(array $input): array 
 function stargatewars_universe_coordinates_preview(array $context = []): array {
     return ['route' => 'coordinates', 'title' => 'Coordinate Search', 'logic' => stargatewars_universe_coordinates_logic(), 'features' => stargatewars_universe_coordinates_features(), 'design' => stargatewars_universe_coordinates_design(), 'systems' => stargatewars_universe_coordinates_systems(), 'context' => $context];
 }
-
-function stargatewars_universe_coordinates_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/universe/coordinates.php'; }
-function stargatewars_universe_coordinates_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/universe/coordinates.php'; }
-function stargatewars_universe_coordinates_state_transitions(): array { return stargatewars_universe_coordinates_logic()['state_transitions'] ?? []; }

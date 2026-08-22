@@ -17,7 +17,3 @@ function stargatewars_attack_targets_validate_intent(array $input): array {
 function stargatewars_attack_targets_preview(array $context = []): array {
     return ['route' => 'targets', 'title' => 'Target Selection', 'logic' => stargatewars_attack_targets_logic(), 'features' => stargatewars_attack_targets_features(), 'design' => stargatewars_attack_targets_design(), 'systems' => stargatewars_attack_targets_systems(), 'context' => $context];
 }
-
-function stargatewars_attack_targets_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/attack/targets.php'; }
-function stargatewars_attack_targets_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/attack/targets.php'; }
-function stargatewars_attack_targets_state_transitions(): array { return stargatewars_attack_targets_logic()['state_transitions'] ?? []; }

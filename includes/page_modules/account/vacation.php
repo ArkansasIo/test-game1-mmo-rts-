@@ -17,7 +17,3 @@ function stargatewars_account_vacation_validate_intent(array $input): array {
 function stargatewars_account_vacation_preview(array $context = []): array {
     return ['route' => 'vacation', 'title' => 'Vacation Mode', 'logic' => stargatewars_account_vacation_logic(), 'features' => stargatewars_account_vacation_features(), 'design' => stargatewars_account_vacation_design(), 'systems' => stargatewars_account_vacation_systems(), 'context' => $context];
 }
-
-function stargatewars_account_vacation_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/account/vacation.php'; }
-function stargatewars_account_vacation_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/account/vacation.php'; }
-function stargatewars_account_vacation_state_transitions(): array { return stargatewars_account_vacation_logic()['state_transitions'] ?? []; }

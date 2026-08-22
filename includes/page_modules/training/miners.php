@@ -17,7 +17,3 @@ function stargatewars_training_miners_validate_intent(array $input): array {
 function stargatewars_training_miners_preview(array $context = []): array {
     return ['route' => 'miners', 'title' => 'Miners & Lifers', 'logic' => stargatewars_training_miners_logic(), 'features' => stargatewars_training_miners_features(), 'design' => stargatewars_training_miners_design(), 'systems' => stargatewars_training_miners_systems(), 'context' => $context];
 }
-
-function stargatewars_training_miners_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/training/miners.php'; }
-function stargatewars_training_miners_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/training/miners.php'; }
-function stargatewars_training_miners_state_transitions(): array { return stargatewars_training_miners_logic()['state_transitions'] ?? []; }

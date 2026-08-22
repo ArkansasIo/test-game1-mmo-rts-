@@ -17,7 +17,3 @@ function stargatewars_command_center_account_info_validate_intent(array $input):
 function stargatewars_command_center_account_info_preview(array $context = []): array {
     return ['route' => 'account-info', 'title' => 'Account Information', 'logic' => stargatewars_command_center_account_info_logic(), 'features' => stargatewars_command_center_account_info_features(), 'design' => stargatewars_command_center_account_info_design(), 'systems' => stargatewars_command_center_account_info_systems(), 'context' => $context];
 }
-
-function stargatewars_command_center_account_info_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/command-center/account-info.php'; }
-function stargatewars_command_center_account_info_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/command-center/account-info.php'; }
-function stargatewars_command_center_account_info_state_transitions(): array { return stargatewars_command_center_account_info_logic()['state_transitions'] ?? []; }

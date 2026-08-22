@@ -28,17 +28,18 @@ return array (
     'hero' => 'Coordinate Search',
     'panels' => 
     array (
-      0 => 'Coordinate input',
-      1 => 'Galaxy result',
-      2 => 'System result',
-      3 => 'Planet and moon result',
+      0 => 'Search form',
+      1 => 'Coordinate result',
+      2 => 'System ownership',
+      3 => 'Navigation actions',
     ),
     'formula' => 'coordinate lookup = validated galaxy : sector : system : slot tuple',
     'controls' => 
     array (
       0 => 'Search coordinates',
-      1 => 'Open system',
-      2 => 'Inspect planet',
+      1 => 'Open galaxy',
+      2 => 'Open sector',
+      3 => 'Open system',
     ),
     'action' => 'coordinate_lookup',
     'tables' => 
@@ -85,37 +86,31 @@ return array (
         array (
           0 => 'ready',
           1 => 'empty',
-          2 => 'invalid-input',
-          3 => 'error',
+          2 => 'error',
         ),
       ),
     ),
   ),
   'logic' => 
   array (
-    'purpose' => 'Validate a coordinate tuple through the galaxy, sector, system, and orbit hierarchy, then apply discovery and ownership visibility.',
+    'purpose' => 'Validate and resolve galaxy:sector:system:orbit coordinates.',
     'workflow' => 
     array (
       0 => 'validate coordinate input',
       1 => 'find galaxy',
       2 => 'find sector',
       3 => 'find system',
-      4 => 'find planet at orbit slot',
-      5 => 'apply discovery filter',
-      6 => 'classify ownership and return navigation identifiers',
+      4 => 'find planet or moon',
     ),
     'validation' => 
     array (
       0 => 'authenticated commander',
       1 => 'coordinate format',
       2 => 'coordinate bounds',
-      3 => 'hierarchy validity',
-      4 => 'discovery or ownership visibility',
     ),
     'calculations' => 
     array (
-      0 => 'coordinate lookup = validated galaxy : sector : system : slot tuple',
-      1 => 'visibility = discovered system OR commander-owned colony',
+      0 => 'coordinate = galaxy:sector:system:orbit',
     ),
     'mutations' => 
     array (

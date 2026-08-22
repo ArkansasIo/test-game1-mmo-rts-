@@ -17,7 +17,3 @@ function stargatewars_planets_planet_defenses_validate_intent(array $input): arr
 function stargatewars_planets_planet_defenses_preview(array $context = []): array {
     return ['route' => 'planet-defenses', 'title' => 'Planet Defenses', 'logic' => stargatewars_planets_planet_defenses_logic(), 'features' => stargatewars_planets_planet_defenses_features(), 'design' => stargatewars_planets_planet_defenses_design(), 'systems' => stargatewars_planets_planet_defenses_systems(), 'context' => $context];
 }
-
-function stargatewars_planets_planet_defenses_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/planets/planet-defenses.php'; }
-function stargatewars_planets_planet_defenses_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/planets/planet-defenses.php'; }
-function stargatewars_planets_planet_defenses_state_transitions(): array { return stargatewars_planets_planet_defenses_logic()['state_transitions'] ?? []; }

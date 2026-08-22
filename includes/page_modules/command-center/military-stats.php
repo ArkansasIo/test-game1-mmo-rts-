@@ -17,7 +17,3 @@ function stargatewars_command_center_military_stats_validate_intent(array $input
 function stargatewars_command_center_military_stats_preview(array $context = []): array {
     return ['route' => 'military-stats', 'title' => 'Military Statistics', 'logic' => stargatewars_command_center_military_stats_logic(), 'features' => stargatewars_command_center_military_stats_features(), 'design' => stargatewars_command_center_military_stats_design(), 'systems' => stargatewars_command_center_military_stats_systems(), 'context' => $context];
 }
-
-function stargatewars_command_center_military_stats_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/command-center/military-stats.php'; }
-function stargatewars_command_center_military_stats_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/command-center/military-stats.php'; }
-function stargatewars_command_center_military_stats_state_transitions(): array { return stargatewars_command_center_military_stats_logic()['state_transitions'] ?? []; }

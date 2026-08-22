@@ -17,7 +17,3 @@ function stargatewars_command_center_resources_validate_intent(array $input): ar
 function stargatewars_command_center_resources_preview(array $context = []): array {
     return ['route' => 'resources', 'title' => 'Resources & Vault', 'logic' => stargatewars_command_center_resources_logic(), 'features' => stargatewars_command_center_resources_features(), 'design' => stargatewars_command_center_resources_design(), 'systems' => stargatewars_command_center_resources_systems(), 'context' => $context];
 }
-
-function stargatewars_command_center_resources_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/command-center/resources.php'; }
-function stargatewars_command_center_resources_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/command-center/resources.php'; }
-function stargatewars_command_center_resources_state_transitions(): array { return stargatewars_command_center_resources_logic()['state_transitions'] ?? []; }

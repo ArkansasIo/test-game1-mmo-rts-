@@ -17,7 +17,3 @@ function stargatewars_social_alliances_validate_intent(array $input): array {
 function stargatewars_social_alliances_preview(array $context = []): array {
     return ['route' => 'alliances', 'title' => 'Alliances', 'logic' => stargatewars_social_alliances_logic(), 'features' => stargatewars_social_alliances_features(), 'design' => stargatewars_social_alliances_design(), 'systems' => stargatewars_social_alliances_systems(), 'context' => $context];
 }
-
-function stargatewars_social_alliances_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/social/alliances.php'; }
-function stargatewars_social_alliances_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/social/alliances.php'; }
-function stargatewars_social_alliances_state_transitions(): array { return stargatewars_social_alliances_logic()['state_transitions'] ?? []; }

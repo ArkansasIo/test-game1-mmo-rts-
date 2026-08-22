@@ -17,7 +17,3 @@ function stargatewars_mothership_exploration_validate_intent(array $input): arra
 function stargatewars_mothership_exploration_preview(array $context = []): array {
     return ['route' => 'exploration', 'title' => 'Exploration', 'logic' => stargatewars_mothership_exploration_logic(), 'features' => stargatewars_mothership_exploration_features(), 'design' => stargatewars_mothership_exploration_design(), 'systems' => stargatewars_mothership_exploration_systems(), 'context' => $context];
 }
-
-function stargatewars_mothership_exploration_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/mothership/exploration.php'; }
-function stargatewars_mothership_exploration_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/mothership/exploration.php'; }
-function stargatewars_mothership_exploration_state_transitions(): array { return stargatewars_mothership_exploration_logic()['state_transitions'] ?? []; }

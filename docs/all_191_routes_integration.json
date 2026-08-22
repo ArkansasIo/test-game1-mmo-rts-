@@ -1,0 +1,10 @@
+{
+    "status": "passed",
+    "groups": 28,
+    "routes": 191,
+    "route_layers_checked": 1528,
+    "php_files_checked": 1769,
+    "syntax_errors": 0,
+    "missing_dependencies": 0,
+    "errors": []
+}

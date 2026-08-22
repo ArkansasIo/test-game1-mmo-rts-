@@ -1,0 +1,10 @@
+{
+    "status": "passed",
+    "counts": {
+        "groups": 28,
+        "routes": 191,
+        "linked_routes": 191,
+        "broken_routes": 0
+    },
+    "errors": []
+}

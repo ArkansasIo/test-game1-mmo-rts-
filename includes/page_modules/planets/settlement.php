@@ -17,7 +17,3 @@ function stargatewars_planets_settlement_validate_intent(array $input): array {
 function stargatewars_planets_settlement_preview(array $context = []): array {
     return ['route' => 'settlement', 'title' => 'Settlement & Power Grid', 'logic' => stargatewars_planets_settlement_logic(), 'features' => stargatewars_planets_settlement_features(), 'design' => stargatewars_planets_settlement_design(), 'systems' => stargatewars_planets_settlement_systems(), 'context' => $context];
 }
-
-function stargatewars_planets_settlement_sub_design(): array { return require '/home/ubuntu/stargatewars/config/page_subdesign/planets/settlement.php'; }
-function stargatewars_planets_settlement_function_map(): array { return require '/home/ubuntu/stargatewars/config/page_function_maps/planets/settlement.php'; }
-function stargatewars_planets_settlement_state_transitions(): array { return stargatewars_planets_settlement_logic()['state_transitions'] ?? []; }

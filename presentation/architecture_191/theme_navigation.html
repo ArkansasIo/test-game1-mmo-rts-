@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+*{box-sizing:border-box}body{margin:0}.slide-container{width:1280px;min-height:720px;background:#f7fafc;color:#10202b;font-family:Arial,Helvetica,sans-serif;padding:50px 68px 0}.kicker{font-size:13px;letter-spacing:3px;color:#1d7896;font-weight:700}.title{font-size:38px;margin:10px 0 30px}.layout{display:grid;grid-template-columns:410px 1fr;gap:42px}.nav-panel{background:#0b2638;color:#d9f7ff;padding:24px 26px;min-height:480px}.nav-label{font-size:12px;letter-spacing:2px;color:#78edff;margin-bottom:18px}.nav-row{border-top:1px solid #315669;padding:11px 0;font-size:14px}.nav-row b{display:inline-block;width:30px;color:#42b7d6}.nav-row span{color:#86b9c8;font-size:12px;margin-left:7px}.theme-panel{padding-top:2px}.intro{font-size:17px;line-height:1.4;color:#5e7180;max-width:650px;margin:0 0 22px}.theme{border-top:4px solid #42b7d6;padding:16px 0 18px;display:grid;grid-template-columns:190px 1fr;gap:20px}.theme h2{font-size:23px;margin:0}.theme p{margin:0;color:#5e7180;font-size:15px;line-height:1.45}.swatches{display:flex;gap:8px;margin-top:12px}.swatch{height:16px;width:56px;border:1px solid #9eb5c1}.white{background:#fff}.blue{background:#e9f4fb}.space{background:#071925}.cyan{background:#28c9ee}.ink{background:#10202b}.muted{background:#86b9c8}.detail{margin-top:16px;border-top:1px solid #cbd8df;padding-top:14px;color:#5e7180;font-size:14px;line-height:1.45}.detail b{color:#1d7896}.footer{margin-top:18px;color:#5e7180;font-size:13px;border-top:1px solid #cbd8df;padding-top:14px}
+</style>
+</head>
+<body>
+<div class="slide-container">
+  <div class="kicker">NAVIGATION AND THEME SYSTEM</div>
+  <h1 class="title">One Route Spine, Three Operating Modes</h1>
+  <div class="layout">
+    <div class="nav-panel">
+      <div class="nav-label">LEFT-SIDE NAVIGATION · 28 GROUPS</div>
+      <div class="nav-row"><b>01–06</b>Command Center · Attack · Armory · Training · Technology · Intelligence</div>
+      <div class="nav-row"><b>07–12</b>Market · Social · Planets · Mothership · Account · Universe</div>
+      <div class="nav-row"><b>13–18</b>Overview · Empire · Resources · Construction · Research · Fleet</div>
+      <div class="nav-row"><b>19–24</b>Military · Galaxy · Economy · Crafting · Alliance · Lifeforms</div>
+      <div class="nav-row"><b>25–28</b>Activities · Prestige · Rankings · Premium</div>
+      <div class="nav-row"><b>UX</b>Search, expandable groups, active-route highlighting, responsive collapse</div>
+    </div>
+    <div class="theme-panel">
+      <p class="intro">The same route registry drives navigation, page rendering, controls, contract metadata, and account-level visual preferences.</p>
+      <div class="theme"><h2>Default White</h2><div><p>Light operational mode for high-contrast administration and routine colony management.</p><div class="swatches"><i class="swatch white"></i><i class="swatch ink"></i><i class="swatch muted"></i></div></div></div>
+      <div class="theme"><h2>Window Blue Sci-Fi</h2><div><p>Cool blue command-console treatment with lighter surfaces, cyan focus states, and technical separators.</p><div class="swatches"><i class="swatch blue"></i><i class="swatch cyan"></i><i class="swatch muted"></i></div></div></div>
+      <div class="theme"><h2>Deep Space Blue</h2><div><p>Dark space mode using navy surfaces, cyan highlights, pale blue text, and explicit warning colors.</p><div class="swatches"><i class="swatch space"></i><i class="swatch cyan"></i><i class="swatch ink"></i></div></div></div>
+      <div class="detail"><b>Shared behavior</b> · compact density option · reduced-motion preference · responsive mobile rules · theme persistence through account settings · family accents for research, fleet, combat, economy, galaxy, crafting, social, activities, rankings, and premium.</div>
+    </div>
+  </div>
+  <div class="footer">Theme registry: <b>config/theme_registry.php</b> · Shared styles: <b>assets/theme-system.css</b> and <b>assets/menu-groups.css</b></div>
+</div>
+</body>
+</html>
