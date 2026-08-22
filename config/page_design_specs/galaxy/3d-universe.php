@@ -1,19 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'galaxy-map',
+  'template' => 'specification-dashboard',
   'sections' => 
   array (
-    0 => 'galaxy selector',
-    1 => 'density',
-    2 => 'sectors',
-    3 => 'risk',
+    0 => 'overview',
+    1 => 'controls',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
   'components' => 
   array (
-    0 => 'selector',
-    1 => 'density-metric',
-    2 => 'sector-list',
-    3 => 'risk-badge',
+    0 => 'metric-strip',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => 'Map lists become stacked rows',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

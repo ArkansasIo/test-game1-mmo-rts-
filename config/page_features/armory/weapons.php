@@ -1,8 +1,21 @@
 <?php
+declare(strict_types=1);
 return array (
-  0 => 'weapon catalogue',
-  1 => 'owned quantity',
-  2 => 'durability',
-  3 => 'assignment readiness',
-  4 => 'weapon purchase',
+  'title' => 'Weapon Inventory',
+  'features' => 
+  array (
+    0 => 'summary metrics',
+    1 => 'status badges',
+    2 => 'related-page navigation',
+    3 => 'empty-state guidance',
+  ),
+  'sub_features' => 
+  array (
+    0 => 'loading and refresh state',
+    1 => 'permission-aware controls',
+    2 => 'related-page navigation',
+    3 => 'filter and sort state',
+    4 => 'empty-state explanation',
+    5 => 'audit and feedback detail',
+  ),
 );

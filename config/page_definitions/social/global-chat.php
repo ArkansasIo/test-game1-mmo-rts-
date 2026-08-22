@@ -1,225 +1,144 @@
 <?php
+declare(strict_types=1);
 return array (
   'route' => 'global-chat',
   'group' => 'social',
   'group_label' => 'Social',
   'title' => 'Global Chat',
   'layout' => 'social',
+  'purpose' => 'Global Chat subsystem console with server-authoritative state, controls, dependencies, and feedback.',
+  'mechanic' => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   'controls' => 
   array (
-    0 => 'Open overview',
-    1 => 'Review status',
+    0 => 'open overview',
+    1 => 'review status',
+    2 => 'inspect records',
+    3 => 'review alerts',
   ),
   'actions' => 
   array (
+    0 => 'inspect_page',
+    1 => 'refresh_page',
   ),
   'tables' => 
   array (
-    0 => 'game_events',
+    0 => 'players',
+    1 => 'player_resources',
+    2 => 'game_events',
   ),
   'details' => 
   array (
-    'hero' => 'Alliances and Diplomacy',
-    'panels' => 
-    array (
-      0 => 'Alliance identity',
-      1 => 'Members and roles',
-      2 => 'Diplomacy proposals',
-      3 => 'Shared activity',
-    ),
-    'formula' => 'relation lifecycle = proposal → permission check → acceptance → active status',
-    'controls' => 
-    array (
-      0 => 'Create alliance',
-      1 => 'Join alliance',
-      2 => 'Leave alliance',
-      3 => 'Propose diplomacy',
-    ),
-    'action' => 'alliance_join',
-    'tables' => 
-    array (
-      0 => 'alliances',
-      1 => 'alliance_members',
-      2 => 'diplomacy_relations',
-      3 => 'diplomacy_actions',
-      4 => 'player_notifications',
-    ),
-    'permission' => 'authenticated commander with social access',
-    'states' => 
-    array (
-      0 => 'ready',
-      1 => 'protected',
-      2 => 'success',
-      3 => 'error',
-    ),
-  ),
-  'interaction' => 
-  array (
-    'page' => 'Alliances and Diplomacy',
-    'purpose' => 'Coordinate with other commanders.',
-    'buttons' => 
-    array (
-      'Create alliance' => 
-      array (
-        'action' => 'alliance_create',
-        'logic' => 'Validate name, ownership, and creator role, then create alliance and membership.',
-        'permission' => 'commander without alliance',
-        'reads' => 
-        array (
-          0 => 'players',
-          1 => 'alliances',
-        ),
-        'writes' => 
-        array (
-          0 => 'alliances',
-          1 => 'alliance_members',
-          2 => 'game_audit_log',
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'conflict',
-          2 => 'success',
-          3 => 'error',
-        ),
-      ),
-      'Join alliance' => 
-      array (
-        'action' => 'alliance_join',
-        'logic' => 'Validate invitation or open membership and create membership.',
-        'permission' => 'authenticated commander',
-        'reads' => 
-        array (
-          0 => 'alliances',
-          1 => 'alliance_members',
-        ),
-        'writes' => 
-        array (
-          0 => 'alliance_members',
-          1 => 'player_notifications',
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'protected',
-          2 => 'success',
-          3 => 'error',
-        ),
-      ),
-      'Propose diplomacy' => 
-      array (
-        'action' => 'diplomacy_propose',
-        'logic' => 'Create relation proposal between two players in the current world.',
-        'permission' => 'alliance or commander role',
-        'reads' => 
-        array (
-          0 => 'game_worlds',
-          1 => 'players',
-          2 => 'diplomacy_relations',
-        ),
-        'writes' => 
-        array (
-          0 => 'diplomacy_relations',
-          1 => 'diplomacy_actions',
-          2 => 'player_notifications',
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'conflict',
-          2 => 'success',
-          3 => 'error',
-        ),
-      ),
-    ),
+    'current state' => 'server-calculated telemetry',
+    'available controls' => 'permission-aware operations',
+    'dependencies' => 'validated prerequisites and cooldowns',
+    'audit' => 'transactional event history',
   ),
   'logic' => 
   array (
-    'purpose' => 'Create alliances, manage members, and coordinate diplomacy.',
+    'purpose' => 'Global Chat operations',
     'workflow' => 
     array (
-      0 => 'load alliance state',
-      1 => 'validate role or invitation',
-      2 => 'create membership or proposal',
-      3 => 'notify participants',
+      0 => 'load scoped state',
+      1 => 'validate authenticated intent',
+      2 => 'lock required records',
+      3 => 'resolve authoritative mechanic',
+      4 => 'write audit event',
+      5 => 'return feedback',
     ),
     'validation' => 
     array (
       0 => 'authenticated commander',
-      1 => 'alliance role',
-      2 => 'membership rules',
-      3 => 'target ownership',
+      1 => 'CSRF token',
+      2 => 'RBAC policy',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+      5 => 'transaction boundary',
     ),
     'calculations' => 
     array (
-      0 => 'relation proposal lifecycle',
+      0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
     ),
     'mutations' => 
     array (
-      0 => 'alliances',
-      1 => 'alliance_members',
-      2 => 'diplomacy_relations',
-      3 => 'diplomacy_actions',
-      4 => 'player_notifications',
     ),
   ),
   'features' => 
   array (
-    0 => 'alliance identity',
-    1 => 'member roles',
-    2 => 'join and leave',
-    3 => 'diplomacy proposals',
-    4 => 'shared activity',
+    0 => 'summary metrics',
+    1 => 'status badges',
+    2 => 'related-page navigation',
+    3 => 'empty-state guidance',
+  ),
+  'sub_features' => 
+  array (
+    0 => 'loading and refresh state',
+    1 => 'permission-aware controls',
+    2 => 'related-page navigation',
+    3 => 'filter and sort state',
+    4 => 'empty-state explanation',
+    5 => 'audit and feedback detail',
   ),
   'design' => 
   array (
-    'template' => 'social-command',
+    'template' => 'specification-dashboard',
     'sections' => 
     array (
-      0 => 'alliance',
-      1 => 'members',
-      2 => 'diplomacy',
-      3 => 'activity',
+      0 => 'overview',
+      1 => 'controls',
+      2 => 'features',
+      3 => 'system-design',
+      4 => 'information',
+      5 => 'feedback-states',
     ),
     'components' => 
     array (
-      0 => 'member-table',
-      1 => 'role-badge',
-      2 => 'proposal-form',
-      3 => 'activity-feed',
+      0 => 'metric-strip',
+      1 => 'operation-controls',
+      2 => 'status-badge',
+      3 => 'data-table',
+      4 => 'feedback-panel',
     ),
-    'responsive' => 'Member table becomes stacked rows',
+    'responsive' => 'horizontal dashboard with stacked mobile layout',
   ),
   'systems' => 
   array (
     'services' => 
     array (
-      0 => 'AllianceService',
-      1 => 'DiplomacyService',
-      2 => 'NotificationService',
+      0 => 'PageService',
     ),
     'reads' => 
     array (
-      0 => 'alliances',
-      1 => 'alliance_members',
-      2 => 'diplomacy_relations',
-      3 => 'diplomacy_actions',
-      4 => 'player_notifications',
+      0 => 'players',
+      1 => 'player_resources',
+      2 => 'game_events',
     ),
     'writes' => 
     array (
-      0 => 'alliances',
-      1 => 'alliance_members',
-      2 => 'diplomacy_relations',
-      3 => 'diplomacy_actions',
-      4 => 'player_notifications',
     ),
     'actions' => 
     array (
-      0 => 'alliance_create',
-      1 => 'alliance_join',
-      2 => 'diplomacy_propose',
+      0 => 'inspect_page',
+      1 => 'refresh_page',
     ),
+    'permissions' => 
+    array (
+      0 => 'authenticated commander',
+      1 => 'CSRF',
+      2 => 'RBAC',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+    ),
+  ),
+  'feedback_states' => 
+  array (
+    0 => 'loading',
+    1 => 'ready',
+    2 => 'empty',
+    3 => 'protected',
+    4 => 'cooldown',
+    5 => 'insufficient-resource',
+    6 => 'success',
+    7 => 'error',
   ),
   'contract_files' => 
   array (

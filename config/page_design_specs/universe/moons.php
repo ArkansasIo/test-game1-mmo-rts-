@@ -1,20 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'moon-registry',
+  'template' => 'specification-dashboard',
   'sections' => 
   array (
-    0 => 'moon identity',
-    1 => 'sensor',
-    2 => 'jump gate',
-    3 => 'orbit',
-    4 => 'assignment',
+    0 => 'overview',
+    1 => 'controls',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
   'components' => 
   array (
-    0 => 'moon-card',
-    1 => 'sensor-meter',
-    2 => 'gate-upgrade',
-    3 => 'orbit-badge',
+    0 => 'metric-strip',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => 'Moon cards stack on mobile',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

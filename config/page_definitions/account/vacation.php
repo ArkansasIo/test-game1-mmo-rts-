@@ -1,221 +1,144 @@
 <?php
+declare(strict_types=1);
 return array (
   'route' => 'vacation',
   'group' => 'account',
   'group_label' => 'Account',
   'title' => 'Vacation Mode',
   'layout' => 'account',
+  'purpose' => 'Vacation Mode subsystem console with server-authoritative state, controls, dependencies, and feedback.',
+  'mechanic' => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   'controls' => 
   array (
-    0 => 'Enable vacation',
+    0 => 'open overview',
+    1 => 'review status',
+    2 => 'inspect records',
+    3 => 'review alerts',
   ),
   'actions' => 
   array (
-    0 => 'vacation',
+    0 => 'inspect_page',
+    1 => 'refresh_page',
   ),
   'tables' => 
   array (
-    0 => 'vacation_states',
-    1 => 'protection_states',
+    0 => 'players',
+    1 => 'player_resources',
+    2 => 'game_events',
   ),
   'details' => 
   array (
-    'hero' => 'Account and Registration',
-    'panels' => 
-    array (
-      0 => 'Race identity',
-      1 => 'Government identity',
-      2 => 'Protection status',
-      3 => 'Session and security',
-    ),
-    'formula' => 'combined modifier = race modifier × government modifier',
-    'controls' => 
-    array (
-      0 => 'Select race',
-      1 => 'Select government',
-      2 => 'Enable vacation',
-      3 => 'View protection',
-    ),
-    'action' => 'select_registration_faction',
-    'tables' => 
-    array (
-      0 => 'players',
-      1 => 'races',
-      2 => 'government_types',
-      3 => 'protection_states',
-      4 => 'player_government_history',
-    ),
-    'permission' => 'authenticated commander',
-    'states' => 
-    array (
-      0 => 'ready',
-      1 => 'protected',
-      2 => 'success',
-      3 => 'error',
-    ),
-  ),
-  'interaction' => 
-  array (
-    'page' => 'Account and Registration',
-    'purpose' => 'Manage faction identity, protection, and security.',
-    'buttons' => 
-    array (
-      'Select race and government' => 
-      array (
-        'action' => 'select_registration_faction',
-        'logic' => 'Validate both faction selections and save atomically.',
-        'permission' => 'authenticated commander',
-        'reads' => 
-        array (
-          0 => 'races',
-          1 => 'government_types',
-          2 => 'players',
-        ),
-        'writes' => 
-        array (
-          0 => 'players',
-          1 => 'player_government_history',
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'success',
-          2 => 'error',
-        ),
-      ),
-      'Reform government' => 
-      array (
-        'action' => 'reform_government',
-        'logic' => 'Lock player, validate active government, record history, and update government.',
-        'permission' => 'authenticated commander with reform access',
-        'reads' => 
-        array (
-          0 => 'government_types',
-          1 => 'players',
-        ),
-        'writes' => 
-        array (
-          0 => 'players',
-          1 => 'player_government_history',
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'cooldown',
-          2 => 'success',
-          3 => 'error',
-        ),
-      ),
-      'Vacation mode' => 
-      array (
-        'action' => 'vacation',
-        'logic' => 'Validate duration and set protection state.',
-        'permission' => 'authenticated commander',
-        'reads' => 
-        array (
-          0 => 'protection_states',
-        ),
-        'writes' => 
-        array (
-          0 => 'protection_states',
-          1 => 'players',
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'protected',
-          2 => 'success',
-          3 => 'error',
-        ),
-      ),
-    ),
+    'current state' => 'server-calculated telemetry',
+    'available controls' => 'permission-aware operations',
+    'dependencies' => 'validated prerequisites and cooldowns',
+    'audit' => 'transactional event history',
   ),
   'logic' => 
   array (
-    'purpose' => 'Manage race, government, vacation, protection, and account security.',
+    'purpose' => 'Vacation Mode operations',
     'workflow' => 
     array (
-      0 => 'load faction options',
-      1 => 'validate selection',
-      2 => 'save faction history',
-      3 => 'apply protection state',
-      4 => 'render security controls',
+      0 => 'load scoped state',
+      1 => 'validate authenticated intent',
+      2 => 'lock required records',
+      3 => 'resolve authoritative mechanic',
+      4 => 'write audit event',
+      5 => 'return feedback',
     ),
     'validation' => 
     array (
       0 => 'authenticated commander',
-      1 => 'valid race and government',
-      2 => 'vacation rules',
-      3 => 'protection rules',
+      1 => 'CSRF token',
+      2 => 'RBAC policy',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+      5 => 'transaction boundary',
     ),
     'calculations' => 
     array (
-      0 => 'race modifier × government modifier',
+      0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
     ),
     'mutations' => 
     array (
-      0 => 'players',
-      1 => 'player_government_history',
-      2 => 'vacation_states',
-      3 => 'protection_states',
     ),
   ),
   'features' => 
   array (
-    0 => 'race selection',
-    1 => 'government selection',
-    2 => 'vacation mode',
-    3 => 'protection',
-    4 => 'session security',
+    0 => 'summary metrics',
+    1 => 'status badges',
+    2 => 'related-page navigation',
+    3 => 'empty-state guidance',
+  ),
+  'sub_features' => 
+  array (
+    0 => 'loading and refresh state',
+    1 => 'permission-aware controls',
+    2 => 'related-page navigation',
+    3 => 'filter and sort state',
+    4 => 'empty-state explanation',
+    5 => 'audit and feedback detail',
   ),
   'design' => 
   array (
-    'template' => 'account-settings',
+    'template' => 'specification-dashboard',
     'sections' => 
     array (
-      0 => 'race selector',
-      1 => 'government selector',
-      2 => 'vacation',
-      3 => 'protection',
-      4 => 'security',
+      0 => 'overview',
+      1 => 'controls',
+      2 => 'features',
+      3 => 'system-design',
+      4 => 'information',
+      5 => 'feedback-states',
     ),
     'components' => 
     array (
-      0 => 'faction-selector',
-      1 => 'modifier-preview',
-      2 => 'vacation-toggle',
-      3 => 'security-panel',
+      0 => 'metric-strip',
+      1 => 'operation-controls',
+      2 => 'status-badge',
+      3 => 'data-table',
+      4 => 'feedback-panel',
     ),
-    'responsive' => 'Settings sections stack on mobile',
+    'responsive' => 'horizontal dashboard with stacked mobile layout',
   ),
   'systems' => 
   array (
     'services' => 
     array (
-      0 => 'AccountService',
-      1 => 'ProtectionService',
+      0 => 'PageService',
     ),
     'reads' => 
     array (
       0 => 'players',
-      1 => 'races',
-      2 => 'government_types',
-      3 => 'protection_states',
-      4 => 'vacation_states',
+      1 => 'player_resources',
+      2 => 'game_events',
     ),
     'writes' => 
     array (
-      0 => 'players',
-      1 => 'player_government_history',
-      2 => 'vacation_states',
-      3 => 'protection_states',
     ),
     'actions' => 
     array (
-      0 => 'select_registration_faction',
-      1 => 'change_race',
-      2 => 'vacation',
+      0 => 'inspect_page',
+      1 => 'refresh_page',
     ),
+    'permissions' => 
+    array (
+      0 => 'authenticated commander',
+      1 => 'CSRF',
+      2 => 'RBAC',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+    ),
+  ),
+  'feedback_states' => 
+  array (
+    0 => 'loading',
+    1 => 'ready',
+    2 => 'empty',
+    3 => 'protected',
+    4 => 'cooldown',
+    5 => 'insufficient-resource',
+    6 => 'success',
+    7 => 'error',
   ),
   'contract_files' => 
   array (

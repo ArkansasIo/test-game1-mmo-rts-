@@ -1,20 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'coordinate-search',
+  'template' => 'specification-dashboard',
   'sections' => 
   array (
-    0 => 'input',
-    1 => 'galaxy',
-    2 => 'sector',
-    3 => 'system',
-    4 => 'planet/moon',
+    0 => 'overview',
+    1 => 'controls',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
   'components' => 
   array (
-    0 => 'coordinate-form',
-    1 => 'result-path',
-    2 => 'coordinate-badge',
-    3 => 'detail-link',
+    0 => 'metric-strip',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => 'Result path wraps into vertical steps',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

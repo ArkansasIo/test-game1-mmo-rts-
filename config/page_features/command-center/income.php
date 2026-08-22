@@ -1,9 +1,21 @@
 <?php
+declare(strict_types=1);
 return array (
-  0 => 'income formula',
-  1 => 'modifier breakdown',
-  2 => 'colony comparison',
-  3 => 'food water energy upkeep',
-  4 => 'production forecast',
-  5 => 'read-only state',
+  'title' => 'Income Breakdown',
+  'features' => 
+  array (
+    0 => 'summary metrics',
+    1 => 'status badges',
+    2 => 'related-page navigation',
+    3 => 'empty-state guidance',
+  ),
+  'sub_features' => 
+  array (
+    0 => 'loading and refresh state',
+    1 => 'permission-aware controls',
+    2 => 'related-page navigation',
+    3 => 'filter and sort state',
+    4 => 'empty-state explanation',
+    5 => 'audit and feedback detail',
+  ),
 );

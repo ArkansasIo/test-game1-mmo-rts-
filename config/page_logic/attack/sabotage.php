@@ -1,34 +1,30 @@
 <?php
+declare(strict_types=1);
 return array (
-  'purpose' => 'Run reconnaissance, spy, and sabotage missions using agents and covert technology.',
+  'purpose' => 'Sabotage Operations operations',
   'workflow' => 
   array (
-    0 => 'load agent pools',
-    1 => 'select mission type',
-    2 => 'calculate detection',
-    3 => 'resolve intelligence or damage',
-    4 => 'store report and cooldown',
+    0 => 'load scoped state',
+    1 => 'validate authenticated intent',
+    2 => 'lock required records',
+    3 => 'resolve authoritative mechanic',
+    4 => 'write audit event',
+    5 => 'return feedback',
   ),
   'validation' => 
   array (
     0 => 'authenticated commander',
-    1 => 'available agents',
-    2 => 'target visibility',
-    3 => 'cooldown',
-    4 => 'mission cost',
+    1 => 'CSRF token',
+    2 => 'RBAC policy',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
+    5 => 'transaction boundary',
   ),
   'calculations' => 
   array (
-    0 => 'defender counter-intelligence − attacker agents − covert technology',
-    1 => 'detection chance',
-    2 => 'bounded sabotage damage',
+    0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   ),
   'mutations' => 
   array (
-    0 => 'covert_missions',
-    1 => 'spy_missions',
-    2 => 'sabotage_missions',
-    3 => 'intelligence_reports',
-    4 => 'game_events',
   ),
 );

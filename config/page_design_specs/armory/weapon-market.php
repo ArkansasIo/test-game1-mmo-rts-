@@ -1,19 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'market-exchange',
+  'template' => 'specification-dashboard',
   'sections' => 
   array (
-    0 => 'orders',
-    1 => 'price history',
-    2 => 'order form',
-    3 => 'settlement',
+    0 => 'overview',
+    1 => 'controls',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
   'components' => 
   array (
-    0 => 'order-table',
-    1 => 'price-badge',
-    2 => 'order-form',
-    3 => 'settlement-banner',
+    0 => 'metric-strip',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => 'Market tables scroll or stack into order cards',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

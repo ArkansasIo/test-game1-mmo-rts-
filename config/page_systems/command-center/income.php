@@ -1,25 +1,30 @@
 <?php
+declare(strict_types=1);
 return array (
   'services' => 
   array (
-    0 => 'EconomyService',
-    1 => 'ColonyService',
+    0 => 'PageService',
   ),
   'reads' => 
   array (
-    0 => 'player_resources',
-    1 => 'player_colonies',
-    2 => 'races',
-    3 => 'government_types',
-    4 => 'technologies',
-    5 => 'universe_planets',
+    0 => 'players',
+    1 => 'player_resources',
+    2 => 'game_events',
   ),
   'writes' => 
   array (
   ),
   'actions' => 
   array (
-    0 => 'read_income_breakdown',
-    1 => 'read_colony_comparison',
+    0 => 'inspect_page',
+    1 => 'refresh_page',
+  ),
+  'permissions' => 
+  array (
+    0 => 'authenticated commander',
+    1 => 'CSRF',
+    2 => 'RBAC',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
   ),
 );

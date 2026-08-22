@@ -1,182 +1,144 @@
 <?php
+declare(strict_types=1);
 return array (
   'route' => 'tech-anti-covert',
   'group' => 'technology',
   'group_label' => 'Technology',
   'title' => 'Anti-Covert Technology',
   'layout' => 'technology',
+  'purpose' => 'Anti-Covert Technology subsystem console with server-authoritative state, controls, dependencies, and feedback.',
+  'mechanic' => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   'controls' => 
   array (
-    0 => 'Upgrade',
+    0 => 'open overview',
+    1 => 'review status',
+    2 => 'inspect records',
+    3 => 'review alerts',
   ),
   'actions' => 
   array (
-    0 => 'technology',
+    0 => 'inspect_page',
+    1 => 'refresh_page',
   ),
   'tables' => 
   array (
-    0 => 'technologies',
-    1 => 'player_technologies',
+    0 => 'players',
+    1 => 'player_resources',
+    2 => 'game_events',
   ),
   'details' => 
   array (
-    'hero' => 'Technology Tree',
-    'panels' => 
-    array (
-      0 => 'Offense branch',
-      1 => 'Defense branch',
-      2 => 'Covert branch',
-      3 => 'Anti-covert branch',
-      4 => 'Prerequisites and queue',
-    ),
-    'formula' => 'research cost = base cost × growth ^ current level; completion applies effect',
-    'controls' => 
-    array (
-      0 => 'Upgrade offense',
-      1 => 'Upgrade defense',
-      2 => 'Upgrade covert',
-      3 => 'Upgrade anti-covert',
-      4 => 'Queue research',
-    ),
-    'action' => 'technology',
-    'tables' => 
-    array (
-      0 => 'technologies',
-      1 => 'technology_prerequisites',
-      2 => 'player_technologies',
-      3 => 'construction_queue',
-    ),
-    'permission' => 'authenticated commander with research access',
-    'states' => 
-    array (
-      0 => 'ready',
-      1 => 'locked',
-      2 => 'insufficient-resource',
-      3 => 'queued',
-      4 => 'success',
-      5 => 'error',
-    ),
-  ),
-  'interaction' => 
-  array (
-    'page' => 'Technology',
-    'purpose' => 'Research permanent strategic upgrades.',
-    'buttons' => 
-    array (
-      'Upgrade technology' => 
-      array (
-        'action' => 'technology',
-        'logic' => 'Validate category, prerequisites, cost, queue availability, and apply effect on completion.',
-        'permission' => 'authenticated researcher',
-        'reads' => 
-        array (
-          0 => 'technologies',
-          1 => 'technology_prerequisites',
-          2 => 'player_technologies',
-          3 => 'player_resources',
-        ),
-        'writes' => 
-        array (
-          0 => 'player_technologies',
-          1 => 'construction_queue',
-          2 => 'player_resources',
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'locked',
-          2 => 'insufficient-resource',
-          3 => 'queued',
-          4 => 'success',
-          5 => 'error',
-        ),
-      ),
-    ),
+    'current state' => 'server-calculated telemetry',
+    'available controls' => 'permission-aware operations',
+    'dependencies' => 'validated prerequisites and cooldowns',
+    'audit' => 'transactional event history',
   ),
   'logic' => 
   array (
-    'purpose' => 'Research offense, defense, covert, and anti-covert technology branches.',
+    'purpose' => 'Anti-Covert Technology operations',
     'workflow' => 
     array (
-      0 => 'load technology tree',
-      1 => 'check prerequisites',
-      2 => 'calculate cost',
-      3 => 'queue research',
-      4 => 'apply completed effect',
+      0 => 'load scoped state',
+      1 => 'validate authenticated intent',
+      2 => 'lock required records',
+      3 => 'resolve authoritative mechanic',
+      4 => 'write audit event',
+      5 => 'return feedback',
     ),
     'validation' => 
     array (
-      0 => 'authenticated researcher',
-      1 => 'prerequisites',
-      2 => 'research queue',
-      3 => 'resource balance',
-      4 => 'level cap',
+      0 => 'authenticated commander',
+      1 => 'CSRF token',
+      2 => 'RBAC policy',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+      5 => 'transaction boundary',
     ),
     'calculations' => 
     array (
-      0 => 'base cost × growth ^ current level',
+      0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
     ),
     'mutations' => 
     array (
-      0 => 'player_technologies',
-      1 => 'construction_queue',
-      2 => 'player_resources',
     ),
   ),
   'features' => 
   array (
-    0 => 'technology tree',
-    1 => 'branch filters',
-    2 => 'prerequisites',
-    3 => 'level and cost',
-    4 => 'research queue',
-    5 => 'effect preview',
+    0 => 'summary metrics',
+    1 => 'status badges',
+    2 => 'related-page navigation',
+    3 => 'empty-state guidance',
+  ),
+  'sub_features' => 
+  array (
+    0 => 'loading and refresh state',
+    1 => 'permission-aware controls',
+    2 => 'related-page navigation',
+    3 => 'filter and sort state',
+    4 => 'empty-state explanation',
+    5 => 'audit and feedback detail',
   ),
   'design' => 
   array (
-    'template' => 'technology-tree',
+    'template' => 'specification-dashboard',
     'sections' => 
     array (
-      0 => 'branch tabs',
-      1 => 'technology cards',
-      2 => 'prerequisites',
-      3 => 'cost',
-      4 => 'queue',
+      0 => 'overview',
+      1 => 'controls',
+      2 => 'features',
+      3 => 'system-design',
+      4 => 'information',
+      5 => 'feedback-states',
     ),
     'components' => 
     array (
-      0 => 'tech-card',
-      1 => 'branch-tabs',
-      2 => 'prerequisite-list',
-      3 => 'research-queue',
+      0 => 'metric-strip',
+      1 => 'operation-controls',
+      2 => 'status-badge',
+      3 => 'data-table',
+      4 => 'feedback-panel',
     ),
-    'responsive' => 'Branch tabs scroll and cards stack',
+    'responsive' => 'horizontal dashboard with stacked mobile layout',
   ),
   'systems' => 
   array (
     'services' => 
     array (
-      0 => 'TechnologyService',
-      1 => 'QueueService',
+      0 => 'PageService',
     ),
     'reads' => 
     array (
-      0 => 'technologies',
-      1 => 'technology_prerequisites',
-      2 => 'player_technologies',
-      3 => 'player_resources',
-      4 => 'construction_queue',
+      0 => 'players',
+      1 => 'player_resources',
+      2 => 'game_events',
     ),
     'writes' => 
     array (
-      0 => 'player_technologies',
-      1 => 'construction_queue',
-      2 => 'player_resources',
     ),
     'actions' => 
     array (
-      0 => 'technology',
+      0 => 'inspect_page',
+      1 => 'refresh_page',
     ),
+    'permissions' => 
+    array (
+      0 => 'authenticated commander',
+      1 => 'CSRF',
+      2 => 'RBAC',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+    ),
+  ),
+  'feedback_states' => 
+  array (
+    0 => 'loading',
+    1 => 'ready',
+    2 => 'empty',
+    3 => 'protected',
+    4 => 'cooldown',
+    5 => 'insufficient-resource',
+    6 => 'success',
+    7 => 'error',
   ),
   'contract_files' => 
   array (

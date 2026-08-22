@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 return array (
   'services' => 
   array (
@@ -6,21 +7,24 @@ return array (
   ),
   'reads' => 
   array (
-    0 => 'settlement_fields',
-    1 => 'settlement_buildings',
-    2 => 'settlement_construction_queues',
-    3 => 'building_types',
-    4 => 'player_resources',
-    5 => 'game_events',
+    0 => 'players',
+    1 => 'player_resources',
+    2 => 'game_events',
   ),
   'writes' => 
   array (
   ),
   'actions' => 
   array (
-    0 => 'settlement_state',
-    1 => 'settlement_build',
-    2 => 'settlement_demolish',
-    3 => 'settlement_process',
+    0 => 'inspect_page',
+    1 => 'refresh_page',
+  ),
+  'permissions' => 
+  array (
+    0 => 'authenticated commander',
+    1 => 'CSRF',
+    2 => 'RBAC',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
   ),
 );

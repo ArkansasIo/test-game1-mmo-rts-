@@ -1,20 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'target-board',
+  'template' => 'specification-dashboard',
   'sections' => 
   array (
-    0 => 'filters',
-    1 => 'target rows',
-    2 => 'protection',
-    3 => 'combat preview',
-    4 => 'operation controls',
+    0 => 'overview',
+    1 => 'controls',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
   'components' => 
   array (
-    0 => 'target-table',
-    1 => 'protection-badge',
-    2 => 'cost-preview',
-    3 => 'operation-buttons',
+    0 => 'metric-strip',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => 'Target table becomes stacked target rows',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

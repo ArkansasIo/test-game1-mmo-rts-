@@ -1,9 +1,21 @@
 <?php
+declare(strict_types=1);
 return array (
-  0 => 'technology tree',
-  1 => 'branch filters',
-  2 => 'prerequisites',
-  3 => 'level and cost',
-  4 => 'research queue',
-  5 => 'effect preview',
+  'title' => 'Technology',
+  'features' => 
+  array (
+    0 => 'summary metrics',
+    1 => 'status badges',
+    2 => 'related-page navigation',
+    3 => 'empty-state guidance',
+  ),
+  'sub_features' => 
+  array (
+    0 => 'loading and refresh state',
+    1 => 'permission-aware controls',
+    2 => 'related-page navigation',
+    3 => 'filter and sort state',
+    4 => 'empty-state explanation',
+    5 => 'audit and feedback detail',
+  ),
 );

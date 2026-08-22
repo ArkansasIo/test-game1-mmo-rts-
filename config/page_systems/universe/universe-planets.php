@@ -1,25 +1,30 @@
 <?php
+declare(strict_types=1);
 return array (
   'services' => 
   array (
-    0 => 'UniverseService',
-    1 => 'ColonyService',
+    0 => 'PageService',
   ),
   'reads' => 
   array (
-    0 => 'universe_planets',
-    1 => 'universe_moons',
-    2 => 'player_colonies',
+    0 => 'players',
+    1 => 'player_resources',
+    2 => 'game_events',
   ),
   'writes' => 
   array (
-    0 => 'universe_planets',
-    1 => 'player_colonies',
-    2 => 'game_audit_log',
   ),
   'actions' => 
   array (
-    0 => 'planet_details',
-    1 => 'colonize_planet',
+    0 => 'inspect_page',
+    1 => 'refresh_page',
+  ),
+  'permissions' => 
+  array (
+    0 => 'authenticated commander',
+    1 => 'CSRF',
+    2 => 'RBAC',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
   ),
 );

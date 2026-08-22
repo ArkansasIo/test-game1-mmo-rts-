@@ -1,19 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'weapon-repair',
+  'template' => 'specification-dashboard',
   'sections' => 
   array (
-    0 => 'damaged items',
-    1 => 'cost preview',
-    2 => 'confirmation',
-    3 => 'result',
+    0 => 'overview',
+    1 => 'controls',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
   'components' => 
   array (
-    0 => 'durability-meter',
-    1 => 'repair-cost',
-    2 => 'confirmation-panel',
-    3 => 'result-banner',
+    0 => 'metric-strip',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => 'Repair cards stack on mobile',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

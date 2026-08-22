@@ -1,22 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'premium-dashboard',
-  'sections' => array (
-    0 => 'wallet header',
-    1 => 'premium catalogue',
-    2 => 'active effects',
-    3 => 'transaction history',
-    4 => 'server contract',
-    5 => 'feedback',
+  'template' => 'specification-dashboard',
+  'sections' => 
+  array (
+    0 => 'overview',
+    1 => 'controls',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
-  'components' => array (
+  'components' => 
+  array (
     0 => 'metric-strip',
-    1 => 'catalogue-table',
-    2 => 'effect-badges',
-    3 => 'action-controls',
-    4 => 'audit-table',
-    5 => 'status-badge',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => 'stacked mobile layout',
-  'theme' => 'inherits Default White, Window Blue Sci-Fi, and Deep Space Blue tokens',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

@@ -1,130 +1,62 @@
 <?php
+declare(strict_types=1);
 return array (
   'route' => 'income',
   'group' => 'command-center',
   'group_label' => 'Command Center',
   'title' => 'Income Breakdown',
   'layout' => 'breakdown',
+  'purpose' => 'Income Breakdown subsystem console with server-authoritative state, controls, dependencies, and feedback.',
+  'mechanic' => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   'controls' => 
   array (
-    0 => 'View income formula',
+    0 => 'open overview',
+    1 => 'review status',
+    2 => 'inspect records',
+    3 => 'review alerts',
   ),
   'actions' => 
   array (
+    0 => 'inspect_page',
+    1 => 'refresh_page',
   ),
   'tables' => 
   array (
-    0 => 'player_resources',
-    1 => 'races',
-    2 => 'player_planets',
-    3 => 'game_settings',
+    0 => 'players',
+    1 => 'player_resources',
+    2 => 'game_events',
   ),
   'details' => 
   array (
-    'hero' => 'Income Breakdown',
-    'panels' => 
-    array (
-      0 => 'Base income',
-      1 => 'Race and government modifiers',
-      2 => 'Colony production',
-      3 => 'Food, water, and energy upkeep',
-    ),
-    'formula' => 'settlement = (base production × race modifier × government modifier × technology) − upkeep',
-    'controls' => 
-    array (
-      0 => 'View per-turn formula',
-      1 => 'Compare colonies',
-      2 => 'Open resources',
-    ),
-    'action' => NULL,
-    'tables' => 
-    array (
-      0 => 'player_resources',
-      1 => 'player_colonies',
-      2 => 'races',
-      3 => 'government_types',
-      4 => 'technologies',
-    ),
-    'permission' => 'authenticated commander',
-    'states' => 
-    array (
-      0 => 'ready',
-      1 => 'empty',
-      2 => 'protected',
-      3 => 'error',
-    ),
-  ),
-  'interaction' => 
-  array (
-    'page' => 'Income Breakdown',
-    'purpose' => 'Explain production and upkeep.',
-    'buttons' => 
-    array (
-      'View income formula' => 
-      array (
-        'action' => 'read_income_breakdown',
-        'logic' => 'Calculate base output, race modifier, government modifier, technology, biome, and upkeep.',
-        'permission' => 'authenticated commander',
-        'reads' => 
-        array (
-          0 => 'player_resources',
-          1 => 'player_colonies',
-          2 => 'races',
-          3 => 'government_types',
-          4 => 'technologies',
-        ),
-        'writes' => 
-        array (
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'empty',
-          2 => 'error',
-        ),
-      ),
-      'Compare colonies' => 
-      array (
-        'action' => 'read_colony_comparison',
-        'logic' => 'Compare production and life-support efficiency across owned colonies.',
-        'permission' => 'authenticated commander',
-        'reads' => 
-        array (
-          0 => 'player_colonies',
-          1 => 'universe_planets',
-        ),
-        'writes' => 
-        array (
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'empty',
-        ),
-      ),
-    ),
+    'current state' => 'server-calculated telemetry',
+    'available controls' => 'permission-aware operations',
+    'dependencies' => 'validated prerequisites and cooldowns',
+    'audit' => 'transactional event history',
   ),
   'logic' => 
   array (
-    'purpose' => 'Explain production settlement by colony, faction, government, technology, biome, and upkeep.',
+    'purpose' => 'Income Breakdown operations',
     'workflow' => 
     array (
-      0 => 'load colony production',
-      1 => 'load modifiers',
-      2 => 'calculate gross output',
-      3 => 'calculate food water energy upkeep',
-      4 => 'render net settlement',
+      0 => 'load scoped state',
+      1 => 'validate authenticated intent',
+      2 => 'lock required records',
+      3 => 'resolve authoritative mechanic',
+      4 => 'write audit event',
+      5 => 'return feedback',
     ),
     'validation' => 
     array (
       0 => 'authenticated commander',
-      1 => 'owned colony scope',
+      1 => 'CSRF token',
+      2 => 'RBAC policy',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+      5 => 'transaction boundary',
     ),
     'calculations' => 
     array (
-      0 => 'base production × race modifier × government modifier × technology − upkeep',
-      1 => 'colony comparison',
-      2 => 'life-support efficiency',
+      0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
     ),
     'mutations' => 
     array (
@@ -132,57 +64,81 @@ return array (
   ),
   'features' => 
   array (
-    0 => 'income formula',
-    1 => 'modifier breakdown',
-    2 => 'colony comparison',
-    3 => 'food water energy upkeep',
-    4 => 'production forecast',
-    5 => 'read-only state',
+    0 => 'summary metrics',
+    1 => 'status badges',
+    2 => 'related-page navigation',
+    3 => 'empty-state guidance',
+  ),
+  'sub_features' => 
+  array (
+    0 => 'loading and refresh state',
+    1 => 'permission-aware controls',
+    2 => 'related-page navigation',
+    3 => 'filter and sort state',
+    4 => 'empty-state explanation',
+    5 => 'audit and feedback detail',
   ),
   'design' => 
   array (
-    'template' => 'income-breakdown',
+    'template' => 'specification-dashboard',
     'sections' => 
     array (
-      0 => 'formula',
-      1 => 'modifier table',
-      2 => 'colony production',
-      3 => 'upkeep',
-      4 => 'feedback states',
+      0 => 'overview',
+      1 => 'controls',
+      2 => 'features',
+      3 => 'system-design',
+      4 => 'information',
+      5 => 'feedback-states',
     ),
     'components' => 
     array (
-      0 => 'formula-block',
-      1 => 'modifier-row',
-      2 => 'forecast-metric',
-      3 => 'comparison-table',
+      0 => 'metric-strip',
+      1 => 'operation-controls',
+      2 => 'status-badge',
+      3 => 'data-table',
+      4 => 'feedback-panel',
     ),
-    'responsive' => 'Formula and comparison sections stack on small screens',
+    'responsive' => 'horizontal dashboard with stacked mobile layout',
   ),
   'systems' => 
   array (
     'services' => 
     array (
-      0 => 'EconomyService',
-      1 => 'ColonyService',
+      0 => 'PageService',
     ),
     'reads' => 
     array (
-      0 => 'player_resources',
-      1 => 'player_colonies',
-      2 => 'races',
-      3 => 'government_types',
-      4 => 'technologies',
-      5 => 'universe_planets',
+      0 => 'players',
+      1 => 'player_resources',
+      2 => 'game_events',
     ),
     'writes' => 
     array (
     ),
     'actions' => 
     array (
-      0 => 'read_income_breakdown',
-      1 => 'read_colony_comparison',
+      0 => 'inspect_page',
+      1 => 'refresh_page',
     ),
+    'permissions' => 
+    array (
+      0 => 'authenticated commander',
+      1 => 'CSRF',
+      2 => 'RBAC',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+    ),
+  ),
+  'feedback_states' => 
+  array (
+    0 => 'loading',
+    1 => 'ready',
+    2 => 'empty',
+    3 => 'protected',
+    4 => 'cooldown',
+    5 => 'insufficient-resource',
+    6 => 'success',
+    7 => 'error',
   ),
   'contract_files' => 
   array (

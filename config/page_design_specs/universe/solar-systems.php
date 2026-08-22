@@ -1,19 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'solar-system-map',
+  'template' => 'specification-dashboard',
   'sections' => 
   array (
-    0 => 'star',
-    1 => 'orbits',
-    2 => 'planet slots',
-    3 => 'anomaly',
+    0 => 'overview',
+    1 => 'controls',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
   'components' => 
   array (
-    0 => 'orbit-list',
-    1 => 'planet-slot',
-    2 => 'star-badge',
-    3 => 'scan-control',
+    0 => 'metric-strip',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => 'Orbit list becomes stacked planets',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

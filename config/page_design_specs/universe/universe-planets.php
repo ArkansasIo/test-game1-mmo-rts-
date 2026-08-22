@@ -1,20 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'universe-planet',
+  'template' => 'specification-dashboard',
   'sections' => 
   array (
-    0 => 'planet identity',
-    1 => 'biome',
-    2 => 'habitability',
-    3 => 'resources',
-    4 => 'colony status',
+    0 => 'overview',
+    1 => 'controls',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
   'components' => 
   array (
-    0 => 'planet-detail',
-    1 => 'biome-card',
-    2 => 'habitability-meter',
-    3 => 'colonize-form',
+    0 => 'metric-strip',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => 'Planet details stack vertically',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

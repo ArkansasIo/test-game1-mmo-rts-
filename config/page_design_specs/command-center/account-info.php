@@ -1,19 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'account-details',
+  'template' => 'specification-dashboard',
   'sections' => 
   array (
-    0 => 'profile',
-    1 => 'faction identity',
-    2 => 'progression',
-    3 => 'protection',
-    4 => 'security',
+    0 => 'overview',
+    1 => 'controls',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
   'components' => 
   array (
-    0 => 'profile-metric',
-    1 => 'modifier-row',
-    2 => 'security-badge',
+    0 => 'metric-strip',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => 'Two-column details collapse to one column',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

@@ -1,20 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'account-settings',
+  'template' => 'specification-dashboard',
   'sections' => 
   array (
-    0 => 'race selector',
-    1 => 'government selector',
-    2 => 'vacation',
-    3 => 'protection',
-    4 => 'security',
+    0 => 'overview',
+    1 => 'controls',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
   'components' => 
   array (
-    0 => 'faction-selector',
-    1 => 'modifier-preview',
-    2 => 'vacation-toggle',
-    3 => 'security-panel',
+    0 => 'metric-strip',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => 'Settings sections stack on mobile',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

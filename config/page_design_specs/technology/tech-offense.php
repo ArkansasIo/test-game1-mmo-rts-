@@ -1,20 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'technology-tree',
+  'template' => 'specification-dashboard',
   'sections' => 
   array (
-    0 => 'branch tabs',
-    1 => 'technology cards',
-    2 => 'prerequisites',
-    3 => 'cost',
-    4 => 'queue',
+    0 => 'overview',
+    1 => 'controls',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
   'components' => 
   array (
-    0 => 'tech-card',
-    1 => 'branch-tabs',
-    2 => 'prerequisite-list',
-    3 => 'research-queue',
+    0 => 'metric-strip',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => 'Branch tabs scroll and cards stack',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

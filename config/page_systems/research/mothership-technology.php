@@ -1,26 +1,30 @@
 <?php
+declare(strict_types=1);
 return array (
   'services' => 
   array (
-    0 => 'TechnologyService',
-    1 => 'QueueService',
+    0 => 'PageService',
   ),
   'reads' => 
   array (
-    0 => 'technologies',
-    1 => 'technology_prerequisites',
-    2 => 'player_technologies',
-    3 => 'player_resources',
-    4 => 'construction_queue',
+    0 => 'players',
+    1 => 'player_resources',
+    2 => 'game_events',
   ),
   'writes' => 
   array (
-    0 => 'player_technologies',
-    1 => 'construction_queue',
-    2 => 'player_resources',
   ),
   'actions' => 
   array (
-    0 => 'technology',
+    0 => 'inspect_page',
+    1 => 'refresh_page',
+  ),
+  'permissions' => 
+  array (
+    0 => 'authenticated commander',
+    1 => 'CSRF',
+    2 => 'RBAC',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
   ),
 );

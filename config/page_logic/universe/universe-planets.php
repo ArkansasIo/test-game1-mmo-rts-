@@ -1,30 +1,30 @@
 <?php
+declare(strict_types=1);
 return array (
-  'purpose' => 'Inspect planet class, biome, habitability, resource modifiers, and colony status.',
+  'purpose' => 'Universe Planets operations',
   'workflow' => 
   array (
-    0 => 'inspect planet',
-    1 => 'load biome',
-    2 => 'calculate viability',
-    3 => 'validate colonization',
-    4 => 'create colony',
+    0 => 'load scoped state',
+    1 => 'validate authenticated intent',
+    2 => 'lock required records',
+    3 => 'resolve authoritative mechanic',
+    4 => 'write audit event',
+    5 => 'return feedback',
   ),
   'validation' => 
   array (
     0 => 'authenticated commander',
-    1 => 'colonization access',
-    2 => 'occupancy',
-    3 => 'habitability',
-    4 => 'resource balance',
+    1 => 'CSRF token',
+    2 => 'RBAC policy',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
+    5 => 'transaction boundary',
   ),
   'calculations' => 
   array (
-    0 => 'habitability × biome × race × government × life support',
+    0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   ),
   'mutations' => 
   array (
-    0 => 'universe_planets',
-    1 => 'player_colonies',
-    2 => 'game_audit_log',
   ),
 );

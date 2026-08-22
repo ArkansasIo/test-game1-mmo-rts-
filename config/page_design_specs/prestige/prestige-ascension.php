@@ -1,20 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'progression-panel',
+  'template' => 'specification-dashboard',
   'sections' => 
   array (
-    0 => 'requirements',
-    1 => 'tier and level',
-    2 => 'Glory/Reputation',
-    3 => 'ascension preview',
-    4 => 'history',
+    0 => 'overview',
+    1 => 'controls',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
   'components' => 
   array (
-    0 => 'progress-bar',
-    1 => 'tier-badge',
-    2 => 'requirement-list',
-    3 => 'ascension-preview',
+    0 => 'metric-strip',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => 'Progression metrics stack on mobile',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

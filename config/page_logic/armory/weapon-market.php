@@ -1,31 +1,30 @@
 <?php
+declare(strict_types=1);
 return array (
-  'purpose' => 'List and buy resource, weapon, and mercenary market orders.',
+  'purpose' => 'Weapon Market operations',
   'workflow' => 
   array (
-    0 => 'load orders',
-    1 => 'validate order fields',
-    2 => 'lock balance or order',
-    3 => 'settle trade',
-    4 => 'write market event',
+    0 => 'load scoped state',
+    1 => 'validate authenticated intent',
+    2 => 'lock required records',
+    3 => 'resolve authoritative mechanic',
+    4 => 'write audit event',
+    5 => 'return feedback',
   ),
   'validation' => 
   array (
-    0 => 'authenticated trader',
-    1 => 'market turns',
-    2 => 'positive quantity',
-    3 => 'available balance',
-    4 => 'order ownership',
+    0 => 'authenticated commander',
+    1 => 'CSRF token',
+    2 => 'RBAC policy',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
+    5 => 'transaction boundary',
   ),
   'calculations' => 
   array (
-    0 => 'quantity × unit price + market fee',
+    0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   ),
   'mutations' => 
   array (
-    0 => 'market_orders',
-    1 => 'trade_contracts',
-    2 => 'player_resources',
-    3 => 'game_audit_log',
   ),
 );

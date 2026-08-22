@@ -1,30 +1,30 @@
 <?php
+declare(strict_types=1);
 return array (
-  'purpose' => 'Research offense, defense, covert, and anti-covert technology branches.',
+  'purpose' => 'Covert Technology operations',
   'workflow' => 
   array (
-    0 => 'load technology tree',
-    1 => 'check prerequisites',
-    2 => 'calculate cost',
-    3 => 'queue research',
-    4 => 'apply completed effect',
+    0 => 'load scoped state',
+    1 => 'validate authenticated intent',
+    2 => 'lock required records',
+    3 => 'resolve authoritative mechanic',
+    4 => 'write audit event',
+    5 => 'return feedback',
   ),
   'validation' => 
   array (
-    0 => 'authenticated researcher',
-    1 => 'prerequisites',
-    2 => 'research queue',
-    3 => 'resource balance',
-    4 => 'level cap',
+    0 => 'authenticated commander',
+    1 => 'CSRF token',
+    2 => 'RBAC policy',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
+    5 => 'transaction boundary',
   ),
   'calculations' => 
   array (
-    0 => 'base cost × growth ^ current level',
+    0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   ),
   'mutations' => 
   array (
-    0 => 'player_technologies',
-    1 => 'construction_queue',
-    2 => 'player_resources',
   ),
 );

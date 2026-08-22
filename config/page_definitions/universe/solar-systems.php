@@ -1,186 +1,144 @@
 <?php
+declare(strict_types=1);
 return array (
   'route' => 'solar-systems',
   'group' => 'universe',
   'group_label' => 'Universe',
   'title' => 'Solar Systems',
   'layout' => 'solar-systems',
+  'purpose' => 'Solar Systems subsystem console with server-authoritative state, controls, dependencies, and feedback.',
+  'mechanic' => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   'controls' => 
   array (
-    0 => 'Open system',
-    1 => 'Scan system',
+    0 => 'open overview',
+    1 => 'review status',
+    2 => 'inspect records',
+    3 => 'review alerts',
   ),
   'actions' => 
   array (
-    0 => 'system_map',
-    1 => 'explore',
+    0 => 'inspect_page',
+    1 => 'refresh_page',
   ),
   'tables' => 
   array (
-    0 => 'universe_solar_systems',
-    1 => 'universe_planets',
+    0 => 'players',
+    1 => 'player_resources',
+    2 => 'game_events',
   ),
   'details' => 
   array (
-    'hero' => 'Solar Systems',
-    'panels' => 
-    array (
-      0 => 'Star class',
-      1 => 'Orbit map',
-      2 => 'Planet slots',
-      3 => 'Anomaly scan',
-    ),
-    'formula' => 'system travel = base travel × system modifier × sector danger',
-    'controls' => 
-    array (
-      0 => 'Open system',
-      1 => 'Scan system',
-      2 => 'Explore anomaly',
-    ),
-    'action' => 'explore',
-    'tables' => 
-    array (
-      0 => 'universe_solar_systems',
-      1 => 'universe_planets',
-      2 => 'universe_discoveries',
-    ),
-    'permission' => 'authenticated commander',
-    'states' => 
-    array (
-      0 => 'loading',
-      1 => 'ready',
-      2 => 'empty',
-      3 => 'cooldown',
-      4 => 'success',
-      5 => 'error',
-    ),
-  ),
-  'interaction' => 
-  array (
-    'page' => 'Solar Systems',
-    'purpose' => 'Scan stars, orbits, planets, and anomalies.',
-    'buttons' => 
-    array (
-      'Scan system' => 
-      array (
-        'action' => 'system_map',
-        'logic' => 'Load orbit map and resolve permitted scan information.',
-        'permission' => 'authenticated commander',
-        'reads' => 
-        array (
-          0 => 'universe_solar_systems',
-          1 => 'universe_planets',
-        ),
-        'writes' => 
-        array (
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'empty',
-          2 => 'error',
-        ),
-      ),
-      'Explore anomaly' => 
-      array (
-        'action' => 'explore',
-        'logic' => 'Create discovery record and event reward when successful.',
-        'permission' => 'exploration-capable commander',
-        'reads' => 
-        array (
-          0 => 'universe_solar_systems',
-          1 => 'universe_discoveries',
-        ),
-        'writes' => 
-        array (
-          0 => 'universe_discoveries',
-          1 => 'game_events',
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'cooldown',
-          2 => 'success',
-          3 => 'error',
-        ),
-      ),
-    ),
+    'current state' => 'server-calculated telemetry',
+    'available controls' => 'permission-aware operations',
+    'dependencies' => 'validated prerequisites and cooldowns',
+    'audit' => 'transactional event history',
   ),
   'logic' => 
   array (
-    'purpose' => 'Browse star class, orbit map, planet slots, and anomalies.',
+    'purpose' => 'Solar Systems operations',
     'workflow' => 
     array (
-      0 => 'open system',
-      1 => 'load orbit map',
-      2 => 'scan anomaly',
-      3 => 'calculate travel',
+      0 => 'load scoped state',
+      1 => 'validate authenticated intent',
+      2 => 'lock required records',
+      3 => 'resolve authoritative mechanic',
+      4 => 'write audit event',
+      5 => 'return feedback',
     ),
     'validation' => 
     array (
       0 => 'authenticated commander',
-      1 => 'valid system identifier',
-      2 => 'exploration capacity',
+      1 => 'CSRF token',
+      2 => 'RBAC policy',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+      5 => 'transaction boundary',
     ),
     'calculations' => 
     array (
-      0 => 'base travel × system modifier × sector danger',
+      0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
     ),
     'mutations' => 
     array (
-      0 => 'universe_discoveries',
-      1 => 'game_events',
     ),
   ),
   'features' => 
   array (
-    0 => 'star class',
-    1 => 'orbit map',
-    2 => 'planet slots',
-    3 => 'anomaly scan',
+    0 => 'summary metrics',
+    1 => 'status badges',
+    2 => 'related-page navigation',
+    3 => 'empty-state guidance',
+  ),
+  'sub_features' => 
+  array (
+    0 => 'loading and refresh state',
+    1 => 'permission-aware controls',
+    2 => 'related-page navigation',
+    3 => 'filter and sort state',
+    4 => 'empty-state explanation',
+    5 => 'audit and feedback detail',
   ),
   'design' => 
   array (
-    'template' => 'solar-system-map',
+    'template' => 'specification-dashboard',
     'sections' => 
     array (
-      0 => 'star',
-      1 => 'orbits',
-      2 => 'planet slots',
-      3 => 'anomaly',
+      0 => 'overview',
+      1 => 'controls',
+      2 => 'features',
+      3 => 'system-design',
+      4 => 'information',
+      5 => 'feedback-states',
     ),
     'components' => 
     array (
-      0 => 'orbit-list',
-      1 => 'planet-slot',
-      2 => 'star-badge',
-      3 => 'scan-control',
+      0 => 'metric-strip',
+      1 => 'operation-controls',
+      2 => 'status-badge',
+      3 => 'data-table',
+      4 => 'feedback-panel',
     ),
-    'responsive' => 'Orbit list becomes stacked planets',
+    'responsive' => 'horizontal dashboard with stacked mobile layout',
   ),
   'systems' => 
   array (
     'services' => 
     array (
-      0 => 'UniverseService',
-      1 => 'ExplorationService',
+      0 => 'PageService',
     ),
     'reads' => 
     array (
-      0 => 'universe_solar_systems',
-      1 => 'universe_planets',
-      2 => 'universe_discoveries',
+      0 => 'players',
+      1 => 'player_resources',
+      2 => 'game_events',
     ),
     'writes' => 
     array (
-      0 => 'universe_discoveries',
-      1 => 'game_events',
     ),
     'actions' => 
     array (
-      0 => 'system_map',
-      1 => 'explore',
+      0 => 'inspect_page',
+      1 => 'refresh_page',
     ),
+    'permissions' => 
+    array (
+      0 => 'authenticated commander',
+      1 => 'CSRF',
+      2 => 'RBAC',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+    ),
+  ),
+  'feedback_states' => 
+  array (
+    0 => 'loading',
+    1 => 'ready',
+    2 => 'empty',
+    3 => 'protected',
+    4 => 'cooldown',
+    5 => 'insufficient-resource',
+    6 => 'success',
+    7 => 'error',
   ),
   'contract_files' => 
   array (

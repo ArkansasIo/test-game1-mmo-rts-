@@ -1,19 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'ranking-table',
+  'template' => 'specification-dashboard',
   'sections' => 
   array (
-    0 => 'filters',
-    1 => 'leaderboard',
-    2 => 'score breakdown',
-    3 => 'snapshots',
+    0 => 'overview',
+    1 => 'controls',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
   'components' => 
   array (
-    0 => 'ranking-table',
-    1 => 'score-badge',
-    2 => 'filter-tabs',
-    3 => 'snapshot-selector',
+    0 => 'metric-strip',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => 'Leaderboard columns collapse into ranked cards',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

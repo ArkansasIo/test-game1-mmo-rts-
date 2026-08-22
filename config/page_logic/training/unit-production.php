@@ -1,29 +1,30 @@
 <?php
+declare(strict_types=1);
 return array (
-  'purpose' => 'Increase unit production capacity and show next-level effects.',
+  'purpose' => 'Unit Production operations',
   'workflow' => 
   array (
-    0 => 'load current level',
-    1 => 'calculate next cost',
-    2 => 'validate resources',
-    3 => 'queue upgrade',
-    4 => 'apply completion effect',
+    0 => 'load scoped state',
+    1 => 'validate authenticated intent',
+    2 => 'lock required records',
+    3 => 'resolve authoritative mechanic',
+    4 => 'write audit event',
+    5 => 'return feedback',
   ),
   'validation' => 
   array (
     0 => 'authenticated commander',
-    1 => 'positive current level',
-    2 => 'resource balance',
-    3 => 'level cap',
+    1 => 'CSRF token',
+    2 => 'RBAC policy',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
+    5 => 'transaction boundary',
   ),
   'calculations' => 
   array (
-    0 => 'base cost × growth rate ^ current level',
+    0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   ),
   'mutations' => 
   array (
-    0 => 'player_resources',
-    1 => 'construction_queue',
-    2 => 'game_audit_log',
   ),
 );

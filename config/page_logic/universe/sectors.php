@@ -1,21 +1,28 @@
 <?php
+declare(strict_types=1);
 return array (
-  'purpose' => 'Inspect sector class, danger, resource modifiers, and anomaly rate.',
+  'purpose' => 'Sector Map operations',
   'workflow' => 
   array (
-    0 => 'select sector',
-    1 => 'load systems',
-    2 => 'calculate sector output',
-    3 => 'filter by risk',
+    0 => 'load scoped state',
+    1 => 'validate authenticated intent',
+    2 => 'lock required records',
+    3 => 'resolve authoritative mechanic',
+    4 => 'write audit event',
+    5 => 'return feedback',
   ),
   'validation' => 
   array (
     0 => 'authenticated commander',
-    1 => 'valid sector identifier',
+    1 => 'CSRF token',
+    2 => 'RBAC policy',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
+    5 => 'transaction boundary',
   ),
   'calculations' => 
   array (
-    0 => 'base output × resource modifier; anomaly rate drives events',
+    0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   ),
   'mutations' => 
   array (

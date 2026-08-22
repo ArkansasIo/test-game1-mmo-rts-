@@ -1,9 +1,21 @@
 <?php
+declare(strict_types=1);
 return array (
-  0 => 'inbox',
-  1 => 'unread count',
-  2 => 'compose',
-  3 => 'mark read',
-  4 => 'blacklist',
-  5 => 'notifications',
+  'title' => 'Messages',
+  'features' => 
+  array (
+    0 => 'summary metrics',
+    1 => 'status badges',
+    2 => 'related-page navigation',
+    3 => 'empty-state guidance',
+  ),
+  'sub_features' => 
+  array (
+    0 => 'loading and refresh state',
+    1 => 'permission-aware controls',
+    2 => 'related-page navigation',
+    3 => 'filter and sort state',
+    4 => 'empty-state explanation',
+    5 => 'audit and feedback detail',
+  ),
 );

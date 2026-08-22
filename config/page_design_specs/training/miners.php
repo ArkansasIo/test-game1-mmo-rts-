@@ -1,19 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'training-board',
+  'template' => 'specification-dashboard',
   'sections' => 
   array (
-    0 => 'unit pool',
-    1 => 'training controls',
-    2 => 'cost preview',
-    3 => 'queue/result',
+    0 => 'overview',
+    1 => 'controls',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
   'components' => 
   array (
-    0 => 'unit-card',
-    1 => 'quantity-input',
-    2 => 'cost-preview',
-    3 => 'queue-row',
+    0 => 'metric-strip',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => 'Training cards stack with full-width controls',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

@@ -1,19 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'mothership-command',
+  'template' => 'specification-dashboard',
   'sections' => 
   array (
-    0 => 'hull',
-    1 => 'weapons',
-    2 => 'hangars',
-    3 => 'modules',
+    0 => 'overview',
+    1 => 'controls',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
   'components' => 
   array (
-    0 => 'ship-stat',
-    1 => 'module-card',
-    2 => 'capacity-meter',
-    3 => 'upgrade-form',
+    0 => 'metric-strip',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => 'Ship systems stack into full-width modules',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

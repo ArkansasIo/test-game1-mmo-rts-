@@ -1,77 +1,167 @@
 <?php
+declare(strict_types=1);
 return array (
   'route' => 'store',
   'group' => 'premium',
   'group_label' => 'Premium',
   'title' => 'Store',
-  'layout' => 'dashboard',
-  'controls' => array (
-    0 => 'Buy item',
-    1 => 'Inspect catalogue',
-    2 => 'Review purchases',
+  'layout' => 'premium',
+  'purpose' => 'Store subsystem console with server-authoritative state, controls, dependencies, and feedback.',
+  'mechanic' => 'premium state = wallet balance + entitlement state + bounded service effects',
+  'controls' => 
+  array (
+    0 => 'inspect wallet',
+    1 => 'claim reward',
+    2 => 'activate entitlement',
+    3 => 'review transactions',
   ),
-  'actions' => array (
+  'actions' => 
+  array (
     0 => 'premium_purchase',
+    1 => 'premium_claim',
+    2 => 'premium_activate',
+    3 => 'refresh_page',
   ),
-  'tables' => array (
+  'tables' => 
+  array (
     0 => 'premium_catalog',
     1 => 'player_premium',
     2 => 'premium_transactions',
+    3 => 'game_events',
   ),
-  'details' => array (
-    0 => 'catalogue pricing',
-    1 => 'purchase validation',
-    2 => 'transaction history',
-    3 => 'balance telemetry',
+  'details' => 
+  array (
+    'current state' => 'server-calculated telemetry',
+    'available controls' => 'permission-aware operations',
+    'dependencies' => 'validated prerequisites and cooldowns',
+    'audit' => 'transactional event history',
   ),
-  'interaction' => array (
-    'server_authoritative' => true,
-    'feedback_states' => array (
-      0 => 'ready',
-      1 => 'empty',
-      2 => 'cooldown',
-      3 => 'insufficient-resource',
-      4 => 'success',
-      5 => 'error',
+  'logic' => 
+  array (
+    'purpose' => 'Store operations',
+    'workflow' => 
+    array (
+      0 => 'load scoped state',
+      1 => 'validate authenticated intent',
+      2 => 'lock required records',
+      3 => 'resolve authoritative mechanic',
+      4 => 'write audit event',
+      5 => 'return feedback',
     ),
-  ),
-  'logic' => array (
-    'purpose' => 'Purchase non-pay-to-win convenience services and season rewards with Dark Matter.',
-    'workflow' => array (
-      0 => 'load wallet and catalogue',
-      1 => 'validate authentication, CSRF, ownership, price, quantity, and cooldown',
-      2 => 'lock wallet rows and commit transaction',
-      3 => 'render updated state and feedback',
-    ),
-    'validation' => array (
+    'validation' => 
+    array (
       0 => 'authenticated commander',
-      1 => 'server-side catalogue item',
-      2 => 'wallet row lock',
-      3 => 'positive bounded quantity',
-      4 => 'cooldown and ownership checks',
+      1 => 'CSRF token',
+      2 => 'RBAC policy',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+      5 => 'transaction boundary',
     ),
-    'calculations' => array (
-      0 => 'purchase cost = catalogue price × quantity',
-      1 => 'season progression = claimed rewards + validated activity',
-      2 => 'service effect = catalogue effect × active duration',
+    'calculations' => 
+    array (
+      0 => 'premium state = wallet balance + entitlement state + bounded service effects',
     ),
-    'mutations' => array (
-      0 => 'premium wallet debit or reward credit',
-      1 => 'officer/service activation',
-      2 => 'transaction audit event',
+    'mutations' => 
+    array (
+      0 => 'premium_catalog',
+      1 => 'player_premium',
+      2 => 'premium_transactions',
+      3 => 'game_events',
     ),
   ),
-  'contract_files' => array (
+  'features' => 
+  array (
+    0 => 'wallet telemetry',
+    1 => 'season pass',
+    2 => 'officer effects',
+    3 => 'service credits',
+    4 => 'daily reward',
+    5 => 'transaction audit',
+  ),
+  'sub_features' => 
+  array (
+    0 => 'loading and refresh state',
+    1 => 'permission-aware controls',
+    2 => 'related-page navigation',
+    3 => 'filter and sort state',
+    4 => 'empty-state explanation',
+    5 => 'audit and feedback detail',
+  ),
+  'design' => 
+  array (
+    'template' => 'specification-dashboard',
+    'sections' => 
+    array (
+      0 => 'overview',
+      1 => 'controls',
+      2 => 'features',
+      3 => 'system-design',
+      4 => 'information',
+      5 => 'feedback-states',
+    ),
+    'components' => 
+    array (
+      0 => 'metric-strip',
+      1 => 'operation-controls',
+      2 => 'status-badge',
+      3 => 'data-table',
+      4 => 'feedback-panel',
+    ),
+    'responsive' => 'horizontal dashboard with stacked mobile layout',
+  ),
+  'systems' => 
+  array (
+    'services' => 
+    array (
+      0 => 'PageService',
+    ),
+    'reads' => 
+    array (
+      0 => 'premium_catalog',
+      1 => 'player_premium',
+      2 => 'premium_transactions',
+      3 => 'game_events',
+    ),
+    'writes' => 
+    array (
+      0 => 'premium_catalog',
+      1 => 'player_premium',
+      2 => 'premium_transactions',
+      3 => 'game_events',
+    ),
+    'actions' => 
+    array (
+      0 => 'premium_purchase',
+      1 => 'premium_claim',
+      2 => 'premium_activate',
+      3 => 'refresh_page',
+    ),
+    'permissions' => 
+    array (
+      0 => 'authenticated commander',
+      1 => 'CSRF',
+      2 => 'RBAC',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+    ),
+  ),
+  'feedback_states' => 
+  array (
+    0 => 'loading',
+    1 => 'ready',
+    2 => 'empty',
+    3 => 'protected',
+    4 => 'cooldown',
+    5 => 'insufficient-resource',
+    6 => 'success',
+    7 => 'error',
+  ),
+  'contract_files' => 
+  array (
     'logic' => 'config/page_logic/premium/store.php',
     'features' => 'config/page_features/premium/store.php',
     'design' => 'config/page_design_specs/premium/store.php',
     'systems' => 'config/page_systems/premium/store.php',
     'module' => 'includes/page_modules/premium/store.php',
-  ),
-  'features' => array (
-    0 => 'wallet telemetry',
-    1 => 'server-validated controls',
-    2 => 'transaction history',
-    3 => 'feedback states',
   ),
 );

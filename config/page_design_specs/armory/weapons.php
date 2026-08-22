@@ -1,19 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'armory-inventory',
+  'template' => 'specification-dashboard',
   'sections' => 
   array (
-    0 => 'catalogue',
-    1 => 'inventory',
-    2 => 'durability',
-    3 => 'assignment',
+    0 => 'overview',
+    1 => 'controls',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
   'components' => 
   array (
-    0 => 'weapon-card',
-    1 => 'durability-meter',
-    2 => 'purchase-form',
-    3 => 'assignment-badge',
+    0 => 'metric-strip',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => 'Weapon cards wrap into a single-column inventory',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

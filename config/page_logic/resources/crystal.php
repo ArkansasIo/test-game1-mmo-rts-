@@ -1,32 +1,30 @@
 <?php
+declare(strict_types=1);
 return array (
-  'purpose' => 'Manage the eight-resource ledger and protected Naquadah vault.',
+  'purpose' => 'Crystal operations',
   'workflow' => 
   array (
-    0 => 'load resource ledger',
-    1 => 'validate transfer amount',
-    2 => 'lock resource row',
-    3 => 'move balance transactionally',
+    0 => 'load scoped state',
+    1 => 'validate authenticated intent',
+    2 => 'lock required records',
+    3 => 'resolve authoritative mechanic',
     4 => 'write audit event',
+    5 => 'return feedback',
   ),
   'validation' => 
   array (
     0 => 'authenticated commander',
     1 => 'CSRF token',
-    2 => 'positive amount',
-    3 => 'available or vault balance',
-    4 => 'RBAC permission',
+    2 => 'RBAC policy',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
+    5 => 'transaction boundary',
   ),
   'calculations' => 
   array (
-    0 => 'available Naquadah',
-    1 => 'protected vault balance',
-    2 => 'eight-resource totals',
-    3 => 'transfer delta',
+    0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   ),
   'mutations' => 
   array (
-    0 => 'player_resources',
-    1 => 'game_audit_log',
   ),
 );

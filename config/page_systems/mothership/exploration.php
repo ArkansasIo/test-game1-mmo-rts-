@@ -1,24 +1,30 @@
 <?php
+declare(strict_types=1);
 return array (
   'services' => 
   array (
-    0 => 'ExplorationService',
-    1 => 'MothershipService',
+    0 => 'PageService',
   ),
   'reads' => 
   array (
-    0 => 'motherships',
-    1 => 'universe_solar_systems',
-    2 => 'universe_planets',
-    3 => 'universe_moons',
+    0 => 'players',
+    1 => 'player_resources',
+    2 => 'game_events',
   ),
   'writes' => 
   array (
-    0 => 'universe_discoveries',
-    1 => 'game_events',
   ),
   'actions' => 
   array (
-    0 => 'explore',
+    0 => 'inspect_page',
+    1 => 'refresh_page',
+  ),
+  'permissions' => 
+  array (
+    0 => 'authenticated commander',
+    1 => 'CSRF',
+    2 => 'RBAC',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
   ),
 );

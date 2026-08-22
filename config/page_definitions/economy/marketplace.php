@@ -1,199 +1,144 @@
 <?php
+declare(strict_types=1);
 return array (
   'route' => 'marketplace',
   'group' => 'economy',
   'group_label' => 'Economy',
   'title' => 'Marketplace',
   'layout' => 'market',
+  'purpose' => 'Marketplace subsystem console with server-authoritative state, controls, dependencies, and feedback.',
+  'mechanic' => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   'controls' => 
   array (
-    0 => 'Open overview',
-    1 => 'Review status',
+    0 => 'open overview',
+    1 => 'review status',
+    2 => 'inspect records',
+    3 => 'review alerts',
   ),
   'actions' => 
   array (
+    0 => 'inspect_page',
+    1 => 'refresh_page',
   ),
   'tables' => 
   array (
-    0 => 'game_events',
+    0 => 'players',
+    1 => 'player_resources',
+    2 => 'game_events',
   ),
   'details' => 
   array (
-    'hero' => 'Market Exchange',
-    'panels' => 
-    array (
-      0 => 'Open orders',
-      1 => 'Price history',
-      2 => 'Order form',
-      3 => 'Settlement status',
-    ),
-    'formula' => 'settlement = quantity × unit price + market fee',
-    'controls' => 
-    array (
-      0 => 'List order',
-      1 => 'Buy order',
-      2 => 'Cancel order',
-    ),
-    'action' => 'market_list',
-    'tables' => 
-    array (
-      0 => 'market_orders',
-      1 => 'trade_contracts',
-      2 => 'player_resources',
-      3 => 'mercenary_types',
-    ),
-    'permission' => 'authenticated commander with market turns',
-    'states' => 
-    array (
-      0 => 'ready',
-      1 => 'empty',
-      2 => 'insufficient-resource',
-      3 => 'cooldown',
-      4 => 'success',
-      5 => 'error',
-    ),
-  ),
-  'interaction' => 
-  array (
-    'page' => 'Markets',
-    'purpose' => 'Trade resources, weapons, and mercenaries.',
-    'buttons' => 
-    array (
-      'List order' => 
-      array (
-        'action' => 'market_list',
-        'logic' => 'Validate resource, quantity, unit price, turn balance, and expiry.',
-        'permission' => 'authenticated trader',
-        'reads' => 
-        array (
-          0 => 'player_resources',
-          1 => 'market_orders',
-        ),
-        'writes' => 
-        array (
-          0 => 'market_orders',
-          1 => 'trade_contracts',
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'insufficient-resource',
-          2 => 'cooldown',
-          3 => 'success',
-          4 => 'error',
-        ),
-      ),
-      'Buy order' => 
-      array (
-        'action' => 'market_buy',
-        'logic' => 'Lock order, check funds, transfer resource, and settle seller.',
-        'permission' => 'authenticated trader',
-        'reads' => 
-        array (
-          0 => 'market_orders',
-          1 => 'player_resources',
-        ),
-        'writes' => 
-        array (
-          0 => 'market_orders',
-          1 => 'player_resources',
-          2 => 'game_audit_log',
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'insufficient-resource',
-          2 => 'success',
-          3 => 'error',
-        ),
-      ),
-    ),
+    'current state' => 'server-calculated telemetry',
+    'available controls' => 'permission-aware operations',
+    'dependencies' => 'validated prerequisites and cooldowns',
+    'audit' => 'transactional event history',
   ),
   'logic' => 
   array (
-    'purpose' => 'List and buy resource, weapon, and mercenary market orders.',
+    'purpose' => 'Marketplace operations',
     'workflow' => 
     array (
-      0 => 'load orders',
-      1 => 'validate order fields',
-      2 => 'lock balance or order',
-      3 => 'settle trade',
-      4 => 'write market event',
+      0 => 'load scoped state',
+      1 => 'validate authenticated intent',
+      2 => 'lock required records',
+      3 => 'resolve authoritative mechanic',
+      4 => 'write audit event',
+      5 => 'return feedback',
     ),
     'validation' => 
     array (
-      0 => 'authenticated trader',
-      1 => 'market turns',
-      2 => 'positive quantity',
-      3 => 'available balance',
-      4 => 'order ownership',
+      0 => 'authenticated commander',
+      1 => 'CSRF token',
+      2 => 'RBAC policy',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+      5 => 'transaction boundary',
     ),
     'calculations' => 
     array (
-      0 => 'quantity × unit price + market fee',
+      0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
     ),
     'mutations' => 
     array (
-      0 => 'market_orders',
-      1 => 'trade_contracts',
-      2 => 'player_resources',
-      3 => 'game_audit_log',
     ),
   ),
   'features' => 
   array (
-    0 => 'open orders',
-    1 => 'price history',
-    2 => 'order form',
-    3 => 'buy order',
-    4 => 'list order',
-    5 => 'settlement status',
+    0 => 'summary metrics',
+    1 => 'status badges',
+    2 => 'related-page navigation',
+    3 => 'empty-state guidance',
+  ),
+  'sub_features' => 
+  array (
+    0 => 'loading and refresh state',
+    1 => 'permission-aware controls',
+    2 => 'related-page navigation',
+    3 => 'filter and sort state',
+    4 => 'empty-state explanation',
+    5 => 'audit and feedback detail',
   ),
   'design' => 
   array (
-    'template' => 'market-exchange',
+    'template' => 'specification-dashboard',
     'sections' => 
     array (
-      0 => 'orders',
-      1 => 'price history',
-      2 => 'order form',
-      3 => 'settlement',
+      0 => 'overview',
+      1 => 'controls',
+      2 => 'features',
+      3 => 'system-design',
+      4 => 'information',
+      5 => 'feedback-states',
     ),
     'components' => 
     array (
-      0 => 'order-table',
-      1 => 'price-badge',
-      2 => 'order-form',
-      3 => 'settlement-banner',
+      0 => 'metric-strip',
+      1 => 'operation-controls',
+      2 => 'status-badge',
+      3 => 'data-table',
+      4 => 'feedback-panel',
     ),
-    'responsive' => 'Market tables scroll or stack into order cards',
+    'responsive' => 'horizontal dashboard with stacked mobile layout',
   ),
   'systems' => 
   array (
     'services' => 
     array (
-      0 => 'MarketService',
+      0 => 'PageService',
     ),
     'reads' => 
     array (
-      0 => 'market_orders',
-      1 => 'trade_contracts',
-      2 => 'player_resources',
-      3 => 'mercenary_types',
+      0 => 'players',
+      1 => 'player_resources',
+      2 => 'game_events',
     ),
     'writes' => 
     array (
-      0 => 'market_orders',
-      1 => 'trade_contracts',
-      2 => 'player_resources',
-      3 => 'game_audit_log',
     ),
     'actions' => 
     array (
-      0 => 'market_list',
-      1 => 'market_buy',
-      2 => 'market_cancel',
+      0 => 'inspect_page',
+      1 => 'refresh_page',
     ),
+    'permissions' => 
+    array (
+      0 => 'authenticated commander',
+      1 => 'CSRF',
+      2 => 'RBAC',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+    ),
+  ),
+  'feedback_states' => 
+  array (
+    0 => 'loading',
+    1 => 'ready',
+    2 => 'empty',
+    3 => 'protected',
+    4 => 'cooldown',
+    5 => 'insufficient-resource',
+    6 => 'success',
+    7 => 'error',
   ),
   'contract_files' => 
   array (

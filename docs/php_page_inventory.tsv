@@ -1,0 +1,192 @@
+command-center/dashboard	Command Center
+command-center/account-info	Account Information
+command-center/resources	Resources & Vault
+command-center/income	Income Breakdown
+command-center/military-stats	Military Statistics
+attack/targets	Target Selection
+attack/spy	Spy Operations
+attack/sabotage	Sabotage Operations
+attack/attack-log	Attack Log & Reports
+armory/weapons	Weapon Inventory
+armory/weapon-market	Weapon Market
+armory/repair	Weapon Repair
+training/units	Unit Training
+training/miners	Miners & Lifers
+training/super-units	Super Units
+training/unit-production	Unit Production
+technology/technology	Technology Tree
+technology/tech-offense	Offense Technology
+technology/tech-defense	Defense Technology
+technology/tech-covert	Covert Technology
+technology/tech-anti-covert	Anti-Covert Technology
+intelligence/spy-log	Spy Log
+intelligence/enemy-intelligence	Enemy Intelligence
+intelligence/intelligence-espionage	Espionage
+intelligence/spy-missions	Spy Missions
+intelligence/counter-espionage	Counter-Espionage
+intelligence/intelligence-sabotage	Sabotage
+intelligence/reconnaissance	Reconnaissance
+intelligence/sensor-phalanx	Sensor Phalanx
+intelligence/fleet-activity	Fleet Activity
+intelligence/intelligence-reports	Intelligence Reports
+market/resource-exchange	Resource Exchange
+market/mercenary-market	Mercenary Market
+social/rankings	Rankings
+social/alliances	Alliances
+social/messages	Messages
+social/social-messages	Messages
+social/notifications	Notifications
+social/global-chat	Global Chat
+social/buddy-list	Buddy List
+social/recruitment	Recruitment
+social/empires-at-war	Empires at War
+planets/planet-list	Planet List
+planets/settlement	Settlement & Power Grid
+planets/planet-bonuses	Planet Bonuses
+planets/planet-defenses	Planet Defenses
+mothership/ship	Mothership
+mothership/modules	Mothership Modules
+mothership/exploration	Exploration
+account/race	Race Selection
+account/vacation	Vacation Mode
+account/ascension	Ascension
+universe/galaxies	Galaxy Map
+universe/sectors	Sector Map
+universe/solar-systems	Solar Systems
+universe/universe-planets	Universe Planets
+universe/moons	Moon Registry
+universe/coordinates	Coordinate Search
+overview/overview-dashboard	Dashboard
+overview/empire-overview	Empire Overview
+overview/active-operations	Active Operations
+overview/alerts	Alerts
+overview/tutorial-objectives	Tutorial / Objectives
+empire/planets	Planets
+empire/colonies	Colonies
+empire/empire-moons	Moons
+empire/buildings	Buildings
+empire/facilities	Facilities
+empire/storage	Storage
+empire/population	Population
+empire/planet-specialization	Planet Specialization
+resources/resource-overview	Resource Overview
+resources/metal	Metal
+resources/crystal	Crystal
+resources/deuterium	Deuterium
+resources/naquadah	Naquadah
+resources/energy	Energy
+resources/dark-matter	Dark Matter
+resources/production	Production
+resources/energy-grid	Energy Grid
+construction/construction-buildings	Buildings
+construction/construction-facilities	Facilities
+construction/construction-queue	Construction Queue
+construction/shipyard	Shipyard
+construction/defense	Defense
+construction/robotics	Robotics
+construction/nanite-factory	Nanite Factory
+construction/terraformer	Terraformer
+construction/space-dock	Space Dock
+research/research-technology	Technology
+research/advanced-research	Advanced Research
+research/combat	Combat
+research/propulsion	Propulsion
+research/espionage	Espionage
+research/astrophysics	Astrophysics
+research/stargate-technology	Stargate Technology
+research/mothership-technology	Mothership Technology
+research/lifeform-research	Lifeform Research
+research/ascension-research	Ascension Research
+fleet/fleet-manager	Fleet Manager
+fleet/starships	Starships
+fleet/motherships	Motherships
+fleet/ship-upgrades	Ship Upgrades
+fleet/formations	Formations
+fleet/fleet-missions	Fleet Missions
+fleet/expeditions	Expeditions
+fleet/fleet-save	Fleet Save
+fleet/acs	ACS
+military/ground-forces	Ground Forces
+military/military-units	Units
+military/officers	Officers
+military/training-center	Training Center
+military/planetary-defense	Planetary Defense
+military/missile-warfare	Missile Warfare
+military/combat-simulator	Combat Simulator
+military/war-room	War Room
+military/campaigns	Campaigns
+galaxy/galaxy-view	Galaxy View
+galaxy/galaxy-map	Galaxy Map
+galaxy/galaxy-solar-systems	Solar Systems
+galaxy/3d-universe	3D Universe
+galaxy/galaxy-sectors	Sectors
+galaxy/realm-systems	Realm Systems
+galaxy/stargate-network	Stargate Network
+galaxy/wormholes	Wormholes
+galaxy/anomalies	Anomalies
+galaxy/npc-factions	NPC Factions
+galaxy/seed-discovery	Seed Discovery
+galaxy/galactic-calendar	Galactic Calendar
+economy/marketplace	Marketplace
+economy/resource-trading	Resource Trading
+economy/trade-routes	Trade Routes
+economy/merchant	Merchant
+economy/auction-house	Auction House
+economy/black-market	Black Market
+economy/insurance	Insurance
+crafting/workshop	Workshop
+crafting/master-crafting	Master Crafting
+crafting/crafting-rank	Crafting Rank
+crafting/materials	Materials
+crafting/materials-lab	Materials Lab
+crafting/dismantling	Dismantling
+crafting/augmentations	Augmentations
+crafting/artifacts	Artifacts
+crafting/blueprints	Blueprints
+alliance/alliance-hub	Alliance Hub
+alliance/members	Members
+alliance/commanders	Commanders
+alliance/alliance-officers	Officers
+alliance/diplomacy	Diplomacy
+alliance/war	War
+alliance/alliance-acs	ACS
+alliance/alliance-logistics	Alliance Logistics
+alliance/alliance-stargates	Alliance Stargates
+alliance/alliance-intelligence	Alliance Intelligence
+lifeforms/lifeforms-population	Population
+lifeforms/food	Food
+lifeforms/lifeform-buildings	Lifeform Buildings
+lifeforms/lifeforms-lifeform-research	Lifeform Research
+lifeforms/civilization-tier	Civilization Tier
+lifeforms/traits	Traits
+lifeforms/lifeform-bonuses	Lifeform Bonuses
+activities/quests	Quests
+activities/activities-expeditions	Expeditions
+activities/pirate-hunting	Pirate Hunting
+activities/bounty-board	Bounty Board
+activities/world-bosses	World Bosses
+activities/activities-anomalies	Anomalies
+activities/activities-campaigns	Campaigns
+activities/achievements	Achievements
+activities/seasonal-events	Seasonal Events
+prestige/glory	Glory
+prestige/reputation	Reputation
+prestige/prestige-ascension	Ascension
+prestige/re-ascension	Re-Ascension
+prestige/ascended-races	Ascended Races
+prestige/titles	Titles
+prestige/permanent-bonuses	Permanent Bonuses
+rankings/empire	Empire
+rankings/economy	Economy
+rankings/fleet	Fleet
+rankings/research	Research
+rankings/rankings-defense	Defense
+rankings/covert	Covert
+rankings/alliance	Alliance
+rankings/lifeform	Lifeform
+rankings/galactic-control	Galactic Control
+premium/store	Store
+premium/premium-officers	Officers
+premium/commander	Commander
+premium/premium-services	Premium Services
+TOTAL=191

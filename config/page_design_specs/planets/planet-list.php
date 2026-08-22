@@ -1,20 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'colony-grid',
+  'template' => 'specification-dashboard',
   'sections' => 
   array (
-    0 => 'planet selector',
-    1 => 'population',
-    2 => 'biome',
-    3 => 'life support',
-    4 => 'defenses',
+    0 => 'overview',
+    1 => 'controls',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
   'components' => 
   array (
-    0 => 'planet-card',
-    1 => 'biome-badge',
-    2 => 'life-support-meter',
-    3 => 'defense-table',
+    0 => 'metric-strip',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => 'Planet cards use one column on mobile',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

@@ -1,204 +1,144 @@
 <?php
+declare(strict_types=1);
 return array (
   'route' => 'ship',
   'group' => 'mothership',
   'group_label' => 'Mothership',
   'title' => 'Mothership',
   'layout' => 'ship',
+  'purpose' => 'Mothership subsystem console with server-authoritative state, controls, dependencies, and feedback.',
+  'mechanic' => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   'controls' => 
   array (
-    0 => 'Upgrade hull',
-    1 => 'Upgrade hangars',
-    2 => 'Upgrade shields',
+    0 => 'open overview',
+    1 => 'review status',
+    2 => 'inspect records',
+    3 => 'review alerts',
   ),
   'actions' => 
   array (
-    0 => 'mothership_upgrade',
+    0 => 'inspect_page',
+    1 => 'refresh_page',
   ),
   'tables' => 
   array (
-    0 => 'motherships',
+    0 => 'players',
+    1 => 'player_resources',
+    2 => 'game_events',
   ),
   'details' => 
   array (
-    'hero' => 'Mothership Command',
-    'panels' => 
-    array (
-      0 => 'Hull',
-      1 => 'Weapons and shields',
-      2 => 'Hangars',
-      3 => 'Modules and capacity',
-    ),
-    'formula' => 'ship readiness = hull + modules + weapons + shields + fleet capacity',
-    'controls' => 
-    array (
-      0 => 'Upgrade hull',
-      1 => 'Upgrade hangars',
-      2 => 'Upgrade shields',
-      3 => 'Upgrade module',
-    ),
-    'action' => 'mothership_upgrade',
-    'tables' => 
-    array (
-      0 => 'motherships',
-      1 => 'mothership_modules',
-      2 => 'player_resources',
-    ),
-    'permission' => 'authenticated mothership owner',
-    'states' => 
-    array (
-      0 => 'ready',
-      1 => 'insufficient-resource',
-      2 => 'queued',
-      3 => 'success',
-      4 => 'error',
-    ),
-  ),
-  'interaction' => 
-  array (
-    'page' => 'Mothership and Modules',
-    'purpose' => 'Upgrade the commander’s strategic vessel.',
-    'buttons' => 
-    array (
-      'Upgrade hull' => 
-      array (
-        'action' => 'mothership_upgrade',
-        'logic' => 'Validate module type, cost, prerequisite, and capacity.',
-        'permission' => 'mothership owner',
-        'reads' => 
-        array (
-          0 => 'motherships',
-          1 => 'player_resources',
-        ),
-        'writes' => 
-        array (
-          0 => 'motherships',
-          1 => 'player_resources',
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'insufficient-resource',
-          2 => 'queued',
-          3 => 'success',
-          4 => 'error',
-        ),
-      ),
-      'Explore' => 
-      array (
-        'action' => 'explore',
-        'logic' => 'Dispatch mothership exploration to a validated universe target and persist yield, travel, risk, cooldown, resource, and event state atomically.',
-        'permission' => 'mothership owner with hull readiness',
-        'reads' => 
-        array (
-          0 => 'motherships',
-          1 => 'universe_solar_systems',
-          2 => 'universe_planets',
-          3 => 'player_resources',
-          4 => 'player_cooldowns',
-        ),
-        'writes' => 
-        array (
-          0 => 'planet_explorations',
-          1 => 'player_resources',
-          2 => 'player_cooldowns',
-          3 => 'game_events',
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'protected',
-          2 => 'insufficient-resource',
-          3 => 'cooldown',
-          4 => 'success',
-          5 => 'error',
-        ),
-      ),
-    ),
+    'current state' => 'server-calculated telemetry',
+    'available controls' => 'permission-aware operations',
+    'dependencies' => 'validated prerequisites and cooldowns',
+    'audit' => 'transactional event history',
   ),
   'logic' => 
   array (
-    'purpose' => 'Command the mothership hull, hangars, shields, weapons, and modules.',
+    'purpose' => 'Mothership operations',
     'workflow' => 
     array (
-      0 => 'load mothership',
-      1 => 'select upgrade',
-      2 => 'validate module prerequisite',
-      3 => 'lock resources',
-      4 => 'queue or apply upgrade',
+      0 => 'load scoped state',
+      1 => 'validate authenticated intent',
+      2 => 'lock required records',
+      3 => 'resolve authoritative mechanic',
+      4 => 'write audit event',
+      5 => 'return feedback',
     ),
     'validation' => 
     array (
-      0 => 'mothership owner',
-      1 => 'module prerequisite',
-      2 => 'resource balance',
-      3 => 'capacity cap',
+      0 => 'authenticated commander',
+      1 => 'CSRF token',
+      2 => 'RBAC policy',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+      5 => 'transaction boundary',
     ),
     'calculations' => 
     array (
-      0 => 'hull + modules + weapons + shields + fleet capacity',
+      0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
     ),
     'mutations' => 
     array (
-      0 => 'motherships',
-      1 => 'mothership_modules',
-      2 => 'player_resources',
-      3 => 'construction_queue',
     ),
   ),
   'features' => 
   array (
-    0 => 'hull',
-    1 => 'weapons and shields',
-    2 => 'hangars',
-    3 => 'modules',
-    4 => 'capacity',
-    5 => 'upgrade queue',
+    0 => 'summary metrics',
+    1 => 'status badges',
+    2 => 'related-page navigation',
+    3 => 'empty-state guidance',
+  ),
+  'sub_features' => 
+  array (
+    0 => 'loading and refresh state',
+    1 => 'permission-aware controls',
+    2 => 'related-page navigation',
+    3 => 'filter and sort state',
+    4 => 'empty-state explanation',
+    5 => 'audit and feedback detail',
   ),
   'design' => 
   array (
-    'template' => 'mothership-command',
+    'template' => 'specification-dashboard',
     'sections' => 
     array (
-      0 => 'hull',
-      1 => 'weapons',
-      2 => 'hangars',
-      3 => 'modules',
+      0 => 'overview',
+      1 => 'controls',
+      2 => 'features',
+      3 => 'system-design',
+      4 => 'information',
+      5 => 'feedback-states',
     ),
     'components' => 
     array (
-      0 => 'ship-stat',
-      1 => 'module-card',
-      2 => 'capacity-meter',
-      3 => 'upgrade-form',
+      0 => 'metric-strip',
+      1 => 'operation-controls',
+      2 => 'status-badge',
+      3 => 'data-table',
+      4 => 'feedback-panel',
     ),
-    'responsive' => 'Ship systems stack into full-width modules',
+    'responsive' => 'horizontal dashboard with stacked mobile layout',
   ),
   'systems' => 
   array (
     'services' => 
     array (
-      0 => 'MothershipService',
-      1 => 'QueueService',
+      0 => 'PageService',
     ),
     'reads' => 
     array (
-      0 => 'motherships',
-      1 => 'mothership_modules',
-      2 => 'player_resources',
-      3 => 'construction_queue',
+      0 => 'players',
+      1 => 'player_resources',
+      2 => 'game_events',
     ),
     'writes' => 
     array (
-      0 => 'motherships',
-      1 => 'mothership_modules',
-      2 => 'player_resources',
-      3 => 'construction_queue',
     ),
     'actions' => 
     array (
-      0 => 'mothership_upgrade',
+      0 => 'inspect_page',
+      1 => 'refresh_page',
     ),
+    'permissions' => 
+    array (
+      0 => 'authenticated commander',
+      1 => 'CSRF',
+      2 => 'RBAC',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+    ),
+  ),
+  'feedback_states' => 
+  array (
+    0 => 'loading',
+    1 => 'ready',
+    2 => 'empty',
+    3 => 'protected',
+    4 => 'cooldown',
+    5 => 'insufficient-resource',
+    6 => 'success',
+    7 => 'error',
   ),
   'contract_files' => 
   array (

@@ -1,28 +1,30 @@
 <?php
+declare(strict_types=1);
 return array (
-  'purpose' => 'Aggregate military, defense, covert, anti-covert, readiness, and DefCon values.',
+  'purpose' => 'Military Statistics operations',
   'workflow' => 
   array (
-    0 => 'load units and weapons',
-    1 => 'load technology and faction modifiers',
-    2 => 'calculate power totals',
-    3 => 'read protection and DefCon',
-    4 => 'render readiness',
+    0 => 'load scoped state',
+    1 => 'validate authenticated intent',
+    2 => 'lock required records',
+    3 => 'resolve authoritative mechanic',
+    4 => 'write audit event',
+    5 => 'return feedback',
   ),
   'validation' => 
   array (
     0 => 'authenticated commander',
-    1 => 'valid DefCon level for mutation',
+    1 => 'CSRF token',
+    2 => 'RBAC policy',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
+    5 => 'transaction boundary',
   ),
   'calculations' => 
   array (
-    0 => 'units × base power × technology × race × government × planet bonus',
-    1 => 'readiness score',
-    2 => 'DefCon effect',
+    0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   ),
   'mutations' => 
   array (
-    0 => 'players',
-    1 => 'game_audit_log',
   ),
 );

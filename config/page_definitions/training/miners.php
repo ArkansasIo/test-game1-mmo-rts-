@@ -1,198 +1,144 @@
 <?php
+declare(strict_types=1);
 return array (
   'route' => 'miners',
   'group' => 'training',
   'group_label' => 'Training',
   'title' => 'Miners & Lifers',
   'layout' => 'training',
+  'purpose' => 'Miners & Lifers subsystem console with server-authoritative state, controls, dependencies, and feedback.',
+  'mechanic' => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   'controls' => 
   array (
-    0 => 'Train miners',
+    0 => 'open overview',
+    1 => 'review status',
+    2 => 'inspect records',
+    3 => 'review alerts',
   ),
   'actions' => 
   array (
-    0 => 'train',
+    0 => 'inspect_page',
+    1 => 'refresh_page',
   ),
   'tables' => 
   array (
-    0 => 'player_resources',
+    0 => 'players',
+    1 => 'player_resources',
+    2 => 'game_events',
   ),
   'details' => 
   array (
-    'hero' => 'Personnel Training',
-    'panels' => 
-    array (
-      0 => 'Available population',
-      1 => 'Training queue',
-      2 => 'Unit categories',
-      3 => 'Current personnel',
-    ),
-    'formula' => 'training = population conversion − training cost + production bonus',
-    'controls' => 
-    array (
-      0 => 'Train units',
-      1 => 'Choose category',
-      2 => 'Set quantity',
-    ),
-    'action' => 'train',
-    'tables' => 
-    array (
-      0 => 'player_resources',
-      1 => 'player_unit_stats',
-      2 => 'technologies',
-    ),
-    'permission' => 'authenticated commander with untrained population',
-    'states' => 
-    array (
-      0 => 'ready',
-      1 => 'insufficient-resource',
-      2 => 'cooldown',
-      3 => 'success',
-      4 => 'error',
-    ),
-  ),
-  'interaction' => 
-  array (
-    'page' => 'Training',
-    'purpose' => 'Convert population into specialized units and queue production upgrades.',
-    'buttons' => 
-    array (
-      'Train units' => 
-      array (
-        'action' => 'train',
-        'logic' => 'Validate type and quantity, then transactionally lock unit type, commander resources, academy level, queue capacity, cooldown, population, and Naquadah before creating a training queue and game event.',
-        'permission' => 'authenticated commander with owned population and training authority',
-        'reads' => 
-        array (
-          0 => 'unit_types',
-          1 => 'player_unit_stats',
-          2 => 'training_queues',
-          3 => 'player_resources',
-        ),
-        'writes' => 
-        array (
-          0 => 'player_resources',
-          1 => 'training_queues',
-          2 => 'game_events',
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'empty',
-          2 => 'insufficient-resource',
-          3 => 'success',
-          4 => 'error',
-        ),
-      ),
-      'Upgrade production' => 
-      array (
-        'action' => 'upgrade_up',
-        'logic' => 'Validate commander ownership, automation prerequisite, production queue capacity, cooldown, and Naquadah in one transaction before creating the production upgrade queue and game event.',
-        'permission' => 'authenticated commander with production authority',
-        'reads' => 
-        array (
-          0 => 'unit_types',
-          1 => 'player_unit_stats',
-          2 => 'training_queues',
-          3 => 'player_resources',
-        ),
-        'writes' => 
-        array (
-          0 => 'player_resources',
-          1 => 'training_queues',
-          2 => 'game_events',
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'empty',
-          2 => 'insufficient-resource',
-          3 => 'success',
-          4 => 'error',
-        ),
-      ),
-    ),
+    'current state' => 'server-calculated telemetry',
+    'available controls' => 'permission-aware operations',
+    'dependencies' => 'validated prerequisites and cooldowns',
+    'audit' => 'transactional event history',
   ),
   'logic' => 
   array (
-    'purpose' => 'Convert available population into specialized personnel and units.',
+    'purpose' => 'Miners & Lifers operations',
     'workflow' => 
     array (
-      0 => 'load population pool',
-      1 => 'select unit category',
-      2 => 'validate quantity',
-      3 => 'deduct population and cost',
-      4 => 'update unit stats',
+      0 => 'load scoped state',
+      1 => 'validate authenticated intent',
+      2 => 'lock required records',
+      3 => 'resolve authoritative mechanic',
+      4 => 'write audit event',
+      5 => 'return feedback',
     ),
     'validation' => 
     array (
       0 => 'authenticated commander',
-      1 => 'untrained population',
-      2 => 'positive quantity',
-      3 => 'resource balance',
+      1 => 'CSRF token',
+      2 => 'RBAC policy',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+      5 => 'transaction boundary',
     ),
     'calculations' => 
     array (
-      0 => 'population conversion − training cost + production bonus',
+      0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
     ),
     'mutations' => 
     array (
-      0 => 'player_resources',
-      1 => 'player_unit_stats',
-      2 => 'game_events',
     ),
   ),
   'features' => 
   array (
-    0 => 'unit categories',
-    1 => 'quantity input',
-    2 => 'training queue',
-    3 => 'population conversion',
-    4 => 'production upgrade',
+    0 => 'summary metrics',
+    1 => 'status badges',
+    2 => 'related-page navigation',
+    3 => 'empty-state guidance',
+  ),
+  'sub_features' => 
+  array (
+    0 => 'loading and refresh state',
+    1 => 'permission-aware controls',
+    2 => 'related-page navigation',
+    3 => 'filter and sort state',
+    4 => 'empty-state explanation',
+    5 => 'audit and feedback detail',
   ),
   'design' => 
   array (
-    'template' => 'training-board',
+    'template' => 'specification-dashboard',
     'sections' => 
     array (
-      0 => 'unit pool',
-      1 => 'training controls',
-      2 => 'cost preview',
-      3 => 'queue/result',
+      0 => 'overview',
+      1 => 'controls',
+      2 => 'features',
+      3 => 'system-design',
+      4 => 'information',
+      5 => 'feedback-states',
     ),
     'components' => 
     array (
-      0 => 'unit-card',
-      1 => 'quantity-input',
-      2 => 'cost-preview',
-      3 => 'queue-row',
+      0 => 'metric-strip',
+      1 => 'operation-controls',
+      2 => 'status-badge',
+      3 => 'data-table',
+      4 => 'feedback-panel',
     ),
-    'responsive' => 'Training cards stack with full-width controls',
+    'responsive' => 'horizontal dashboard with stacked mobile layout',
   ),
   'systems' => 
   array (
     'services' => 
     array (
-      0 => 'TrainingService',
-      1 => 'GameService',
+      0 => 'PageService',
     ),
     'reads' => 
     array (
-      0 => 'player_resources',
-      1 => 'player_unit_stats',
-      2 => 'technologies',
+      0 => 'players',
+      1 => 'player_resources',
+      2 => 'game_events',
     ),
     'writes' => 
     array (
-      0 => 'player_resources',
-      1 => 'player_unit_stats',
-      2 => 'game_events',
     ),
     'actions' => 
     array (
-      0 => 'train',
-      1 => 'upgrade_up',
+      0 => 'inspect_page',
+      1 => 'refresh_page',
     ),
+    'permissions' => 
+    array (
+      0 => 'authenticated commander',
+      1 => 'CSRF',
+      2 => 'RBAC',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+    ),
+  ),
+  'feedback_states' => 
+  array (
+    0 => 'loading',
+    1 => 'ready',
+    2 => 'empty',
+    3 => 'protected',
+    4 => 'cooldown',
+    5 => 'insufficient-resource',
+    6 => 'success',
+    7 => 'error',
   ),
   'contract_files' => 
   array (

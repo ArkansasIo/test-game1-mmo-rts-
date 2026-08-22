@@ -1,21 +1,28 @@
 <?php
+declare(strict_types=1);
 return array (
-  'purpose' => 'Browse galaxy density, sector overview, and travel risk.',
+  'purpose' => 'Solar Systems operations',
   'workflow' => 
   array (
-    0 => 'select galaxy',
-    1 => 'load sectors',
-    2 => 'calculate density and risk',
-    3 => 'open sector',
+    0 => 'load scoped state',
+    1 => 'validate authenticated intent',
+    2 => 'lock required records',
+    3 => 'resolve authoritative mechanic',
+    4 => 'write audit event',
+    5 => 'return feedback',
   ),
   'validation' => 
   array (
     0 => 'authenticated commander',
-    1 => 'valid galaxy identifier',
+    1 => 'CSRF token',
+    2 => 'RBAC policy',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
+    5 => 'transaction boundary',
   ),
   'calculations' => 
   array (
-    0 => 'sector danger × system volatility × distance modifier',
+    0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   ),
   'mutations' => 
   array (

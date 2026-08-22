@@ -1,30 +1,34 @@
 <?php
+declare(strict_types=1);
 return array (
-  'purpose' => 'Create alliances, manage members, and coordinate diplomacy.',
+  'purpose' => 'ACS operations',
   'workflow' => 
   array (
-    0 => 'load alliance state',
-    1 => 'validate role or invitation',
-    2 => 'create membership or proposal',
-    3 => 'notify participants',
+    0 => 'load scoped state',
+    1 => 'validate authenticated intent',
+    2 => 'lock required records',
+    3 => 'resolve authoritative mechanic',
+    4 => 'write audit event',
+    5 => 'return feedback',
   ),
   'validation' => 
   array (
     0 => 'authenticated commander',
-    1 => 'alliance role',
-    2 => 'membership rules',
-    3 => 'target ownership',
+    1 => 'CSRF token',
+    2 => 'RBAC policy',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
+    5 => 'transaction boundary',
   ),
   'calculations' => 
   array (
-    0 => 'relation proposal lifecycle',
+    0 => 'alliance capacity = command level × alliance technology × government modifier',
   ),
   'mutations' => 
   array (
     0 => 'alliances',
     1 => 'alliance_members',
-    2 => 'diplomacy_relations',
-    3 => 'diplomacy_actions',
-    4 => 'player_notifications',
+    2 => 'alliance_projects',
+    3 => 'game_events',
   ),
 );

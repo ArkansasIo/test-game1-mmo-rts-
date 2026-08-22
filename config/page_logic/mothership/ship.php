@@ -1,30 +1,30 @@
 <?php
+declare(strict_types=1);
 return array (
-  'purpose' => 'Command the mothership hull, hangars, shields, weapons, and modules.',
+  'purpose' => 'Mothership operations',
   'workflow' => 
   array (
-    0 => 'load mothership',
-    1 => 'select upgrade',
-    2 => 'validate module prerequisite',
-    3 => 'lock resources',
-    4 => 'queue or apply upgrade',
+    0 => 'load scoped state',
+    1 => 'validate authenticated intent',
+    2 => 'lock required records',
+    3 => 'resolve authoritative mechanic',
+    4 => 'write audit event',
+    5 => 'return feedback',
   ),
   'validation' => 
   array (
-    0 => 'mothership owner',
-    1 => 'module prerequisite',
-    2 => 'resource balance',
-    3 => 'capacity cap',
+    0 => 'authenticated commander',
+    1 => 'CSRF token',
+    2 => 'RBAC policy',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
+    5 => 'transaction boundary',
   ),
   'calculations' => 
   array (
-    0 => 'hull + modules + weapons + shields + fleet capacity',
+    0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   ),
   'mutations' => 
   array (
-    0 => 'motherships',
-    1 => 'mothership_modules',
-    2 => 'player_resources',
-    3 => 'construction_queue',
   ),
 );

@@ -1,19 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'message-center',
+  'template' => 'specification-dashboard',
   'sections' => 
   array (
-    0 => 'inbox',
-    1 => 'compose',
-    2 => 'read state',
-    3 => 'blacklist',
+    0 => 'overview',
+    1 => 'controls',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
   'components' => 
   array (
-    0 => 'message-list',
-    1 => 'compose-form',
-    2 => 'unread-badge',
-    3 => 'blacklist-control',
+    0 => 'metric-strip',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => 'Message rows become conversation cards',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

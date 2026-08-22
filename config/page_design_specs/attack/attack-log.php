@@ -1,19 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'report-list',
+  'template' => 'specification-dashboard',
   'sections' => 
   array (
-    0 => 'unread summary',
-    1 => 'report table',
-    2 => 'detail view',
-    3 => 'read state',
+    0 => 'overview',
+    1 => 'controls',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
   'components' => 
   array (
-    0 => 'report-row',
-    1 => 'classification-badge',
-    2 => 'detail-panel',
-    3 => 'mark-read-button',
+    0 => 'metric-strip',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => 'Report rows become expandable cards',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

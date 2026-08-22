@@ -1,19 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'upgrade-card',
+  'template' => 'specification-dashboard',
   'sections' => 
   array (
-    0 => 'current level',
-    1 => 'next cost',
-    2 => 'modifier preview',
-    3 => 'confirmation',
+    0 => 'overview',
+    1 => 'controls',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
   'components' => 
   array (
-    0 => 'level-card',
-    1 => 'cost-table',
-    2 => 'effect-preview',
-    3 => 'queue-badge',
+    0 => 'metric-strip',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => 'Upgrade card becomes full-width',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

@@ -1,10 +1,21 @@
 <?php
+declare(strict_types=1);
 return array (
-  0 => 'planet portfolio',
-  1 => 'biome modifiers',
-  2 => 'defenses',
-  3 => 'population',
-  4 => 'food and water',
-  5 => 'exploration',
-  6 => 'colonization',
+  'title' => 'Planet List',
+  'features' => 
+  array (
+    0 => 'summary metrics',
+    1 => 'status badges',
+    2 => 'related-page navigation',
+    3 => 'empty-state guidance',
+  ),
+  'sub_features' => 
+  array (
+    0 => 'loading and refresh state',
+    1 => 'permission-aware controls',
+    2 => 'related-page navigation',
+    3 => 'filter and sort state',
+    4 => 'empty-state explanation',
+    5 => 'audit and feedback detail',
+  ),
 );

@@ -1,160 +1,144 @@
 <?php
+declare(strict_types=1);
 return array (
   'route' => 'population',
   'group' => 'empire',
   'group_label' => 'Empire',
   'title' => 'Population',
   'layout' => 'economy',
+  'purpose' => 'Population subsystem console with server-authoritative state, controls, dependencies, and feedback.',
+  'mechanic' => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   'controls' => 
   array (
-    0 => 'Open overview',
-    1 => 'Review status',
+    0 => 'open overview',
+    1 => 'review status',
+    2 => 'inspect records',
+    3 => 'review alerts',
   ),
   'actions' => 
   array (
+    0 => 'inspect_page',
+    1 => 'refresh_page',
   ),
   'tables' => 
   array (
-    0 => 'game_events',
+    0 => 'players',
+    1 => 'player_resources',
+    2 => 'game_events',
   ),
   'details' => 
   array (
-  ),
-  'interaction' => 
-  array (
-    'page' => 'Resources and Vault',
-    'purpose' => 'Manage five strategic resources, protected reserves, production, upkeep, and Dark Matter.',
-    'buttons' => 
-    array (
-      'Deposit' => 
-      array (
-        'action' => 'deposit',
-        'logic' => 'Validate amount and move available Naquadah into the protected vault.',
-        'permission' => 'authenticated commander',
-        'reads' => 
-        array (
-          0 => 'player_resources',
-        ),
-        'writes' => 
-        array (
-          0 => 'player_resources',
-          1 => 'game_audit_log',
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'insufficient-resource',
-          2 => 'success',
-          3 => 'error',
-        ),
-      ),
-      'Withdraw' => 
-      array (
-        'action' => 'withdraw',
-        'logic' => 'Validate vault balance and move Naquadah into the available balance.',
-        'permission' => 'authenticated commander',
-        'reads' => 
-        array (
-          0 => 'player_resources',
-        ),
-        'writes' => 
-        array (
-          0 => 'player_resources',
-          1 => 'game_audit_log',
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'insufficient-resource',
-          2 => 'success',
-          3 => 'error',
-        ),
-      ),
-    ),
+    'current state' => 'server-calculated telemetry',
+    'available controls' => 'permission-aware operations',
+    'dependencies' => 'validated prerequisites and cooldowns',
+    'audit' => 'transactional event history',
   ),
   'logic' => 
   array (
-    'purpose' => 'Manage the eight-resource ledger and protected Naquadah vault.',
+    'purpose' => 'Population operations',
     'workflow' => 
     array (
-      0 => 'load resource ledger',
-      1 => 'validate transfer amount',
-      2 => 'lock resource row',
-      3 => 'move balance transactionally',
+      0 => 'load scoped state',
+      1 => 'validate authenticated intent',
+      2 => 'lock required records',
+      3 => 'resolve authoritative mechanic',
       4 => 'write audit event',
+      5 => 'return feedback',
     ),
     'validation' => 
     array (
       0 => 'authenticated commander',
       1 => 'CSRF token',
-      2 => 'positive amount',
-      3 => 'available or vault balance',
-      4 => 'RBAC permission',
+      2 => 'RBAC policy',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+      5 => 'transaction boundary',
     ),
     'calculations' => 
     array (
-      0 => 'available Naquadah',
-      1 => 'protected vault balance',
-      2 => 'eight-resource totals',
-      3 => 'transfer delta',
+      0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
     ),
     'mutations' => 
     array (
-      0 => 'player_resources',
-      1 => 'game_audit_log',
     ),
   ),
   'features' => 
   array (
-    0 => 'eight-resource ledger',
-    1 => 'Naquadah vault',
-    2 => 'deposit',
-    3 => 'withdraw',
-    4 => 'balance validation',
-    5 => 'transaction feedback',
+    0 => 'summary metrics',
+    1 => 'status badges',
+    2 => 'related-page navigation',
+    3 => 'empty-state guidance',
+  ),
+  'sub_features' => 
+  array (
+    0 => 'loading and refresh state',
+    1 => 'permission-aware controls',
+    2 => 'related-page navigation',
+    3 => 'filter and sort state',
+    4 => 'empty-state explanation',
+    5 => 'audit and feedback detail',
   ),
   'design' => 
   array (
-    'template' => 'resource-vault',
+    'template' => 'specification-dashboard',
     'sections' => 
     array (
-      0 => 'balance cards',
-      1 => 'resource ledger',
-      2 => 'transfer controls',
-      3 => 'server contract',
-      4 => 'feedback states',
+      0 => 'overview',
+      1 => 'controls',
+      2 => 'features',
+      3 => 'system-design',
+      4 => 'information',
+      5 => 'feedback-states',
     ),
     'components' => 
     array (
-      0 => 'resource-card',
-      1 => 'transfer-form',
-      2 => 'balance-row',
-      3 => 'validation-banner',
+      0 => 'metric-strip',
+      1 => 'operation-controls',
+      2 => 'status-badge',
+      3 => 'data-table',
+      4 => 'feedback-panel',
     ),
-    'responsive' => 'Resource cards flow from four columns to one column',
+    'responsive' => 'horizontal dashboard with stacked mobile layout',
   ),
   'systems' => 
   array (
     'services' => 
     array (
-      0 => 'GameService',
-      1 => 'EconomyService',
+      0 => 'PageService',
     ),
     'reads' => 
     array (
-      0 => 'player_resources',
-      1 => 'game_settings',
+      0 => 'players',
+      1 => 'player_resources',
+      2 => 'game_events',
     ),
     'writes' => 
     array (
-      0 => 'player_resources',
-      1 => 'game_audit_log',
     ),
     'actions' => 
     array (
-      0 => 'deposit',
-      1 => 'withdraw',
+      0 => 'inspect_page',
+      1 => 'refresh_page',
     ),
+    'permissions' => 
+    array (
+      0 => 'authenticated commander',
+      1 => 'CSRF',
+      2 => 'RBAC',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+    ),
+  ),
+  'feedback_states' => 
+  array (
+    0 => 'loading',
+    1 => 'ready',
+    2 => 'empty',
+    3 => 'protected',
+    4 => 'cooldown',
+    5 => 'insufficient-resource',
+    6 => 'success',
+    7 => 'error',
   ),
   'contract_files' => 
   array (

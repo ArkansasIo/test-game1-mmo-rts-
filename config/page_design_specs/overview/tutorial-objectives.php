@@ -1,25 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'command-center',
+  'template' => 'specification-dashboard',
   'sections' => 
   array (
-    0 => 'identity header',
-    1 => 'resource strip',
-    2 => 'colony overview',
-    3 => 'server actions',
-    4 => 'queues',
-    5 => 'life support',
-    6 => 'fleet control',
-    7 => 'progression',
-    8 => 'alerts',
+    0 => 'overview',
+    1 => 'controls',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
   'components' => 
   array (
-    0 => 'resource-tile',
-    1 => 'metric-grid',
-    2 => 'action-panel',
-    3 => 'status-badge',
-    4 => 'data-table',
+    0 => 'metric-strip',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => '12-column desktop grid collapses to stacked mobile panels',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

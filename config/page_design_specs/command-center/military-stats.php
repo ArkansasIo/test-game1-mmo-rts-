@@ -1,20 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'military-statistics',
+  'template' => 'specification-dashboard',
   'sections' => 
   array (
-    0 => 'power totals',
-    1 => 'unit breakdown',
-    2 => 'technology modifiers',
-    3 => 'readiness',
-    4 => 'DefCon',
+    0 => 'overview',
+    1 => 'controls',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
   'components' => 
   array (
-    0 => 'power-metric',
-    1 => 'modifier-table',
-    2 => 'defcon-selector',
-    3 => 'readiness-bar',
+    0 => 'metric-strip',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => 'Stat grid reduces from four columns to one',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

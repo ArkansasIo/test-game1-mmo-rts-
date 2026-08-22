@@ -1,28 +1,30 @@
 <?php
+declare(strict_types=1);
 return array (
-  'purpose' => 'Restore weapon durability using validated repair costs.',
+  'purpose' => 'Weapon Repair operations',
   'workflow' => 
   array (
-    0 => 'load damaged weapon',
-    1 => 'calculate missing durability',
-    2 => 'validate resources',
-    3 => 'lock weapon',
-    4 => 'restore durability transactionally',
+    0 => 'load scoped state',
+    1 => 'validate authenticated intent',
+    2 => 'lock required records',
+    3 => 'resolve authoritative mechanic',
+    4 => 'write audit event',
+    5 => 'return feedback',
   ),
   'validation' => 
   array (
-    0 => 'weapon owner',
-    1 => 'positive durability gap',
-    2 => 'resource balance',
+    0 => 'authenticated commander',
+    1 => 'CSRF token',
+    2 => 'RBAC policy',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
+    5 => 'transaction boundary',
   ),
   'calculations' => 
   array (
-    0 => 'missing durability × weapon tier × maintenance factor',
+    0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   ),
   'mutations' => 
   array (
-    0 => 'player_weapons',
-    1 => 'player_resources',
-    2 => 'game_audit_log',
   ),
 );

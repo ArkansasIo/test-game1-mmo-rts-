@@ -1,139 +1,62 @@
 <?php
+declare(strict_types=1);
 return array (
   'route' => 'sectors',
   'group' => 'universe',
   'group_label' => 'Universe',
   'title' => 'Sector Map',
   'layout' => 'sectors',
+  'purpose' => 'Sector Map subsystem console with server-authoritative state, controls, dependencies, and feedback.',
+  'mechanic' => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   'controls' => 
   array (
-    0 => 'Select sector',
-    1 => 'Open system',
+    0 => 'open overview',
+    1 => 'review status',
+    2 => 'inspect records',
+    3 => 'review alerts',
   ),
   'actions' => 
   array (
-    0 => 'universe_sectors',
+    0 => 'inspect_page',
+    1 => 'refresh_page',
   ),
   'tables' => 
   array (
-    0 => 'universe_sectors',
-    1 => 'universe_solar_systems',
-    2 => 'universe_planets',
-    3 => 'motherships',
-    4 => 'mothership_modules',
-    5 => 'player_technologies',
-    6 => 'player_cooldowns',
-    7 => 'game_events',
+    0 => 'players',
+    1 => 'player_resources',
+    2 => 'game_events',
   ),
   'details' => 
   array (
-    'hero' => 'Sector Map',
-    'panels' => 
-    array (
-      0 => 'Sector class',
-      1 => 'Danger level',
-      2 => 'Resource modifier',
-      3 => 'Anomaly rate',
-    ),
-    'formula' => 'sector output = base output × resource modifier; anomaly rate drives events',
-    'controls' => 
-    array (
-      0 => 'Select sector',
-      1 => 'Open system',
-      2 => 'Filter by risk',
-    ),
-    'action' => NULL,
-    'tables' => 
-    array (
-      0 => 'universe_sectors',
-      1 => 'universe_solar_systems',
-    ),
-    'permission' => 'authenticated commander',
-    'states' => 
-    array (
-      0 => 'loading',
-      1 => 'ready',
-      2 => 'empty',
-      3 => 'error',
-    ),
-  ),
-  'interaction' => 
-  array (
-    'page' => 'Sector Map',
-    'purpose' => 'Scan a selected sector and compare systems by risk and strategic value.',
-    'buttons' => 
-    array (
-      'Select sector' => 
-      array (
-        'action' => 'universe_sectors',
-        'logic' => 'Submit only the selected sector identifier; calculate sensor range × mothership science × scan technology on the server, apply sector visibility and scan cooldown, then return ordered systems with classified owner signals and travel lanes.',
-        'permission' => 'authenticated commander · sector visibility · scan cooldown',
-        'reads' => 
-        array (
-          0 => 'universe_sectors',
-          1 => 'universe_solar_systems',
-          2 => 'universe_planets',
-          3 => 'motherships',
-          4 => 'mothership_modules',
-          5 => 'player_technologies',
-          6 => 'player_cooldowns',
-        ),
-        'writes' => 
-        array (
-          0 => 'game_events',
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'empty',
-          2 => 'protected',
-          3 => 'cooldown',
-          4 => 'error',
-        ),
-      ),
-      'Open system' => 
-      array (
-        'action' => 'read_sector',
-        'logic' => 'Open a system only after the selected sector and coordinate visibility checks pass.',
-        'permission' => 'authenticated commander with permitted sector access',
-        'reads' => 
-        array (
-          0 => 'universe_sectors',
-          1 => 'universe_solar_systems',
-          2 => 'universe_planets',
-        ),
-        'writes' => 
-        array (
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'empty',
-          2 => 'protected',
-          3 => 'cooldown',
-          4 => 'error',
-        ),
-      ),
-    ),
+    'current state' => 'server-calculated telemetry',
+    'available controls' => 'permission-aware operations',
+    'dependencies' => 'validated prerequisites and cooldowns',
+    'audit' => 'transactional event history',
   ),
   'logic' => 
   array (
-    'purpose' => 'Inspect sector class, danger, resource modifiers, and anomaly rate.',
+    'purpose' => 'Sector Map operations',
     'workflow' => 
     array (
-      0 => 'select sector',
-      1 => 'load systems',
-      2 => 'calculate sector output',
-      3 => 'filter by risk',
+      0 => 'load scoped state',
+      1 => 'validate authenticated intent',
+      2 => 'lock required records',
+      3 => 'resolve authoritative mechanic',
+      4 => 'write audit event',
+      5 => 'return feedback',
     ),
     'validation' => 
     array (
       0 => 'authenticated commander',
-      1 => 'valid sector identifier',
+      1 => 'CSRF token',
+      2 => 'RBAC policy',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+      5 => 'transaction boundary',
     ),
     'calculations' => 
     array (
-      0 => 'base output × resource modifier; anomaly rate drives events',
+      0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
     ),
     'mutations' => 
     array (
@@ -141,48 +64,81 @@ return array (
   ),
   'features' => 
   array (
-    0 => 'sector class',
-    1 => 'danger level',
-    2 => 'resource modifier',
-    3 => 'anomaly rate',
+    0 => 'summary metrics',
+    1 => 'status badges',
+    2 => 'related-page navigation',
+    3 => 'empty-state guidance',
+  ),
+  'sub_features' => 
+  array (
+    0 => 'loading and refresh state',
+    1 => 'permission-aware controls',
+    2 => 'related-page navigation',
+    3 => 'filter and sort state',
+    4 => 'empty-state explanation',
+    5 => 'audit and feedback detail',
   ),
   'design' => 
   array (
-    'template' => 'sector-map',
+    'template' => 'specification-dashboard',
     'sections' => 
     array (
-      0 => 'sector selector',
-      1 => 'danger',
-      2 => 'resource modifier',
-      3 => 'anomalies',
+      0 => 'overview',
+      1 => 'controls',
+      2 => 'features',
+      3 => 'system-design',
+      4 => 'information',
+      5 => 'feedback-states',
     ),
     'components' => 
     array (
-      0 => 'sector-card',
-      1 => 'danger-meter',
-      2 => 'modifier-badge',
-      3 => 'system-list',
+      0 => 'metric-strip',
+      1 => 'operation-controls',
+      2 => 'status-badge',
+      3 => 'data-table',
+      4 => 'feedback-panel',
     ),
-    'responsive' => 'Sector cards stack on mobile',
+    'responsive' => 'horizontal dashboard with stacked mobile layout',
   ),
   'systems' => 
   array (
     'services' => 
     array (
-      0 => 'UniverseService',
+      0 => 'PageService',
     ),
     'reads' => 
     array (
-      0 => 'universe_sectors',
-      1 => 'universe_solar_systems',
+      0 => 'players',
+      1 => 'player_resources',
+      2 => 'game_events',
     ),
     'writes' => 
     array (
     ),
     'actions' => 
     array (
-      0 => 'universe_sectors',
+      0 => 'inspect_page',
+      1 => 'refresh_page',
     ),
+    'permissions' => 
+    array (
+      0 => 'authenticated commander',
+      1 => 'CSRF',
+      2 => 'RBAC',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+    ),
+  ),
+  'feedback_states' => 
+  array (
+    0 => 'loading',
+    1 => 'ready',
+    2 => 'empty',
+    3 => 'protected',
+    4 => 'cooldown',
+    5 => 'insufficient-resource',
+    6 => 'success',
+    7 => 'error',
   ),
   'contract_files' => 
   array (

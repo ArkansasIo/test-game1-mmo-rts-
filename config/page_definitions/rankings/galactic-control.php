@@ -1,184 +1,144 @@
 <?php
+declare(strict_types=1);
 return array (
   'route' => 'galactic-control',
   'group' => 'rankings',
   'group_label' => 'Rankings',
   'title' => 'Galactic Control',
   'layout' => 'rankings',
+  'purpose' => 'Galactic Control subsystem console with server-authoritative state, controls, dependencies, and feedback.',
+  'mechanic' => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   'controls' => 
   array (
-    0 => 'Open overview',
-    1 => 'Review status',
+    0 => 'open overview',
+    1 => 'review status',
+    2 => 'inspect records',
+    3 => 'review alerts',
   ),
   'actions' => 
   array (
+    0 => 'inspect_page',
+    1 => 'refresh_page',
   ),
   'tables' => 
   array (
-    0 => 'game_events',
+    0 => 'players',
+    1 => 'player_resources',
+    2 => 'game_events',
   ),
   'details' => 
   array (
-    'hero' => 'Rankings',
-    'panels' => 
-    array (
-      0 => 'Overall leaderboard',
-      1 => 'Military leaderboard',
-      2 => 'Economy leaderboard',
-      3 => 'Covert leaderboard',
-      4 => 'Historical snapshots',
-    ),
-    'formula' => 'score = weighted economy + military + covert + progression + colony value',
-    'controls' => 
-    array (
-      0 => 'Refresh rankings',
-      1 => 'Open player',
-      2 => 'View snapshot',
-    ),
-    'action' => 'refresh_rankings',
-    'tables' => 
-    array (
-      0 => 'rankings',
-      1 => 'rank_snapshots',
-      2 => 'players',
-    ),
-    'permission' => 'authenticated commander',
-    'states' => 
-    array (
-      0 => 'loading',
-      1 => 'ready',
-      2 => 'empty',
-      3 => 'success',
-      4 => 'error',
-    ),
-  ),
-  'interaction' => 
-  array (
-    'page' => 'Rankings',
-    'purpose' => 'Compare commanders and preserve ranking snapshots.',
-    'buttons' => 
-    array (
-      'Refresh rankings' => 
-      array (
-        'action' => 'refresh_rankings',
-        'logic' => 'Recalculate weighted scores and persist snapshot.',
-        'permission' => 'authenticated commander',
-        'reads' => 
-        array (
-          0 => 'players',
-          1 => 'player_resources',
-          2 => 'rankings',
-        ),
-        'writes' => 
-        array (
-          0 => 'rankings',
-          1 => 'rank_snapshots',
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'cooldown',
-          2 => 'success',
-          3 => 'error',
-        ),
-      ),
-      'Open player' => 
-      array (
-        'action' => 'read_profile',
-        'logic' => 'Open public commander profile without exposing private fields.',
-        'permission' => 'authenticated commander',
-        'reads' => 
-        array (
-          0 => 'players',
-          1 => 'rankings',
-        ),
-        'writes' => 
-        array (
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'not-found',
-        ),
-      ),
-    ),
+    'current state' => 'server-calculated telemetry',
+    'available controls' => 'permission-aware operations',
+    'dependencies' => 'validated prerequisites and cooldowns',
+    'audit' => 'transactional event history',
   ),
   'logic' => 
   array (
-    'purpose' => 'Compare economy, military, covert, progression, and colony scores.',
+    'purpose' => 'Galactic Control operations',
     'workflow' => 
     array (
-      0 => 'load ranking snapshot',
-      1 => 'calculate or refresh scores',
-      2 => 'filter leaderboard',
-      3 => 'open public profile',
+      0 => 'load scoped state',
+      1 => 'validate authenticated intent',
+      2 => 'lock required records',
+      3 => 'resolve authoritative mechanic',
+      4 => 'write audit event',
+      5 => 'return feedback',
     ),
     'validation' => 
     array (
       0 => 'authenticated commander',
-      1 => 'public profile field policy',
+      1 => 'CSRF token',
+      2 => 'RBAC policy',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+      5 => 'transaction boundary',
     ),
     'calculations' => 
     array (
-      0 => 'weighted economy + military + covert + progression + colony value',
+      0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
     ),
     'mutations' => 
     array (
-      0 => 'rankings',
-      1 => 'rank_snapshots',
     ),
   ),
   'features' => 
   array (
-    0 => 'overall leaderboard',
-    1 => 'military leaderboard',
-    2 => 'economy leaderboard',
-    3 => 'covert leaderboard',
-    4 => 'historical snapshots',
+    0 => 'summary metrics',
+    1 => 'status badges',
+    2 => 'related-page navigation',
+    3 => 'empty-state guidance',
+  ),
+  'sub_features' => 
+  array (
+    0 => 'loading and refresh state',
+    1 => 'permission-aware controls',
+    2 => 'related-page navigation',
+    3 => 'filter and sort state',
+    4 => 'empty-state explanation',
+    5 => 'audit and feedback detail',
   ),
   'design' => 
   array (
-    'template' => 'ranking-table',
+    'template' => 'specification-dashboard',
     'sections' => 
     array (
-      0 => 'filters',
-      1 => 'leaderboard',
-      2 => 'score breakdown',
-      3 => 'snapshots',
+      0 => 'overview',
+      1 => 'controls',
+      2 => 'features',
+      3 => 'system-design',
+      4 => 'information',
+      5 => 'feedback-states',
     ),
     'components' => 
     array (
-      0 => 'ranking-table',
-      1 => 'score-badge',
-      2 => 'filter-tabs',
-      3 => 'snapshot-selector',
+      0 => 'metric-strip',
+      1 => 'operation-controls',
+      2 => 'status-badge',
+      3 => 'data-table',
+      4 => 'feedback-panel',
     ),
-    'responsive' => 'Leaderboard columns collapse into ranked cards',
+    'responsive' => 'horizontal dashboard with stacked mobile layout',
   ),
   'systems' => 
   array (
     'services' => 
     array (
-      0 => 'RankingService',
-      1 => 'AccountService',
+      0 => 'PageService',
     ),
     'reads' => 
     array (
-      0 => 'rankings',
-      1 => 'rank_snapshots',
-      2 => 'players',
-      3 => 'player_resources',
+      0 => 'players',
+      1 => 'player_resources',
+      2 => 'game_events',
     ),
     'writes' => 
     array (
-      0 => 'rankings',
-      1 => 'rank_snapshots',
     ),
     'actions' => 
     array (
-      0 => 'refresh_rankings',
-      1 => 'read_profile',
+      0 => 'inspect_page',
+      1 => 'refresh_page',
     ),
+    'permissions' => 
+    array (
+      0 => 'authenticated commander',
+      1 => 'CSRF',
+      2 => 'RBAC',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+    ),
+  ),
+  'feedback_states' => 
+  array (
+    0 => 'loading',
+    1 => 'ready',
+    2 => 'empty',
+    3 => 'protected',
+    4 => 'cooldown',
+    5 => 'insufficient-resource',
+    6 => 'success',
+    7 => 'error',
   ),
   'contract_files' => 
   array (

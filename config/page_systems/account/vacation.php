@@ -1,29 +1,30 @@
 <?php
+declare(strict_types=1);
 return array (
   'services' => 
   array (
-    0 => 'AccountService',
-    1 => 'ProtectionService',
+    0 => 'PageService',
   ),
   'reads' => 
   array (
     0 => 'players',
-    1 => 'races',
-    2 => 'government_types',
-    3 => 'protection_states',
-    4 => 'vacation_states',
+    1 => 'player_resources',
+    2 => 'game_events',
   ),
   'writes' => 
   array (
-    0 => 'players',
-    1 => 'player_government_history',
-    2 => 'vacation_states',
-    3 => 'protection_states',
   ),
   'actions' => 
   array (
-    0 => 'select_registration_faction',
-    1 => 'change_race',
-    2 => 'vacation',
+    0 => 'inspect_page',
+    1 => 'refresh_page',
+  ),
+  'permissions' => 
+  array (
+    0 => 'authenticated commander',
+    1 => 'CSRF',
+    2 => 'RBAC',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
   ),
 );

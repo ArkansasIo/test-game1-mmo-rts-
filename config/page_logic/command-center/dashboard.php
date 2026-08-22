@@ -1,33 +1,30 @@
 <?php
+declare(strict_types=1);
 return array (
-  'purpose' => 'Coordinate colony, economy, queues, fleets, alerts, and turn settlement.',
+  'purpose' => 'Command Center operations',
   'workflow' => 
   array (
-    0 => 'load authoritative state',
-    1 => 'validate commander intent',
-    2 => 'settle bounded turn window',
-    3 => 'return refreshed state',
+    0 => 'load scoped state',
+    1 => 'validate authenticated intent',
+    2 => 'lock required records',
+    3 => 'resolve authoritative mechanic',
+    4 => 'write audit event',
+    5 => 'return feedback',
   ),
   'validation' => 
   array (
     0 => 'authenticated commander',
     1 => 'CSRF token',
-    2 => 'RBAC permission',
-    3 => 'transaction boundary',
+    2 => 'RBAC policy',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
+    5 => 'transaction boundary',
   ),
   'calculations' => 
   array (
-    0 => 'resource settlement',
-    1 => 'food and water upkeep',
-    2 => 'queue completion',
-    3 => 'fleet ETA',
+    0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   ),
   'mutations' => 
   array (
-    0 => 'player_resources',
-    1 => 'construction_queue',
-    2 => 'fleet_missions',
-    3 => 'game_events',
-    4 => 'rankings',
   ),
 );

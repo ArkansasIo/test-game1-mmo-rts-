@@ -1,10 +1,21 @@
 <?php
+declare(strict_types=1);
 return array (
-  0 => 'agent allocation',
-  1 => 'detection warning',
-  2 => 'target intelligence',
-  3 => 'reconnaissance',
-  4 => 'spy mission',
-  5 => 'sabotage mission',
-  6 => 'classified report',
+  'title' => 'Spy Operations',
+  'features' => 
+  array (
+    0 => 'summary metrics',
+    1 => 'status badges',
+    2 => 'related-page navigation',
+    3 => 'empty-state guidance',
+  ),
+  'sub_features' => 
+  array (
+    0 => 'loading and refresh state',
+    1 => 'permission-aware controls',
+    2 => 'related-page navigation',
+    3 => 'filter and sort state',
+    4 => 'empty-state explanation',
+    5 => 'audit and feedback detail',
+  ),
 );

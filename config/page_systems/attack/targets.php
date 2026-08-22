@@ -1,32 +1,30 @@
 <?php
+declare(strict_types=1);
 return array (
   'services' => 
   array (
-    0 => 'CombatService',
-    1 => 'CovertService',
-    2 => 'TargetingService',
+    0 => 'PageService',
   ),
   'reads' => 
   array (
-    0 => 'target_realms',
-    1 => 'players',
-    2 => 'rankings',
-    3 => 'protection_states',
-    4 => 'technologies',
+    0 => 'players',
+    1 => 'player_resources',
+    2 => 'game_events',
   ),
   'writes' => 
   array (
-    0 => 'battles',
-    1 => 'battle_rounds',
-    2 => 'battle_reports',
-    3 => 'attack_logs',
-    4 => 'player_resources',
   ),
   'actions' => 
   array (
-    0 => 'combat',
-    1 => 'combat:raid',
-    2 => 'covert:spy',
-    3 => 'covert:sabotage',
+    0 => 'inspect_page',
+    1 => 'refresh_page',
+  ),
+  'permissions' => 
+  array (
+    0 => 'authenticated commander',
+    1 => 'CSRF',
+    2 => 'RBAC',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
   ),
 );

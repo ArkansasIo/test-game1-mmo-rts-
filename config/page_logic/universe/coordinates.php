@@ -1,23 +1,28 @@
 <?php
+declare(strict_types=1);
 return array (
-  'purpose' => 'Validate and resolve galaxy:sector:system:orbit coordinates.',
+  'purpose' => 'Coordinate Search operations',
   'workflow' => 
   array (
-    0 => 'validate coordinate input',
-    1 => 'find galaxy',
-    2 => 'find sector',
-    3 => 'find system',
-    4 => 'find planet or moon',
+    0 => 'load scoped state',
+    1 => 'validate authenticated intent',
+    2 => 'lock required records',
+    3 => 'resolve authoritative mechanic',
+    4 => 'write audit event',
+    5 => 'return feedback',
   ),
   'validation' => 
   array (
     0 => 'authenticated commander',
-    1 => 'coordinate format',
-    2 => 'coordinate bounds',
+    1 => 'CSRF token',
+    2 => 'RBAC policy',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
+    5 => 'transaction boundary',
   ),
   'calculations' => 
   array (
-    0 => 'coordinate = galaxy:sector:system:orbit',
+    0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   ),
   'mutations' => 
   array (

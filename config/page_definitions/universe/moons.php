@@ -1,191 +1,144 @@
 <?php
+declare(strict_types=1);
 return array (
   'route' => 'moons',
   'group' => 'universe',
   'group_label' => 'Universe',
   'title' => 'Moon Registry',
   'layout' => 'moons',
+  'purpose' => 'Moon Registry subsystem console with server-authoritative state, controls, dependencies, and feedback.',
+  'mechanic' => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   'controls' => 
   array (
-    0 => 'Inspect moon',
-    1 => 'Build jump gate',
+    0 => 'open overview',
+    1 => 'review status',
+    2 => 'inspect records',
+    3 => 'review alerts',
   ),
   'actions' => 
   array (
-    0 => 'moon_details',
-    1 => 'mothership_upgrade',
+    0 => 'inspect_page',
+    1 => 'refresh_page',
   ),
   'tables' => 
   array (
-    0 => 'universe_moons',
-    1 => 'universe_planets',
+    0 => 'players',
+    1 => 'player_resources',
+    2 => 'game_events',
   ),
   'details' => 
   array (
-    'hero' => 'Moon Registry',
-    'panels' => 
-    array (
-      0 => 'Moon class and biome',
-      1 => 'Sensor bonus',
-      2 => 'Jump-gate level',
-      3 => 'Orbit relationship',
-    ),
-    'formula' => 'moon utility = sensor bonus + jump-gate level + moon resource modifiers',
-    'controls' => 
-    array (
-      0 => 'Inspect moon',
-      1 => 'Build jump gate',
-      2 => 'Assign colony',
-    ),
-    'action' => 'mothership_upgrade',
-    'tables' => 
-    array (
-      0 => 'universe_moons',
-      1 => 'universe_planets',
-      2 => 'player_colonies',
-      3 => 'mothership_modules',
-    ),
-    'permission' => 'authenticated commander with moon access',
-    'states' => 
-    array (
-      0 => 'ready',
-      1 => 'empty',
-      2 => 'occupied',
-      3 => 'success',
-      4 => 'error',
-    ),
-  ),
-  'interaction' => 
-  array (
-    'page' => 'Moon Registry',
-    'purpose' => 'Inspect and develop moons.',
-    'buttons' => 
-    array (
-      'Inspect moon' => 
-      array (
-        'action' => 'moon_details',
-        'logic' => 'Load moon class, biome, sensor bonus, jump-gate, and parent planet.',
-        'permission' => 'authenticated commander',
-        'reads' => 
-        array (
-          0 => 'universe_moons',
-          1 => 'universe_planets',
-        ),
-        'writes' => 
-        array (
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'empty',
-          2 => 'error',
-        ),
-      ),
-      'Build jump gate' => 
-      array (
-        'action' => 'mothership_upgrade',
-        'logic' => 'Validate moon ownership and module cost before upgrading gate.',
-        'permission' => 'moon owner',
-        'reads' => 
-        array (
-          0 => 'universe_moons',
-          1 => 'player_colonies',
-          2 => 'player_resources',
-        ),
-        'writes' => 
-        array (
-          0 => 'universe_moons',
-          1 => 'player_resources',
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'insufficient-resource',
-          2 => 'success',
-          3 => 'error',
-        ),
-      ),
-    ),
+    'current state' => 'server-calculated telemetry',
+    'available controls' => 'permission-aware operations',
+    'dependencies' => 'validated prerequisites and cooldowns',
+    'audit' => 'transactional event history',
   ),
   'logic' => 
   array (
-    'purpose' => 'Inspect moon class, sensor bonus, jump gate, and orbit relationship.',
+    'purpose' => 'Moon Registry operations',
     'workflow' => 
     array (
-      0 => 'inspect moon',
-      1 => 'load parent planet',
-      2 => 'calculate utility',
-      3 => 'validate jump-gate upgrade',
+      0 => 'load scoped state',
+      1 => 'validate authenticated intent',
+      2 => 'lock required records',
+      3 => 'resolve authoritative mechanic',
+      4 => 'write audit event',
+      5 => 'return feedback',
     ),
     'validation' => 
     array (
       0 => 'authenticated commander',
-      1 => 'moon access',
-      2 => 'colony or mothership ownership',
+      1 => 'CSRF token',
+      2 => 'RBAC policy',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+      5 => 'transaction boundary',
     ),
     'calculations' => 
     array (
-      0 => 'sensor bonus + jump-gate level + moon resource modifiers',
+      0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
     ),
     'mutations' => 
     array (
-      0 => 'universe_moons',
-      1 => 'mothership_modules',
-      2 => 'player_colonies',
     ),
   ),
   'features' => 
   array (
-    0 => 'moon registry',
-    1 => 'moon class',
-    2 => 'sensor bonus',
-    3 => 'jump-gate level',
-    4 => 'orbit relationship',
+    0 => 'summary metrics',
+    1 => 'status badges',
+    2 => 'related-page navigation',
+    3 => 'empty-state guidance',
+  ),
+  'sub_features' => 
+  array (
+    0 => 'loading and refresh state',
+    1 => 'permission-aware controls',
+    2 => 'related-page navigation',
+    3 => 'filter and sort state',
+    4 => 'empty-state explanation',
+    5 => 'audit and feedback detail',
   ),
   'design' => 
   array (
-    'template' => 'moon-registry',
+    'template' => 'specification-dashboard',
     'sections' => 
     array (
-      0 => 'moon identity',
-      1 => 'sensor',
-      2 => 'jump gate',
-      3 => 'orbit',
-      4 => 'assignment',
+      0 => 'overview',
+      1 => 'controls',
+      2 => 'features',
+      3 => 'system-design',
+      4 => 'information',
+      5 => 'feedback-states',
     ),
     'components' => 
     array (
-      0 => 'moon-card',
-      1 => 'sensor-meter',
-      2 => 'gate-upgrade',
-      3 => 'orbit-badge',
+      0 => 'metric-strip',
+      1 => 'operation-controls',
+      2 => 'status-badge',
+      3 => 'data-table',
+      4 => 'feedback-panel',
     ),
-    'responsive' => 'Moon cards stack on mobile',
+    'responsive' => 'horizontal dashboard with stacked mobile layout',
   ),
   'systems' => 
   array (
     'services' => 
     array (
-      0 => 'UniverseService',
-      1 => 'MothershipService',
+      0 => 'PageService',
     ),
     'reads' => 
     array (
-      0 => 'universe_moons',
-      1 => 'universe_planets',
-      2 => 'player_colonies',
-      3 => 'mothership_modules',
+      0 => 'players',
+      1 => 'player_resources',
+      2 => 'game_events',
     ),
     'writes' => 
     array (
-      0 => 'mothership_modules',
-      1 => 'player_colonies',
     ),
     'actions' => 
     array (
-      0 => 'moon_details',
-      1 => 'mothership_upgrade',
+      0 => 'inspect_page',
+      1 => 'refresh_page',
     ),
+    'permissions' => 
+    array (
+      0 => 'authenticated commander',
+      1 => 'CSRF',
+      2 => 'RBAC',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+    ),
+  ),
+  'feedback_states' => 
+  array (
+    0 => 'loading',
+    1 => 'ready',
+    2 => 'empty',
+    3 => 'protected',
+    4 => 'cooldown',
+    5 => 'insufficient-resource',
+    6 => 'success',
+    7 => 'error',
   ),
   'contract_files' => 
   array (

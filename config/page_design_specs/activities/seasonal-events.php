@@ -1,16 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'generic-page',
+  'template' => 'specification-dashboard',
   'sections' => 
   array (
     0 => 'overview',
     1 => 'controls',
-    2 => 'activity',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
   'components' => 
   array (
-    0 => 'panel',
-    1 => 'status-badge',
+    0 => 'metric-strip',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => 'stacked mobile layout',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

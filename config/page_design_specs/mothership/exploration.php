@@ -1,19 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'exploration-board',
+  'template' => 'specification-dashboard',
   'sections' => 
   array (
-    0 => 'range',
-    1 => 'system scan',
-    2 => 'anomaly',
-    3 => 'rewards',
+    0 => 'overview',
+    1 => 'controls',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
   'components' => 
   array (
-    0 => 'scan-form',
-    1 => 'risk-meter',
-    2 => 'discovery-card',
-    3 => 'mission-status',
+    0 => 'metric-strip',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => 'Exploration panels stack vertically',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

@@ -1,29 +1,30 @@
 <?php
+declare(strict_types=1);
 return array (
-  'purpose' => 'Convert available population into specialized personnel and units.',
+  'purpose' => 'Unit Training operations',
   'workflow' => 
   array (
-    0 => 'load population pool',
-    1 => 'select unit category',
-    2 => 'validate quantity',
-    3 => 'deduct population and cost',
-    4 => 'update unit stats',
+    0 => 'load scoped state',
+    1 => 'validate authenticated intent',
+    2 => 'lock required records',
+    3 => 'resolve authoritative mechanic',
+    4 => 'write audit event',
+    5 => 'return feedback',
   ),
   'validation' => 
   array (
     0 => 'authenticated commander',
-    1 => 'untrained population',
-    2 => 'positive quantity',
-    3 => 'resource balance',
+    1 => 'CSRF token',
+    2 => 'RBAC policy',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
+    5 => 'transaction boundary',
   ),
   'calculations' => 
   array (
-    0 => 'population conversion − training cost + production bonus',
+    0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   ),
   'mutations' => 
   array (
-    0 => 'player_resources',
-    1 => 'player_unit_stats',
-    2 => 'game_events',
   ),
 );

@@ -1,19 +1,23 @@
 <?php
+declare(strict_types=1);
 return array (
-  'template' => 'social-command',
+  'template' => 'specification-dashboard',
   'sections' => 
   array (
-    0 => 'alliance',
-    1 => 'members',
-    2 => 'diplomacy',
-    3 => 'activity',
+    0 => 'overview',
+    1 => 'controls',
+    2 => 'features',
+    3 => 'system-design',
+    4 => 'information',
+    5 => 'feedback-states',
   ),
   'components' => 
   array (
-    0 => 'member-table',
-    1 => 'role-badge',
-    2 => 'proposal-form',
-    3 => 'activity-feed',
+    0 => 'metric-strip',
+    1 => 'operation-controls',
+    2 => 'status-badge',
+    3 => 'data-table',
+    4 => 'feedback-panel',
   ),
-  'responsive' => 'Member table becomes stacked rows',
+  'responsive' => 'horizontal dashboard with stacked mobile layout',
 );

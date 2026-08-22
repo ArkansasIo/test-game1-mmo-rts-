@@ -1,171 +1,144 @@
 <?php
+declare(strict_types=1);
 return array (
   'route' => 'unit-production',
   'group' => 'training',
   'group_label' => 'Training',
   'title' => 'Unit Production',
   'layout' => 'upgrade',
+  'purpose' => 'Unit Production subsystem console with server-authoritative state, controls, dependencies, and feedback.',
+  'mechanic' => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   'controls' => 
   array (
-    0 => 'Upgrade UP',
+    0 => 'open overview',
+    1 => 'review status',
+    2 => 'inspect records',
+    3 => 'review alerts',
   ),
   'actions' => 
   array (
-    0 => 'upgrade_up',
+    0 => 'inspect_page',
+    1 => 'refresh_page',
   ),
   'tables' => 
   array (
-    0 => 'unit_types',
-    1 => 'player_unit_stats',
-    2 => 'training_queues',
-    3 => 'player_resources',
-    4 => 'game_events',
+    0 => 'players',
+    1 => 'player_resources',
+    2 => 'game_events',
   ),
   'details' => 
   array (
-    'hero' => 'Unit Production',
-    'panels' => 
-    array (
-      0 => 'Current production',
-      1 => 'Next-level cost',
-      2 => 'Queue status',
-      3 => 'Upgrade effects',
-    ),
-    'formula' => 'upgrade cost = base cost × growth rate ^ current level',
-    'controls' => 
-    array (
-      0 => 'Upgrade production',
-      1 => 'Preview next level',
-    ),
-    'action' => 'upgrade_up',
-    'tables' => 
-    array (
-      0 => 'player_resources',
-      1 => 'construction_queue',
-      2 => 'technologies',
-    ),
-    'permission' => 'authenticated commander',
-    'states' => 
-    array (
-      0 => 'ready',
-      1 => 'insufficient-resource',
-      2 => 'queued',
-      3 => 'success',
-      4 => 'error',
-    ),
-  ),
-  'interaction' => 
-  array (
-    'page' => 'Unit Production',
-    'purpose' => 'Upgrade the rate at which personnel and units can be produced.',
-    'buttons' => 
-    array (
-      'Upgrade production' => 
-      array (
-        'action' => 'upgrade_up',
-        'logic' => 'Calculate next-level cost, lock resources, and increase production level.',
-        'permission' => 'authenticated commander',
-        'reads' => 
-        array (
-          0 => 'player_resources',
-          1 => 'construction_queue',
-        ),
-        'writes' => 
-        array (
-          0 => 'player_resources',
-          1 => 'construction_queue',
-          2 => 'game_audit_log',
-        ),
-        'states' => 
-        array (
-          0 => 'ready',
-          1 => 'insufficient-resource',
-          2 => 'queued',
-          3 => 'success',
-          4 => 'error',
-        ),
-      ),
-    ),
+    'current state' => 'server-calculated telemetry',
+    'available controls' => 'permission-aware operations',
+    'dependencies' => 'validated prerequisites and cooldowns',
+    'audit' => 'transactional event history',
   ),
   'logic' => 
   array (
-    'purpose' => 'Increase unit production capacity and show next-level effects.',
+    'purpose' => 'Unit Production operations',
     'workflow' => 
     array (
-      0 => 'load current level',
-      1 => 'calculate next cost',
-      2 => 'validate resources',
-      3 => 'queue upgrade',
-      4 => 'apply completion effect',
+      0 => 'load scoped state',
+      1 => 'validate authenticated intent',
+      2 => 'lock required records',
+      3 => 'resolve authoritative mechanic',
+      4 => 'write audit event',
+      5 => 'return feedback',
     ),
     'validation' => 
     array (
       0 => 'authenticated commander',
-      1 => 'positive current level',
-      2 => 'resource balance',
-      3 => 'level cap',
+      1 => 'CSRF token',
+      2 => 'RBAC policy',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+      5 => 'transaction boundary',
     ),
     'calculations' => 
     array (
-      0 => 'base cost × growth rate ^ current level',
+      0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
     ),
     'mutations' => 
     array (
-      0 => 'player_resources',
-      1 => 'construction_queue',
-      2 => 'game_audit_log',
     ),
   ),
   'features' => 
   array (
-    0 => 'current production',
-    1 => 'next-level cost',
-    2 => 'queue status',
-    3 => 'upgrade effects',
-    4 => 'production preview',
+    0 => 'summary metrics',
+    1 => 'status badges',
+    2 => 'related-page navigation',
+    3 => 'empty-state guidance',
+  ),
+  'sub_features' => 
+  array (
+    0 => 'loading and refresh state',
+    1 => 'permission-aware controls',
+    2 => 'related-page navigation',
+    3 => 'filter and sort state',
+    4 => 'empty-state explanation',
+    5 => 'audit and feedback detail',
   ),
   'design' => 
   array (
-    'template' => 'upgrade-card',
+    'template' => 'specification-dashboard',
     'sections' => 
     array (
-      0 => 'current level',
-      1 => 'next cost',
-      2 => 'modifier preview',
-      3 => 'confirmation',
+      0 => 'overview',
+      1 => 'controls',
+      2 => 'features',
+      3 => 'system-design',
+      4 => 'information',
+      5 => 'feedback-states',
     ),
     'components' => 
     array (
-      0 => 'level-card',
-      1 => 'cost-table',
-      2 => 'effect-preview',
-      3 => 'queue-badge',
+      0 => 'metric-strip',
+      1 => 'operation-controls',
+      2 => 'status-badge',
+      3 => 'data-table',
+      4 => 'feedback-panel',
     ),
-    'responsive' => 'Upgrade card becomes full-width',
+    'responsive' => 'horizontal dashboard with stacked mobile layout',
   ),
   'systems' => 
   array (
     'services' => 
     array (
-      0 => 'TrainingService',
-      1 => 'QueueService',
+      0 => 'PageService',
     ),
     'reads' => 
     array (
-      0 => 'player_resources',
-      1 => 'construction_queue',
-      2 => 'technologies',
+      0 => 'players',
+      1 => 'player_resources',
+      2 => 'game_events',
     ),
     'writes' => 
     array (
-      0 => 'player_resources',
-      1 => 'construction_queue',
-      2 => 'game_audit_log',
     ),
     'actions' => 
     array (
-      0 => 'upgrade_up',
+      0 => 'inspect_page',
+      1 => 'refresh_page',
     ),
+    'permissions' => 
+    array (
+      0 => 'authenticated commander',
+      1 => 'CSRF',
+      2 => 'RBAC',
+      3 => 'ownership scope',
+      4 => 'cooldown validation',
+    ),
+  ),
+  'feedback_states' => 
+  array (
+    0 => 'loading',
+    1 => 'ready',
+    2 => 'empty',
+    3 => 'protected',
+    4 => 'cooldown',
+    5 => 'insufficient-resource',
+    6 => 'success',
+    7 => 'error',
   ),
   'contract_files' => 
   array (

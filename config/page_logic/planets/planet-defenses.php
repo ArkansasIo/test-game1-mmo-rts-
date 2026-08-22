@@ -1,30 +1,30 @@
 <?php
+declare(strict_types=1);
 return array (
-  'purpose' => 'Manage colonies, biomes, defenses, population, and life support.',
+  'purpose' => 'Planet Defenses operations',
   'workflow' => 
   array (
-    0 => 'load planet portfolio',
-    1 => 'load biome and bonuses',
-    2 => 'validate colony ownership',
-    3 => 'process exploration or defense action',
-    4 => 'render life support',
+    0 => 'load scoped state',
+    1 => 'validate authenticated intent',
+    2 => 'lock required records',
+    3 => 'resolve authoritative mechanic',
+    4 => 'write audit event',
+    5 => 'return feedback',
   ),
   'validation' => 
   array (
-    0 => 'authenticated colony owner',
-    1 => 'planet occupancy',
-    2 => 'habitability',
-    3 => 'resource balance',
+    0 => 'authenticated commander',
+    1 => 'CSRF token',
+    2 => 'RBAC policy',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
+    5 => 'transaction boundary',
   ),
   'calculations' => 
   array (
-    0 => 'production − food/water upkeep + morale and habitability modifiers',
+    0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   ),
   'mutations' => 
   array (
-    0 => 'player_colonies',
-    1 => 'planet_defenses',
-    2 => 'universe_planets',
-    3 => 'game_events',
   ),
 );

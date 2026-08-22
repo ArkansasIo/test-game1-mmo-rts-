@@ -1,29 +1,30 @@
 <?php
+declare(strict_types=1);
 return array (
-  'purpose' => 'Send, receive, read, and block commander messages.',
+  'purpose' => 'Messages operations',
   'workflow' => 
   array (
-    0 => 'load inbox',
-    1 => 'validate sender and recipient',
-    2 => 'apply content policy',
-    3 => 'write message and notification',
-    4 => 'update read or blacklist state',
+    0 => 'load scoped state',
+    1 => 'validate authenticated intent',
+    2 => 'lock required records',
+    3 => 'resolve authoritative mechanic',
+    4 => 'write audit event',
+    5 => 'return feedback',
   ),
   'validation' => 
   array (
     0 => 'authenticated commander',
-    1 => 'recipient exists',
-    2 => 'blacklist policy',
-    3 => 'message ownership',
+    1 => 'CSRF token',
+    2 => 'RBAC policy',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
+    5 => 'transaction boundary',
   ),
   'calculations' => 
   array (
-    0 => 'unread count',
+    0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   ),
   'mutations' => 
   array (
-    0 => 'messages',
-    1 => 'blacklists',
-    2 => 'player_notifications',
   ),
 );

@@ -1,34 +1,30 @@
 <?php
+declare(strict_types=1);
 return array (
-  'purpose' => 'Select targets and preview combat, raid, covert, sabotage, and conquest operations.',
+  'purpose' => 'Target Selection operations',
   'workflow' => 
   array (
-    0 => 'load visible realms',
-    1 => 'verify protection',
-    2 => 'calculate operation cost',
-    3 => 'compare forces',
-    4 => 'submit chosen operation',
+    0 => 'load scoped state',
+    1 => 'validate authenticated intent',
+    2 => 'lock required records',
+    3 => 'resolve authoritative mechanic',
+    4 => 'write audit event',
+    5 => 'return feedback',
   ),
   'validation' => 
   array (
     0 => 'authenticated commander',
-    1 => 'attack turns',
-    2 => 'target ownership scope',
-    3 => 'protection rules',
-    4 => 'fleet or unit availability',
+    1 => 'CSRF token',
+    2 => 'RBAC policy',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
+    5 => 'transaction boundary',
   ),
   'calculations' => 
   array (
-    0 => 'validated force comparison + technology + defense + deterministic resolver',
-    1 => 'operation cost',
-    2 => 'loot preview',
+    0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   ),
   'mutations' => 
   array (
-    0 => 'battles',
-    1 => 'battle_rounds',
-    2 => 'battle_reports',
-    3 => 'attack_logs',
-    4 => 'player_resources',
   ),
 );

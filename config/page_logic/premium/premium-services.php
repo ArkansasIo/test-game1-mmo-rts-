@@ -1,27 +1,34 @@
 <?php
+declare(strict_types=1);
 return array (
-  'purpose' => 'Consume bounded convenience services such as queue priority and colony scan credits.',
-  'workflow' => array (
-    0 => 'load wallet and catalogue',
-    1 => 'validate intent',
-    2 => 'lock and mutate transactionally',
-    3 => 'render result',
+  'purpose' => 'Premium Services operations',
+  'workflow' => 
+  array (
+    0 => 'load scoped state',
+    1 => 'validate authenticated intent',
+    2 => 'lock required records',
+    3 => 'resolve authoritative mechanic',
+    4 => 'write audit event',
+    5 => 'return feedback',
   ),
-  'validation' => array (
+  'validation' => 
+  array (
     0 => 'authenticated commander',
     1 => 'CSRF token',
-    2 => 'catalogue ownership and active status',
-    3 => 'wallet balance',
-    4 => 'cooldown and quantity bounds',
+    2 => 'RBAC policy',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
+    5 => 'transaction boundary',
   ),
-  'calculations' => array (
-    0 => 'purchase cost = price × quantity',
-    1 => 'daily reward = 100 Dark Matter once per 24 hours',
-    2 => 'officer effect = catalogue modifier while active',
+  'calculations' => 
+  array (
+    0 => 'premium state = wallet balance + entitlement state + bounded service effects',
   ),
-  'mutations' => array (
-    0 => 'premium wallet update',
-    1 => 'premium transaction audit',
-    2 => 'game event emission',
+  'mutations' => 
+  array (
+    0 => 'premium_catalog',
+    1 => 'player_premium',
+    2 => 'premium_transactions',
+    3 => 'game_events',
   ),
 );

@@ -1,27 +1,30 @@
 <?php
+declare(strict_types=1);
 return array (
   'services' => 
   array (
-    0 => 'MessageService',
-    1 => 'NotificationService',
+    0 => 'PageService',
   ),
   'reads' => 
   array (
-    0 => 'messages',
-    1 => 'blacklists',
-    2 => 'player_notifications',
-    3 => 'players',
+    0 => 'players',
+    1 => 'player_resources',
+    2 => 'game_events',
   ),
   'writes' => 
   array (
-    0 => 'messages',
-    1 => 'blacklists',
-    2 => 'player_notifications',
   ),
   'actions' => 
   array (
-    0 => 'message',
-    1 => 'message_read',
-    2 => 'blacklist',
+    0 => 'inspect_page',
+    1 => 'refresh_page',
+  ),
+  'permissions' => 
+  array (
+    0 => 'authenticated commander',
+    1 => 'CSRF',
+    2 => 'RBAC',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
   ),
 );

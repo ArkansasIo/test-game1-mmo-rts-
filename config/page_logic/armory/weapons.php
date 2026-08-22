@@ -1,27 +1,30 @@
 <?php
+declare(strict_types=1);
 return array (
-  'purpose' => 'Manage owned weapons, quantities, durability, assignments, and effective power.',
+  'purpose' => 'Weapon Inventory operations',
   'workflow' => 
   array (
-    0 => 'load catalogue',
-    1 => 'validate purchase or inspection',
-    2 => 'upsert inventory',
-    3 => 'calculate durability-adjusted power',
+    0 => 'load scoped state',
+    1 => 'validate authenticated intent',
+    2 => 'lock required records',
+    3 => 'resolve authoritative mechanic',
+    4 => 'write audit event',
+    5 => 'return feedback',
   ),
   'validation' => 
   array (
     0 => 'authenticated commander',
-    1 => 'weapon ownership',
-    2 => 'resource balance',
-    3 => 'positive quantity',
+    1 => 'CSRF token',
+    2 => 'RBAC policy',
+    3 => 'ownership scope',
+    4 => 'cooldown validation',
+    5 => 'transaction boundary',
   ),
   'calculations' => 
   array (
-    0 => 'base power × durability × technology × race × government',
+    0 => 'server-authoritative subsystem state = validated inputs + scoped records + pending operations',
   ),
   'mutations' => 
   array (
-    0 => 'player_weapons',
-    1 => 'player_resources',
   ),
 );
