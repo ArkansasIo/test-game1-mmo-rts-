@@ -1,19 +1,13 @@
 <?php
 declare(strict_types=1);
-
 function stargatewars_premium_commander_logic(): array { return require '/home/ubuntu/stargatewars/config/page_logic/premium/commander.php'; }
 function stargatewars_premium_commander_features(): array { return require '/home/ubuntu/stargatewars/config/page_features/premium/commander.php'; }
 function stargatewars_premium_commander_design(): array { return require '/home/ubuntu/stargatewars/config/page_design_specs/premium/commander.php'; }
 function stargatewars_premium_commander_systems(): array { return require '/home/ubuntu/stargatewars/config/page_systems/premium/commander.php'; }
 function stargatewars_premium_commander_actions(): array { return stargatewars_premium_commander_systems()['actions'] ?? []; }
 function stargatewars_premium_commander_validate_intent(array $input): array {
-    $errors = [];
-    $action = (string)($input['action'] ?? '');
-    if ($action === '' || !in_array($action, stargatewars_premium_commander_actions(), true)) { $errors['action'] = 'Action is not permitted for this page.'; }
-    if (in_array($action, ['combat','combat:raid','covert:recon','covert:spy','covert:sabotage'], true) && (int)($input['target_id'] ?? 0) <= 0) { $errors['target_id'] = 'A valid target is required.'; }
-    if (in_array($action, ['deposit','withdraw','train','upgrade_up','technology','weapon_buy','weapon_repair'], true) && (int)($input['amount'] ?? $input['quantity'] ?? 0) < 0) { $errors['amount'] = 'The requested amount must not be negative.'; }
-    return ['valid' => $errors === [], 'errors' => $errors, 'action' => $action];
+ $errors=[]; $action=(string)($input['action']??''); if($action===''||!in_array($action,stargatewars_premium_commander_actions(),true)) $errors['action']='Action is not permitted for this Premium page.';
+ if(isset($input['quantity']) && ((int)$input['quantity']<1||(int)$input['quantity']>10)) $errors['quantity']='Quantity must be between 1 and 10.';
+ return ['valid'=>$errors===[],'errors'=>$errors,'action'=>$action];
 }
-function stargatewars_premium_commander_preview(array $context = []): array {
-    return ['route' => 'commander', 'title' => 'Commander', 'logic' => stargatewars_premium_commander_logic(), 'features' => stargatewars_premium_commander_features(), 'design' => stargatewars_premium_commander_design(), 'systems' => stargatewars_premium_commander_systems(), 'context' => $context];
-}
+function stargatewars_premium_commander_preview(array $context=[]): array { return ['route'=>'commander','title'=>'Commander','logic'=>stargatewars_premium_commander_logic(),'features'=>stargatewars_premium_commander_features(),'design'=>stargatewars_premium_commander_design(),'systems'=>stargatewars_premium_commander_systems(),'context'=>$context]; }

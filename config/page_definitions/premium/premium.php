@@ -1,28 +1,31 @@
 <?php
 return array (
-  'route' => 'store',
+  'route' => 'premium',
   'group' => 'premium',
   'group_label' => 'Premium',
-  'title' => 'Store',
+  'title' => 'Premium Hub',
   'layout' => 'dashboard',
   'controls' => array (
-    0 => 'Buy item',
-    1 => 'Inspect catalogue',
-    2 => 'Review purchases',
+    0 => 'Open Store',
+    1 => 'Claim daily premium',
+    2 => 'Review transaction history',
   ),
   'actions' => array (
     0 => 'premium_purchase',
+    1 => 'premium_claim_daily',
+    2 => 'premium_activate',
   ),
   'tables' => array (
     0 => 'premium_catalog',
     1 => 'player_premium',
     2 => 'premium_transactions',
+    3 => 'game_events',
   ),
   'details' => array (
-    0 => 'catalogue pricing',
-    1 => 'purchase validation',
-    2 => 'transaction history',
-    3 => 'balance telemetry',
+    0 => 'wallet summary',
+    1 => 'season pass progression',
+    2 => 'officer status',
+    3 => 'service credits',
   ),
   'interaction' => array (
     'server_authoritative' => true,
@@ -36,7 +39,7 @@ return array (
     ),
   ),
   'logic' => array (
-    'purpose' => 'Purchase non-pay-to-win convenience services and season rewards with Dark Matter.',
+    'purpose' => 'Premium command center for wallet, passes, officers, and services.',
     'workflow' => array (
       0 => 'load wallet and catalogue',
       1 => 'validate authentication, CSRF, ownership, price, quantity, and cooldown',
@@ -60,13 +63,6 @@ return array (
       1 => 'officer/service activation',
       2 => 'transaction audit event',
     ),
-  ),
-  'contract_files' => array (
-    'logic' => 'config/page_logic/premium/store.php',
-    'features' => 'config/page_features/premium/store.php',
-    'design' => 'config/page_design_specs/premium/store.php',
-    'systems' => 'config/page_systems/premium/store.php',
-    'module' => 'includes/page_modules/premium/store.php',
   ),
   'features' => array (
     0 => 'wallet telemetry',

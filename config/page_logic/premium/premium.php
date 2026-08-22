@@ -1,6 +1,6 @@
 <?php
 return array (
-  'purpose' => 'Manage the commander premium profile, daily claim, and season pass progression.',
+  'purpose' => 'Premium command center for wallet, passes, officers, and services.',
   'workflow' => array (
     0 => 'load wallet and catalogue',
     1 => 'validate intent',

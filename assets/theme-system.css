@@ -18,3 +18,22 @@
 .sidebar input#search,.sidebar input[type=search]{width:100%;min-height:30px;margin:6px 0;padding:6px 8px;font-size:11px;background:var(--theme-surface);border:1px solid var(--theme-line);color:var(--theme-ink)}
 @media(max-width:900px){.app-shell{grid-template-columns:190px minmax(0,1fr)}.sidebar{width:190px}.nav-link{font-size:10px}.nav-sub .nav-link{font-size:9px}}
 @media(max-width:600px){.app-shell{grid-template-columns:1fr}.sidebar{width:100%;height:auto;max-height:280px;padding:8px;border-right:0;border-bottom:1px solid var(--theme-line)}.nav-group{display:inline-block;vertical-align:top;width:49%;margin-top:3px}.nav-group>summary{font-size:9px}.nav-link{font-size:10px}.nav-sub .nav-link{font-size:9px}}
+
+/* Premium Systems dashboard */
+.premium-page{--premium-accent:var(--theme-accent);--premium-panel:var(--theme-surface);--premium-text:var(--theme-ink);--premium-muted:var(--theme-muted);color:var(--premium-text)}
+.premium-page .page-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;border-bottom:1px solid var(--theme-line);padding-bottom:18px;margin-bottom:18px}
+.premium-page .eyebrow,.premium-page .panel-kicker{color:var(--premium-accent);letter-spacing:.14em;font-size:.68rem;font-weight:800;text-transform:uppercase}
+.premium-page .page-heading h1,.premium-page h2,.premium-page h3{color:var(--premium-text)}
+.premium-page .page-heading p,.premium-page .premium-offer p,.premium-page .premium-contract p,.premium-page .panel>p{color:var(--premium-muted)}
+.premium-page .metric-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0 0 18px}
+.premium-page .metric,.premium-page .panel{background:var(--premium-panel);border:1px solid var(--theme-line);border-radius:0;box-shadow:var(--theme-shadow)}
+.premium-page .metric{padding:14px;border-top:3px solid var(--premium-accent)}
+.premium-page .metric span,.premium-page .metric small{display:block;color:var(--premium-muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.07em}
+.premium-page .metric strong{display:block;color:var(--premium-text);font-size:1.35rem;margin:5px 0}
+.premium-page .premium-layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(260px,.8fr);gap:18px;align-items:start;margin-bottom:18px}
+.premium-page .section-heading{margin-bottom:10px}.premium-page .section-heading h2{margin:4px 0 12px}
+.premium-page .premium-offer{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px;margin-bottom:10px;background:var(--premium-panel);border:1px solid var(--theme-line)}
+.premium-page .premium-offer h3{margin:2px 0 4px}.premium-page .premium-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.premium-page .button.secondary{background:transparent;color:var(--premium-accent);border-color:var(--premium-accent)}
+.premium-page .premium-contract{padding:18px}.premium-page .premium-contract h2{font-size:1.1rem;margin:6px 0 10px}.premium-page .contract-row{display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--theme-line);padding:11px 0;color:var(--premium-muted);font-size:.78rem}.premium-page .contract-row b{color:var(--premium-accent);font-size:.68rem;text-align:right}
+@media(max-width:900px){.premium-page .metric-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.premium-page .premium-layout{grid-template-columns:1fr}}
+@media(max-width:560px){.premium-page .metric-strip{grid-template-columns:1fr}.premium-page .premium-offer{display:block}.premium-page .premium-actions{justify-content:flex-start;margin-top:12px}}

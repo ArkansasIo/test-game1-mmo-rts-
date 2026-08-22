@@ -1,0 +1,2241 @@
+=== PREMIUM SPEC ===
+{
+    "route": "store",
+    "group": "premium",
+    "group_label": "Premium",
+    "title": "Store",
+    "purpose": "Store subsystem console with server-authoritative state, controls, dependencies, and feedback.",
+    "mechanic": "premium state = wallet balance + entitlement state + bounded service effects",
+    "functions": [
+        "inspect wallet",
+        "claim eligible reward",
+        "activate entitlement",
+        "review audit history"
+    ],
+    "features": [
+        "wallet telemetry",
+        "season pass",
+        "officer effects",
+        "service credits"
+    ],
+    "sub_features": [
+        "loading and refresh state",
+        "permission-aware controls",
+        "related-page navigation",
+        "filter and sort state",
+        "empty-state explanation",
+        "audit and feedback detail"
+    ],
+    "information_sections": [
+        "commander context",
+        "current state",
+        "available controls",
+        "dependencies and prerequisites",
+        "server contract",
+        "database scope",
+        "feedback states",
+        "related pages"
+    ],
+    "controls": [
+        "Inspect Wallet",
+        "Claim Eligible Reward",
+        "Activate Entitlement",
+        "Review Audit History"
+    ],
+    "buttons": {
+        "Inspect Wallet": {
+            "action": "inspect_page",
+            "logic": "inspect wallet; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "premium_catalog",
+                "player_premium",
+                "premium_transactions",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Claim Eligible Reward": {
+            "action": "inspect_page",
+            "logic": "claim eligible reward; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "premium_catalog",
+                "player_premium",
+                "premium_transactions",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Activate Entitlement": {
+            "action": "inspect_page",
+            "logic": "activate entitlement; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "premium_catalog",
+                "player_premium",
+                "premium_transactions",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Review Audit History": {
+            "action": "inspect_page",
+            "logic": "review audit history; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "premium_catalog",
+                "player_premium",
+                "premium_transactions",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        }
+    },
+    "server_actions": [
+        "inspect_page",
+        "refresh_page"
+    ],
+    "database_tables": [
+        "premium_catalog",
+        "player_premium",
+        "premium_transactions",
+        "game_events"
+    ],
+    "tables": [
+        "premium_catalog",
+        "player_premium",
+        "premium_transactions",
+        "game_events"
+    ],
+    "permissions": [
+        "authenticated commander",
+        "CSRF token",
+        "RBAC policy",
+        "ownership scope",
+        "cooldown validation",
+        "transaction boundary"
+    ],
+    "permission": "authenticated commander \u00b7 CSRF \u00b7 RBAC \u00b7 ownership scope",
+    "feedback_states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "layout": "premium"
+}
+{
+    "route": "premium-officers",
+    "group": "premium",
+    "group_label": "Premium",
+    "title": "Officers",
+    "purpose": "Officers subsystem console with server-authoritative state, controls, dependencies, and feedback.",
+    "mechanic": "premium state = wallet balance + entitlement state + bounded service effects",
+    "functions": [
+        "inspect wallet",
+        "claim eligible reward",
+        "activate entitlement",
+        "review audit history"
+    ],
+    "features": [
+        "wallet telemetry",
+        "season pass",
+        "officer effects",
+        "service credits"
+    ],
+    "sub_features": [
+        "loading and refresh state",
+        "permission-aware controls",
+        "related-page navigation",
+        "filter and sort state",
+        "empty-state explanation",
+        "audit and feedback detail"
+    ],
+    "information_sections": [
+        "commander context",
+        "current state",
+        "available controls",
+        "dependencies and prerequisites",
+        "server contract",
+        "database scope",
+        "feedback states",
+        "related pages"
+    ],
+    "controls": [
+        "Inspect Wallet",
+        "Claim Eligible Reward",
+        "Activate Entitlement",
+        "Review Audit History"
+    ],
+    "buttons": {
+        "Inspect Wallet": {
+            "action": "inspect_page",
+            "logic": "inspect wallet; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "premium_catalog",
+                "player_premium",
+                "premium_transactions",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Claim Eligible Reward": {
+            "action": "inspect_page",
+            "logic": "claim eligible reward; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "premium_catalog",
+                "player_premium",
+                "premium_transactions",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Activate Entitlement": {
+            "action": "inspect_page",
+            "logic": "activate entitlement; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "premium_catalog",
+                "player_premium",
+                "premium_transactions",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Review Audit History": {
+            "action": "inspect_page",
+            "logic": "review audit history; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "premium_catalog",
+                "player_premium",
+                "premium_transactions",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        }
+    },
+    "server_actions": [
+        "inspect_page",
+        "refresh_page"
+    ],
+    "database_tables": [
+        "premium_catalog",
+        "player_premium",
+        "premium_transactions",
+        "game_events"
+    ],
+    "tables": [
+        "premium_catalog",
+        "player_premium",
+        "premium_transactions",
+        "game_events"
+    ],
+    "permissions": [
+        "authenticated commander",
+        "CSRF token",
+        "RBAC policy",
+        "ownership scope",
+        "cooldown validation",
+        "transaction boundary"
+    ],
+    "permission": "authenticated commander \u00b7 CSRF \u00b7 RBAC \u00b7 ownership scope",
+    "feedback_states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "layout": "premium"
+}
+{
+    "route": "commander",
+    "group": "premium",
+    "group_label": "Premium",
+    "title": "Commander",
+    "purpose": "Commander subsystem console with server-authoritative state, controls, dependencies, and feedback.",
+    "mechanic": "premium state = wallet balance + entitlement state + bounded service effects",
+    "functions": [
+        "inspect wallet",
+        "claim eligible reward",
+        "activate entitlement",
+        "review audit history"
+    ],
+    "features": [
+        "wallet telemetry",
+        "season pass",
+        "officer effects",
+        "service credits"
+    ],
+    "sub_features": [
+        "loading and refresh state",
+        "permission-aware controls",
+        "related-page navigation",
+        "filter and sort state",
+        "empty-state explanation",
+        "audit and feedback detail"
+    ],
+    "information_sections": [
+        "commander context",
+        "current state",
+        "available controls",
+        "dependencies and prerequisites",
+        "server contract",
+        "database scope",
+        "feedback states",
+        "related pages"
+    ],
+    "controls": [
+        "Inspect Wallet",
+        "Claim Eligible Reward",
+        "Activate Entitlement",
+        "Review Audit History"
+    ],
+    "buttons": {
+        "Inspect Wallet": {
+            "action": "inspect_page",
+            "logic": "inspect wallet; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "premium_catalog",
+                "player_premium",
+                "premium_transactions",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Claim Eligible Reward": {
+            "action": "inspect_page",
+            "logic": "claim eligible reward; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "premium_catalog",
+                "player_premium",
+                "premium_transactions",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Activate Entitlement": {
+            "action": "inspect_page",
+            "logic": "activate entitlement; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "premium_catalog",
+                "player_premium",
+                "premium_transactions",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Review Audit History": {
+            "action": "inspect_page",
+            "logic": "review audit history; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "premium_catalog",
+                "player_premium",
+                "premium_transactions",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        }
+    },
+    "server_actions": [
+        "inspect_page",
+        "refresh_page"
+    ],
+    "database_tables": [
+        "premium_catalog",
+        "player_premium",
+        "premium_transactions",
+        "game_events"
+    ],
+    "tables": [
+        "premium_catalog",
+        "player_premium",
+        "premium_transactions",
+        "game_events"
+    ],
+    "permissions": [
+        "authenticated commander",
+        "CSRF token",
+        "RBAC policy",
+        "ownership scope",
+        "cooldown validation",
+        "transaction boundary"
+    ],
+    "permission": "authenticated commander \u00b7 CSRF \u00b7 RBAC \u00b7 ownership scope",
+    "feedback_states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "layout": "premium"
+}
+{
+    "route": "premium-services",
+    "group": "premium",
+    "group_label": "Premium",
+    "title": "Premium Services",
+    "purpose": "Premium Services subsystem console with server-authoritative state, controls, dependencies, and feedback.",
+    "mechanic": "premium state = wallet balance + entitlement state + bounded service effects",
+    "functions": [
+        "inspect wallet",
+        "claim eligible reward",
+        "activate entitlement",
+        "review audit history"
+    ],
+    "features": [
+        "wallet telemetry",
+        "season pass",
+        "officer effects",
+        "service credits"
+    ],
+    "sub_features": [
+        "loading and refresh state",
+        "permission-aware controls",
+        "related-page navigation",
+        "filter and sort state",
+        "empty-state explanation",
+        "audit and feedback detail"
+    ],
+    "information_sections": [
+        "commander context",
+        "current state",
+        "available controls",
+        "dependencies and prerequisites",
+        "server contract",
+        "database scope",
+        "feedback states",
+        "related pages"
+    ],
+    "controls": [
+        "Inspect Wallet",
+        "Claim Eligible Reward",
+        "Activate Entitlement",
+        "Review Audit History"
+    ],
+    "buttons": {
+        "Inspect Wallet": {
+            "action": "inspect_page",
+            "logic": "inspect wallet; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "premium_catalog",
+                "player_premium",
+                "premium_transactions",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Claim Eligible Reward": {
+            "action": "inspect_page",
+            "logic": "claim eligible reward; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "premium_catalog",
+                "player_premium",
+                "premium_transactions",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Activate Entitlement": {
+            "action": "inspect_page",
+            "logic": "activate entitlement; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "premium_catalog",
+                "player_premium",
+                "premium_transactions",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Review Audit History": {
+            "action": "inspect_page",
+            "logic": "review audit history; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "premium_catalog",
+                "player_premium",
+                "premium_transactions",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        }
+    },
+    "server_actions": [
+        "inspect_page",
+        "refresh_page"
+    ],
+    "database_tables": [
+        "premium_catalog",
+        "player_premium",
+        "premium_transactions",
+        "game_events"
+    ],
+    "tables": [
+        "premium_catalog",
+        "player_premium",
+        "premium_transactions",
+        "game_events"
+    ],
+    "permissions": [
+        "authenticated commander",
+        "CSRF token",
+        "RBAC policy",
+        "ownership scope",
+        "cooldown validation",
+        "transaction boundary"
+    ],
+    "permission": "authenticated commander \u00b7 CSRF \u00b7 RBAC \u00b7 ownership scope",
+    "feedback_states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "layout": "premium"
+}
+=== ALLIANCE SPEC ===
+{
+    "route": "alliance-hub",
+    "group": "alliance",
+    "group_label": "Alliance",
+    "title": "Alliance Hub",
+    "purpose": "Alliance Hub subsystem console with server-authoritative state, controls, dependencies, and feedback.",
+    "mechanic": "alliance capacity = command level \u00d7 alliance technology \u00d7 government modifier",
+    "functions": [
+        "manage membership",
+        "propose diplomacy",
+        "coordinate warfare",
+        "share logistics"
+    ],
+    "features": [
+        "roster controls",
+        "role permissions",
+        "shared projects",
+        "diplomatic map"
+    ],
+    "sub_features": [
+        "loading and refresh state",
+        "permission-aware controls",
+        "related-page navigation",
+        "filter and sort state",
+        "empty-state explanation",
+        "audit and feedback detail"
+    ],
+    "information_sections": [
+        "commander context",
+        "current state",
+        "available controls",
+        "dependencies and prerequisites",
+        "server contract",
+        "database scope",
+        "feedback states",
+        "related pages"
+    ],
+    "controls": [
+        "Manage Membership",
+        "Propose Diplomacy",
+        "Coordinate Warfare",
+        "Share Logistics"
+    ],
+    "buttons": {
+        "Manage Membership": {
+            "action": "inspect_page",
+            "logic": "manage membership; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Propose Diplomacy": {
+            "action": "inspect_page",
+            "logic": "propose diplomacy; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Coordinate Warfare": {
+            "action": "inspect_page",
+            "logic": "coordinate warfare; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Share Logistics": {
+            "action": "inspect_page",
+            "logic": "share logistics; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        }
+    },
+    "server_actions": [
+        "inspect_page",
+        "refresh_page"
+    ],
+    "database_tables": [
+        "alliances",
+        "alliance_members",
+        "alliance_projects",
+        "game_events"
+    ],
+    "tables": [
+        "alliances",
+        "alliance_members",
+        "alliance_projects",
+        "game_events"
+    ],
+    "permissions": [
+        "authenticated commander",
+        "CSRF token",
+        "RBAC policy",
+        "ownership scope",
+        "cooldown validation",
+        "transaction boundary"
+    ],
+    "permission": "authenticated commander \u00b7 CSRF \u00b7 RBAC \u00b7 ownership scope",
+    "feedback_states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "layout": "social"
+}
+{
+    "route": "members",
+    "group": "alliance",
+    "group_label": "Alliance",
+    "title": "Members",
+    "purpose": "Members subsystem console with server-authoritative state, controls, dependencies, and feedback.",
+    "mechanic": "alliance capacity = command level \u00d7 alliance technology \u00d7 government modifier",
+    "functions": [
+        "manage membership",
+        "propose diplomacy",
+        "coordinate warfare",
+        "share logistics"
+    ],
+    "features": [
+        "roster controls",
+        "role permissions",
+        "shared projects",
+        "diplomatic map"
+    ],
+    "sub_features": [
+        "loading and refresh state",
+        "permission-aware controls",
+        "related-page navigation",
+        "filter and sort state",
+        "empty-state explanation",
+        "audit and feedback detail"
+    ],
+    "information_sections": [
+        "commander context",
+        "current state",
+        "available controls",
+        "dependencies and prerequisites",
+        "server contract",
+        "database scope",
+        "feedback states",
+        "related pages"
+    ],
+    "controls": [
+        "Manage Membership",
+        "Propose Diplomacy",
+        "Coordinate Warfare",
+        "Share Logistics"
+    ],
+    "buttons": {
+        "Manage Membership": {
+            "action": "inspect_page",
+            "logic": "manage membership; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Propose Diplomacy": {
+            "action": "inspect_page",
+            "logic": "propose diplomacy; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Coordinate Warfare": {
+            "action": "inspect_page",
+            "logic": "coordinate warfare; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Share Logistics": {
+            "action": "inspect_page",
+            "logic": "share logistics; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        }
+    },
+    "server_actions": [
+        "inspect_page",
+        "refresh_page"
+    ],
+    "database_tables": [
+        "alliances",
+        "alliance_members",
+        "alliance_projects",
+        "game_events"
+    ],
+    "tables": [
+        "alliances",
+        "alliance_members",
+        "alliance_projects",
+        "game_events"
+    ],
+    "permissions": [
+        "authenticated commander",
+        "CSRF token",
+        "RBAC policy",
+        "ownership scope",
+        "cooldown validation",
+        "transaction boundary"
+    ],
+    "permission": "authenticated commander \u00b7 CSRF \u00b7 RBAC \u00b7 ownership scope",
+    "feedback_states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "layout": "social"
+}
+{
+    "route": "commanders",
+    "group": "alliance",
+    "group_label": "Alliance",
+    "title": "Commanders",
+    "purpose": "Commanders subsystem console with server-authoritative state, controls, dependencies, and feedback.",
+    "mechanic": "alliance capacity = command level \u00d7 alliance technology \u00d7 government modifier",
+    "functions": [
+        "manage membership",
+        "propose diplomacy",
+        "coordinate warfare",
+        "share logistics"
+    ],
+    "features": [
+        "roster controls",
+        "role permissions",
+        "shared projects",
+        "diplomatic map"
+    ],
+    "sub_features": [
+        "loading and refresh state",
+        "permission-aware controls",
+        "related-page navigation",
+        "filter and sort state",
+        "empty-state explanation",
+        "audit and feedback detail"
+    ],
+    "information_sections": [
+        "commander context",
+        "current state",
+        "available controls",
+        "dependencies and prerequisites",
+        "server contract",
+        "database scope",
+        "feedback states",
+        "related pages"
+    ],
+    "controls": [
+        "Manage Membership",
+        "Propose Diplomacy",
+        "Coordinate Warfare",
+        "Share Logistics"
+    ],
+    "buttons": {
+        "Manage Membership": {
+            "action": "inspect_page",
+            "logic": "manage membership; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Propose Diplomacy": {
+            "action": "inspect_page",
+            "logic": "propose diplomacy; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Coordinate Warfare": {
+            "action": "inspect_page",
+            "logic": "coordinate warfare; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Share Logistics": {
+            "action": "inspect_page",
+            "logic": "share logistics; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        }
+    },
+    "server_actions": [
+        "inspect_page",
+        "refresh_page"
+    ],
+    "database_tables": [
+        "alliances",
+        "alliance_members",
+        "alliance_projects",
+        "game_events"
+    ],
+    "tables": [
+        "alliances",
+        "alliance_members",
+        "alliance_projects",
+        "game_events"
+    ],
+    "permissions": [
+        "authenticated commander",
+        "CSRF token",
+        "RBAC policy",
+        "ownership scope",
+        "cooldown validation",
+        "transaction boundary"
+    ],
+    "permission": "authenticated commander \u00b7 CSRF \u00b7 RBAC \u00b7 ownership scope",
+    "feedback_states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "layout": "social"
+}
+{
+    "route": "alliance-officers",
+    "group": "alliance",
+    "group_label": "Alliance",
+    "title": "Officers",
+    "purpose": "Officers subsystem console with server-authoritative state, controls, dependencies, and feedback.",
+    "mechanic": "alliance capacity = command level \u00d7 alliance technology \u00d7 government modifier",
+    "functions": [
+        "manage membership",
+        "propose diplomacy",
+        "coordinate warfare",
+        "share logistics"
+    ],
+    "features": [
+        "roster controls",
+        "role permissions",
+        "shared projects",
+        "diplomatic map"
+    ],
+    "sub_features": [
+        "loading and refresh state",
+        "permission-aware controls",
+        "related-page navigation",
+        "filter and sort state",
+        "empty-state explanation",
+        "audit and feedback detail"
+    ],
+    "information_sections": [
+        "commander context",
+        "current state",
+        "available controls",
+        "dependencies and prerequisites",
+        "server contract",
+        "database scope",
+        "feedback states",
+        "related pages"
+    ],
+    "controls": [
+        "Manage Membership",
+        "Propose Diplomacy",
+        "Coordinate Warfare",
+        "Share Logistics"
+    ],
+    "buttons": {
+        "Manage Membership": {
+            "action": "inspect_page",
+            "logic": "manage membership; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Propose Diplomacy": {
+            "action": "inspect_page",
+            "logic": "propose diplomacy; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Coordinate Warfare": {
+            "action": "inspect_page",
+            "logic": "coordinate warfare; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Share Logistics": {
+            "action": "inspect_page",
+            "logic": "share logistics; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        }
+    },
+    "server_actions": [
+        "inspect_page",
+        "refresh_page"
+    ],
+    "database_tables": [
+        "alliances",
+        "alliance_members",
+        "alliance_projects",
+        "game_events"
+    ],
+    "tables": [
+        "alliances",
+        "alliance_members",
+        "alliance_projects",
+        "game_events"
+    ],
+    "permissions": [
+        "authenticated commander",
+        "CSRF token",
+        "RBAC policy",
+        "ownership scope",
+        "cooldown validation",
+        "transaction boundary"
+    ],
+    "permission": "authenticated commander \u00b7 CSRF \u00b7 RBAC \u00b7 ownership scope",
+    "feedback_states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "layout": "social"
+}
+{
+    "route": "diplomacy",
+    "group": "alliance",
+    "group_label": "Alliance",
+    "title": "Diplomacy",
+    "purpose": "Diplomacy subsystem console with server-authoritative state, controls, dependencies, and feedback.",
+    "mechanic": "alliance capacity = command level \u00d7 alliance technology \u00d7 government modifier",
+    "functions": [
+        "manage membership",
+        "propose diplomacy",
+        "coordinate warfare",
+        "share logistics"
+    ],
+    "features": [
+        "roster controls",
+        "role permissions",
+        "shared projects",
+        "diplomatic map"
+    ],
+    "sub_features": [
+        "loading and refresh state",
+        "permission-aware controls",
+        "related-page navigation",
+        "filter and sort state",
+        "empty-state explanation",
+        "audit and feedback detail"
+    ],
+    "information_sections": [
+        "commander context",
+        "current state",
+        "available controls",
+        "dependencies and prerequisites",
+        "server contract",
+        "database scope",
+        "feedback states",
+        "related pages"
+    ],
+    "controls": [
+        "Manage Membership",
+        "Propose Diplomacy",
+        "Coordinate Warfare",
+        "Share Logistics"
+    ],
+    "buttons": {
+        "Manage Membership": {
+            "action": "inspect_page",
+            "logic": "manage membership; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Propose Diplomacy": {
+            "action": "inspect_page",
+            "logic": "propose diplomacy; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Coordinate Warfare": {
+            "action": "inspect_page",
+            "logic": "coordinate warfare; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Share Logistics": {
+            "action": "inspect_page",
+            "logic": "share logistics; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        }
+    },
+    "server_actions": [
+        "inspect_page",
+        "refresh_page"
+    ],
+    "database_tables": [
+        "alliances",
+        "alliance_members",
+        "alliance_projects",
+        "game_events"
+    ],
+    "tables": [
+        "alliances",
+        "alliance_members",
+        "alliance_projects",
+        "game_events"
+    ],
+    "permissions": [
+        "authenticated commander",
+        "CSRF token",
+        "RBAC policy",
+        "ownership scope",
+        "cooldown validation",
+        "transaction boundary"
+    ],
+    "permission": "authenticated commander \u00b7 CSRF \u00b7 RBAC \u00b7 ownership scope",
+    "feedback_states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "layout": "social"
+}
+{
+    "route": "war",
+    "group": "alliance",
+    "group_label": "Alliance",
+    "title": "War",
+    "purpose": "War subsystem console with server-authoritative state, controls, dependencies, and feedback.",
+    "mechanic": "alliance capacity = command level \u00d7 alliance technology \u00d7 government modifier",
+    "functions": [
+        "manage membership",
+        "propose diplomacy",
+        "coordinate warfare",
+        "share logistics"
+    ],
+    "features": [
+        "roster controls",
+        "role permissions",
+        "shared projects",
+        "diplomatic map"
+    ],
+    "sub_features": [
+        "loading and refresh state",
+        "permission-aware controls",
+        "related-page navigation",
+        "filter and sort state",
+        "empty-state explanation",
+        "audit and feedback detail"
+    ],
+    "information_sections": [
+        "commander context",
+        "current state",
+        "available controls",
+        "dependencies and prerequisites",
+        "server contract",
+        "database scope",
+        "feedback states",
+        "related pages"
+    ],
+    "controls": [
+        "Manage Membership",
+        "Propose Diplomacy",
+        "Coordinate Warfare",
+        "Share Logistics"
+    ],
+    "buttons": {
+        "Manage Membership": {
+            "action": "inspect_page",
+            "logic": "manage membership; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Propose Diplomacy": {
+            "action": "inspect_page",
+            "logic": "propose diplomacy; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Coordinate Warfare": {
+            "action": "inspect_page",
+            "logic": "coordinate warfare; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Share Logistics": {
+            "action": "inspect_page",
+            "logic": "share logistics; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        }
+    },
+    "server_actions": [
+        "inspect_page",
+        "refresh_page"
+    ],
+    "database_tables": [
+        "alliances",
+        "alliance_members",
+        "alliance_projects",
+        "game_events"
+    ],
+    "tables": [
+        "alliances",
+        "alliance_members",
+        "alliance_projects",
+        "game_events"
+    ],
+    "permissions": [
+        "authenticated commander",
+        "CSRF token",
+        "RBAC policy",
+        "ownership scope",
+        "cooldown validation",
+        "transaction boundary"
+    ],
+    "permission": "authenticated commander \u00b7 CSRF \u00b7 RBAC \u00b7 ownership scope",
+    "feedback_states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "layout": "social"
+}
+{
+    "route": "alliance-acs",
+    "group": "alliance",
+    "group_label": "Alliance",
+    "title": "ACS",
+    "purpose": "ACS subsystem console with server-authoritative state, controls, dependencies, and feedback.",
+    "mechanic": "alliance capacity = command level \u00d7 alliance technology \u00d7 government modifier",
+    "functions": [
+        "manage membership",
+        "propose diplomacy",
+        "coordinate warfare",
+        "share logistics"
+    ],
+    "features": [
+        "roster controls",
+        "role permissions",
+        "shared projects",
+        "diplomatic map"
+    ],
+    "sub_features": [
+        "loading and refresh state",
+        "permission-aware controls",
+        "related-page navigation",
+        "filter and sort state",
+        "empty-state explanation",
+        "audit and feedback detail"
+    ],
+    "information_sections": [
+        "commander context",
+        "current state",
+        "available controls",
+        "dependencies and prerequisites",
+        "server contract",
+        "database scope",
+        "feedback states",
+        "related pages"
+    ],
+    "controls": [
+        "Manage Membership",
+        "Propose Diplomacy",
+        "Coordinate Warfare",
+        "Share Logistics"
+    ],
+    "buttons": {
+        "Manage Membership": {
+            "action": "inspect_page",
+            "logic": "manage membership; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Propose Diplomacy": {
+            "action": "inspect_page",
+            "logic": "propose diplomacy; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Coordinate Warfare": {
+            "action": "inspect_page",
+            "logic": "coordinate warfare; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Share Logistics": {
+            "action": "inspect_page",
+            "logic": "share logistics; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        }
+    },
+    "server_actions": [
+        "inspect_page",
+        "refresh_page"
+    ],
+    "database_tables": [
+        "alliances",
+        "alliance_members",
+        "alliance_projects",
+        "game_events"
+    ],
+    "tables": [
+        "alliances",
+        "alliance_members",
+        "alliance_projects",
+        "game_events"
+    ],
+    "permissions": [
+        "authenticated commander",
+        "CSRF token",
+        "RBAC policy",
+        "ownership scope",
+        "cooldown validation",
+        "transaction boundary"
+    ],
+    "permission": "authenticated commander \u00b7 CSRF \u00b7 RBAC \u00b7 ownership scope",
+    "feedback_states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "layout": "social"
+}
+{
+    "route": "alliance-logistics",
+    "group": "alliance",
+    "group_label": "Alliance",
+    "title": "Alliance Logistics",
+    "purpose": "Alliance Logistics subsystem console with server-authoritative state, controls, dependencies, and feedback.",
+    "mechanic": "alliance capacity = command level \u00d7 alliance technology \u00d7 government modifier",
+    "functions": [
+        "manage membership",
+        "propose diplomacy",
+        "coordinate warfare",
+        "share logistics"
+    ],
+    "features": [
+        "roster controls",
+        "role permissions",
+        "shared projects",
+        "diplomatic map"
+    ],
+    "sub_features": [
+        "loading and refresh state",
+        "permission-aware controls",
+        "related-page navigation",
+        "filter and sort state",
+        "empty-state explanation",
+        "audit and feedback detail"
+    ],
+    "information_sections": [
+        "commander context",
+        "current state",
+        "available controls",
+        "dependencies and prerequisites",
+        "server contract",
+        "database scope",
+        "feedback states",
+        "related pages"
+    ],
+    "controls": [
+        "Manage Membership",
+        "Propose Diplomacy",
+        "Coordinate Warfare",
+        "Share Logistics"
+    ],
+    "buttons": {
+        "Manage Membership": {
+            "action": "inspect_page",
+            "logic": "manage membership; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Propose Diplomacy": {
+            "action": "inspect_page",
+            "logic": "propose diplomacy; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Coordinate Warfare": {
+            "action": "inspect_page",
+            "logic": "coordinate warfare; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Share Logistics": {
+            "action": "inspect_page",
+            "logic": "share logistics; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        }
+    },
+    "server_actions": [
+        "inspect_page",
+        "refresh_page"
+    ],
+    "database_tables": [
+        "alliances",
+        "alliance_members",
+        "alliance_projects",
+        "game_events"
+    ],
+    "tables": [
+        "alliances",
+        "alliance_members",
+        "alliance_projects",
+        "game_events"
+    ],
+    "permissions": [
+        "authenticated commander",
+        "CSRF token",
+        "RBAC policy",
+        "ownership scope",
+        "cooldown validation",
+        "transaction boundary"
+    ],
+    "permission": "authenticated commander \u00b7 CSRF \u00b7 RBAC \u00b7 ownership scope",
+    "feedback_states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "layout": "social"
+}
+{
+    "route": "alliance-stargates",
+    "group": "alliance",
+    "group_label": "Alliance",
+    "title": "Alliance Stargates",
+    "purpose": "Alliance Stargates subsystem console with server-authoritative state, controls, dependencies, and feedback.",
+    "mechanic": "alliance capacity = command level \u00d7 alliance technology \u00d7 government modifier",
+    "functions": [
+        "manage membership",
+        "propose diplomacy",
+        "coordinate warfare",
+        "share logistics"
+    ],
+    "features": [
+        "roster controls",
+        "role permissions",
+        "shared projects",
+        "diplomatic map"
+    ],
+    "sub_features": [
+        "loading and refresh state",
+        "permission-aware controls",
+        "related-page navigation",
+        "filter and sort state",
+        "empty-state explanation",
+        "audit and feedback detail"
+    ],
+    "information_sections": [
+        "commander context",
+        "current state",
+        "available controls",
+        "dependencies and prerequisites",
+        "server contract",
+        "database scope",
+        "feedback states",
+        "related pages"
+    ],
+    "controls": [
+        "Manage Membership",
+        "Propose Diplomacy",
+        "Coordinate Warfare",
+        "Share Logistics"
+    ],
+    "buttons": {
+        "Manage Membership": {
+            "action": "inspect_page",
+            "logic": "manage membership; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Propose Diplomacy": {
+            "action": "inspect_page",
+            "logic": "propose diplomacy; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Coordinate Warfare": {
+            "action": "inspect_page",
+            "logic": "coordinate warfare; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Share Logistics": {
+            "action": "inspect_page",
+            "logic": "share logistics; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        }
+    },
+    "server_actions": [
+        "inspect_page",
+        "refresh_page"
+    ],
+    "database_tables": [
+        "alliances",
+        "alliance_members",
+        "alliance_projects",
+        "game_events"
+    ],
+    "tables": [
+        "alliances",
+        "alliance_members",
+        "alliance_projects",
+        "game_events"
+    ],
+    "permissions": [
+        "authenticated commander",
+        "CSRF token",
+        "RBAC policy",
+        "ownership scope",
+        "cooldown validation",
+        "transaction boundary"
+    ],
+    "permission": "authenticated commander \u00b7 CSRF \u00b7 RBAC \u00b7 ownership scope",
+    "feedback_states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "layout": "social"
+}
+{
+    "route": "alliance-intelligence",
+    "group": "alliance",
+    "group_label": "Alliance",
+    "title": "Alliance Intelligence",
+    "purpose": "Alliance Intelligence subsystem console with server-authoritative state, controls, dependencies, and feedback.",
+    "mechanic": "alliance capacity = command level \u00d7 alliance technology \u00d7 government modifier",
+    "functions": [
+        "manage membership",
+        "propose diplomacy",
+        "coordinate warfare",
+        "share logistics"
+    ],
+    "features": [
+        "roster controls",
+        "role permissions",
+        "shared projects",
+        "diplomatic map"
+    ],
+    "sub_features": [
+        "loading and refresh state",
+        "permission-aware controls",
+        "related-page navigation",
+        "filter and sort state",
+        "empty-state explanation",
+        "audit and feedback detail"
+    ],
+    "information_sections": [
+        "commander context",
+        "current state",
+        "available controls",
+        "dependencies and prerequisites",
+        "server contract",
+        "database scope",
+        "feedback states",
+        "related pages"
+    ],
+    "controls": [
+        "Manage Membership",
+        "Propose Diplomacy",
+        "Coordinate Warfare",
+        "Share Logistics"
+    ],
+    "buttons": {
+        "Manage Membership": {
+            "action": "inspect_page",
+            "logic": "manage membership; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Propose Diplomacy": {
+            "action": "inspect_page",
+            "logic": "propose diplomacy; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Coordinate Warfare": {
+            "action": "inspect_page",
+            "logic": "coordinate warfare; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        },
+        "Share Logistics": {
+            "action": "inspect_page",
+            "logic": "share logistics; server validates authentication, CSRF, RBAC, ownership, cooldown, and transaction context.",
+            "permission": "authenticated commander",
+            "reads": [
+                "alliances",
+                "alliance_members",
+                "alliance_projects",
+                "game_events"
+            ],
+            "writes": [],
+            "states": [
+                "ready",
+                "empty",
+                "error"
+            ]
+        }
+    },
+    "server_actions": [
+        "inspect_page",
+        "refresh_page"
+    ],
+    "database_tables": [
+        "alliances",
+        "alliance_members",
+        "alliance_projects",
+        "game_events"
+    ],
+    "tables": [
+        "alliances",
+        "alliance_members",
+        "alliance_projects",
+        "game_events"
+    ],
+    "permissions": [
+        "authenticated commander",
+        "CSRF token",
+        "RBAC policy",
+        "ownership scope",
+        "cooldown validation",
+        "transaction boundary"
+    ],
+    "permission": "authenticated commander \u00b7 CSRF \u00b7 RBAC \u00b7 ownership scope",
+    "feedback_states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "states": [
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "layout": "social"
+}
+=== PREMIUM SERVICE/ACTIONS ===
+actions/game.php:42:require_once __DIR__ . '/../includes/services/PremiumService.php';
+actions/game.php:50:        case 'premium_purchase': $premium=(new PremiumService(db()))->purchase((int)$user['id'],trim((string)$_POST['item_key']),(int)($_POST['quantity']??1)); $_SESSION['premium_state']=$premium; $_SESSION['flash']='Premium purchase completed.'; break;
+actions/game.php:51:        case 'premium_claim_daily': $premium=(new PremiumService(db()))->claimDaily((int)$user['id']); $_SESSION['premium_state']=$premium; $_SESSION['flash']='Daily premium reward claimed: '.number_format((int)$premium['reward']).' Dark Matter.'; break;
+actions/game.php:52:        case 'premium_activate': $premium=(new PremiumService(db()))->activate((int)$user['id'],trim((string)$_POST['item_key'])); $_SESSION['premium_state']=$premium; $_SESSION['flash']='Premium item activated.'; break;
+actions/game.php:102:        case 'alliance_create': $allianceId=(new AllianceService(db()))->create((int)$user['id'],(string)$_POST['name'],(string)$_POST['tag'],(string)($_POST['description']??'')); $_SESSION['flash']='Alliance created #'.$allianceId.'.'; break;
+actions/game.php:103:        case 'alliance_join': $membership=(new AllianceService(db()))->join((int)$user['id'],(int)$_POST['alliance_id']); $_SESSION['flash']='Joined alliance '.$membership['name'].' ('.$membership['member_count'].'/'.$membership['capacity'].').'; break;
+actions/game.php:134:    $readActions=['read_income_breakdown','read_colony_comparison','read_military_stats','read_target_board','read_covert_state','covert_preview','sabotage_preview','combat_preview','read_weapon_inventory','inspect_durability','read_equipment_catalog','inspect_equipment_design','system_map','premium_state'];
+includes/services/PremiumService.php:3:final class PremiumService
+includes/services/PremiumService.php:18:        $s=$this->pdo->prepare('SELECT * FROM premium_catalog WHERE item_key=? AND is_active=1 FOR UPDATE'); $s->execute([$key]);
+includes/services/PremiumService.php:26:        $catalog=$this->pdo->query('SELECT item_key,category,display_name,description,price_dark_matter,effect_key,effect_value,duration_seconds,max_uses FROM premium_catalog WHERE is_active=1 ORDER BY category,item_key')->fetchAll(PDO::FETCH_ASSOC) ?: [];
+includes/services/PremiumService.php:27:        $tx=$this->pdo->prepare('SELECT item_key,transaction_type,price_dark_matter,payload,created_at FROM premium_transactions WHERE player_id=? ORDER BY id DESC LIMIT 12'); $tx->execute([$playerId]);
+includes/services/PremiumService.php:41:            $this->pdo->prepare('INSERT INTO premium_transactions(player_id,item_key,transaction_type,price_dark_matter,payload) VALUES(?,?,?,?,?)')->execute([$playerId,$itemKey,'purchase',$cost,json_encode(['quantity'=>$quantity],JSON_THROW_ON_ERROR)]);
+includes/services/PremiumService.php:42:            $this->event($playerId,'premium_purchase',['item_key'=>$itemKey,'quantity'=>$quantity,'cost'=>$cost]); $this->pdo->commit();
+includes/services/PremiumService.php:53:            $this->pdo->prepare('INSERT INTO premium_transactions(player_id,item_key,transaction_type,price_dark_matter,payload) VALUES(?,?,?,?,?)')->execute([$playerId,'daily_claim','claim',0,json_encode(['reward'=>$reward],JSON_THROW_ON_ERROR)]);
+includes/services/PremiumService.php:54:            $this->event($playerId,'premium_daily_claim',['reward'=>$reward]); $this->pdo->commit(); return ['reward'=>$reward];
+includes/services/PremiumService.php:65:            $this->pdo->prepare('INSERT INTO premium_transactions(player_id,item_key,transaction_type,price_dark_matter,payload) VALUES(?,?,?,?,?)')->execute([$playerId,$itemKey,'activate',$cost,json_encode(['expires_at'=>$expires,'effect_key'=>$item['effect_key']],JSON_THROW_ON_ERROR)]);
+includes/services/PremiumService.php:66:            $this->event($playerId,'premium_activate',['item_key'=>$itemKey,'expires_at'=>$expires]);$this->pdo->commit();return ['item_key'=>$itemKey,'expires_at'=>$expires,'balance'=>$balance-$cost];
+=== MIGRATIONS ===
+sql/055_premium_systems.sql
+=== SCHEMA TABLES ===
+premium_catalog=1
+player_premium=1
+premium_transactions=1
+alliances=1
+alliance_members=1
+alliance_projects=0

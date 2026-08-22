@@ -7,6 +7,7 @@ return array (
     0 => 'premium_catalog',
     1 => 'player_premium',
     2 => 'premium_transactions',
+    3 => 'game_events',
   ),
   'writes' => array (
     0 => 'player_premium',
@@ -14,7 +15,9 @@ return array (
     2 => 'game_events',
   ),
   'actions' => array (
-    0 => 'premium_activate',
+    0 => 'premium_purchase',
+    1 => 'premium_claim_daily',
+    2 => 'premium_activate',
   ),
   'feedback_states' => array (
     0 => 'ready',

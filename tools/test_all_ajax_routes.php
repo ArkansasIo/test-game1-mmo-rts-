@@ -2,7 +2,8 @@
 declare(strict_types=1);
 $root = dirname(__DIR__);
 $registry = require $root . '/config/page_registry.php';
-$specs = require $root . '/config/detailed_page_specs.php';
+$specPayload = require $root . '/config/detailed_page_specs.php';
+$specs = $specPayload['by_key'] ?? $specPayload['routes'] ?? $specPayload;
 $endpoint = file_get_contents($root . '/actions/page_intent.php');
 $client = file_get_contents($root . '/assets/generated-page-interactions.js');
 $game = file_get_contents($root . '/game.php');
