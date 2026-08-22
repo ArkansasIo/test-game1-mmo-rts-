@@ -1,0 +1,19 @@
+{
+    "status": "passed",
+    "groups": 28,
+    "routes": 191,
+    "frontend_routes_checked": 191,
+    "endpoint_contract_checked": true,
+    "csrf_hook_checked": true,
+    "response_states_checked": [
+        "loading",
+        "ready",
+        "empty",
+        "protected",
+        "cooldown",
+        "insufficient-resource",
+        "success",
+        "error"
+    ],
+    "errors": []
+}

@@ -1,0 +1,2233 @@
+{
+    "generated_at_utc": "2026-08-22T00:12:57+00:00",
+    "groups": {
+        "command-center": {
+            "label": "Command Center",
+            "routes": 5
+        },
+        "attack": {
+            "label": "Attack",
+            "routes": 4
+        },
+        "armory": {
+            "label": "Armory",
+            "routes": 3
+        },
+        "training": {
+            "label": "Training",
+            "routes": 4
+        },
+        "technology": {
+            "label": "Technology",
+            "routes": 5
+        },
+        "intelligence": {
+            "label": "Intelligence",
+            "routes": 10
+        },
+        "market": {
+            "label": "Market",
+            "routes": 2
+        },
+        "social": {
+            "label": "Social",
+            "routes": 9
+        },
+        "planets": {
+            "label": "Planets",
+            "routes": 4
+        },
+        "mothership": {
+            "label": "Mothership",
+            "routes": 3
+        },
+        "account": {
+            "label": "Account",
+            "routes": 3
+        },
+        "universe": {
+            "label": "Universe",
+            "routes": 6
+        },
+        "overview": {
+            "label": "Overview",
+            "routes": 5
+        },
+        "empire": {
+            "label": "Empire",
+            "routes": 8
+        },
+        "resources": {
+            "label": "Resources",
+            "routes": 9
+        },
+        "construction": {
+            "label": "Construction",
+            "routes": 9
+        },
+        "research": {
+            "label": "Research",
+            "routes": 10
+        },
+        "fleet": {
+            "label": "Fleet",
+            "routes": 9
+        },
+        "military": {
+            "label": "Military",
+            "routes": 9
+        },
+        "galaxy": {
+            "label": "Galaxy",
+            "routes": 12
+        },
+        "economy": {
+            "label": "Economy",
+            "routes": 7
+        },
+        "crafting": {
+            "label": "Crafting",
+            "routes": 9
+        },
+        "alliance": {
+            "label": "Alliance",
+            "routes": 10
+        },
+        "lifeforms": {
+            "label": "Lifeforms",
+            "routes": 7
+        },
+        "activities": {
+            "label": "Activities",
+            "routes": 9
+        },
+        "prestige": {
+            "label": "Prestige",
+            "routes": 7
+        },
+        "rankings": {
+            "label": "Rankings",
+            "routes": 9
+        },
+        "premium": {
+            "label": "Premium",
+            "routes": 4
+        }
+    },
+    "routes": {
+        "dashboard": {
+            "group": "command-center",
+            "title": "Command Center",
+            "layout": "dashboard",
+            "spec": true,
+            "actions": [
+                "process_turns"
+            ],
+            "tables": [
+                "players",
+                "player_resources",
+                "rankings",
+                "game_events"
+            ]
+        },
+        "account-info": {
+            "group": "command-center",
+            "title": "Account Information",
+            "layout": "details",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "players",
+                "races",
+                "rankings",
+                "glory_reputation"
+            ]
+        },
+        "resources": {
+            "group": "command-center",
+            "title": "Resources & Vault",
+            "layout": "economy",
+            "spec": true,
+            "actions": [
+                "deposit",
+                "withdraw"
+            ],
+            "tables": [
+                "player_resources",
+                "game_settings"
+            ]
+        },
+        "income": {
+            "group": "command-center",
+            "title": "Income Breakdown",
+            "layout": "breakdown",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "player_resources",
+                "races",
+                "player_planets",
+                "game_settings"
+            ]
+        },
+        "military-stats": {
+            "group": "command-center",
+            "title": "Military Statistics",
+            "layout": "stats",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "player_resources",
+                "player_unit_stats",
+                "rankings"
+            ]
+        },
+        "targets": {
+            "group": "attack",
+            "title": "Target Selection",
+            "layout": "targets",
+            "spec": true,
+            "actions": [
+                "combat",
+                "covert",
+                "explore",
+                "message"
+            ],
+            "tables": [
+                "target_realms",
+                "players",
+                "battles"
+            ]
+        },
+        "spy": {
+            "group": "attack",
+            "title": "Spy Operations",
+            "layout": "covert",
+            "spec": true,
+            "actions": [
+                "covert"
+            ],
+            "tables": [
+                "covert_missions",
+                "spy_missions",
+                "intelligence_reports"
+            ]
+        },
+        "sabotage": {
+            "group": "attack",
+            "title": "Sabotage Operations",
+            "layout": "covert",
+            "spec": true,
+            "actions": [
+                "covert"
+            ],
+            "tables": [
+                "covert_missions",
+                "sabotage_missions"
+            ]
+        },
+        "attack-log": {
+            "group": "attack",
+            "title": "Attack Log & Reports",
+            "layout": "reports",
+            "spec": true,
+            "actions": [
+                "message_read"
+            ],
+            "tables": [
+                "battles",
+                "battle_reports",
+                "attack_logs"
+            ]
+        },
+        "weapons": {
+            "group": "armory",
+            "title": "Weapon Inventory",
+            "layout": "inventory",
+            "spec": true,
+            "actions": [
+                "weapon_buy"
+            ],
+            "tables": [
+                "weapon_types",
+                "player_weapons"
+            ]
+        },
+        "weapon-market": {
+            "group": "armory",
+            "title": "Weapon Market",
+            "layout": "market",
+            "spec": true,
+            "actions": [
+                "market_list",
+                "market_buy"
+            ],
+            "tables": [
+                "market_orders",
+                "weapon_types"
+            ]
+        },
+        "repair": {
+            "group": "armory",
+            "title": "Weapon Repair",
+            "layout": "repair",
+            "spec": true,
+            "actions": [
+                "weapon_repair"
+            ],
+            "tables": [
+                "player_weapons",
+                "player_resources"
+            ]
+        },
+        "units": {
+            "group": "training",
+            "title": "Unit Training",
+            "layout": "training",
+            "spec": true,
+            "actions": [
+                "train",
+                "upgrade_up"
+            ],
+            "tables": [
+                "unit_types",
+                "player_unit_stats",
+                "training_queues",
+                "player_resources",
+                "game_events"
+            ]
+        },
+        "miners": {
+            "group": "training",
+            "title": "Miners & Lifers",
+            "layout": "training",
+            "spec": true,
+            "actions": [
+                "train"
+            ],
+            "tables": [
+                "player_resources"
+            ]
+        },
+        "super-units": {
+            "group": "training",
+            "title": "Super Units",
+            "layout": "training",
+            "spec": true,
+            "actions": [
+                "train"
+            ],
+            "tables": [
+                "player_resources",
+                "technologies"
+            ]
+        },
+        "unit-production": {
+            "group": "training",
+            "title": "Unit Production",
+            "layout": "upgrade",
+            "spec": true,
+            "actions": [
+                "upgrade_up"
+            ],
+            "tables": [
+                "unit_types",
+                "player_unit_stats",
+                "training_queues",
+                "player_resources",
+                "game_events"
+            ]
+        },
+        "technology": {
+            "group": "technology",
+            "title": "Technology Tree",
+            "layout": "technology",
+            "spec": true,
+            "actions": [
+                "technology"
+            ],
+            "tables": [
+                "technologies",
+                "player_technologies"
+            ]
+        },
+        "tech-offense": {
+            "group": "technology",
+            "title": "Offense Technology",
+            "layout": "technology",
+            "spec": true,
+            "actions": [
+                "technology"
+            ],
+            "tables": [
+                "technologies",
+                "player_technologies"
+            ]
+        },
+        "tech-defense": {
+            "group": "technology",
+            "title": "Defense Technology",
+            "layout": "technology",
+            "spec": true,
+            "actions": [
+                "technology"
+            ],
+            "tables": [
+                "technologies",
+                "player_technologies"
+            ]
+        },
+        "tech-covert": {
+            "group": "technology",
+            "title": "Covert Technology",
+            "layout": "technology",
+            "spec": true,
+            "actions": [
+                "technology"
+            ],
+            "tables": [
+                "technologies",
+                "player_technologies"
+            ]
+        },
+        "tech-anti-covert": {
+            "group": "technology",
+            "title": "Anti-Covert Technology",
+            "layout": "technology",
+            "spec": true,
+            "actions": [
+                "technology"
+            ],
+            "tables": [
+                "technologies",
+                "player_technologies"
+            ]
+        },
+        "spy-log": {
+            "group": "intelligence",
+            "title": "Spy Log",
+            "layout": "reports",
+            "spec": true,
+            "actions": [
+                "message_read"
+            ],
+            "tables": [
+                "covert_missions",
+                "intelligence_reports"
+            ]
+        },
+        "enemy-intelligence": {
+            "group": "intelligence",
+            "title": "Enemy Intelligence",
+            "layout": "reports",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "intelligence_reports"
+            ]
+        },
+        "intelligence-espionage": {
+            "group": "intelligence",
+            "title": "Espionage",
+            "layout": "combat",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "spy-missions": {
+            "group": "intelligence",
+            "title": "Spy Missions",
+            "layout": "combat",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "counter-espionage": {
+            "group": "intelligence",
+            "title": "Counter-Espionage",
+            "layout": "combat",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "intelligence-sabotage": {
+            "group": "intelligence",
+            "title": "Sabotage",
+            "layout": "combat",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "reconnaissance": {
+            "group": "intelligence",
+            "title": "Reconnaissance",
+            "layout": "combat",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "sensor-phalanx": {
+            "group": "intelligence",
+            "title": "Sensor Phalanx",
+            "layout": "combat",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "fleet-activity": {
+            "group": "intelligence",
+            "title": "Fleet Activity",
+            "layout": "combat",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "intelligence-reports": {
+            "group": "intelligence",
+            "title": "Intelligence Reports",
+            "layout": "combat",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "resource-exchange": {
+            "group": "market",
+            "title": "Resource Exchange",
+            "layout": "market",
+            "spec": true,
+            "actions": [
+                "market_list",
+                "market_buy"
+            ],
+            "tables": [
+                "market_orders",
+                "player_resources"
+            ]
+        },
+        "mercenary-market": {
+            "group": "market",
+            "title": "Mercenary Market",
+            "layout": "market",
+            "spec": true,
+            "actions": [
+                "mercenary_buy"
+            ],
+            "tables": [
+                "mercenary_types",
+                "player_mercenaries"
+            ]
+        },
+        "rankings": {
+            "group": "social",
+            "title": "Rankings",
+            "layout": "rankings",
+            "spec": true,
+            "actions": [
+                "refresh_rankings"
+            ],
+            "tables": [
+                "rankings",
+                "rank_snapshots"
+            ]
+        },
+        "alliances": {
+            "group": "social",
+            "title": "Alliances",
+            "layout": "social",
+            "spec": true,
+            "actions": [
+                "alliance_create",
+                "alliance_join"
+            ],
+            "tables": [
+                "alliances",
+                "alliance_members"
+            ]
+        },
+        "messages": {
+            "group": "social",
+            "title": "Messages",
+            "layout": "messages",
+            "spec": true,
+            "actions": [
+                "message",
+                "message_read"
+            ],
+            "tables": [
+                "messages",
+                "blacklists"
+            ]
+        },
+        "social-messages": {
+            "group": "social",
+            "title": "Messages",
+            "layout": "social",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "notifications": {
+            "group": "social",
+            "title": "Notifications",
+            "layout": "social",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "global-chat": {
+            "group": "social",
+            "title": "Global Chat",
+            "layout": "social",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "buddy-list": {
+            "group": "social",
+            "title": "Buddy List",
+            "layout": "social",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "recruitment": {
+            "group": "social",
+            "title": "Recruitment",
+            "layout": "social",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "empires-at-war": {
+            "group": "social",
+            "title": "Empires at War",
+            "layout": "social",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "planet-list": {
+            "group": "planets",
+            "title": "Planet List",
+            "layout": "planets",
+            "spec": true,
+            "actions": [
+                "explore",
+                "combat",
+                "colonize_planet",
+                "planet_defense"
+            ],
+            "tables": [
+                "player_colonies",
+                "planet_bonuses",
+                "planet_explorations",
+                "player_resources",
+                "universe_planets",
+                "planet_defenses",
+                "motherships",
+                "player_cooldowns",
+                "game_events"
+            ]
+        },
+        "settlement": {
+            "group": "planets",
+            "title": "Settlement & Power Grid",
+            "layout": "settlement",
+            "spec": true,
+            "actions": [
+                "settlement_state",
+                "settlement_build",
+                "settlement_demolish",
+                "settlement_process"
+            ],
+            "tables": [
+                "settlement_fields",
+                "settlement_buildings",
+                "settlement_construction_queues",
+                "building_types",
+                "player_resources",
+                "game_events"
+            ]
+        },
+        "planet-bonuses": {
+            "group": "planets",
+            "title": "Planet Bonuses",
+            "layout": "planets",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "planet_bonuses"
+            ]
+        },
+        "planet-defenses": {
+            "group": "planets",
+            "title": "Planet Defenses",
+            "layout": "planets",
+            "spec": true,
+            "actions": [
+                "planet_defense"
+            ],
+            "tables": [
+                "planet_defenses"
+            ]
+        },
+        "ship": {
+            "group": "mothership",
+            "title": "Mothership",
+            "layout": "ship",
+            "spec": true,
+            "actions": [
+                "mothership_upgrade"
+            ],
+            "tables": [
+                "motherships"
+            ]
+        },
+        "modules": {
+            "group": "mothership",
+            "title": "Mothership Modules",
+            "layout": "ship",
+            "spec": true,
+            "actions": [
+                "mothership_upgrade"
+            ],
+            "tables": [
+                "mothership_modules"
+            ]
+        },
+        "exploration": {
+            "group": "mothership",
+            "title": "Exploration",
+            "layout": "exploration",
+            "spec": true,
+            "actions": [
+                "explore"
+            ],
+            "tables": [
+                "motherships",
+                "planet_explorations"
+            ]
+        },
+        "race": {
+            "group": "account",
+            "title": "Race Selection",
+            "layout": "account",
+            "spec": true,
+            "actions": [
+                "change_race"
+            ],
+            "tables": [
+                "races",
+                "players"
+            ]
+        },
+        "vacation": {
+            "group": "account",
+            "title": "Vacation Mode",
+            "layout": "account",
+            "spec": true,
+            "actions": [
+                "vacation"
+            ],
+            "tables": [
+                "vacation_states",
+                "protection_states"
+            ]
+        },
+        "ascension": {
+            "group": "account",
+            "title": "Ascension",
+            "layout": "progression",
+            "spec": true,
+            "actions": [
+                "ascend"
+            ],
+            "tables": [
+                "ascension_states",
+                "ascensions",
+                "glory_reputation"
+            ]
+        },
+        "galaxies": {
+            "group": "universe",
+            "title": "Galaxy Map",
+            "layout": "galaxies",
+            "spec": true,
+            "actions": [
+                "universe_galaxies"
+            ],
+            "tables": [
+                "universe_galaxies",
+                "universe_sectors",
+                "universe_solar_systems",
+                "universe_planets",
+                "universe_discoveries",
+                "target_realms",
+                "game_events"
+            ]
+        },
+        "sectors": {
+            "group": "universe",
+            "title": "Sector Map",
+            "layout": "sectors",
+            "spec": true,
+            "actions": [
+                "universe_sectors"
+            ],
+            "tables": [
+                "universe_sectors",
+                "universe_solar_systems",
+                "universe_planets",
+                "motherships",
+                "mothership_modules",
+                "player_technologies",
+                "player_cooldowns",
+                "game_events"
+            ]
+        },
+        "solar-systems": {
+            "group": "universe",
+            "title": "Solar Systems",
+            "layout": "solar-systems",
+            "spec": true,
+            "actions": [
+                "system_map",
+                "explore"
+            ],
+            "tables": [
+                "universe_solar_systems",
+                "universe_planets"
+            ]
+        },
+        "universe-planets": {
+            "group": "universe",
+            "title": "Universe Planets",
+            "layout": "universe-planets",
+            "spec": true,
+            "actions": [
+                "planet_details",
+                "colonize_planet"
+            ],
+            "tables": [
+                "universe_planets",
+                "player_colonies"
+            ]
+        },
+        "moons": {
+            "group": "universe",
+            "title": "Moon Registry",
+            "layout": "moons",
+            "spec": true,
+            "actions": [
+                "moon_details",
+                "mothership_upgrade"
+            ],
+            "tables": [
+                "universe_moons",
+                "universe_planets"
+            ]
+        },
+        "coordinates": {
+            "group": "universe",
+            "title": "Coordinate Search",
+            "layout": "coordinates",
+            "spec": true,
+            "actions": [
+                "coordinate_lookup"
+            ],
+            "tables": [
+                "universe_galaxies",
+                "universe_sectors",
+                "universe_solar_systems",
+                "universe_planets",
+                "universe_discoveries",
+                "player_colonies"
+            ]
+        },
+        "overview-dashboard": {
+            "group": "overview",
+            "title": "Dashboard",
+            "layout": "dashboard",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "empire-overview": {
+            "group": "overview",
+            "title": "Empire Overview",
+            "layout": "dashboard",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "active-operations": {
+            "group": "overview",
+            "title": "Active Operations",
+            "layout": "dashboard",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "alerts": {
+            "group": "overview",
+            "title": "Alerts",
+            "layout": "dashboard",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "tutorial-objectives": {
+            "group": "overview",
+            "title": "Tutorial / Objectives",
+            "layout": "dashboard",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "planets": {
+            "group": "empire",
+            "title": "Planets",
+            "layout": "economy",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "colonies": {
+            "group": "empire",
+            "title": "Colonies",
+            "layout": "economy",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "empire-moons": {
+            "group": "empire",
+            "title": "Moons",
+            "layout": "economy",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "buildings": {
+            "group": "empire",
+            "title": "Buildings",
+            "layout": "economy",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "facilities": {
+            "group": "empire",
+            "title": "Facilities",
+            "layout": "economy",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "storage": {
+            "group": "empire",
+            "title": "Storage",
+            "layout": "economy",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "population": {
+            "group": "empire",
+            "title": "Population",
+            "layout": "economy",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "planet-specialization": {
+            "group": "empire",
+            "title": "Planet Specialization",
+            "layout": "economy",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "resource-overview": {
+            "group": "resources",
+            "title": "Resource Overview",
+            "layout": "economy",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "metal": {
+            "group": "resources",
+            "title": "Metal",
+            "layout": "economy",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "crystal": {
+            "group": "resources",
+            "title": "Crystal",
+            "layout": "economy",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "deuterium": {
+            "group": "resources",
+            "title": "Deuterium",
+            "layout": "economy",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "naquadah": {
+            "group": "resources",
+            "title": "Naquadah",
+            "layout": "economy",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "energy": {
+            "group": "resources",
+            "title": "Energy",
+            "layout": "economy",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "dark-matter": {
+            "group": "resources",
+            "title": "Dark Matter",
+            "layout": "economy",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "production": {
+            "group": "resources",
+            "title": "Production",
+            "layout": "economy",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "energy-grid": {
+            "group": "resources",
+            "title": "Energy Grid",
+            "layout": "economy",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "construction-buildings": {
+            "group": "construction",
+            "title": "Buildings",
+            "layout": "facilities",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "construction-facilities": {
+            "group": "construction",
+            "title": "Facilities",
+            "layout": "facilities",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "construction-queue": {
+            "group": "construction",
+            "title": "Construction Queue",
+            "layout": "facilities",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "shipyard": {
+            "group": "construction",
+            "title": "Shipyard",
+            "layout": "facilities",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "defense": {
+            "group": "construction",
+            "title": "Defense",
+            "layout": "facilities",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "robotics": {
+            "group": "construction",
+            "title": "Robotics",
+            "layout": "facilities",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "nanite-factory": {
+            "group": "construction",
+            "title": "Nanite Factory",
+            "layout": "facilities",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "terraformer": {
+            "group": "construction",
+            "title": "Terraformer",
+            "layout": "facilities",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "space-dock": {
+            "group": "construction",
+            "title": "Space Dock",
+            "layout": "facilities",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "research-technology": {
+            "group": "research",
+            "title": "Technology",
+            "layout": "technology",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "advanced-research": {
+            "group": "research",
+            "title": "Advanced Research",
+            "layout": "technology",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "combat": {
+            "group": "research",
+            "title": "Combat",
+            "layout": "technology",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "propulsion": {
+            "group": "research",
+            "title": "Propulsion",
+            "layout": "technology",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "espionage": {
+            "group": "research",
+            "title": "Espionage",
+            "layout": "technology",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "astrophysics": {
+            "group": "research",
+            "title": "Astrophysics",
+            "layout": "technology",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "stargate-technology": {
+            "group": "research",
+            "title": "Stargate Technology",
+            "layout": "technology",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "mothership-technology": {
+            "group": "research",
+            "title": "Mothership Technology",
+            "layout": "technology",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "lifeform-research": {
+            "group": "research",
+            "title": "Lifeform Research",
+            "layout": "technology",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "ascension-research": {
+            "group": "research",
+            "title": "Ascension Research",
+            "layout": "technology",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "fleet-manager": {
+            "group": "fleet",
+            "title": "Fleet Manager",
+            "layout": "fleet",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "starships": {
+            "group": "fleet",
+            "title": "Starships",
+            "layout": "fleet",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "motherships": {
+            "group": "fleet",
+            "title": "Motherships",
+            "layout": "fleet",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "ship-upgrades": {
+            "group": "fleet",
+            "title": "Ship Upgrades",
+            "layout": "fleet",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "formations": {
+            "group": "fleet",
+            "title": "Formations",
+            "layout": "fleet",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "fleet-missions": {
+            "group": "fleet",
+            "title": "Fleet Missions",
+            "layout": "fleet",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "expeditions": {
+            "group": "fleet",
+            "title": "Expeditions",
+            "layout": "fleet",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "fleet-save": {
+            "group": "fleet",
+            "title": "Fleet Save",
+            "layout": "fleet",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "acs": {
+            "group": "fleet",
+            "title": "ACS",
+            "layout": "fleet",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "ground-forces": {
+            "group": "military",
+            "title": "Ground Forces",
+            "layout": "combat",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "military-units": {
+            "group": "military",
+            "title": "Units",
+            "layout": "combat",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "officers": {
+            "group": "military",
+            "title": "Officers",
+            "layout": "combat",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "training-center": {
+            "group": "military",
+            "title": "Training Center",
+            "layout": "combat",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "planetary-defense": {
+            "group": "military",
+            "title": "Planetary Defense",
+            "layout": "combat",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "missile-warfare": {
+            "group": "military",
+            "title": "Missile Warfare",
+            "layout": "combat",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "combat-simulator": {
+            "group": "military",
+            "title": "Combat Simulator",
+            "layout": "combat",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "war-room": {
+            "group": "military",
+            "title": "War Room",
+            "layout": "combat",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "campaigns": {
+            "group": "military",
+            "title": "Campaigns",
+            "layout": "combat",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "galaxy-view": {
+            "group": "galaxy",
+            "title": "Galaxy View",
+            "layout": "galaxies",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "galaxy-map": {
+            "group": "galaxy",
+            "title": "Galaxy Map",
+            "layout": "galaxies",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "galaxy-solar-systems": {
+            "group": "galaxy",
+            "title": "Solar Systems",
+            "layout": "galaxies",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "3d-universe": {
+            "group": "galaxy",
+            "title": "3D Universe",
+            "layout": "galaxies",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "galaxy-sectors": {
+            "group": "galaxy",
+            "title": "Sectors",
+            "layout": "galaxies",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "realm-systems": {
+            "group": "galaxy",
+            "title": "Realm Systems",
+            "layout": "galaxies",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "stargate-network": {
+            "group": "galaxy",
+            "title": "Stargate Network",
+            "layout": "galaxies",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "wormholes": {
+            "group": "galaxy",
+            "title": "Wormholes",
+            "layout": "galaxies",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "anomalies": {
+            "group": "galaxy",
+            "title": "Anomalies",
+            "layout": "galaxies",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "npc-factions": {
+            "group": "galaxy",
+            "title": "NPC Factions",
+            "layout": "galaxies",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "seed-discovery": {
+            "group": "galaxy",
+            "title": "Seed Discovery",
+            "layout": "galaxies",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "galactic-calendar": {
+            "group": "galaxy",
+            "title": "Galactic Calendar",
+            "layout": "galaxies",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "marketplace": {
+            "group": "economy",
+            "title": "Marketplace",
+            "layout": "market",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "resource-trading": {
+            "group": "economy",
+            "title": "Resource Trading",
+            "layout": "market",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "trade-routes": {
+            "group": "economy",
+            "title": "Trade Routes",
+            "layout": "market",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "merchant": {
+            "group": "economy",
+            "title": "Merchant",
+            "layout": "market",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "auction-house": {
+            "group": "economy",
+            "title": "Auction House",
+            "layout": "market",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "black-market": {
+            "group": "economy",
+            "title": "Black Market",
+            "layout": "market",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "insurance": {
+            "group": "economy",
+            "title": "Insurance",
+            "layout": "market",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "workshop": {
+            "group": "crafting",
+            "title": "Workshop",
+            "layout": "crafting",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "master-crafting": {
+            "group": "crafting",
+            "title": "Master Crafting",
+            "layout": "crafting",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "crafting-rank": {
+            "group": "crafting",
+            "title": "Crafting Rank",
+            "layout": "crafting",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "materials": {
+            "group": "crafting",
+            "title": "Materials",
+            "layout": "crafting",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "materials-lab": {
+            "group": "crafting",
+            "title": "Materials Lab",
+            "layout": "crafting",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "dismantling": {
+            "group": "crafting",
+            "title": "Dismantling",
+            "layout": "crafting",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "augmentations": {
+            "group": "crafting",
+            "title": "Augmentations",
+            "layout": "crafting",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "artifacts": {
+            "group": "crafting",
+            "title": "Artifacts",
+            "layout": "crafting",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "blueprints": {
+            "group": "crafting",
+            "title": "Blueprints",
+            "layout": "crafting",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "alliance-hub": {
+            "group": "alliance",
+            "title": "Alliance Hub",
+            "layout": "social",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "members": {
+            "group": "alliance",
+            "title": "Members",
+            "layout": "social",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "commanders": {
+            "group": "alliance",
+            "title": "Commanders",
+            "layout": "social",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "alliance-officers": {
+            "group": "alliance",
+            "title": "Officers",
+            "layout": "social",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "diplomacy": {
+            "group": "alliance",
+            "title": "Diplomacy",
+            "layout": "social",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "war": {
+            "group": "alliance",
+            "title": "War",
+            "layout": "social",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "alliance-acs": {
+            "group": "alliance",
+            "title": "ACS",
+            "layout": "social",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "alliance-logistics": {
+            "group": "alliance",
+            "title": "Alliance Logistics",
+            "layout": "social",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "alliance-stargates": {
+            "group": "alliance",
+            "title": "Alliance Stargates",
+            "layout": "social",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "alliance-intelligence": {
+            "group": "alliance",
+            "title": "Alliance Intelligence",
+            "layout": "social",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "lifeforms-population": {
+            "group": "lifeforms",
+            "title": "Population",
+            "layout": "generic",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "food": {
+            "group": "lifeforms",
+            "title": "Food",
+            "layout": "generic",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "lifeform-buildings": {
+            "group": "lifeforms",
+            "title": "Lifeform Buildings",
+            "layout": "generic",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "lifeforms-lifeform-research": {
+            "group": "lifeforms",
+            "title": "Lifeform Research",
+            "layout": "generic",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "civilization-tier": {
+            "group": "lifeforms",
+            "title": "Civilization Tier",
+            "layout": "generic",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "traits": {
+            "group": "lifeforms",
+            "title": "Traits",
+            "layout": "generic",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "lifeform-bonuses": {
+            "group": "lifeforms",
+            "title": "Lifeform Bonuses",
+            "layout": "generic",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "quests": {
+            "group": "activities",
+            "title": "Quests",
+            "layout": "activities",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "activities-expeditions": {
+            "group": "activities",
+            "title": "Expeditions",
+            "layout": "activities",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "pirate-hunting": {
+            "group": "activities",
+            "title": "Pirate Hunting",
+            "layout": "activities",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "bounty-board": {
+            "group": "activities",
+            "title": "Bounty Board",
+            "layout": "activities",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "world-bosses": {
+            "group": "activities",
+            "title": "World Bosses",
+            "layout": "activities",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "activities-anomalies": {
+            "group": "activities",
+            "title": "Anomalies",
+            "layout": "activities",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "activities-campaigns": {
+            "group": "activities",
+            "title": "Campaigns",
+            "layout": "activities",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "achievements": {
+            "group": "activities",
+            "title": "Achievements",
+            "layout": "activities",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "seasonal-events": {
+            "group": "activities",
+            "title": "Seasonal Events",
+            "layout": "activities",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "glory": {
+            "group": "prestige",
+            "title": "Glory",
+            "layout": "progression",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "reputation": {
+            "group": "prestige",
+            "title": "Reputation",
+            "layout": "progression",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "prestige-ascension": {
+            "group": "prestige",
+            "title": "Ascension",
+            "layout": "progression",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "re-ascension": {
+            "group": "prestige",
+            "title": "Re-Ascension",
+            "layout": "progression",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "ascended-races": {
+            "group": "prestige",
+            "title": "Ascended Races",
+            "layout": "progression",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "titles": {
+            "group": "prestige",
+            "title": "Titles",
+            "layout": "progression",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "permanent-bonuses": {
+            "group": "prestige",
+            "title": "Permanent Bonuses",
+            "layout": "progression",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "empire": {
+            "group": "rankings",
+            "title": "Empire",
+            "layout": "rankings",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "economy": {
+            "group": "rankings",
+            "title": "Economy",
+            "layout": "rankings",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "fleet": {
+            "group": "rankings",
+            "title": "Fleet",
+            "layout": "rankings",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "research": {
+            "group": "rankings",
+            "title": "Research",
+            "layout": "rankings",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "rankings-defense": {
+            "group": "rankings",
+            "title": "Defense",
+            "layout": "rankings",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "covert": {
+            "group": "rankings",
+            "title": "Covert",
+            "layout": "rankings",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "alliance": {
+            "group": "rankings",
+            "title": "Alliance",
+            "layout": "rankings",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "lifeform": {
+            "group": "rankings",
+            "title": "Lifeform",
+            "layout": "rankings",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "galactic-control": {
+            "group": "rankings",
+            "title": "Galactic Control",
+            "layout": "rankings",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "store": {
+            "group": "premium",
+            "title": "Store",
+            "layout": "premium",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "premium-officers": {
+            "group": "premium",
+            "title": "Officers",
+            "layout": "premium",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "commander": {
+            "group": "premium",
+            "title": "Commander",
+            "layout": "premium",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        },
+        "premium-services": {
+            "group": "premium",
+            "title": "Premium Services",
+            "layout": "premium",
+            "spec": true,
+            "actions": [],
+            "tables": [
+                "game_events"
+            ]
+        }
+    },
+    "layers": {
+        "pages": 261,
+        "config/page_definitions": 191,
+        "config/page_logic": 191,
+        "config/page_features": 191,
+        "config/page_design_specs": 191,
+        "config/page_systems": 191,
+        "includes/page_modules": 191
+    },
+    "theme_files": [
+        "app.css",
+        "master.css",
+        "menu-groups.css",
+        "theme-system.css"
+    ],
+    "javascript_assets": [
+        "generated-page-interactions.js"
+    ],
+    "action_endpoints": [
+        "game.php",
+        "login.php",
+        "logout.php",
+        "page_intent.php",
+        "register.php"
+    ],
+    "tests": 94,
+    "documentation_files": 15
+}

@@ -1,0 +1,89 @@
+{
+  "project_info": {
+    "title": "191 Routes, Specifications & AJAX",
+    "created": 1787357948.521,
+    "last_updated": 1787357968.985,
+    "total_slides": 7
+  },
+  "slides": [
+    {
+      "id": "title",
+      "state": "edited",
+      "pageNum": 1
+    },
+    {
+      "id": "scope",
+      "state": "edited",
+      "pageNum": 2
+    },
+    {
+      "id": "architecture",
+      "state": "edit_pending",
+      "pageNum": 3
+    },
+    {
+      "id": "specifications",
+      "state": "edit_pending",
+      "pageNum": 4
+    },
+    {
+      "id": "ajax",
+      "state": "edit_pending",
+      "pageNum": 5
+    },
+    {
+      "id": "validation",
+      "state": "edit_pending",
+      "pageNum": 6
+    },
+    {
+      "id": "delivery",
+      "state": "edit_pending",
+      "pageNum": 7
+    }
+  ],
+  "outline": [
+    {
+      "id": "title",
+      "title": "191 Routes, Specifications & AJAX",
+      "summary": "A verified technical overview of the complete game route tree, detailed page contracts, live interface checks, and frontend-backend interaction coverage.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "scope",
+      "title": "Audit Scope and Route Inventory",
+      "summary": "The current menu system contains 28 groups and 191 active routes spanning command, empire, economy, construction, research, fleet, military, galaxy, crafting, alliance, activities, rankings, and premium systems.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "architecture",
+      "title": "Architecture of Every Route",
+      "summary": "Every route is represented across registry, definition, logic, feature, design, systems, and module layers, with generated pages and a shared renderer.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "specifications",
+      "title": "Detailed Route Specifications",
+      "summary": "Each route carries purpose, mechanic, functions, features, sub-features, controls, information sections, permissions, database scope, and feedback states.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "ajax",
+      "title": "Frontend-Backend AJAX Contract",
+      "summary": "The shared generated-page client submits authenticated intents with CSRF, receives JSON state, and renders loading, ready, success, and error feedback across all routes.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "validation",
+      "title": "Validation Results",
+      "summary": "The complete route and AJAX audits passed: 191 routes checked, 1,528 route layers checked, zero syntax errors, zero missing dependencies, and zero broken links.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "delivery",
+      "title": "Implementation Handoff",
+      "summary": "The current source package includes generated pages, detailed specifications, themes, interaction assets, action endpoints, tests, and documentation ready for deployment packaging.",
+      "image_plan": "Use a suitable image if needed"
+    }
+  ]
+}
