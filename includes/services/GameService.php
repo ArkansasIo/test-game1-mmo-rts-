@@ -24,7 +24,6 @@ final class GameService {
             $player=$this->player($playerId,true);
             $resources=$this->resources($playerId,true);
             $interval=$this->setting('turn_interval_seconds',10);
-            $threshold=$this->setting('turn_generation_threshold',4000);
             $max=$this->setting('turn_max_storage',10000);
             $last=$player['last_turn_at'] ? new DateTimeImmutable($player['last_turn_at']) : $now;
             $elapsed=max(0,$now->getTimestamp()-$last->getTimestamp());
@@ -32,10 +31,10 @@ final class GameService {
             if($due<1){$this->pdo->commit();return ['turns'=>0,'income'=>0,'elapsed_seconds'=>$elapsed];}
             $currentTurns=(int)$resources['attack_turns'];
             $turns=min($due,max(0,$max-$currentTurns));
-            $generationApplied=$currentTurns<$threshold;
-            $newUnits=$generationApplied?(int)$resources['unit_production']*$due:0;
+            $generationApplied=$turns>0;
+            $newUnits=$generationApplied?(int)$resources['unit_production']*$turns:0;
             $baseIncome=((int)$resources['untrained_units']*20)+(((int)$resources['miners']+(int)$resources['lifers'])*80);
-            $income=$generationApplied?$baseIncome*$due:0;
+            $income=$generationApplied?$baseIncome*$turns:0;
             $raceMultiplier=$player['race']==='Goa\'uld'?1.25:1.0;
             $defconMultiplier=[0=>1.0,1=>.90,2=>.80,3=>.60,4=>.30][(int)$player['defcon_level']]??1.0;
             $income=(int)round($income*$raceMultiplier*$defconMultiplier);

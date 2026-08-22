@@ -19,17 +19,20 @@ final class GameService {
     public function processTurns(int $playerId, ?DateTimeImmutable $now=null): array {
         $now=$now ?? new DateTimeImmutable('now'); $this->pdo->beginTransaction();
         try {
-            $player=$this->player($playerId,true); $resources=$this->resources($playerId,true); $interval=$this->setting('turn_interval_seconds',1800); $threshold=$this->setting('turn_generation_threshold',4000); $max=$this->setting('turn_max_storage',10000);
+            $player=$this->player($playerId,true); $resources=$this->resources($playerId,true); $interval=$this->setting('turn_interval_seconds',1800); $max=$this->setting('turn_max_storage',10000);
             $last=$player['last_turn_at'] ? new DateTimeImmutable($player['last_turn_at']) : $now; $elapsed=max(0,$now->getTimestamp()-$last->getTimestamp()); $due=intdiv($elapsed,$interval); $turns=min($due,max(0,$max-(int)$resources['attack_turns']));
-            if ($turns>0 && (int)$resources['attack_turns'] < $threshold) {
-                $untrained=(int)$resources['untrained_units'] + ((int)$resources['unit_production']*$turns);
+            $income=0;
+            if ($turns>0) {
+                $production=(int)$resources['unit_production']*$turns;
                 $income=((int)$resources['untrained_units']*20 + ((int)$resources['miners']+(int)$resources['lifers'])*80) * $turns;
                 if ($player['race']==='Goa\'uld') $income=(int)round($income*1.25);
                 $income=(int)round($income*(1-([0=>0,1=>.10,2=>.20,3=>.40,4=>.70][(int)$player['defcon_level']] ?? 0)));
-                $this->pdo->prepare('UPDATE player_resources SET attack_turns=LEAST(?,attack_turns+?),untrained_units=untrained_units+?,naquadah=naquadah+? WHERE player_id=?')->execute([$max,$turns,$untrained,$income,$playerId]);
-                $newLast=$last->modify('+' . ($due*$interval) . ' seconds')->format('Y-m-d H:i:s'); $this->pdo->prepare('UPDATE players SET last_turn_at=? WHERE id=?')->execute([$newLast,$playerId]); $this->event($playerId,'turn_processed',null,null,['turns'=>$turns,'income'=>$income]);
+                                $this->pdo->prepare('UPDATE player_resources SET attack_turns=LEAST(?,attack_turns+?),untrained_units=untrained_units+?,naquadah=naquadah+? WHERE player_id=?')->execute([$max,$turns,$production,$income,$playerId]);
+                $newLast=$last->modify('+' . ($due*$interval) . ' seconds')->format('Y-m-d H:i:s'); $this->pdo->prepare('UPDATE players SET last_turn_at=? WHERE id=?')->execute([$newLast,$playerId]); $this->event($playerId,'turn_processed',null,null,['turns'=>$turns,'income'=>$income,'production'=>$production]);
+            } elseif ($due > 0) {
+                $newLast=$last->modify('+' . ($due*$interval) . ' seconds')->format('Y-m-d H:i:s'); $this->pdo->prepare('UPDATE players SET last_turn_at=? WHERE id=?')->execute([$newLast,$playerId]);
             }
-            $this->pdo->commit(); return ['turns'=>$turns,'income'=>$income ?? 0];
+            $this->pdo->commit(); return ['turns'=>$turns,'income'=>$income];
         } catch(Throwable $e){$this->pdo->rollBack();throw $e;}
     }
     public function deposit(int $playerId,int $amount):void{$this->moveBank($playerId,$amount,true);}
